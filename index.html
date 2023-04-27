@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adote sua patinha</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="icon" type="imagem/png" href="img/iconn.png" />
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <section id="header">
+        <a href="#"><img src="img/logo.png" class="logo" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="main.html">Home</a></li>
+                <li><a href="">Perfil</a></li>
+                <li><a href="">Sobre</a></li>
+                <a href="#" id="close"><i class="far fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+    <section id="box">
+        <div class="content">
+            <form id="form">
+                <div>
+                    <p>Nome:</p>
+                    <input type="nome" placeholder="Digite o nome" class="inputsn">
+                </div>
+                <div>
+                    <p>Idade:</p>
+                    <select name="idade" id="idade">
+                      <option value="0" selected>0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="2">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Raça:</p>
+                    <select name="raca" id="raca">
+                      <option value="0" selected>Selecione</option>
+                      <option value="1">Golden</option>
+                      <option value="2">Pastor</option>
+                      <option value="3">Shih-tzu</option>
+                      <option value="4">Labrador</option>
+                      <option value="5">Beagle</option>
+                      <option value="6">Sem Raça</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Descrição:</p>
+                    <textarea class="inputs" name="descricao" id="descricao" rows="4" placeholder="Fale um pouco sobre o pet..."></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="mural">
+            <p>Selecione as fotos do seu pet:</p>
+            <img src="img/img1.jpg">
+            <img src="img/img2.jpg">
+            <img src="img/img3.jpg">
+        </div>
+    </section>
+    <button type="submit">✓ㅤEnviar</button>
+    <script src="script.js"></script>
+</body>
+
+</html>
