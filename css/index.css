@@ -264,7 +264,7 @@ button[type="submit"]:hover{
         margin-top: 10%;
         margin-left: 40px;
         border-radius: 10px;
-        width: 150px;
+        width: 105px;
         box-shadow: 5px 5px 5px rgb(172, 172, 172, 0.3);
     }
 }
