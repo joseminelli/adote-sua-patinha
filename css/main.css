@@ -62,7 +62,6 @@ p {
 #navbar {
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
 #navbar li {
@@ -300,6 +299,21 @@ button[type="submit"]:hover{
         justify-content: center;
         align-items: center;
         gap: 2rem;
+    }
+}
+
+@media (max-width: 427px) {
+
+
+    .mural img {
+        margin-left: 35px;
+        margin-top: 30px;
+        grid-row:auto;
+        justify-content: center;
+        grid-column: auto;
+        border-radius: 10px;
+        width: 120px;
+        box-shadow: 5px 5px 5px rgb(172, 172, 172, 0.3);
     }
 }
 @media (max-width:799px) {
