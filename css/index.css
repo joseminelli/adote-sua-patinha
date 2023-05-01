@@ -235,6 +235,48 @@ button[type="submit"]:hover{
     width: 200px;
     box-shadow: 5px 5px 5px rgb(172, 172, 172, 0.3);
 }
+#picture__input {
+    display: none;
+  }
+  
+  .picture {
+    border-radius: 10px;
+    width: 200px;
+    aspect-ratio: 9/16;
+    background: #ddd;
+    color: #aaa;
+    border: 2px dashed currentcolor;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+    outline: none;
+  }
+  
+  .picture:hover {
+    color: #777;
+    background: #ccc;
+  }
+  
+  .picture:active {
+    border-color: turquoise;
+    color: turquoise;
+    background: #eee;
+  }
+  
+  .picture:focus {
+    color: none;
+    border: 0px;
+    background: none;
+    box-shadow: none;
+  }
+  
+  .picture__img {
+    margin-left: 50px;
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: 5px 5px 5px rgb(172, 172, 172, 0.3);
+  }
+  
 
 @media screen and (max-width: 576px) {
     .box-select{
