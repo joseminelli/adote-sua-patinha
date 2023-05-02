@@ -1,6 +1,13 @@
 const bar = document.getElementById('bar');
 const close = document.getElementById('close');
 const nav = document.getElementById('navbar');
+const inputFile = document.querySelector("#picture__input");
+const pictureImage = document.querySelector(".picture__image");
+const pictureImageTxt = "Escolha uma imagem";
+var sun = document.getElementById("sun");
+pictureImage.innerHTML = pictureImageTxt;
+const body = document.querySelector('body');
+const p = document.querySelector('div.mural > p');
 
 if (bar) {
     bar.addEventListener('click', () => {
@@ -14,10 +21,17 @@ if (close) {
     })
 }
 
-const inputFile = document.querySelector("#picture__input");
-const pictureImage = document.querySelector(".picture__image");
-const pictureImageTxt = "Escolha uma imagem";
-pictureImage.innerHTML = pictureImageTxt;
+sun.onclick = function(){
+  sun.classList.toggle("night");
+  if(this.classList.toggle('darkToggle')){
+    body.style.background = '#1a1a1a'
+    p.style.color = '#ffffff'
+    body.style.transition = '1s'
+  }else{
+    body.style.background = '#ffffff'
+    p.style.color = '#1a1a1a'
+  }
+}
 
 inputFile.addEventListener("change", function (e) {
   const inputTarget = e.target;
