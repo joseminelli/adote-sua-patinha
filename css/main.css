@@ -134,7 +134,7 @@ p {
 
 .content{
     background-color: #FFE58B;
-    box-shadow: 5px 5px 5px rgb(172, 172, 172, 0.5);
+    box-shadow: 5px 5px 5px rgba(3, 3, 3, 0.3);
     padding: 2rem;
     border-radius: 10px;
     justify-content: center;
@@ -218,6 +218,79 @@ h1{
     gap: 1rem;
 }
 
+.button{
+    width: 40px;
+    height: 40px;
+    background-color: none;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.sun{
+    width: 18px;
+    height: 18px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    border: 3px solid #ffe58b;
+}
+
+.sun div{
+    width: 2px;
+    background: #1a1a1a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+
+    transition: width 0.12s;
+}
+
+.sun .line1{
+    height: 30px;
+    transform: translate(-50%, -50%);
+}
+
+.sun .line2{
+    height: 30px;
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.sun .line3{
+    height: 25px;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.sun .line4{
+    height: 25px;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.sun::after{
+    content: '';
+    width: 18px;
+    height: 18px;
+    background: #ffe58b;
+    border-radius: 50%;
+    position: absolute;
+    top: -21px;
+    right: -21px;
+    transition: 0.5s;
+}
+
+.sun.night::after{
+    top: -8px;
+    right: -9px;
+}
+
+.sun.night div{
+    width: 0;
+}
+
 button[type="submit"]{
     padding: 1rem;
     font-size: 1rem;
@@ -253,7 +326,7 @@ button[type="submit"]:hover{
     grid-column: auto;
     border-radius: 10px;
     width: 200px;
-    box-shadow: 5px 5px 5px rgb(172, 172, 172, 0.3);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 @media screen and (max-width: 576px) {
@@ -278,14 +351,14 @@ button[type="submit"]:hover{
         grid-column: auto;
         border-radius: 10px;
         width: 150px;
-        box-shadow: 5px 5px 5px rgb(172, 172, 172, 0.3);
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     }
 
 
     .content{
         margin-left: 0%;
         background-color: #FFE58B;
-        box-shadow: 5px 5px 5px rgb(172, 172, 172, 0.5);
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
         padding: 2rem;
         border-radius: 10px;
         min-width: 10%;
