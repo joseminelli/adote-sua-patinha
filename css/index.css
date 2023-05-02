@@ -268,7 +268,7 @@ button[type="submit"]:hover {
   box-shadow: none;
 }
 
-.button-box{
+.button{
     width: 40px;
     height: 40px;
     background-color: none;
