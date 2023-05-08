@@ -1,9 +1,18 @@
 {
-    "pessoas": 
-      {
-        "name": "José Minelli",
-        "age": "18",
-        "neighborhood": "Serrano",
-        "qtd": "1"
+  "pessoas": [
+    {
+      "id": 1,
+      "name": "José Minelli",
+      "age": "18",
+      "neighborhood": "Serrano",
+      "qtd": "1"
+    },
+    {
+      "id": 2,
+      "name": "José ",
+      "age": "28",
+      "neighborhood": "Pampulha",
+      "qtd": "1"
     }
-  }
+  ]
+}

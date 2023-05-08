@@ -1,20 +1,22 @@
-fetch("js/file.json")
-.then(response => response.json())
-.then(data => console.log(data))
+import data from './file.json'  assert { type: 'json' };
 
-import data from './file.json'  assert { type: 'json' };;
-
+let loginId = 2;
+var pessoalogada = data.pessoas.find(FindByID);
 const nome = document.getElementById('name');
-nome.innerHTML = data.pessoas.name;
+nome.innerHTML = pessoalogada.name;
 
 
 const idade = document.getElementById('idade');
-idade.innerHTML = data.pessoas.age + " anos";
+idade.innerHTML = pessoalogada.age + " anos";
 
 
 const bairro = document.getElementById('bairro');
-bairro.innerHTML = data.pessoas.neighborhood;
+bairro.innerHTML = pessoalogada.neighborhood;
 
 
 const qtdp = document.getElementById('qtdp');
-qtdp.innerHTML = data.pessoas.qtd;
+qtdp.innerHTML = pessoalogada.qtd;
+
+function FindByID(pessoa) {
+    return pessoa.id === loginId;
+}
