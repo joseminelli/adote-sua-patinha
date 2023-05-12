@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adote sua patinha</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="icon" type="imagem/png" href="img/iconn.png" />
+    <link rel="stylesheet" href="css/cadastro1.css">
+</head>
+
+<body>
+
+    <section id="header">
+        <a href="#"><img src="img/logo.png" class="logo" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">Sobre</a></li>
+                <a href="#" id="close"><i class="far fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+    <div id="imagem"> 
+        <label class="picture" for="picture__input" tabIndex="0">
+            <span class="picture__image"></span>
+            <input type="file" name="picture__input" id="picture__input">
+        </label>
+    </div>
+    <section id="box">
+        <div class="content">
+            <form id="form">
+                <div>
+                    
+                    <p>Nome:</p>
+                    <input type="nome" placeholder="Digite o nome" class="inputsn">
+                </div>
+                <div>
+                    <p>Idade:</p>
+                    <select name="idade" id="idade">
+                      <option value="18-28" selected>18-30</option>
+                      <option value="29-39">29-39</option>
+                      <option value="40-50">40-50</option>
+                      <option value="51-61">51-61</option>
+                      <option value="62-72">62-72</option>
+                      <option value="82-92">82-92</option>
+                      <option value="92-102">92-102</option>
+                      <option value="103-113">103-113</option>
+        
+                    </select>
+                </div>
+                <div>
+                    <p>Bairro:</p>
+                    <select name="bairro" id="bairro">
+                      <option value="0" selected>Coração Eucarístico</option>
+                      <option value="1">Jardim América</option>
+                      <option value="2">Belvedere</option>
+                      <option value="3">Serrano</option>
+                      <option value="4">Castelo</option>
+                      <option value="5">Savassi</option>
+                      <option value="6">Mangabeiras</option>
+                      <option value="7">Lourdes</option>
+                    </select>
+                </div>
+              
+            </form>
+        </div>
+    </section>
+    <a href="perfil.html">
+        <button id="enviar"type="submit">✓ㅤEnviar</button>
+    </a>
+    <script src="js/input.js"></script>
+    
+</body>
+
+</html>

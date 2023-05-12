@@ -2,6 +2,7 @@
   "pessoas": [
     {
       "id": 1,
+      "pic": "img/perfil.jpg",
       "name": "José Minelli",
       "age": "18",
       "neighborhood": "Serrano",
@@ -9,10 +10,22 @@
     },
     {
       "id": 2,
-      "name": "José ",
+      "pic": "3",
+      "name": "José",
       "age": "28",
       "neighborhood": "Pampulha",
       "qtd": "1"
+    },
+    {
+      "id": 3,
+      "pic": "3",
+      "name": "Laura",
+      "age": "20",
+      "neighborhood": "Pampulha",
+      "qtd": "1"
     }
+  ],
+  "pets": [
+
   ]
 }
