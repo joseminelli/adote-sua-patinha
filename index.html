@@ -32,49 +32,37 @@
             <i id="bar" class="fas fa-outdent"></i>
         </div>
     </section>
+    <div id="texto">
+        <h1>Login</h1>
+        <div id="linha-horizontal"></div>
+    </div>
     <section id="box">
         <div class="content">
             <form id="form">
-                <div>
-                    <p>Nome:</p>
-                    <input id="input" type="nome" placeholder="Digite o nome" class="inputsn">
-                </div>
-                <div>
-                    <p>Idade:</p>
-                    <select name="idade" id="idade">
-                      <option value="0" selected>0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="2">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10">10</option>
-                    </select>
-                </div>
-                <div>
-                    <p>Raça:</p>
-                    <select name="raca" id="raca">
-                      <option value="0" selected>Selecione</option>
-                      <option value="1">Golden</option>
-                      <option value="2">Pastor</option>
-                      <option value="3">Shih-tzu</option>
-                      <option value="4">Labrador</option>
-                      <option value="5">Beagle</option>
-                      <option value="6">Sem Raça</option>
-                    </select>
-                </div>
-                <div>
-                    <p>Descrição:</p>
-                    <textarea class="inputs" name="descricao" id="descricao" rows="4" placeholder="Fale um pouco sobre o pet..."></textarea>
-                </div>
+                    <div id="fazer-login">
+                        <h4>Já tem cadastro?</h4>
+                        <p>Selecione sua conta:</p>
+                        <select name="login" id="login">
+                          <option value="1" selected>José Minelli</option>
+                          <option value="2">José</option>
+                          <option value="3">Laura</option>
+                        </select>
+                        <a href="perfil.html">
+                            <button type="submit">Entrar</button>
+                        </a>
+                    </div>
+                    <div id="linha-vertical"></div>
+                    <div id="faca-agora">
+                        <h4>Faça agora!</h4>
+                        <a href="cadastro1.html">
+                            <button id="submit2">Criar conta</button>
+                        </a>
+                    </div>
             </form>
         </div>
     </section>
     <script src="js/darkmode.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

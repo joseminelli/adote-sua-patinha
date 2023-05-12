@@ -11,11 +11,23 @@ html {
 }
 
 h1 {
-  font-size: 50px;
+  margin-top: 10%;
+  font-size: 45px;
   line-height: 64px;
   color: #222;
 }
 
+#texto {
+  align-items: center;
+  display: grid;
+  justify-content: center;
+}
+
+#linha-horizontal {
+  margin-top: 9px;
+  width: 200px;
+  border: 1px solid #000;
+}
 h2 {
   font-size: 46px;
   line-height: 54px;
@@ -115,13 +127,13 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 700px;
+  height: 600px;
 }
 
 .content {
   background-color: #ffe58b;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-  padding: 2rem;
+  padding: 3rem;
   border-radius: 10px;
   min-width: 30%;
   overflow: auto;
@@ -158,8 +170,35 @@ h1 {
 
 .content form {
   display: flex;
-  flex-direction: column;
   gap: 1rem;
+}
+
+#fazer-login {
+  display: flex;
+  flex-direction: column;
+}
+
+#fazer-login p{
+  margin-top: 30%;
+}
+
+#linha-vertical {
+  margin-top: 10%;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 5%;
+  height: 200px;
+  border-right: 4px solid #074786;
+  border-radius: 1px;
+}
+
+#faca-agora {
+  display: flex;
+  flex-direction: column;
+}
+
+#faca-agora p{
+  margin-top: 30%;
 }
 
 .inputs {
@@ -200,22 +239,40 @@ h1 {
   gap: 1rem;
 }
 
-
 button[type="submit"] {
   padding: 1rem;
   font-size: 1rem;
   outline: none;
   border: none;
-  margin-left: 90%;
+  margin-left: 80%;
   color: #e3e6f3;
   max-width: 115px;
   border-radius: 5px;
-  margin-top: 1rem;
+  margin-top: 3rem;
   background-color: #165ea8;
   cursor: pointer;
 }
 
 button[type="submit"]:hover {
+  background-color: #053c74;
+}
+
+button[id="submit2"] {
+  padding: 1rem;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  color: #e3e6f3;
+  max-width: 115px;
+  border-radius: 5px;
+  margin-top: 7rem;
+  background-color: #165ea8;
+  cursor: pointer;
+}
+
+button[id="submit2"]:hover {
   background-color: #053c74;
 }
 
@@ -268,77 +325,77 @@ button[type="submit"]:hover {
   box-shadow: none;
 }
 
-.button{
-    width: 40px;
-    height: 40px;
-    background-color: none;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+.button {
+  width: 40px;
+  height: 40px;
+  background-color: none;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.sun{
-    width: 18px;
-    height: 18px;
-    background: #1a1a1a;
-    border-radius: 50%;
-    cursor: pointer;
-    position: relative;
-    border: 3px solid #ffe58b;
+.sun {
+  width: 18px;
+  height: 18px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  border: 3px solid #ffe58b;
 }
 
-.sun div{
-    width: 2px;
-    background: #1a1a1a;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: -1;
+.sun div {
+  width: 2px;
+  background: #1a1a1a;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
 
-    transition: width 0.12s;
+  transition: width 0.12s;
 }
 
-.sun .line1{
-    height: 30px;
-    transform: translate(-50%, -50%);
+.sun .line1 {
+  height: 30px;
+  transform: translate(-50%, -50%);
 }
 
-.sun .line2{
-    height: 30px;
-    transform: translate(-50%, -50%) rotate(90deg);
+.sun .line2 {
+  height: 30px;
+  transform: translate(-50%, -50%) rotate(90deg);
 }
 
-.sun .line3{
-    height: 25px;
-    transform: translate(-50%, -50%) rotate(45deg);
+.sun .line3 {
+  height: 25px;
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.sun .line4{
-    height: 25px;
-    transform: translate(-50%, -50%) rotate(-45deg);
+.sun .line4 {
+  height: 25px;
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.sun::after{
-    content: '';
-    width: 18px;
-    height: 18px;
-    background: #ffe58b;
-    border-radius: 50%;
-    position: absolute;
-    top: -21px;
-    right: -21px;
-    transition: 0.5s;
+.sun::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background: #ffe58b;
+  border-radius: 50%;
+  position: absolute;
+  top: -21px;
+  right: -21px;
+  transition: 0.5s;
 }
 
-.sun.night::after{
-    top: -8px;
-    right: -9px;
+.sun.night::after {
+  top: -8px;
+  right: -9px;
 }
 
-.sun.night div{
-    width: 0;
+.sun.night div {
+  width: 0;
 }
 
 @media screen and (max-width: 576px) {
