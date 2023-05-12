@@ -277,6 +277,68 @@ button[type="submit"]:hover {
     box-shadow: none;
 }
 
+.sun{
+    width: 18px;
+    height: 18px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    border: 3px solid #ffe58b;
+}
+
+.sun div{
+    width: 2px;
+    background: #1a1a1a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+
+    transition: width 0.12s;
+}
+
+.sun .line1{
+    height: 30px;
+    transform: translate(-50%, -50%);
+}
+
+.sun .line2{
+    height: 30px;
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.sun .line3{
+    height: 25px;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.sun .line4{
+    height: 25px;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.sun::after{
+    content: '';
+    width: 18px;
+    height: 18px;
+    background: #ffe58b;
+    border-radius: 50%;
+    position: absolute;
+    top: -21px;
+    right: -21px;
+    transition: 0.5s;
+}
+
+.sun.night::after{
+    top: -8px;
+    right: -9px;
+}
+
+.sun.night div{
+    width: 0;
+}
+
 @media screen and (max-width: 576px) {
     .box-select {
         flex-direction: column;
