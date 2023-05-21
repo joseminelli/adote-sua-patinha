@@ -2,30 +2,27 @@
   "pessoas": [
     {
       "id": 1,
-      "pic": "img/perfil.jpg",
+      "pic": "<img src=\"https://cdn.discordapp.com/attachments/1109149984357613638/1109844136909090826/perfil.jpg\">",
       "name": "José Minelli",
       "age": "18",
       "neighborhood": "Serrano",
-      "qtd": "1"
+      "cel": "(31) 99620-2307"
     },
     {
       "id": 2,
-      "pic": "3",
+      "pic": "<img src=\"https://cdn.discordapp.com/attachments/1109149984357613638/1109846230722420847/IMG_6598.jpg\">",
       "name": "José",
       "age": "28",
       "neighborhood": "Pampulha",
-      "qtd": "1"
+      "cel": "(31) 99620-2307"
     },
     {
       "id": 3,
-      "pic": "3",
+      "pic": "<img src=\"https://cdn.discordapp.com/attachments/1109149984357613638/1109844136909090826/perfil.jpg\">",
       "name": "Laura",
       "age": "20",
       "neighborhood": "Pampulha",
-      "qtd": "1"
+      "cel": "(31) 99316-0273"
     }
-  ],
-  "pets": [
-
   ]
 }

@@ -1,6 +1,6 @@
 import data from './file.json'  assert { type: 'json' };
 
-let loginId = 1;
+let loginId = 2;
 var pessoalogada = data.pessoas.find(FindByID);
 const nome = document.getElementById('name');
 nome.innerHTML = pessoalogada.name;
@@ -15,8 +15,8 @@ const bairro = document.getElementById('bairro');
 bairro.innerHTML = pessoalogada.neighborhood;
 
 
-const qtdp = document.getElementById('qtdp');
-qtdp.innerHTML = pessoalogada.qtd;
+const cel = document.getElementById('cel');
+cel.innerHTML = pessoalogada.cel;
 
 
 const pic = document.getElementById('pic');
