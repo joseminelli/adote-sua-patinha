@@ -1,6 +1,7 @@
 const bar = document.getElementById('bar');
 const close = document.getElementById('close');
 const nav = document.getElementById('navbar');
+var logado = false;
 
 if (bar) {
     bar.addEventListener('click', () => {
@@ -17,6 +18,7 @@ if (close) {
 document.addEventListener("DOMContentLoaded", function () {
     var enviarButton = document.getElementById("enviar"); // Botão do cadastro de pet
     var enviarButton2 = document.getElementById("enviar2"); // Botão do cadastro de pessoas
+    var loginButton = document.getElementById("login"); // Botão do cadastro de pessoas
     if (enviarButton) {
         enviarButton.addEventListener("click", function (event) {
             event.preventDefault();
@@ -53,7 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 reader.readAsDataURL(imagem);
             }
-
+            
+            logado = true;
+            localStorage.setItem('login', logado);
             window.location.href = "perfilp.html";
         });
     }
@@ -90,7 +94,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 };
                 reader.readAsDataURL(imagem2);
             }
+            logado = true;
+            localStorage.setItem("login", logado);
             window.location.href = "perfil.html";
+        });
+    }
+    if (loginButton) {
+        loginButton.addEventListener("click", function (event) {
+            login2 = localStorage.getItem("login");
+            if(login2 === "true"){
+                window.location.href = "perfil.html";
+            }else{
+                alert("crie uma conta primeiro")
+                return
+            }
         });
     }
 });
