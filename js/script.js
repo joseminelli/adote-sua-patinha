@@ -14,20 +14,18 @@ if (close) {
     })
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     var enviarButton = document.getElementById("enviar"); // Botão do cadastro de pet
     var enviarButton2 = document.getElementById("enviar2"); // Botão do cadastro de pessoas
     if (enviarButton) {
-        enviarButton.addEventListener("click", function(event) {
-            event.preventDefault(); // Impede o envio do formulário padrão
+        enviarButton.addEventListener("click", function (event) {
+            event.preventDefault();
 
-            // Obtenha os valores dos campos do formulário
             var nome = document.getElementById("input").value;
             var idade = document.getElementById("idade").value;
             var raca = document.getElementById("raca").value;
             var descricao = document.getElementById("descricao").value;
 
-            // Armazene os dados no localStorage
             localStorage.setItem("nome", nome);
             localStorage.setItem("idade", idade);
             localStorage.setItem("raca", raca);
@@ -38,18 +36,29 @@ document.addEventListener("DOMContentLoaded", function() {
                 return;
             }
 
-            // Obtenha o caminho da imagem selecionada
             var inputImagem = document.getElementById("picture__input");
-            var caminhoImagem = inputImagem.value;
 
-            localStorage.setItem("imagempet", caminhoImagem);
+            if (inputImagem.files && inputImagem.files[0]) {
+                var imagem = inputImagem.files[0];
 
-            // Redirecione para a outra página
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    var imagemBase64 = e.target.result;
+
+                    localStorage.setItem("imagempet", imagemBase64);
+
+
+                };
+
+                reader.readAsDataURL(imagem);
+            }
+
             window.location.href = "perfilp.html";
         });
     }
     if (enviarButton2) {
-        enviarButton2.addEventListener("click", function(event) {
+        enviarButton2.addEventListener("click", function (event) {
             event.preventDefault();
 
             var nome2 = document.getElementById("input2").value;
@@ -67,11 +76,20 @@ document.addEventListener("DOMContentLoaded", function() {
             localStorage.setItem("bairro", bairro);
             localStorage.setItem("telefone", telefone);
 
-            var inputImagem = document.getElementById("picture__input");
-            var caminhoImagem = inputImagem.value;
 
-            localStorage.setItem("imagempessoa", caminhoImagem);
+            var inputImagem2 = document.getElementById("picture__input");
 
+            if (inputImagem2.files && inputImagem2.files[0]) {
+                var imagem2 = inputImagem2.files[0];
+
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    var imagemBase642 = e.target.result;
+                    localStorage.setItem("imagempessoa", imagemBase642);
+                };
+                reader.readAsDataURL(imagem2);
+            }
             window.location.href = "perfil.html";
         });
     }
