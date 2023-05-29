@@ -33,6 +33,11 @@ document.addEventListener("DOMContentLoaded", function() {
             localStorage.setItem("raca", raca);
             localStorage.setItem("descricao", descricao);
 
+            if (nome === "" || descricao === "") {
+                alert("Todos os campos são obrigatórios!");
+                return;
+            }
+
             // Obtenha o caminho da imagem selecionada
             var inputImagem = document.getElementById("picture__input");
             var caminhoImagem = inputImagem.value;
@@ -51,6 +56,11 @@ document.addEventListener("DOMContentLoaded", function() {
             var idade2 = document.getElementById("idade2").value;
             var bairro = document.getElementById("bairro2").value;
             var telefone = document.getElementById("telefone").value;
+
+            if (nome2 === "" || telefone === "") {
+                alert("Todos os campos são obrigatórios!");
+                return;
+            }
 
             localStorage.setItem("nome2", nome2);
             localStorage.setItem("idade2", idade2);
