@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if(login2 === "true"){
                 window.location.href = "perfil.html";
             }else{
-                alert("crie uma conta primeiro")
+                alert("Crie uma conta primeiro")
                 return
             }
         });
