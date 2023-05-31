@@ -19,7 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
     var enviarButton = document.getElementById("enviar"); // Botão do cadastro de pet
     var enviarButton2 = document.getElementById("enviar2"); // Botão do cadastro de pessoas
     var loginButton = document.getElementById("login"); // Botão do cadastro de pessoas
+    var login = localStorage.getItem("login");
     if (enviarButton) {
+        //não acessa a página se não tiver login
+        if (login != "true") {
+            window.location.href = "index.html";
+        }
         enviarButton.addEventListener("click", function (event) {
             event.preventDefault();
 
@@ -33,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("raca", raca);
             localStorage.setItem("descricao", descricao);
 
-            if (nome === "" || descricao === "") {
+            if (nome === "" || descricao === "" || raca === "0") {
                 alert("Todos os campos são obrigatórios!");
                 return;
             }
@@ -54,14 +59,27 @@ document.addEventListener("DOMContentLoaded", function () {
                 };
 
                 reader.readAsDataURL(imagem);
+            } else { //obriga a colocar uma imagem
+                alert("Seu pet precisa de uma foto")
+                return
             }
-            
+
             logado = true;
             localStorage.setItem('login', logado);
             window.location.href = "perfilp.html";
         });
     }
     if (enviarButton2) {
+        //cria as opcões de idade dinamicamente
+        var selectIdade = document.getElementById("idade2");
+
+        for (var i = 18; i <= 100; i++) {
+            var option = document.createElement("option");
+            option.setAttribute("value", i);
+            option.textContent = i;
+            selectIdade.appendChild(option);
+        }
+
         enviarButton2.addEventListener("click", function (event) {
             event.preventDefault();
 
@@ -69,8 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var idade2 = document.getElementById("idade2").value;
             var bairro = document.getElementById("bairro2").value;
             var telefone = document.getElementById("telefone").value;
-
-            if (nome2 === "" || telefone === "") {
+            if (nome2 === "" || telefone === "" || bairro === "0") {
                 alert("Todos os campos são obrigatórios!");
                 return;
             }
@@ -93,6 +110,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     localStorage.setItem("imagempessoa", imagemBase642);
                 };
                 reader.readAsDataURL(imagem2);
+            } else {
+                alert("Você precisa de uma foto")
+                return
             }
             logado = true;
             localStorage.setItem("login", logado);
@@ -102,10 +122,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (loginButton) {
         loginButton.addEventListener("click", function (event) {
             login2 = localStorage.getItem("login");
-            if(login2 === "true"){
+            if (login2 === "true") {
                 window.location.href = "perfil.html";
-            }else{
-                alert("crie uma conta primeiro")
+            } else {
+                alert("Você precisa criar uma conta para acessar")
                 return
             }
         });

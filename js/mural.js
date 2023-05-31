@@ -1,3 +1,14 @@
+var login = localStorage.getItem("login");
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    //não acessa a página se não tiver login
+    if (login != "true") {
+        window.location.href = "index.html";
+    }
+});
+
+
 fetch("js/pets.json")
 
   //call API and get JSON format
