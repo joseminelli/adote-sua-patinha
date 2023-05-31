@@ -97,7 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("bairro", bairro);
             localStorage.setItem("telefone", telefone);
 
-
             var inputImagem2 = document.getElementById("picture__input");
 
             if (inputImagem2.files && inputImagem2.files[0]) {
