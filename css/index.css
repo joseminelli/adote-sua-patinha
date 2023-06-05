@@ -399,6 +399,43 @@ button[id="submit2"]:hover {
   width: 0;
 }
 
+@media screen and (max-width: 1700px){
+  
+
+button[type="submit"] {
+  padding: 1rem;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  margin-left: 10%;
+  color: #e3e6f3;
+  max-width: 115px;
+  border-radius: 5px;
+  margin-top: 3rem;
+  background-color: #165ea8;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #053c74;
+}
+
+button[id="submit2"] {
+  padding: 1rem;
+  font-size: .9rem;
+  outline: none;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  color: #e3e6f3;
+  max-width: 125px;
+  border-radius: 5px;
+  margin-top: 2rem;
+  background-color: #165ea8;
+  cursor: pointer;
+}
+}
+
 @media screen and (max-width: 576px) {
   .box-select {
     flex-direction: column;
