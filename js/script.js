@@ -3,6 +3,39 @@ const close = document.getElementById('close');
 const nav = document.getElementById('navbar');
 var logado = false;
 
+function CustomAlert(){
+    this.alert = function(message,title){
+      document.body.innerHTML = document.body.innerHTML + '<div id="dialogoverlay"></div><div id="dialogbox" class="slit-in-vertical"><div><div id="dialogboxhead"></div><div id="dialogboxbody"></div><div id="dialogboxfoot"></div></div></div>';
+  
+      let dialogoverlay = document.getElementById('dialogoverlay');
+      let dialogbox = document.getElementById('dialogbox');
+      
+      let winH = window.innerHeight;
+      dialogoverlay.style.height = winH+"px";
+      
+  
+      dialogoverlay.style.display = "block";
+      dialogbox.style.display = "block";
+      
+      document.getElementById('dialogboxhead').style.display = 'block';
+  
+      if(typeof title === 'undefined') {
+        document.getElementById('dialogboxhead').style.display = 'none';
+      } else {
+        document.getElementById('dialogboxhead').innerHTML = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> '+ title;
+      }
+      document.getElementById('dialogboxbody').innerHTML = message;
+      document.getElementById('dialogboxfoot').innerHTML = '<button class="pure-material-button-contained active" onclick="customAlert.ok()">OK</button>';
+    }
+    
+    this.ok = function(){
+      document.getElementById('dialogbox').style.display = "none";
+      document.getElementById('dialogoverlay').style.display = "none";
+    }
+  }
+  
+  let customAlert = new CustomAlert();
+
 if (bar) {
     bar.addEventListener('click', () => {
         nav.classList.add('active');
@@ -39,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("descricao", descricao);
 
             if (nome === "" || descricao === "" || raca === "0") {
-                alert("Todos os campos são obrigatórios!");
+                new customAlert.alert('Você precisa preencher todos os campos','Atenção!');
                 return;
             }
 
@@ -60,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 reader.readAsDataURL(imagem);
             } else { //obriga a colocar uma imagem
-                alert("Seu pet precisa de uma foto")
+                customAlert.alert('Seu pet precisa de uma foto','Atenção!');
                 return
             }
 
@@ -88,8 +121,9 @@ document.addEventListener("DOMContentLoaded", function () {
             var bairro = document.getElementById("bairro2").value;
             var telefone = document.getElementById("telefone").value;
             if (nome2 === "" || telefone === "" || bairro === "0") {
-                alert("Todos os campos são obrigatórios!");
-                return;
+                customAlert.alert('Você precisa preencher todos os campos','Atenção!');
+                return
+                //alert("Todos os campos são obrigatórios!");
             }
 
             localStorage.setItem("nome2", nome2);
@@ -110,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 };
                 reader.readAsDataURL(imagem2);
             } else {
-                alert("Você precisa de uma foto")
+                customAlert.alert('Você precisa escolher uma foto','Atenção!');
                 return
             }
             logado = true;
@@ -124,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (login2 === "true") {
                 window.location.href = "perfil.html";
             } else {
-                alert("Você precisa criar uma conta para acessar")
+                customAlert.alert('Você precisa cria uma conta primeiro','Atenção!');
                 return
             }
         });
