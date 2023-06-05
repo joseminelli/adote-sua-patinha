@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (login2 === "true") {
                 window.location.href = "perfil.html";
             } else {
-                customAlert.alert('Você precisa cria uma conta primeiro','Atenção!');
+                customAlert.alert('Você precisa criar uma conta primeiro','Atenção!');
                 return
             }
         });
