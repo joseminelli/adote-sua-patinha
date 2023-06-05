@@ -365,18 +365,25 @@ button[type="submit"]:hover {
   .content {
     background-color: #ffe58b;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-    padding: 2rem;
+    padding: 1.5rem;
+    margin-top: -40%;
     border-radius: 10px;
     min-width: 45%;
     overflow: auto;
   }
 
   button[type="submit"] {
-    margin-left: 5%;
+    min-width: 150px;
+    max-width: 215px;
+    margin-left: -30%;
+    margin-top: 50%;
+  }
+  .mural{
+    margin-top: -70%;
   }
 
   .mural img {
-    margin-top: 10%;
+    margin-top: 2%;
     margin-left: 40px;
     border-radius: 10px;
     width: 105px;
