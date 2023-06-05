@@ -1,6 +1,5 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
-/* ---------------Animation---------------- */
 
 .slit-in-vertical {
     -webkit-animation: slit-in-vertical 0.45s ease-out both;
@@ -44,8 +43,6 @@
         transform: translateZ(0) rotateY(0);
     }
 }
-
-/*---------------#region Alert--------------- */
 
 #dialogoverlay {
     display: none;
@@ -110,8 +107,6 @@
 .pure-material-button-contained::-moz-focus-inner {
     border: none;
 }
-
-/* ---------------Overlay--------------- */
 
 .pure-material-button-contained::before {
     content: "";

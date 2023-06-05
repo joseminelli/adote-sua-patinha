@@ -120,7 +120,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 700px;
+    height: 690px;
 }
 
 .content {
@@ -211,6 +211,7 @@ button[type="submit"] {
     outline: none;
     border: none;
     margin-left: 70%;
+    margin-top: -10%;
     color: #E3E6F3;
     max-width: 115px;
     border-radius: 5px;
@@ -344,6 +345,16 @@ button[type="submit"]:hover {
         flex-direction: column;
         gap: 5px;
     }
+
+    #box {
+        margin-top: 1%;
+        height: 500px;
+    }
+
+    button[type="submit"] {
+        margin-top: -0%;
+    }
+    
 }
 
 @media (max-width:799px) {
