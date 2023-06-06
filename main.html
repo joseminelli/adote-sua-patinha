@@ -1,108 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adote sua patinha</title>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    />
     <link rel="icon" type="imagem/png" href="img/logop.png" />
-    <link rel="stylesheet" href="css/main.css">
-</head>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
 
-<body>
-
+  <body>
     <section id="header">
-        <a href="main.html"><img src="img/logo.png" class="logo" alt=""></a>
-        <div>
-            <ul id="navbar">
-                <li><a class="active" href="main.html">Home</a></li>
-                <li><a href="perfil.html">Perfil</a></li>
-                <a href="#" id="close"><i class="far fa-times"></i></a>
-                <div class="button" id="darkToggle">
-                    <div class="sun" id="sun">
-                        <div class="line1"></div>
-                        <div class="line2"></div>
-                        <div class="line3"></div>
-                        <div class="line4"></div>
-                    </div>
-                </div>
-            </ul>
-        </div>
-        <div id="mobile">
-            <i id="bar" class="fas fa-outdent"></i>
-        </div>
+      <a href="main.html"><img src="img/logo.png" class="logo" alt="" /></a>
+      <div>
+        <ul id="navbar">
+          <li><a class="active" href="main.html">Home</a></li>
+          <li><a href="perfil.html">Perfil</a></li>
+          <a href="#" id="close"><i class="far fa-times"></i></a>
+          <div class="button" id="darkToggle">
+            <div class="sun" id="sun">
+              <div class="line1"></div>
+              <div class="line2"></div>
+              <div class="line3"></div>
+              <div class="line4"></div>
+            </div>
+          </div>
+        </ul>
+      </div>
+      <div id="mobile">
+        <i id="bar" class="fas fa-outdent"></i>
+      </div>
     </section>
     <section id="formm">
-        <div class="content">
-            <form id="form">
-                <h3>Filtro</h3><hr>
-                <div>
-                    <p>Nome:</p>
-                    <input type="nome" placeholder="Digite o nome" class="inputsn">
-                </div>
-                <div>
-                    <p>Bairro:</p>
-                    <select name="bairro" id="bairro">
-                      <option value="0" selected>Selecione</option>
-                      <option value="1">Castelo</option>
-                      <option value="2">Pampulha</option>
-                      <option value="2">Corel</option>
-                      <option value="4">Savassi</option>
-                      <option value="5">Belvedere</option>
-                      <option value="6">Floresta</option>
-                    </select>
-                </div>
-                <div>
-                    <p>Idade:</p>
-                    <select name="idade" id="idade">
-                      <option value="0" selected>0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="2">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10">10</option>
-                    </select>
-                </div>
-                <div>
-                    <p>Raça:</p>
-                    <select name="raca" id="raca">
-                      <option value="0" selected>Selecione</option>
-                      <option value="1">Golden</option>
-                      <option value="2">Pastor</option>
-                      <option value="3">Shih-tzu</option>
-                      <option value="4">Labrador</option>
-                      <option value="5">Beagle</option>
-                      <option value="6">Sem Raça</option>
-                    </select>
-                </div>
-            </form>
-        </div>
+      <div class="content">
+        <form id="form">
+          <h3>Filtro</h3>
+          <hr />
+          <div>
+            <p>Nome:</p>
+            <input type="nome" placeholder="Digite o nome" class="inputsn" />
+          </div>
+          <div>
+            <p>Região:</p>
+            <select name="bairro" id="bairro2">
+              <option value="0" selected>Selecione</option>
+              <option value="Pampulha">Pampulha</option>
+              <option value="Região Norte">Região Norte</option>
+              <option value="Venda Nova">Venda Nova</option>
+              <option value="Região Nordeste">Região Nordeste</option>
+              <option value="Região Noroeste">Região Noroeste</option>
+              <option value="Região Leste">Região Leste</option>
+              <option value="Região Centro-sul">Região Centro-sul</option>
+              <option value="Região Oeste">Região Oeste</option>
+              <option value="Barreiro">Barreiro</option>
+            </select>
+          </div>
+          <div>
+            <p>Idade:</p>
+            <select name="idade" id="idade">
+              <option value="0" selected>0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="2">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+          <div>
+            <p>Raça:</p>
+            <select name="raca" id="raca">
+              <option value="0" selected>Selecione</option>
+              <option value="1">Golden</option>
+              <option value="2">Pastor</option>
+              <option value="3">Shih-tzu</option>
+              <option value="4">Labrador</option>
+              <option value="5">Beagle</option>
+              <option value="6">Sem Raça</option>
+            </select>
+          </div>
+        </form>
+      </div>
     </section>
     <section id="box">
-        <div class="mural">
-            <p>animais para adoção:</p>
-            <img src="img/img1.jpg">
-            <img src="img/img2.jpg">
-            <img src="img/img3.jpg">
-            <img src="img/img4.png">
-            <img src="img/img5.png">
-            <img src="img/img6.png">
-            <img src="img/img7.png">
-            <img src="img/img8.png">
-            <img src="img/img9.png">
-            <img src="img/img10.png">
-            <img src="img/img11.png">
-            <img src="img/img12.png">
-        </div>
+      <div class="mural">
+        <p>animais para adoção:</p>
+        <a href="perfilp.html">
+          <img id="imgpetc" src="" />
+        </a>
+        <img src="img/img1.jpg" />
+        <img src="img/img2.jpg" />
+        <img src="img/img3.jpg" />
+        <img src="img/img4.png" />
+        <img src="img/img5.png" />
+        <img src="img/img6.png" />
+        <img src="img/img7.png" />
+        <img src="img/img8.png" />
+        <img src="img/img9.png" />
+        <img src="img/img10.png" />
+        <img src="img/img11.png" />
+        <img src="img/img12.png" />
+      </div>
     </section>
     <script src="js/script.js"></script>
     <script src="js/darkmode.js"></script>
     <script src="js/mural.js"></script>
-</body>
+  </body>
+</html>

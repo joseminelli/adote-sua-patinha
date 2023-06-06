@@ -1,4 +1,4 @@
-import data from './file.json'  assert { type: 'json' };
+import data from './pets.json'  assert { type: 'json' };
 
 let loginId = 2;
 var pessoalogada = data.pessoas.find(FindByID);
