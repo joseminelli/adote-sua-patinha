@@ -1,5 +1,5 @@
 import data from './pets.json'  assert { type: 'json' };
-
+console.log(pessoas)
 let loginId = 2;
 var pessoalogada = data.pessoas.find(FindByID);
 const nome = document.getElementById('name');
