@@ -4,6 +4,7 @@ const fotopet = document.getElementById("imgpetc");
 var login = localStorage.getItem("login");
 const taNoMural = document.getElementById("formm");
 const taNoPerfilfake = document.getElementsByClassName("pefilFake");
+const mural = document.getElementById("mural");
 
 document.addEventListener("DOMContentLoaded", function () {
   let loginId;
@@ -23,7 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     for (var i = 1; i < 13; i++) {
       loginId = i;
-      const picfotopeti = document.getElementById(i.toString());
+      var a = document.createElement("a");
+
+      var picfotopeti = document.createElement("img");
+      picfotopeti.setAttribute("id",i.toString());
+      a.setAttribute("href", "perfilpf.html" + "?pet=" + i)
       var pet = data.pets.find(FindByID);
       console.log(pet.name);
       picfotopeti.src = pet.image;
@@ -31,8 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
       function FindByID(pet) {
         return pet.id === i;
       }
+      a.appendChild(picfotopeti)
+      mural.appendChild(a)
     }
-  } else if (taNoPerfilfake) {
-
   }
 });
