@@ -1,27 +1,35 @@
-import data from './pets.json'  assert { type: 'json' };
-console.log(pessoas)
-let loginId = 2;
-var pessoalogada = data.pessoas.find(FindByID);
-const nome = document.getElementById('name');
-nome.innerHTML = pessoalogada.name;
+import data from "./pets.json" assert { type: "json" };
 
-data.pessoas.push()
-
-const idade = document.getElementById('idade');
-idade.innerHTML = pessoalogada.age + " anos";
-
-
-const bairro = document.getElementById('bairro');
-bairro.innerHTML = pessoalogada.neighborhood;
-
-
-const cel = document.getElementById('cel');
-cel.innerHTML = pessoalogada.cel;
-
-
-const pic = document.getElementById('pic');
-pic.innerHTML = pessoalogada.pic;
-
-function FindByID(pessoa) {
-    return pessoa.id === loginId;
-}
+document.addEventListener('DOMContentLoaded', function() {
+    const url = new URL(window.location.href);
+    const numpet = url.searchParams.get('pet');
+  
+    const petInfo = data.pets.find(findByID);
+    console.log(petInfo)
+  
+    function findByID(pet){
+      return pet.id == numpet;
+    }
+  
+    if (petInfo) {
+      // Atualize os elementos HTML com as informações obtidas
+  
+      const nomeElement = document.getElementById('name');
+      nomeElement.innerHTML = petInfo.name;
+  
+      const idadeElement = document.getElementById('idade');
+      idadeElement.innerHTML = petInfo.age;
+  
+      const bairroElement = document.getElementById('raca');
+      bairroElement.innerHTML = petInfo.raca;
+  
+      const celElement = document.getElementById('desc');
+      celElement.innerHTML = petInfo.description;
+  
+      const picElement = document.getElementById('imagem');
+      picElement.src = petInfo.image;
+    } else {
+      console.log('Pet não encontrado');
+    }
+  });
+  
