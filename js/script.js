@@ -5,32 +5,32 @@ var logado = false;
 
 function CustomAlert(){
     this.alert = function(message,title){
-      document.body.innerHTML = document.body.innerHTML + '<div id="dialogoverlay"></div><div id="dialogbox" class="slit-in-vertical"><div><div id="dialogboxhead"></div><div id="dialogboxbody"></div><div id="dialogboxfoot"></div></div></div>';
+      document.body.innerHTML = document.body.innerHTML + '<div id="overlay" class="animado"></div><div id="dialogbox" class="slit-in-vertical"><div><div id="alertHeader"></div><div id="alertBody"></div><div id="alertFooter"></div></div></div>';
   
-      let dialogoverlay = document.getElementById('dialogoverlay');
+      let overlay = document.getElementById('overlay');
       let dialogbox = document.getElementById('dialogbox');
       
       let winH = window.innerHeight;
-      dialogoverlay.style.height = winH+"px";
+      overlay.style.height = winH+"px";
       
   
-      dialogoverlay.style.display = "block";
+      overlay.style.display = "block";
       dialogbox.style.display = "block";
       
-      document.getElementById('dialogboxhead').style.display = 'block';
+      document.getElementById('alertHeader').style.display = 'block';
   
       if(typeof title === 'undefined') {
-        document.getElementById('dialogboxhead').style.display = 'none';
+        document.getElementById('alertHeader').style.display = 'none';
       } else {
-        document.getElementById('dialogboxhead').innerHTML = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> '+ title;
+        document.getElementById('alertHeader').innerHTML = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> '+ title;
       }
-      document.getElementById('dialogboxbody').innerHTML = message;
-      document.getElementById('dialogboxfoot').innerHTML = '<button class="pure-material-button-contained active" onclick="customAlert.ok()">OK</button>';
+      document.getElementById('alertBody').innerHTML = message;
+      document.getElementById('alertFooter').innerHTML = '<button class="pure-material-button-contained active" onclick="customAlert.ok()">OK</button>';
     }
     
     this.ok = function(){
       document.getElementById('dialogbox').style.display = "none";
-      document.getElementById('dialogoverlay').style.display = "none";
+      document.getElementById('overlay').style.display = "none";
     }
   }
   
@@ -123,7 +123,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (nome2 === "" || telefone === "" || bairro === "0") {
                 customAlert.alert('Você precisa preencher todos os campos','Atenção!');
                 return
-                //alert("Todos os campos são obrigatórios!");
             }
 
             localStorage.setItem("nome2", nome2);

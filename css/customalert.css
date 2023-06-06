@@ -14,8 +14,8 @@
     }
 
     54% {
-        -webkit-transform: translateZ(-160px) rotateY(87deg);
-        transform: translateZ(-160px) rotateY(87deg);
+        -webkit-transform: translateZ(-250px) rotateY(87deg);
+        transform: translateZ(-250px) rotateY(87deg);
         opacity: 1;
     }
 
@@ -33,8 +33,8 @@
     }
 
     54% {
-        -webkit-transform: translateZ(-160px) rotateY(87deg);
-        transform: translateZ(-160px) rotateY(87deg);
+        -webkit-transform: translateZ(-250px) rotateY(87deg);
+        transform: translateZ(-250px) rotateY(87deg);
         opacity: 1;
     }
 
@@ -43,17 +43,21 @@
         transform: translateZ(0) rotateY(0);
     }
 }
-
-#dialogoverlay {
+#overlay {
     display: none;
-    opacity: .8;
     position: fixed;
     top: 0px;
     left: 0px;
-    background: #3b3b3b;
     width: 100%;
     z-index: 10;
-}
+    transition: all 1s;
+  }
+  .animado{
+    background-color: rgba(43, 43, 43, 0.295);
+    backdrop-filter: blur(3px);
+    transition: all 1s;
+  }
+  
 
 #dialogbox {
     position:fixed;
@@ -190,7 +194,7 @@
     margin: 8px;
 }
 
-#dialogbox>div>#dialogboxhead {
+#dialogbox>div>#alertHeader {
     background: rgb(77, 71, 0);
     font-size: 19px;
     padding: 10px;
@@ -198,14 +202,14 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#dialogbox>div>#dialogboxbody {
+#dialogbox>div>#alertBody {
     background: rgb(41, 41, 41);
     padding: 20px;
     color: #FFF;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#dialogbox>div>#dialogboxfoot {
+#dialogbox>div>#alertFooter {
     background: rgb(41, 41, 41);
     padding: 10px;
     text-align: right;
