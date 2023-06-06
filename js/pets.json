@@ -6,6 +6,7 @@
             "age": 2,
             "description": "Dócil e animado",
             "raca": "golden",
+            "regiao": "pampulha",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837482368958464/img1.jpg"
         },
         {
@@ -14,6 +15,7 @@
             "age": 1,
             "description": "Sério e quieto",
             "raca": "golden",
+            "regiao": "regiãoNorte",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837484692619305/img2.jpg"
         },
         {
@@ -22,6 +24,7 @@
             "age": 2,
             "description": "Dócil e animado",
             "raca": "golden",
+            "regiao": "pampulha",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837488362618890/img3.jpg"
         },
         {
@@ -30,6 +33,7 @@
             "age": 4,
             "description": "Carinhoso",
             "raca": "beagle",
+            "regiao": "regiaoNordeste",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837490245873764/img4.png"
         },
         {
@@ -38,6 +42,7 @@
             "age": 3,
             "description": "Companheiro",
             "raca": "husky",
+            "regiao": "vendaNova",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837494356291696/img5.png"
         },
         {
@@ -45,7 +50,8 @@
             "name": "Pufe",
             "age": 3,
             "description": "Carente",
-            "raca": "laranja",
+            "raca": "srd",
+            "regiao": "regiaoOeste",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837504074498108/img6.png"
         },
         {
@@ -53,7 +59,8 @@
             "name": "Buda",
             "age": 7,
             "description": "apático",
-            "raca": "cinza",
+            "raca": "srd",
+            "regiao": "regiaoCentroSul",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837510189797507/img7.png"
         },
         {
@@ -62,6 +69,7 @@
             "age": 6,
             "description": "feliz",
             "raca": "corgi",
+            "regiao": "regiaoLeste",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837515092922388/img8.png"
         },
         {
@@ -70,6 +78,7 @@
             "age": 4,
             "description": "agitado",
             "raca": "srd",
+            "regiao": "barreiro",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837519362728126/img9.png"
         },
         {
@@ -78,6 +87,7 @@
             "age": 4,
             "description": "feliz",
             "raca": "golden",
+            "regiao": "barreiro",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837525633212477/img10.png"
         },
         {
@@ -86,6 +96,7 @@
             "age": 4,
             "description": "bravo",
             "raca": "yorkshire",
+            "regiao": "regiaoNordeste",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837530905460838/img11.png"
         },
         {
@@ -94,6 +105,7 @@
             "age": 2,
             "description": "bravo",
             "raca": "labrador",
+            "regiao": "regiaoNoroeste",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837534441263185/img12.png"
         },
         {
@@ -102,6 +114,7 @@
             "age": 2,
             "description": "fofo",
             "raca": "srd",
+            "regiao": "vendaNova",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837539445051392/img13.png"
         }
     ]

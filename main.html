@@ -35,34 +35,32 @@
         <i id="bar" class="fas fa-outdent"></i>
       </div>
     </section>
+
     <section id="formm">
       <div class="content">
         <form id="form">
           <h3>Filtro</h3>
           <hr />
           <div>
-            <p>Nome:</p>
-            <input type="nome" placeholder="Digite o nome" class="inputsn" />
-          </div>
-          <div>
             <p>Região:</p>
             <select name="bairro" id="bairro2">
               <option value="0" selected>Selecione</option>
-              <option value="Pampulha">Pampulha</option>
-              <option value="Região Norte">Região Norte</option>
-              <option value="Venda Nova">Venda Nova</option>
-              <option value="Região Nordeste">Região Nordeste</option>
-              <option value="Região Noroeste">Região Noroeste</option>
-              <option value="Região Leste">Região Leste</option>
-              <option value="Região Centro-sul">Região Centro-sul</option>
-              <option value="Região Oeste">Região Oeste</option>
-              <option value="Barreiro">Barreiro</option>
+              <option value="pampulha">Pampulha</option>
+              <option value="regiãoNorte">Região Norte</option>
+              <option value="vendaNova">Venda Nova</option>
+              <option value="regiaoNordeste">Região Nordeste</option>
+              <option value="regiaoNoroeste">Região Noroeste</option>
+              <option value="regiaoLeste">Região Leste</option>
+              <option value="regiaoCentroSul">Região Centro-sul</option>
+              <option value="regiaoOeste">Região Oeste</option>
+              <option value="barreiro">Barreiro</option>
             </select>
           </div>
           <div>
             <p>Idade:</p>
             <select name="idade" id="idade">
-              <option value="0" selected>0</option>
+              <option value=""selected>Todas</option>
+              <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="2">3</option>
@@ -73,26 +71,31 @@
               <option value="8">8</option>
               <option value="9">9</option>
               <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
             </select>
           </div>
           <div>
             <p>Raça:</p>
             <select name="raca" id="raca">
               <option value="0" selected>Selecione</option>
-              <option value="1">Golden</option>
-              <option value="2">Pastor</option>
-              <option value="3">Shih-tzu</option>
-              <option value="4">Labrador</option>
-              <option value="5">Beagle</option>
-              <option value="6">Sem Raça</option>
+              <option value="golden">Golden</option>
+              <option value="labrador">Labrador</option>
+              <option value="beagle">Beagle</option>
+              <option value="corgi">Corgi</option>
+              <option value="yorkshire">Yorkshire</option>
+              <option value="husky">Husky</option>
+              <option value="srd">Sem Raça</option>
             </select>
           </div>
         </form>
       </div>
     </section>
+
     <section id="box">
       <div id="mural" class="mural">
-        <p>animais para adoção:</p>
+        <p id="temResult">animais para adoção:</p>
         <a href="perfilp.html">
           <img id="imgpetc" src="" />
         </a>
