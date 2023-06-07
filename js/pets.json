@@ -7,6 +7,7 @@
             "description": "Dócil e animado",
             "raca": "golden",
             "regiao": "pampulha",
+            "esp": "cachorros",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837482368958464/img1.jpg"
         },
         {
@@ -16,6 +17,7 @@
             "description": "Sério e quieto",
             "raca": "golden",
             "regiao": "regiãoNorte",
+            "esp": "cachorros",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837484692619305/img2.jpg"
         },
         {
@@ -25,6 +27,7 @@
             "description": "Dócil e animado",
             "raca": "golden",
             "regiao": "pampulha",
+            "esp": "cachorros",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837488362618890/img3.jpg"
         },
         {
@@ -34,6 +37,7 @@
             "description": "Carinhoso",
             "raca": "beagle",
             "regiao": "regiaoNordeste",
+            "esp": "cachorros",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837490245873764/img4.png"
         },
         {
@@ -43,6 +47,7 @@
             "description": "Companheiro",
             "raca": "husky",
             "regiao": "vendaNova",
+            "esp": "cachorros",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837494356291696/img5.png"
         },
         {
@@ -52,6 +57,7 @@
             "description": "Carente",
             "raca": "srd",
             "regiao": "regiaoOeste",
+            "esp": "gatos",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837504074498108/img6.png"
         },
         {
@@ -61,6 +67,7 @@
             "description": "apático",
             "raca": "srd",
             "regiao": "regiaoCentroSul",
+            "esp": "gatos",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837510189797507/img7.png"
         },
         {
@@ -70,6 +77,7 @@
             "description": "feliz",
             "raca": "corgi",
             "regiao": "regiaoLeste",
+            "esp": "cachorros",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837515092922388/img8.png"
         },
         {
@@ -79,6 +87,7 @@
             "description": "agitado",
             "raca": "srd",
             "regiao": "barreiro",
+            "esp": "cachorros",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837519362728126/img9.png"
         },
         {
@@ -88,6 +97,7 @@
             "description": "feliz",
             "raca": "golden",
             "regiao": "barreiro",
+            "esp": "cachorros",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837525633212477/img10.png"
         },
         {
@@ -97,6 +107,7 @@
             "description": "bravo",
             "raca": "yorkshire",
             "regiao": "regiaoNordeste",
+            "esp": "cachorros",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837530905460838/img11.png"
         },
         {
@@ -106,6 +117,7 @@
             "description": "bravo",
             "raca": "labrador",
             "regiao": "regiaoNoroeste",
+            "esp": "cachorros",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837534441263185/img12.png"
         },
         {
@@ -115,6 +127,7 @@
             "description": "fofo",
             "raca": "srd",
             "regiao": "vendaNova",
+            "esp": "cachorros",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837539445051392/img13.png"
         }
     ]

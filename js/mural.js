@@ -28,10 +28,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const regiaoSelect = document.getElementById("bairro2");
         const idadeSelect = document.getElementById("idade");
         const racaSelect = document.getElementById("raca");
+        const especieSelect = document.getElementById("especie");
 
         regiaoSelect.addEventListener("change", atualizarFiltro);
         idadeSelect.addEventListener("change", atualizarFiltro);
         racaSelect.addEventListener("change", atualizarFiltro);
+        especieSelect.addEventListener("change", atualizarFiltro);
         
           function atualizarFiltro() {
          
@@ -39,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const regiaoSelecionada = regiaoSelect.value;
           const idadeSelecionada = idadeSelect.value;
           const racaSelecionada = racaSelect.value;
+          const especieSelecionada = especieSelect.value;
 
           for (var i = 1; i <= 14; i++) {
             const picfotopeti = document.getElementById(i.toString());
@@ -47,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const atendeFiltro =
               (regiaoSelecionada === "0" || pet.regiao === regiaoSelecionada) &&
               (idadeSelecionada === "" || pet.age.toString() === idadeSelecionada) &&
+              (especieSelecionada === "0" || pet.esp.toString() === especieSelecionada) &&
               (racaSelecionada === "0" || pet.raca.toString() === racaSelecionada);
 
             if (atendeFiltro) {
