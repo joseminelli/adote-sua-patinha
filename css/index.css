@@ -470,6 +470,13 @@ button[id="submit2"]:hover {
   }
 }
 
+@media (max-width: 1700px) {
+  #box {
+    margin-top: 2%;
+    height: 400px;
+  }
+}
+
 @media (max-width: 799px) {
   .section-p1 {
     padding: 40px;
