@@ -32,8 +32,10 @@ document.addEventListener("DOMContentLoaded", function () {
         regiaoSelect.addEventListener("change", atualizarFiltro);
         idadeSelect.addEventListener("change", atualizarFiltro);
         racaSelect.addEventListener("change", atualizarFiltro);
-
-        function atualizarFiltro() {
+        
+          function atualizarFiltro() {
+         
+    
           const regiaoSelecionada = regiaoSelect.value;
           const idadeSelecionada = idadeSelect.value;
           const racaSelecionada = racaSelect.value;
@@ -44,14 +46,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const atendeFiltro =
               (regiaoSelecionada === "0" || pet.regiao === regiaoSelecionada) &&
-              (idadeSelecionada === "" ||
-                pet.age.toString() === idadeSelecionada) &&
-              (racaSelecionada === "0" ||
-                pet.raca.toString() === racaSelecionada);
+              (idadeSelecionada === "" || pet.age.toString() === idadeSelecionada) &&
+              (racaSelecionada === "0" || pet.raca.toString() === racaSelecionada);
 
             if (atendeFiltro) {
-              imgElement2.style.display = "inline-block";
               picfotopeti.style.display = "inline-block";
+              if (caminhoImagem2 != null) {
+                imgElement2.style.display = "inline-block";
+              }
             } else {
               imgElement2.style.display = "none";
               picfotopeti.style.display = "none";
