@@ -1,9 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Spartan', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #165EA8;
+    transition: all 300ms;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0e4072;
+    transition: all 300ms;
 }
 
 html {
@@ -15,7 +35,8 @@ h1 {
     line-height: 64px;
     color: #222;
 }
-hr{
+
+hr {
     background-color: #165EA8
 }
 
@@ -46,13 +67,14 @@ p {
     align-items: center;
     justify-content: space-between;
     padding: 20px 80px;
-    background: #FFE58B ;
+    background: #FFE58B;
     position: sticky;
     top: 0;
     left: 0;
     z-index: 999;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
 }
+
 #header .logo {
     width: 100%;
     max-height: 80px;
@@ -80,7 +102,7 @@ p {
 
 #navbar li a:hover,
 #navbar li a.active {
-    color: #165EA8 ;
+    color: #165EA8;
 }
 
 #navbar li a.active::after,
@@ -88,7 +110,7 @@ p {
     content: "";
     width: 30%;
     height: 2px;
-    background: #165EA8 ;
+    background: #165EA8;
     position: absolute;
     bottom: -4px;
     left: 20px;
@@ -111,7 +133,7 @@ p {
 }
 
 /*----------------- Cadastro animal -----------------*/
-#box{
+#box {
     font-family: Arial, Helvetica, sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
@@ -121,7 +143,7 @@ p {
 }
 
 /*----------------- Cadastro animal -----------------*/
-#formm{
+#formm {
     background-color: #FFE58B;
     font-family: Arial, Helvetica, sans-serif;
     background-color: var(--color-dark1);
@@ -132,7 +154,7 @@ p {
     height: 250px;
 }
 
-.content{
+.content {
     background-color: #FFE58B;
     box-shadow: 5px 5px 5px rgba(3, 3, 3, 0.3);
     padding: 2rem;
@@ -142,7 +164,7 @@ p {
     overflow: auto;
 }
 
-.content form{
+.content form {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -150,75 +172,75 @@ p {
     gap: 2rem;
 }
 
-select{
-    border: 2px solid #165EA8 ;
+select {
+    border: 2px solid #165EA8;
     background: #FFE58B;
     max-width: 100px;
     padding: 10px 20px;
-    border-radius:5px;
+    border-radius: 5px;
 }
-  
-select:focus{
-    outline:none;
+
+select:focus {
+    outline: none;
 }
 
 
 select {
-    border: 2px solid #165EA8 ;
+    border: 2px solid #165EA8;
     background: #FFE58B;
     max-width: 150px;
     padding: 10px 20px;
-    border-radius:5px;
-}
-  
-select:focus{
-    outline:none;
+    border-radius: 5px;
 }
 
-h1{
+select:focus {
+    outline: none;
+}
+
+h1 {
     margin-bottom: 1rem;
     text-align: center;
 }
 
-.inputs{
+.inputs {
     padding: 8px 5px;
     outline: none;
     border-radius: 5px;
-    border: 2px solid #165EA8 ;
+    border: 2px solid #165EA8;
     background: #FFE58B;
     width: 100%;
     box-sizing: border-box;
     transition: .3s;
 }
 
-.inputs:focus{
-    border-color: #165EA8 ;
+.inputs:focus {
+    border-color: #165EA8;
 }
 
-.inputsn{
+.inputsn {
     padding: 8px 5px;
     outline: none;
     max-width: 200px;
     border-radius: 5px;
-    border: 2px solid #165EA8 ;
+    border: 2px solid #165EA8;
     background: #FFE58B;
     width: 100%;
     box-sizing: border-box;
     transition: .3s;
 }
 
-.inputsn:focus{
-    border-color: #165EA8 ;
+.inputsn:focus {
+    border-color: #165EA8;
 }
 
-.box-select{
+.box-select {
     display: flex;
     justify-content: space-evenly;
     font-weight: bold;
     gap: 1rem;
 }
 
-.button{
+.button {
     width: 40px;
     height: 40px;
     background-color: none;
@@ -229,7 +251,7 @@ h1{
     overflow: hidden;
 }
 
-.sun{
+.sun {
     width: 18px;
     height: 18px;
     background: #1a1a1a;
@@ -239,7 +261,7 @@ h1{
     border: 3px solid #ffe58b;
 }
 
-.sun div{
+.sun div {
     width: 2px;
     background: #1a1a1a;
     position: absolute;
@@ -250,27 +272,27 @@ h1{
     transition: width 0.12s;
 }
 
-.sun .line1{
+.sun .line1 {
     height: 30px;
     transform: translate(-50%, -50%);
 }
 
-.sun .line2{
+.sun .line2 {
     height: 30px;
     transform: translate(-50%, -50%) rotate(90deg);
 }
 
-.sun .line3{
+.sun .line3 {
     height: 25px;
     transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.sun .line4{
+.sun .line4 {
     height: 25px;
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.sun::after{
+.sun::after {
     content: '';
     width: 18px;
     height: 18px;
@@ -282,31 +304,31 @@ h1{
     transition: 0.5s;
 }
 
-.sun.night::after{
+.sun.night::after {
     top: -8px;
     right: -9px;
 }
 
-.sun.night div{
+.sun.night div {
     width: 0;
 }
 
-button[type="submit"]{
+button[type="submit"] {
     padding: 1rem;
     font-size: 1rem;
     outline: none;
     border: none;
     margin-left: 90%;
-    color:#E3E6F3;
+    color: #E3E6F3;
     max-width: 115px;
     border-radius: 5px;
     margin-top: 1rem;
-    background-color: #165EA8 ;
+    background-color: #165EA8;
     cursor: pointer;
 }
 
-button[type="submit"]:hover{
-    background-color: #053c74 ;
+button[type="submit"]:hover {
+    background-color: #053c74;
 }
 
 .mural {
@@ -314,7 +336,7 @@ button[type="submit"]:hover{
     justify-content: center;
 }
 
-.mural p{
+.mural p {
     margin-left: 50px;
 }
 
@@ -322,7 +344,7 @@ button[type="submit"]:hover{
     margin-left: 50px;
     margin-top: 30px;
     justify-content: center;
-    grid-row:auto;
+    grid-row: auto;
     grid-column: auto;
     border-radius: 10px;
     width: 200px;
@@ -330,14 +352,14 @@ button[type="submit"]:hover{
 }
 
 @media screen and (max-width: 576px) {
-    .box-select{
+    .box-select {
         flex-direction: column;
         gap: 5px;
     }
 }
 
 @media (max-width: 581px) {
-    .box-select{
+    .box-select {
         flex-direction: column;
         gap: 5px;
     }
@@ -346,7 +368,7 @@ button[type="submit"]:hover{
     .mural img {
         margin-left: 35px;
         margin-top: 30px;
-        grid-row:auto;
+        grid-row: auto;
         justify-content: center;
         grid-column: auto;
         border-radius: 10px;
@@ -355,7 +377,7 @@ button[type="submit"]:hover{
     }
 
 
-    .content{
+    .content {
         margin-left: 0%;
         background-color: #FFE58B;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
@@ -364,9 +386,9 @@ button[type="submit"]:hover{
         min-width: 10%;
         overflow: auto;
     }
-    
 
-    .content form{
+
+    .content form {
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -381,7 +403,7 @@ button[type="submit"]:hover{
     .mural img {
         margin-left: 35px;
         margin-top: 30px;
-        grid-row:auto;
+        grid-row: auto;
         justify-content: center;
         grid-column: auto;
         border-radius: 10px;
@@ -389,10 +411,12 @@ button[type="submit"]:hover{
         box-shadow: 5px 5px 5px rgb(172, 172, 172, 0.3);
     }
 }
+
 @media (max-width:799px) {
     .section-p1 {
         padding: 40px;
     }
+
     #navbar {
         display: flex;
         flex-direction: column;
@@ -408,23 +432,29 @@ button[type="submit"]:hover{
         transition: 0.3s;
         padding: 80px 0 0 10px;
     }
+
     #navbar li {
         margin-bottom: 25px;
     }
+
     #navbar.active {
         right: 0;
     }
+
     #mobile {
         display: flex;
     }
+
     #mobile i {
         color: #1a1a1a;
         font-size: 24px;
         padding-left: 20px;
     }
+
     #bar {
         display: initial;
     }
+
     #close {
         display: initial;
         font-size: 24px;

@@ -7,6 +7,25 @@
   font-family: "Spartan", sans-serif;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #165EA8;
+    transition: all 300ms;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0e4072;
+    transition: all 300ms;
+}
+
 html {
   scroll-behavior: smooth;
 }
