@@ -70,9 +70,9 @@ h1 {
 }
 
 .btn-favorito::before {
-    left: 10px;
-    transform: rotate(-310deg);
-  }
+  left: 10px;
+  transform: rotate(-310deg);
+}
 
 .btn-favorito::after {
   left: 0;
@@ -91,7 +91,6 @@ h1 {
   background-color: red;
   border-radius: 50% 50% 0 0;
 }
-
 
 .checkbox.style-c {
   display: inline-block;
