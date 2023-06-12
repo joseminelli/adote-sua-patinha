@@ -119,9 +119,11 @@ h1 {
   background-color: #fcfcfc2c;
 }
 .checkbox.style-c:hover input:checked ~ .checkbox__checkmark {
+    
   background-color: #165ea8;
 }
 .checkbox.style-c .checkbox__checkmark {
+
   position: absolute;
   top: 5px;
   left: 0;
@@ -441,6 +443,7 @@ button[type="submit"]:hover {
 }
 
 .mural {
+
   margin-left: 4%;
   justify-content: center;
 }
