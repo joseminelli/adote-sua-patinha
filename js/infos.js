@@ -32,5 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         console.log("Pet não encontrado");
       }
+      
     });
 });
