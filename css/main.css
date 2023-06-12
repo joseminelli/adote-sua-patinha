@@ -119,7 +119,6 @@ h1 {
   background-color: #fcfcfc2c;
 }
 .checkbox.style-c:hover input:checked ~ .checkbox__checkmark {
-    
   background-color: #165ea8;
 }
 .checkbox.style-c .checkbox__checkmark {
