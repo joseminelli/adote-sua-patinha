@@ -574,3 +574,9 @@ button[type="submit"]:hover {
     color: #222;
   }
 }
+
+@media (max-width: 1700px) {
+  .mural {
+    margin-left: 7.2%;
+  }
+}
