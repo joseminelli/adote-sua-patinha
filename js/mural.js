@@ -92,11 +92,11 @@ document.addEventListener("DOMContentLoaded", function () {
       favoritoBtn.classList.add("btn-favorito");
       favoritoBtn.classList.add("botaofav" + petId);
       favoritoBtn.dataset.petId = petId;
-      favoritoBtn.classList.add("posiciona-favorito"); // Adiciona a classe de posicionamento
+      favoritoBtn.classList.add("posiciona-favorito");
+      favoritoBtn.classList.add("heart-btn");
 
       a2.setAttribute("href", "perfilpf.html" + "?pet=" + i);
       var pet = data.pets.find(FindByID);
-      console.log(pet.name);
 
       picfotopeti.src = pet.image;
 
@@ -120,7 +120,6 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("favoritos", JSON.stringify(favoritos));
 
         var fav = localStorage.getItem("favoritos");
-        console.log(fav);
       });
       const container = document.createElement("div");
       container.classList.add("imagem-container");
