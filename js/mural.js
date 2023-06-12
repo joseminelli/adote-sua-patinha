@@ -46,10 +46,12 @@ document.addEventListener("DOMContentLoaded", function () {
         var pet = data.pets.find(FindByID);
         const petId = i.toString();
         var picfotopeti = document.getElementById(petId);
-        var btnfavorito = document.getElementsByClassName("botaofav" + petId)[0];
-        
+        var btnfavorito = document.getElementsByClassName(
+          "botaofav" + petId
+        )[0];
+
         const isFavorito = favoritos.includes(petId);
-       
+
         const atendeFiltro =
           (regiaoSelecionada === "0" || pet.regiao === regiaoSelecionada) &&
           (idadeSelecionada === "" ||
@@ -90,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
       favoritoBtn.classList.add("btn-favorito");
       favoritoBtn.classList.add("botaofav" + petId);
       favoritoBtn.dataset.petId = petId;
+      favoritoBtn.classList.add("posiciona-favorito"); // Adiciona a classe de posicionamento
 
       a2.setAttribute("href", "perfilpf.html" + "?pet=" + i);
       var pet = data.pets.find(FindByID);
@@ -107,9 +110,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (favoritos.includes(petId)) {
           favoritos.splice(favoritos.indexOf(petId), 1);
           this.classList.remove("favoritado");
+          atualizarFiltro();
         } else {
           favoritos.push(petId);
           this.classList.add("favoritado");
+          atualizarFiltro();
         }
 
         localStorage.setItem("favoritos", JSON.stringify(favoritos));
@@ -117,11 +122,14 @@ document.addEventListener("DOMContentLoaded", function () {
         var fav = localStorage.getItem("favoritos");
         console.log(fav);
       });
+      const container = document.createElement("div");
+      container.classList.add("imagem-container");
 
-      a.appendChild(favoritoBtn);
-      a2.appendChild(picfotopeti);
+      container.appendChild(picfotopeti);
+      container.appendChild(favoritoBtn); // Adiciona o botão como filho do contêiner
+      
+      a.appendChild(container);
       mural.appendChild(a);
-      mural.appendChild(a2);
 
       function FindByID(pet) {
         return pet.id === i;

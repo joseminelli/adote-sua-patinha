@@ -41,6 +41,18 @@ h1 {
     color: #222;
 }
 
+.imagem-container {
+    position: relative;
+    display: inline-block; /* Para garantir que o contêiner tenha o tamanho adequado */
+  }
+  
+  .posiciona-favorito {
+    position: absolute;
+    top: 40px; 
+    left: 60px;  
+    z-index: 1;  
+  }
+  
 .botaofav1, .botaofav2, .botaofav3, .botaofav4, .botaofav5, .botaofav6, .botaofav7, .botaofav8, .botaofav9, .botaofav10, .botaofav11, .botaofav12,  .botaofav13{
     display: inline-block;
 }
@@ -394,7 +406,7 @@ button[type="submit"]:hover {
 }
 
 .mural {
-    margin-left: 9%;
+    margin-left: 8%;
     justify-content: center;
 }
 
@@ -456,6 +468,11 @@ button[type="submit"]:hover {
         justify-content: center;
         align-items: center;
         gap: 2rem;
+    }
+    
+
+    .mural {
+        margin-left: 6%;
     }
 }
 
