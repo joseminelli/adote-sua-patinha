@@ -3,11 +3,9 @@ import data from "./pets.json" assert { type: "json" };
 const fotopet = document.getElementById("imgpetc");
 var login = localStorage.getItem("login");
 const taNoMural = document.getElementById("formm");
-const mural = document.getElementById("mural");
 
 document.addEventListener("DOMContentLoaded", function () {
   let loginId;
-
   const chkFavoritos = document.getElementById("chkFavoritos");
   const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
 
@@ -123,12 +121,15 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       const container = document.createElement("div");
       container.classList.add("imagem-container");
+      const mural = document.getElementById("mural");
 
-      container.appendChild(picfotopeti);
-      container.appendChild(favoritoBtn); // Adiciona o botão como filho do contêiner
-      
-      a.appendChild(container);
+     
+      mural.appendChild(a2);
       mural.appendChild(a);
+      container.appendChild(favoritoBtn); 
+      container.appendChild(a2);
+      a2.appendChild(picfotopeti);
+      a.appendChild(container);
 
       function FindByID(pet) {
         return pet.id === i;
