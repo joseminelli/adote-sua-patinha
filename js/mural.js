@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let loginId;
   data.pets.push();
 
+  const chkFavoritos = document.getElementById("chkFavoritos");
   const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
 
   if (login != "true") {
@@ -36,10 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
         idadeSelect.addEventListener("change", atualizarFiltro);
         racaSelect.addEventListener("change", atualizarFiltro);
         especieSelect.addEventListener("change", atualizarFiltro);
+        chkFavoritos.addEventListener("change", atualizarFiltro);
 
         function atualizarFiltro() {
-          const apenasFavoritos =
-            document.getElementById("apenas-favoritos").checked;
+          const apenasFavoritos = chkFavoritos.checked;
           const regiaoSelecionada = regiaoSelect.value;
           const idadeSelecionada = idadeSelect.value;
           const racaSelecionada = racaSelect.value;
@@ -76,21 +77,23 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
 
-        for (var i = 1; i <= 14; i++) {
+        for (var i = 2; i <= 14; i++) {
           loginId = i;
           const petId = i.toString();
           var a = document.createElement("a");
+          var a2 = document.createElement("a");
 
           const favoritoBtn = document.createElement("button");
           favoritoBtn.classList.add("btn-favorito");
-          favoritoBtn.dataset.petId = petId;
+          favoritoBtn.dataset.petId = petId - 1;
+
+          a2.setAttribute("href", "perfilpf.html" + "?pet=" + i);
+          var pet = data.pets.find(FindByID);
+          console.log(pet.name);
 
           var picfotopeti = document.createElement("img");
           picfotopeti.setAttribute("id", i.toString());
           picfotopeti.style.display = "inline-block";
-          //a.setAttribute("href", "perfilpf.html" + "?pet=" + i);
-          var pet = data.pets.find(FindByID);
-          console.log(pet.name);
           picfotopeti.src = pet.image;
 
           if (favoritos.includes(petId)) {
@@ -119,8 +122,9 @@ document.addEventListener("DOMContentLoaded", function () {
           }
 
           a.appendChild(favoritoBtn);
-          a.appendChild(picfotopeti);
+          a2.appendChild(picfotopeti);
           mural.appendChild(a);
+          mural.appendChild(a2);
         }
       }
     });
