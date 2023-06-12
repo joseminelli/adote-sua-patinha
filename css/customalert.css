@@ -190,12 +190,12 @@
 }
 
 #dialogbox>div {
-    background: #FFF;
     margin: 8px;
 }
 
 #dialogbox>div>#alertHeader {
     background: rgb(77, 71, 0);
+    border-radius: 10px;
     font-size: 19px;
     padding: 10px;
     color: rgb(255, 255, 255);
