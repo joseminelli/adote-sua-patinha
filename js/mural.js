@@ -42,11 +42,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const racaSelecionada = racaSelect.value;
       const especieSelecionada = especieSelect.value;
 
-      for (var i = 2; i <= 13; i++) {
+      for (var i = 1; i <= 13; i++) {
         var pet = data.pets.find(FindByID);
         const petId = i.toString();
         var picfotopeti = document.getElementById(petId);
-        var btnfavorito = document.getElementsByClassName("botaofav" + petId);
+        var btnfavorito = document.getElementsByClassName("botaofav" + petId)[0];
         
         const isFavorito = favoritos.includes(petId);
        
@@ -60,15 +60,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (atendeFiltro && (isFavorito || !apenasFavoritos)) {
           picfotopeti.style.display = "inline-block";
-          console.log(btnfavorito)
-          //btnfavorito.style.display = "inline-block";
+          btnfavorito.style.display = "inline-block";
           if (caminhoImagem2 != null) {
             imgElement2.style.display = "inline-block";
           }
         } else {
           imgElement2.style.display = "none";
           picfotopeti.style.display = "none";
-          //btnfavorito.style.display = "none";
+          btnfavorito.style.display = "none";
         }
 
         function FindByID(pet) {
@@ -77,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    for (var i = 2; i <= 13; i++) {
+    for (var i = 1; i <= 13; i++) {
       loginId = i;
       const petId = i.toString();
       var a = document.createElement("a");
@@ -90,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const favoritoBtn = document.createElement("button");
       favoritoBtn.classList.add("btn-favorito");
       favoritoBtn.classList.add("botaofav" + petId);
-      favoritoBtn.dataset.petId = petId - 1;
+      favoritoBtn.dataset.petId = petId;
 
       a2.setAttribute("href", "perfilpf.html" + "?pet=" + i);
       var pet = data.pets.find(FindByID);
