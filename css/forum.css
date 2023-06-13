@@ -535,6 +535,11 @@ h1 {
     outline: none;
 }
 
+#forumh3{
+    text-decoration: underline;
+    text-decoration-color: #165ea8;
+}
+
 button[type="submit"] {
     padding: 1rem;
     font-size: 1rem;

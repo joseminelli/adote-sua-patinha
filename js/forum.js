@@ -27,7 +27,7 @@ function loadPosts() {
         '<button class="deleteBtn" data-index="' +
         index +
         '"><b>X</b></button>' +
-        "<h3>" +
+        "<h3 id='forumh3'>" +
         post.titulo +
         "</h3>" +
         "<p>Categoria: " +
