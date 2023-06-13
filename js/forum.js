@@ -51,31 +51,80 @@ function deletePost(index) {
 }
 
 function CustomAlert2() {
-  this.alert = function (title) {
-    document.body.innerHTML +=
-      '<div id="overlay" class="animado"></div><div id="dialogbox2" class="slit-in-vertical"><div><div id="alertHeader"></div><div id="alertBody"></div><div id="alertFooter"></div></div></div>';
+  this.createModal = function () {
+    var overlay = document.createElement("div");
+    overlay.id = "overlay";
+    overlay.className = "animado";
 
-    let overlay = document.getElementById("overlay");
-    let dialogbox = document.getElementById("dialogbox2");
+    var dialogbox = document.createElement("div");
+    dialogbox.id = "dialogbox2";
+    dialogbox.className = "slit-in-vertical";
 
-    let winH = window.innerHeight;
-    overlay.style.height = winH + "px";
+    var dialogContent = document.createElement("div");
+
+    var alertHeader = document.createElement("div");
+    alertHeader.id = "alertHeader";
+
+    var alertBody = document.createElement("div");
+    alertBody.id = "alertBody";
+
+    var alertFooter = document.createElement("div");
+    alertFooter.id = "alertFooter";
+
+    dialogContent.appendChild(alertHeader);
+    dialogContent.appendChild(alertBody);
+    dialogContent.appendChild(alertFooter);
+
+    dialogbox.appendChild(dialogContent);
+
+    document.body.appendChild(overlay);
+    document.body.appendChild(dialogbox);
+  };
+
+  this.displayModal = function (title) {
+    var overlay = document.getElementById("overlay");
+    var dialogbox = document.getElementById("dialogbox2");
+    var alertHeader = document.getElementById("alertHeader");
 
     overlay.style.display = "block";
     dialogbox.style.display = "block";
-
-    document.getElementById("alertHeader").style.display = "block";
+    alertHeader.style.display = "block";
 
     if (typeof title === "undefined") {
-      document.getElementById("alertHeader").style.display = "none";
+      alertHeader.style.display = "none";
     } else {
-      document.getElementById("alertHeader").innerHTML =
+      alertHeader.innerHTML =
         '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' +
         title +
         '<button id="fechaModal">X</button>';
     }
+  };
 
-    document.getElementById("alertBody").innerHTML =
+  this.closeModal = function () {
+    var dialogbox = document.getElementById("dialogbox2");
+    var overlay = document.getElementById("overlay");
+
+    dialogbox.style.display = "none";
+    overlay.style.display = "none";
+  };
+
+  this.alert = function (title) {
+    if (!document.getElementById("overlay")) {
+      this.createModal();
+    }
+
+    this.displayModal(title);
+
+    var alertHeader = document.getElementById("alertHeader");
+    var alertBody = document.getElementById("alertBody");
+    var alertFooter = document.getElementById("alertFooter");
+
+    alertHeader.innerHTML =
+      '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' +
+      title +
+      '<button id="fechaModal">X</button>';
+
+    alertBody.innerHTML =
       '<div class="input-container">' +
       '<p class="modalp">Título:</p>' +
       '  <input type="text" id="input1" class="inputmodal"  placeholder="Digite o Título">' +
@@ -93,15 +142,14 @@ function CustomAlert2() {
       '  <input type="text" id="input2" class="inputmodal">' +
       "</div>";
 
-    document.getElementById("alertFooter").innerHTML =
+    alertFooter.innerHTML =
       '<button class="pure-material-button-contained active" id="okbtn">OK</button>';
 
-    document.getElementById("fechaModal").onclick = function () {
-      document.getElementById("dialogbox2").style.display = "none";
-      document.getElementById("overlay").style.display = "none";
+    document.getElementById("fechaModal").onclick = () => {
+      this.closeModal();
     };
 
-    document.getElementById("okbtn").onclick = function () {
+    document.getElementById("okbtn").onclick = () => {
       var tituloInput = document.getElementById("input1").value;
       var categoriaInput = document.getElementById("dropdown").value;
       var descInput = document.getElementById("input2").value;
@@ -117,8 +165,7 @@ function CustomAlert2() {
 
         localStorage.setItem("posts", JSON.stringify(posts));
 
-        document.getElementById("dialogbox2").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
+        this.closeModal();
 
         loadPosts();
       } else {
