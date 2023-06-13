@@ -4,7 +4,7 @@ function loadPosts() {
     var content = document.querySelector(".content");
     var noPostsMessage = document.getElementById("noPostsMessage");
   
-    content.innerHTML = ""; // Limpar o conteúdo existente
+    content.innerHTML = ""; 
   
     if (posts.length === 0) {
       noPostsMessage.innerHTML = "Não há publicações";
@@ -47,7 +47,7 @@ function loadPosts() {
     var posts = JSON.parse(localStorage.getItem("posts")) || [];
     posts.splice(index, 1);
     localStorage.setItem("posts", JSON.stringify(posts));
-    loadPosts(); // Recarregar os posts na div "content"
+    loadPosts(); 
   }
   
   function CustomAlert2() {
@@ -98,22 +98,26 @@ function loadPosts() {
         var tituloInput = document.getElementById("input1").value;
         var categoriaInput = document.getElementById("dropdown").value;
         var descInput = document.getElementById("input2").value;
-  
-        var post = {
-          titulo: tituloInput,
-          categoria: categoriaInput,
-          descricao: descInput
-        };
-  
-        var posts = JSON.parse(localStorage.getItem("posts")) || [];
-        posts.push(post);
-  
-        localStorage.setItem("posts", JSON.stringify(posts));
-  
-        document.getElementById("dialogbox2").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-  
-        loadPosts(); // Recarregar os posts na div "content"
+        if(tituloInput != 0 && categoriaInput != 0 && descInput != 0){
+            var post = {
+                titulo: tituloInput,
+                categoria: categoriaInput,
+                descricao: descInput
+              };
+        
+              var posts = JSON.parse(localStorage.getItem("posts")) || [];
+              posts.push(post);
+        
+              localStorage.setItem("posts", JSON.stringify(posts));
+        
+              document.getElementById("dialogbox2").style.display = "none";
+              document.getElementById("overlay").style.display = "none";
+        
+              loadPosts(); 
+        } else{
+            console.log("error")
+        }
+       
       };
     };
   }
