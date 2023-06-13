@@ -468,7 +468,7 @@ h1 {
     background-color: #f2f0f0;
     padding: 10px 20px;
     border-radius: 10px;
-    margin-bottom: 10%;
+    margin-bottom: 7%;
 }
 #nomerply{
     font-size: small;
@@ -772,10 +772,10 @@ button[type="submit"]:hover {
 
     .post {
         width: 300px;
-        background-color: #f2f0f0;
+        background-color: #fff;
         padding: 10px 20px;
         border-radius: 10px;
-        margin-bottom: 10%;
+        margin-bottom: 7%;
     }
 
     #formm {
@@ -856,7 +856,7 @@ button[type="submit"]:hover {
         background-color: #f2f0f0;
         padding: 10px 20px;
         border-radius: 10px;
-        margin-bottom: 10%;
+        margin-bottom: 7%;
     }
 
     #formm {

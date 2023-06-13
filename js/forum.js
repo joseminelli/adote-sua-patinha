@@ -1,4 +1,5 @@
 function loadPosts() {
+  // Função que carrega as publicações
   var posts = JSON.parse(localStorage.getItem("posts")) || [];
 
   var content = document.querySelector(".content");
@@ -50,7 +51,10 @@ function loadPosts() {
           var replyElement = document.createElement("div");
           replyElement.className = "reply";
           replyElement.innerHTML =
-            "<p id='nomerply'>" + nomeresp + " respondeu:"+"</p>"  +
+            "<p id='nomerply'>" +
+            nomeresp +
+            " respondeu:" +
+            "</p>" +
             "<p id='descrply'>" +
             resposta.descricao +
             "</p>";
@@ -62,7 +66,7 @@ function loadPosts() {
       }
     });
 
-    var deleteButtons = document.querySelectorAll(".deleteBtn");
+    var deleteButtons = document.querySelectorAll(".deleteBtn"); // Configura os botões que deletam a publicação
     deleteButtons.forEach(function (button) {
       button.addEventListener("click", function () {
         var index = parseInt(button.getAttribute("data-index"));
@@ -70,7 +74,7 @@ function loadPosts() {
       });
     });
 
-    var replyButtons = document.querySelectorAll(".reply-btn");
+    var replyButtons = document.querySelectorAll(".reply-btn"); // Configura os botões de resposta
     replyButtons.forEach(function (button) {
       button.addEventListener("click", function () {
         var postElement = button.parentNode.parentNode;
@@ -96,19 +100,19 @@ function loadPosts() {
   }
 }
 
-var caminhoImagem = localStorage.getItem("imagempessoa");
 var nomeresp = localStorage.getItem("nome2");
 
-
-function deletePost(index) {// função para deletar o post
+function deletePost(index) {
+  // função para deletar o post
   var posts = JSON.parse(localStorage.getItem("posts")) || [];
   posts.splice(index, 1);
   localStorage.setItem("posts", JSON.stringify(posts));
   loadPosts();
 }
 
-function CustomAlert2() { // Criação do objeto CustomAlert2
-  this.createModal = function () { 
+function CustomAlert2() {
+  // Criação do objeto CustomAlert2
+  this.createModal = function () {
     var overlay = document.createElement("div");
     overlay.id = "overlay";
     overlay.className = "animado";
@@ -138,7 +142,8 @@ function CustomAlert2() { // Criação do objeto CustomAlert2
     document.body.appendChild(dialogbox);
   };
 
-  this.displayModal = function (title) { // Função para exibir o modal
+  this.displayModal = function (title) {
+    // Função para exibir o modal
     var overlay = document.getElementById("overlay");
     var dialogbox = document.getElementById("dialogbox2");
     var alertHeader = document.getElementById("alertHeader");
@@ -157,7 +162,8 @@ function CustomAlert2() { // Criação do objeto CustomAlert2
     }
   };
 
-  this.closeModal = function () { // Função para fechar o modal
+  this.closeModal = function () {
+    // Função para fechar o modal
     var dialogbox = document.getElementById("dialogbox2");
     var overlay = document.getElementById("overlay");
 
@@ -165,7 +171,8 @@ function CustomAlert2() { // Criação do objeto CustomAlert2
     overlay.style.display = "none";
   };
 
-  this.alert = function (title) { // Função para exibir o modal de alerta
+  this.alert = function (title) {
+    // Função para exibir o modal de alerta
     if (!document.getElementById("overlay")) {
       this.createModal();
     }
