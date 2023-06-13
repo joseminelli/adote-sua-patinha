@@ -51,6 +51,8 @@
     width: 100%;
     z-index: 10;
     transition: all 1s;
+    background-color: rgba(43, 43, 43, 0.295);
+    backdrop-filter: blur(3px);
   }
   .animado{
     background-color: rgba(43, 43, 43, 0.295);
@@ -76,7 +78,7 @@
 
 #dialogbox2 {
     position:fixed;
-    top: 27%;
+    top: 22%;
     left: calc(40% - 145px);
     display: none;
     background: rgb(41, 41, 41);
@@ -295,7 +297,7 @@
 
     #dialogbox2 {
         top: 25%;
-        left: calc(25% - 100px);
+        left: calc(30% - 100px);
         display: none;
         width: 90%;
     }   

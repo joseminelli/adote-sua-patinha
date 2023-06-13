@@ -435,6 +435,12 @@ h1 {
     width: 0;
 }
 
+.modalp2 {
+    font-size: 14px;
+    margin-top: 5%;
+    color: #1c1c1dc7;
+}
+
 .modalp {
     margin-top: 5%;
     color: #e3e6f3;
@@ -464,6 +470,35 @@ h1 {
     border-radius: 10px;
     margin-bottom: 10%;
 }
+#nomerply{
+    font-size: small;
+    margin-top: 4%;
+    margin-bottom: -2%;
+}
+
+#descrply{
+    margin-top: 3.5%;
+     font-size:90%
+}
+
+.inputmodal2 {
+    margin-top: -8%;
+    margin-bottom: 2%;
+    padding: 8px 5px;
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid #165ea8;
+    background: transparent;
+    width: 100%;
+    box-sizing: border-box;
+    color: #000;
+    transition: 0.3s;
+}
+
+.inputmodal2:focus {
+    border-color: #165ea8;
+}
+
 
 .inputmodal {
     margin-top: -8%;
