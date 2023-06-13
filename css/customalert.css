@@ -73,6 +73,21 @@
     margin: auto;
 }
 
+
+#dialogbox2 {
+    position:fixed;
+    top: 27%;
+    left: calc(40% - 145px);
+    display: none;
+    background: rgb(41, 41, 41);
+    border-radius: 7px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.575);
+    transition: 0.3s;
+    width: 40%;
+    z-index: 10;
+    margin: auto;
+}
+
 #dialogbox:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.911);
 }
@@ -215,6 +230,60 @@
     text-align: right;
 }
 
+#dialogbox2>div {
+    margin: 8px;
+}
+
+#dialogbox2>div>#alertHeader {
+    background: rgb(77, 71, 0);
+    border-radius: 10px;
+    font-size: 19px;
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#dialogbox2>div>#alertBody {
+    background: rgb(41, 41, 41);
+    padding: 20px;
+    color: #FFF;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#dialogbox2>div>#alertFooter {
+    background: rgb(41, 41, 41);
+    padding: 10px;
+    text-align: right;
+}
+
+
+
+.dropdown {
+    padding: 8px 5px;
+    outline: none;
+    max-width: 200px;
+    border-radius: 5px;
+    border: 2px solid #165ea8;
+    background: #1bba68;
+    width: 100%;
+    box-sizing: border-box;
+    transition: 0.3s;
+  }
+  
+  .dropdown:focus {
+    border-color: #165ea8;
+  }
+.input-container {
+    margin-bottom: 10px;
+  }
+  
+  .input-container input,
+  .input-container select {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+
 
 @media (max-width: 455px) {
     #dialogbox {
@@ -222,5 +291,12 @@
         left: calc(40% - 100px);
         display: none;
         width: 70%;
+    }   
+
+    #dialogbox2 {
+        top: 25%;
+        left: calc(25% - 100px);
+        display: none;
+        width: 90%;
     }   
 }

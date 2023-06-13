@@ -75,7 +75,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
       }
     }
-
     for (var i = 1; i <= 13; i++) {
       loginId = i;
       const petId = i.toString();
