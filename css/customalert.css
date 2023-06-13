@@ -295,7 +295,7 @@
 
     #dialogbox2 {
         top: 25%;
-        left: calc(25% - 100px);
+        left: calc(28% - 100px);
         display: none;
         width: 90%;
     }   
