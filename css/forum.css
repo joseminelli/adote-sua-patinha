@@ -447,6 +447,16 @@ h1 {
     margin-left: 99%;
 }
 
+#fechaModal {
+    background-color: transparent;
+    color: #fff;
+    font-size: large;
+    border: none;
+    display: flex;
+    margin-left: 97%;
+    align-items: top;
+}
+
 .post {
     width: 600px;
     background-color: #f2f0f0;

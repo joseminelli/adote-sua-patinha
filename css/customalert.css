@@ -288,14 +288,14 @@
 @media (max-width: 455px) {
     #dialogbox {
         top: 40%;
-        left: calc(40% - 100px);
+        left: calc(38% - 100px);
         display: none;
         width: 70%;
     }   
 
     #dialogbox2 {
         top: 25%;
-        left: calc(28% - 100px);
+        left: calc(25% - 100px);
         display: none;
         width: 90%;
     }   
