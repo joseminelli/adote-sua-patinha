@@ -100,15 +100,15 @@ var caminhoImagem = localStorage.getItem("imagempessoa");
 var nomeresp = localStorage.getItem("nome2");
 
 
-function deletePost(index) {
+function deletePost(index) {// função para deletar o post
   var posts = JSON.parse(localStorage.getItem("posts")) || [];
   posts.splice(index, 1);
   localStorage.setItem("posts", JSON.stringify(posts));
   loadPosts();
 }
 
-function CustomAlert2() {
-  this.createModal = function () {
+function CustomAlert2() { // Criação do objeto CustomAlert2
+  this.createModal = function () { 
     var overlay = document.createElement("div");
     overlay.id = "overlay";
     overlay.className = "animado";
@@ -138,7 +138,7 @@ function CustomAlert2() {
     document.body.appendChild(dialogbox);
   };
 
-  this.displayModal = function (title) {
+  this.displayModal = function (title) { // Função para exibir o modal
     var overlay = document.getElementById("overlay");
     var dialogbox = document.getElementById("dialogbox2");
     var alertHeader = document.getElementById("alertHeader");
@@ -157,7 +157,7 @@ function CustomAlert2() {
     }
   };
 
-  this.closeModal = function () {
+  this.closeModal = function () { // Função para fechar o modal
     var dialogbox = document.getElementById("dialogbox2");
     var overlay = document.getElementById("overlay");
 
@@ -165,7 +165,7 @@ function CustomAlert2() {
     overlay.style.display = "none";
   };
 
-  this.alert = function (title) {
+  this.alert = function (title) { // Função para exibir o modal de alerta
     if (!document.getElementById("overlay")) {
       this.createModal();
     }
@@ -184,19 +184,19 @@ function CustomAlert2() {
     alertBody.innerHTML =
       '<div class="input-container">' +
       '<p class="modalp">Título:</p>' +
-      '  <input type="text" id="input1" class="inputmodal"  placeholder="Digite o Título">' +
+      '  <input type="text" id="input1" class="inputmodal"  placeholder="O que você precisa?">' +
       "</div>" +
       '<div class="input-container">' +
       '<p class="modalp">Categoria:</p>' +
       '  <select id="dropdown">' +
       '    <option selected value="0">Selecione</option>' +
-      '    <option value="Duvida">Dúvida</option>' +
+      '    <option value="Dúvida">Dúvida</option>' +
       '    <option value="Dica">Dica</option>' +
       "  </select>" +
       "</div>" +
       '<div class="input-container">' +
       '<p class="modalp">Descrição</p>' +
-      '  <input type="text" id="input2" class="inputmodal">' +
+      '  <input type="text" id="input2" class="inputmodal" placeholder="Dê mais detalhes sobre seu post">' +
       "</div>";
 
     alertFooter.innerHTML =
