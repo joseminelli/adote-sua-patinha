@@ -1,3 +1,9 @@
+var login = localStorage.getItem("login");
+
+if (login != "true") {
+  window.location.href = "index.html";
+}
+
 function loadPosts() {
   // Função que carrega as publicações
   var posts = JSON.parse(localStorage.getItem("posts")) || [];
