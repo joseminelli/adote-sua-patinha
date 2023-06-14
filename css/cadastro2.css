@@ -372,7 +372,19 @@ button[type="submit"]:hover {
 
 @media (max-width: 1700px) {
   .content {
-    margin-top: -7.5%;
+    margin-top: 3.5%;
+    max-height: 500px;
+    flex-direction: column;
+  }
+  #box {
+    background-color: #ffe58b;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color-dark1);
+    color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
   }
 
   button[type="submit"] {
@@ -385,10 +397,27 @@ button[type="submit"]:hover {
     background-color: #ffe58b;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 1.5rem;
-    margin-top: -40%;
+    margin-top: 30%;
     border-radius: 10px;
     min-width: 45%;
     overflow: auto;
+  }
+  .content {
+    margin-top: 25.5%;
+    max-height: 450px;
+    flex-direction: column;
+  }
+
+  #box {
+    background-color: #ffe58b;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color-dark1);
+    color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 440px;
   }
 
   button[type="submit"] {
