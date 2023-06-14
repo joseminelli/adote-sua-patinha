@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -7,22 +8,22 @@
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: #165EA8;
-    transition: all 300ms;
+  border-radius: 10px;
+  background: #165EA8;
+  transition: all 300ms;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #0e4072;
-    transition: all 300ms;
+  background: #0e4072;
+  transition: all 300ms;
 }
 
 html {
@@ -75,6 +76,7 @@ p {
   z-index: 999;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
 }
+
 #header .logo {
   width: 100%;
   max-height: 80px;
@@ -153,13 +155,13 @@ p {
   overflow: auto;
 }
 
-.content img{
-    width: auto;
-    height: 100px;
-    border-radius: 50%;
-    justify-content: center;
-    align-items: center;
-    margin-left: 15%;
+.content img {
+  width: auto;
+  height: 100px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15%;
 }
 
 select {
@@ -255,12 +257,12 @@ button[type="submit"]:hover {
 }
 
 .mural {
-    margin-left: 20%;
+  margin-left: 20%;
 }
 
 .mural p {
   margin-left: 50px;
-  
+
 }
 
 .mural img {
@@ -271,10 +273,10 @@ button[type="submit"]:hover {
 }
 
 #linha-vertical {
-    height: 600px;
-    margin-left: 10%;
-    border-right: 4px solid #074786;
-    border-radius: 10px;
+  height: 600px;
+  margin-left: 10%;
+  border-right: 4px solid #074786;
+  border-radius: 10px;
 }
 
 #picture__input {
@@ -312,83 +314,131 @@ button[type="submit"]:hover {
   box-shadow: none;
 }
 
-.button{
-    width: 40px;
-    height: 40px;
-    background-color: none;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+.button {
+  width: 40px;
+  height: 40px;
+  background-color: none;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.sun{
-    width: 18px;
-    height: 18px;
-    background: #1a1a1a;
-    border-radius: 50%;
-    cursor: pointer;
-    position: relative;
-    border: 3px solid #ffe58b;
+.sun {
+  width: 18px;
+  height: 18px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  border: 3px solid #ffe58b;
 }
 
-.sun div{
-    width: 2px;
-    background: #1a1a1a;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: -1;
+.sun div {
+  width: 2px;
+  background: #1a1a1a;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
 
-    transition: width 0.12s;
+  transition: width 0.12s;
 }
 
-.sun .line1{
-    height: 30px;
-    transform: translate(-50%, -50%);
+.sun .line1 {
+  height: 30px;
+  transform: translate(-50%, -50%);
 }
 
-.sun .line2{
-    height: 30px;
-    transform: translate(-50%, -50%) rotate(90deg);
+.sun .line2 {
+  height: 30px;
+  transform: translate(-50%, -50%) rotate(90deg);
 }
 
-.sun .line3{
-    height: 25px;
-    transform: translate(-50%, -50%) rotate(45deg);
+.sun .line3 {
+  height: 25px;
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.sun .line4{
-    height: 25px;
-    transform: translate(-50%, -50%) rotate(-45deg);
+.sun .line4 {
+  height: 25px;
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.sun::after{
-    content: '';
-    width: 18px;
-    height: 18px;
-    background: #ffe58b;
-    border-radius: 50%;
-    position: absolute;
-    top: -21px;
-    right: -21px;
-    transition: 0.5s;
+.sun::after {
+  content: '';
+  width: 18px;
+  height: 18px;
+  background: #ffe58b;
+  border-radius: 50%;
+  position: absolute;
+  top: -21px;
+  right: -21px;
+  transition: 0.5s;
 }
 
-.sun.night::after{
-    top: -8px;
-    right: -9px;
+.sun.night::after {
+  top: -8px;
+  right: -9px;
 }
 
-.sun.night div{
-    width: 0;
+.sun.night div {
+  width: 0;
 }
 
 @media screen and (max-width: 576px) {
   .box-select {
     flex-direction: column;
     gap: 5px;
+  }
+}
+
+@media (max-width: 1800px) {
+  .content {
+    margin-top: 8%;
+  }
+
+  #linha-vertical {
+    height: 400px;
+    margin-left: 10%;
+    margin-top: 8%;
+    border-right: 4px solid #074786;
+    border-radius: 10px;
+  }
+
+
+  .mural {
+    margin-top: 8%;
+
+  }
+
+  #box {
+    height: 400px;
+  }
+}
+
+@media (max-width: 1700px) {
+  .content {
+    margin-top: 4%;
+  }
+
+  #linha-vertical {
+    height: 400px;
+    margin-left: 10%;
+    margin-top: 4%;
+    border-right: 4px solid #074786;
+    border-radius: 10px;
+  }
+
+
+  .mural {
+    margin-top: 4%;
+
+  }
+
+  #box {
+    height: 400px;
   }
 }
 
@@ -399,26 +449,26 @@ button[type="submit"]:hover {
     padding: 2rem;
     border-radius: 10px;
     min-width: 45%;
-    margin-top: -80%;
+    margin-top: 0%;
     overflow: auto;
   }
 
   .mural {
-    margin-top: -50%;
+    margin-top: 0%;
     margin-left: 5%;
   }
 
   #box {
-    height: 700px;
+    height: 400px;
   }
 
-  .content img{
-      width: auto;
-      height: 100px;
-      border-radius: 50%;
-      justify-content: center;
-      align-items: center;
-      margin-left: 10%;
+  .content img {
+    width: auto;
+    height: 100px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
   }
 
   button[type="submit"] {
@@ -434,18 +484,19 @@ button[type="submit"]:hover {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   }
 }
+
 @media (max-width: 799px) {
   .section-p1 {
     padding: 40px;
   }
-  
 
-#linha-vertical {
+
+  #linha-vertical {
     height: 0px;
     margin-left: 0%;
     border-right: 0px solid #074786;
     border-radius: 0px;
-}
+  }
 
   #navbar {
     display: flex;
@@ -462,23 +513,29 @@ button[type="submit"]:hover {
     transition: 0.3s;
     padding: 80px 0 0 10px;
   }
+
   #navbar li {
     margin-bottom: 25px;
   }
+
   #navbar.active {
     right: 0;
   }
+
   #mobile {
     display: flex;
   }
+
   #mobile i {
     color: #1a1a1a;
     font-size: 24px;
     padding-left: 20px;
   }
+
   #bar {
     display: initial;
   }
+
   #close {
     display: initial;
     font-size: 24px;
