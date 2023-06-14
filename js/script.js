@@ -146,9 +146,11 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("telefone", telefone);
 
             var inputImagem2 = document.getElementById("picture__input");
+            const inputImagem3 = document.getElementsByClassName("picture");
 
             if (inputImagem2.files && inputImagem2.files[0]) {
                 var imagem2 = inputImagem2.files[0];
+                imgElement2.style.display = "none";
 
                 var reader = new FileReader();
 

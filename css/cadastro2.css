@@ -255,8 +255,14 @@ button[type="submit"]:hover {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
-.picture__image{
-  margin-left: 0%;
+.picture__image {
+  justify-items: center;
+  align-items:center;
+  display: flex;
+  border-radius: 10px;
+  width: 300px;
+  aspect-ratio: 9/16;
+  margin-left: -26.3%;
 }
 
 #picture__input {
@@ -264,10 +270,10 @@ button[type="submit"]:hover {
 }
 
 .picture {
+  display: flex;
   border-radius: 10px;
   width: 200px;
   aspect-ratio: 9/16;
-  padding: 0.7rem;
   background: #ddd;
   color: #757474;
   border: 2px dashed #9e9e9e;
@@ -287,12 +293,6 @@ button[type="submit"]:hover {
   background: #eee;
 }
 
-.picture:focus {
-  color: none;
-  border: 0px;
-  background: none;
-  box-shadow: none;
-}
 
 .button {
   width: 40px;
@@ -412,8 +412,8 @@ button[type="submit"]:hover {
     overflow: auto;
   }
 
-  .picture__image{
-    margin-left: -45%;
+  .picture__image {
+    margin-left: 0%;
   }
 
   .content {
@@ -439,16 +439,27 @@ button[type="submit"]:hover {
     width: 350px;
   }
 
+
   .picture img{
-    max-width: 90%;
-    margin-right: 100%;
+  }
+
+  .picture{
+    border-radius: 10px;
+    width: 130px;
+    aspect-ratio: 9/16;
+    background: #ddd;
+    color: #757474;
+    border: 2px dashed #9e9e9e;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
   }
 
   button[type="submit"] {
     min-width: 130px;
     max-width: 155px;
     margin-left: -50%;
-    margin-top: 80%;
+    margin-top: 150%;
   }
 
   .mural {
@@ -458,10 +469,10 @@ button[type="submit"]:hover {
   }
 
   .mural img {
-    margin-top: 2%;
-    margin-left: 40px;
+    width: 130px;
+    margin-top: 0%;
+    margin-left: 0px;
     border-radius: 10px;
-    width: 105px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   }
 }
