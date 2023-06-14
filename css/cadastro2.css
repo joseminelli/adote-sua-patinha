@@ -397,7 +397,9 @@ button[type="submit"]:hover {
   }
 }
 
-#picturetxt {}
+#picturetxt {
+  margin-left: 0%;
+}
 
 @media (max-width: 455px) {
   .content {
