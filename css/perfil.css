@@ -398,11 +398,17 @@ button[type="submit"]:hover {
     padding: 2rem;
     border-radius: 10px;
     min-width: 45%;
+    margin-top: -80%;
     overflow: auto;
   }
 
   .mural {
-    margin-left: 10%;
+    margin-top: -50%;
+    margin-left: 5%;
+  }
+
+  #box {
+    height: 700px;
   }
 
   .content img{
@@ -415,7 +421,8 @@ button[type="submit"]:hover {
   }
 
   button[type="submit"] {
-    margin-left: 5%;
+    font-size: 90%;
+    margin-left: 56%;
   }
 
   .mural img {
