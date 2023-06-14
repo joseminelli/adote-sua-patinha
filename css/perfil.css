@@ -391,6 +391,7 @@ button[type="submit"]:hover {
     gap: 5px;
   }
 }
+
 @media (max-width: 455px) {
   .content {
     background-color: #ffe58b;
