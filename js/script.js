@@ -3,38 +3,53 @@ const close = document.getElementById('close');
 const nav = document.getElementById('navbar');
 var logado = false;
 
-function CustomAlert(){
-    this.alert = function(message,title){
-      document.body.innerHTML = document.body.innerHTML + '<div id="overlay" class="animado"></div><div id="dialogbox" class="slit-in-vertical"><div><div id="alertHeader"></div><div id="alertBody"></div><div id="alertFooter"></div></div></div>';
+function CustomAlert() {
+    this.alert = function (message, title) {
+      var overlay = document.createElement('div');
+      overlay.id = 'overlay';
+      overlay.className = 'animado';
   
-      let overlay = document.getElementById('overlay');
-      let dialogbox = document.getElementById('dialogbox');
-      
-      let winH = window.innerHeight;
-      overlay.style.height = winH+"px";
-      
+      var dialogBox = document.createElement('div');
+      dialogBox.id = 'dialogbox';
+      dialogBox.className = 'slit-in-vertical';
   
-      overlay.style.display = "block";
-      dialogbox.style.display = "block";
-      
-      document.getElementById('alertHeader').style.display = 'block';
+      var dialogContent = document.createElement('div');
+      dialogContent.innerHTML = '<div id="alertHeader"></div><div id="alertBody"></div><div id="alertFooter"></div>';
   
-      if(typeof title === 'undefined') {
-        document.getElementById('alertHeader').style.display = 'none';
+      dialogBox.appendChild(dialogContent);
+  
+      var body = document.getElementsByTagName('body')[0];
+      body.appendChild(overlay);
+      body.appendChild(dialogBox);
+  
+      overlay.style.height = window.innerHeight + 'px';
+      overlay.style.display = 'block';
+      dialogBox.style.display = 'block';
+  
+      var alertHeader = document.getElementById('alertHeader');
+      if (typeof title === 'undefined') {
+        alertHeader.style.display = 'none';
       } else {
-        document.getElementById('alertHeader').innerHTML = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> '+ title;
+        alertHeader.innerHTML = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' + title;
       }
+  
       document.getElementById('alertBody').innerHTML = message;
-      document.getElementById('alertFooter').innerHTML = '<button class="pure-material-button-contained active" onclick="customAlert.ok()">OK</button>';
-    }
-    
-    this.ok = function(){
-      document.getElementById('dialogbox').style.display = "none";
-      document.getElementById('overlay').style.display = "none";
-    }
+      document.getElementById('alertFooter').innerHTML =
+        '<button class="pure-material-button-contained active" onclick="customAlert.ok()">OK</button>';
+    };
+  
+    this.ok = function () {
+      var overlay = document.getElementById('overlay');
+      var dialogBox = document.getElementById('dialogbox');
+      overlay.parentNode.removeChild(overlay);
+      dialogBox.parentNode.removeChild(dialogBox);
+    };
   }
   
-  let customAlert = new CustomAlert();
+  var customAlert = new CustomAlert();
+  
+  
+  
 
 if (bar) {
     bar.addEventListener('click', () => {
