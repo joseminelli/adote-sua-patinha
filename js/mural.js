@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   let loginId;
   const chkFavoritos = document.getElementById("chkFavoritos");
   const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-
+  const textoMural = document.getElementById("textoMural");
   if (login != "true") {
     window.location.href = "index.html";
   }
@@ -34,12 +34,15 @@ document.addEventListener("DOMContentLoaded", async function () {
     chkFavoritos.addEventListener("change", atualizarFiltro);
 
     function atualizarFiltro() {
+      let petsDisponiveis = 0; // Contador de pets disponíveis
       const apenasFavoritos = chkFavoritos.checked;
       const regiaoSelecionada = regiaoSelect.value;
       const idadeSelecionada = idadeSelect.value;
       const racaSelecionada = racaSelect.value;
       const especieSelecionada = especieSelect.value;
-
+    
+     
+    
       for (var i = 1; i <= 13; i++) {
         var pet = data.pets.find(FindByID);
         const petId = i.toString();
@@ -47,34 +50,42 @@ document.addEventListener("DOMContentLoaded", async function () {
         var btnfavorito = document.getElementsByClassName(
           "botaofav" + petId
         )[0];
-
+    
         const isFavorito = favoritos.includes(petId);
-
+    
         const atendeFiltro =
           (regiaoSelecionada === "0" || pet.regiao === regiaoSelecionada) &&
-          (idadeSelecionada === "" ||
-            pet.age.toString() === idadeSelecionada) &&
-          (especieSelecionada === "0" ||
-            pet.esp.toString() === especieSelecionada) &&
+          (idadeSelecionada === "" || pet.age.toString() === idadeSelecionada) &&
+          (especieSelecionada === "0" || pet.esp.toString() === especieSelecionada) &&
           (racaSelecionada === "0" || pet.raca.toString() === racaSelecionada);
-
+    
         if (atendeFiltro && (isFavorito || !apenasFavoritos)) {
           picfotopeti.style.display = "inline-block";
           btnfavorito.style.display = "inline-block";
           if (caminhoImagem2 != null) {
             imgElement2.style.display = "inline-block";
           }
+          petsDisponiveis++; // Incrementa o contador de pets disponíveis
         } else {
           imgElement2.style.display = "none";
           picfotopeti.style.display = "none";
           btnfavorito.style.display = "none";
         }
-
+    
         function FindByID(pet) {
           return pet.id === i;
         }
       }
+    
+      if (regiaoSelecionada === "0"  && idadeSelecionada === "" && especieSelecionada === "0" && racaSelecionada === "0" ){
+        textoMural.textContent = "Pets disponíveis:";
+      } else if (petsDisponiveis > 0) {
+        textoMural.textContent = "Foram encontrados " + petsDisponiveis + " pets nessas condições:";
+      } else {
+        textoMural.textContent = "Nenhum pet disponível com os filtros selecionados.";
+      }
     }
+    
     for (var i = 1; i <= 13; i++) {
       loginId = i;
       const petId = i.toString();
