@@ -560,6 +560,7 @@ button[type="submit"]:hover {
   }
 
   .mural {
+    margin-top: 5%;
     margin-left: 6%;
   }
 }
