@@ -179,6 +179,46 @@
             "regiao": "regiaoOeste",
             "esp": "cachorros",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1118248893436661800/bf0a113b90157c78e60fe85adf8a1862.jpg"
+        },
+        {
+            "id": 19,
+            "name": "Bruce",
+            "age": 4,
+            "description": "Alegre",
+            "raca": "srd",
+            "regiao": "vendaNova",
+            "esp": "cachorros",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1118884459534622740/IMG_7167.jpg"
+        },
+        {
+            "id": 20,
+            "name": "Manchinha",
+            "age": 3,
+            "description": "Julgador",
+            "raca": "srd",
+            "regiao": "pampulha",
+            "esp": "gatos",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1118884466543313006/IMG_7164.jpg"
+        },
+        {
+            "id": 21,
+            "name": "Spike",
+            "age": 0,
+            "description": "Quieto",
+            "raca": "srd",
+            "regiao": "regiaoNoroeste",
+            "esp": "gatos",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1118884471207370802/IMG_7163.jpg"
+        },
+        {
+            "id": 22,
+            "name": "Adilson",
+            "age": 0,
+            "description": "Destruidor",
+            "raca": "srd",
+            "regiao": "regiaoLeste",
+            "esp": "cachorros",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1118884600681332736/IMG_7166.jpg"
         }
     ]
 }
