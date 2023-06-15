@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     idadeElement.innerHTML = petInfo.age;
 
     const bairroElement = document.getElementById("raca");
-    bairroElement.innerHTML = petInfo.raca;
+    bairroElement.innerHTML = petInfo.raca2;
 
     const celElement = document.getElementById("desc");
     celElement.innerHTML = petInfo.description;
