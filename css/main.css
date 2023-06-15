@@ -461,6 +461,7 @@ button[type="submit"]:hover {
 }
 
 #filtroH3{
+  position: relative;
   display: flex;
   margin-bottom: 1%;
   justify-content: center;
@@ -468,6 +469,7 @@ button[type="submit"]:hover {
 }
 
 #linha-horizontal {
+  position: relative;
   align-self:center;
   justify-content: center;
   align-items: center;
@@ -491,13 +493,15 @@ button[type="submit"]:hover {
     gap: 5px;
   }
   #filtroH3{
-    display:flex;
+    position: sticky;
+    z-index: 1;
     margin-bottom: 1%;
     justify-content: center;
     align-items: center;
   }
 
   #linha-horizontal {
+    position: sticky;
     align-self:center;
     justify-content: center;
     align-items: center;
@@ -537,7 +541,7 @@ button[type="submit"]:hover {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     padding: 2rem;
     border-radius: 10px;
-    overflow: auto;
+    overflow: overlay;
   }
 
   .content form {

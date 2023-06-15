@@ -150,7 +150,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (inputImagem2.files && inputImagem2.files[0]) {
                 var imagem2 = inputImagem2.files[0];
-                imgElement2.style.display = "none";
 
                 var reader = new FileReader();
 
