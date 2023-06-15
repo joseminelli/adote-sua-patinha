@@ -391,6 +391,25 @@ button[type="submit"]:hover {
     gap: 5px;
   }
 }
+@media (max-width: 1700px) {
+  .content {
+    margin-top: 13%;
+  }
+  .mural{
+    margin-top: 13%;
+  }
+  #linha-vertical {
+      height: 400px;
+      margin-left: 10%;
+      border-right: 4px solid #074786;
+      border-radius: 10px;
+      margin-top: 13%;
+  }
+
+  #box {
+    height: 400px;
+  }
+}
 @media (max-width: 455px) {
   .content {
     background-color: #ffe58b;
