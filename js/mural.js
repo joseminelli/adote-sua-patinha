@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
   var response = await fetch("js/pets.json");
   var data = await response.json();
+  var qtdPets = data.pets.length;
+  console.log(qtdPets);
   if (taNoMural) {
     var caminhoImagem2 = localStorage.getItem("imagempet");
 
@@ -40,7 +42,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       const idadeSelecionada = idadeSelect.value;
       const racaSelecionada = racaSelect.value;
       const especieSelecionada = especieSelect.value;
-    
       const petsFiltrados = data.pets.filter((pet) => {
         const isFavorito = favoritos.includes(pet.id.toString());
         const atendeFiltro =
@@ -51,7 +52,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         return atendeFiltro && (isFavorito || !apenasFavoritos);
       });
     
-      for (var i = 1; i <= 13; i++) {
+      for (var i = 1; i <= qtdPets; i++) {
         var pet = petsFiltrados.find(FindByID);
         const petId = i.toString();
         var picfotopeti = document.getElementById(petId);
@@ -102,7 +103,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     
     
     
-    for (var i = 1; i <= 13; i++) {
+    for (var i = 1; i <= qtdPets; i++) {
       loginId = i;
       const petId = i.toString();
       var a = document.createElement("a");

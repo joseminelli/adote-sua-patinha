@@ -397,12 +397,19 @@ button[type="submit"]:hover {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 2rem;
     border-radius: 10px;
+    margin-top: 30%;
     min-width: 45%;
     overflow: auto;
   }
 
+  #box {
+    height: 400px;
+  }
+  
+
   .mural {
-    margin-left: 10%;
+    margin-top: 17%;
+    margin-left: 3%;
   }
 
   .content img{
