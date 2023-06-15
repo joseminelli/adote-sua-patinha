@@ -267,7 +267,7 @@ button[type="submit"] {
   font-size: 1rem;
   outline: none;
   border: none;
-  margin-left: 50%;
+  margin-left: 25%;
   color: #e3e6f3;
   max-width: 115px;
   border-radius: 5px;
@@ -421,9 +421,14 @@ button[id="submit2"]:hover {
 .sun.night div {
   width: 0;
 }
-
+#jaTem{
+  margin-left: 20%;
+}
 @media screen and (max-width: 1700px) {
 
+  #jaTem{
+    margin-left: 0%;
+  }
 
   button[type="submit"] {
     padding: 1rem;
@@ -466,7 +471,15 @@ button[id="submit2"]:hover {
   }
 }
 
-@media (max-width: 455px) {
+@media (max-width: 471px) {
+
+}
+
+@media (max-width: 471px) {
+  #jaTem{
+    margin-left: 0%;
+  }
+
   .content {
     background-color: #ffe58b;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -474,11 +487,23 @@ button[id="submit2"]:hover {
     border-radius: 10px;
     min-width: 45%;
     overflow: auto;
+    max-width: 85%;
   }
 
   button[type="submit"] {
+    margin-top: 60%;
     margin-left: 5%;
   }
+  #faca-agora{
+    margin-left: -8%;
+  }
+  button[id="submit2"] {
+    margin-left: -8%;
+    width: 100px;
+    max-width: 115px;
+    margin-top: 60%;
+  }
+  
 
   .mural img {
     margin-top: 10%;
@@ -500,6 +525,10 @@ button[id="submit2"]:hover {
   .section-p1 {
     padding: 40px;
   }
+  #jaTem{
+    margin-left: 0%;
+  }
+
 
   #navbar {
     display: flex;
