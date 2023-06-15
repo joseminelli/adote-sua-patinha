@@ -122,7 +122,6 @@ h1 {
   background-color: #165ea8;
 }
 .checkbox.style-c .checkbox__checkmark {
-
   position: absolute;
   top: 5px;
   left: 0;
@@ -433,8 +432,8 @@ button[type="submit"] {
   background-color: #165ea8;
   cursor: pointer;
 }
-#favs p{
-    margin-top: -10%;
+#favs p {
+  margin-top: -10%;
 }
 
 button[type="submit"]:hover {
@@ -442,7 +441,6 @@ button[type="submit"]:hover {
 }
 
 .mural {
-
   margin-left: 4%;
   justify-content: center;
 }
@@ -462,6 +460,24 @@ button[type="submit"]:hover {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
+#filtroH3{
+  display: flex;
+  margin-bottom: 1%;
+  justify-content: center;
+  align-items: center;
+}
+
+#linha-horizontal {
+  align-self:center;
+  justify-content: center;
+  align-items: center;
+  margin-left: 43.5%;
+  width: 100px;
+  margin-bottom: 2%;
+  height: 20px;
+  border-top: 2px solid #074786;
+}
+
 @media screen and (max-width: 576px) {
   .box-select {
     flex-direction: column;
@@ -474,6 +490,24 @@ button[type="submit"]:hover {
     flex-direction: column;
     gap: 5px;
   }
+  #filtroH3{
+    display:flex;
+    margin-bottom: 1%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #linha-horizontal {
+    align-self:center;
+    justify-content: center;
+    align-items: center;
+    margin-left: 33.5%;
+    width: 100px;
+    margin-bottom: 5%;
+    height: 20px;
+    border-top: 2px solid #074786;
+  }
+  
 
   .mural img {
     margin-left: 35px;
@@ -485,7 +519,16 @@ button[type="submit"]:hover {
     width: 150px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   }
-  
+  #formm {
+    background-color: #ffe58b;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color-dark1);
+    color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+  }
 
   .content {
     margin-left: 5%;
@@ -494,16 +537,13 @@ button[type="submit"]:hover {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     padding: 2rem;
     border-radius: 10px;
-    max-width: 85%;
-    min-width: 10%;
     overflow: auto;
   }
 
   .content form {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
     gap: 2rem;
   }
 
