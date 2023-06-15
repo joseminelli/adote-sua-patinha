@@ -485,13 +485,16 @@ button[type="submit"]:hover {
     width: 150px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   }
+  
 
   .content {
-    margin-left: 0%;
+    margin-left: 5%;
+    margin-right: 5%;
     background-color: #ffe58b;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     padding: 2rem;
     border-radius: 10px;
+    max-width: 85%;
     min-width: 10%;
     overflow: auto;
   }
