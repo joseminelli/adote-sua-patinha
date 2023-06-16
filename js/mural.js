@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     racaSelect.addEventListener("change", atualizarFiltro2);
     especieSelect.addEventListener("change", atualizarFiltro2);
     chkFavoritos.addEventListener("change", atualizarFiltro2);
-    
+
     regiaoSelect.addEventListener("change", atualizarFiltro);
     idadeSelect.addEventListener("change", atualizarFiltro);
     racaSelect.addEventListener("change", atualizarFiltro);
@@ -163,6 +163,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         currentPage--;
         currentPageSpan.textContent = "Página " + currentPage;
         atualizarFiltro();
+    window.scrollTo(0, 0);
       }
     });
     
@@ -172,6 +173,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         currentPage++;
         currentPageSpan.textContent = "Página " + currentPage;
         atualizarFiltro();
+        window.scrollTo(0, 0);
       }
     });
 
