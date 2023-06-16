@@ -9,7 +9,7 @@
             "raca2": "Golden",
             "regiao": "pampulha",
             "esp": "cachorros",
-            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837482368958464/img1.jpg"
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119346225179791450/Luke.png"
         },
         {
             "id": 2,
@@ -64,7 +64,7 @@
             "raca2": "Sem raça",
             "regiao": "regiaoOeste",
             "esp": "gatos",
-            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1109837504074498108/img6.png"
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119345746320310302/Pufe.png"
         },
         {
             "id": 7,
@@ -163,7 +163,7 @@
             "raca2": "Sem raça",
             "regiao": "pampulha",
             "esp": "cachorros",
-            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1118248903398142093/IMG_5798.jpg"
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119345758634778754/Bradock.png"
         },
         {
             "id": 16,
@@ -240,7 +240,7 @@
             "raca2": "Sem raça",
             "regiao": "regiaoLeste",
             "esp": "cachorros",
-            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1118884600681332736/IMG_7166.jpg"
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119345774053040170/Adilson.png"
         },
         {
             "id": 23,
@@ -251,7 +251,7 @@
             "raca2": "Corgi",
             "regiao": "pampulha",
             "esp": "cachorros",
-            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1118904822310129704/IMG_7169.png"
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119345785876783225/pop.png"
         },
         {
             "id": 24,
@@ -263,6 +263,203 @@
             "regiao": "regiaoLeste",
             "esp": "cachorros",
             "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1118904811782418432/IMG_7168.png"
+        },{
+            "id": 25,
+            "name": "Nana",
+            "age": 0,
+            "description": "Pequeno",
+            "raca": "srd",
+            "raca2": "Sem raça",
+            "regiao": "regiaoOeste",
+            "esp": "cachorros",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119336234548994068/Sem_titulo.png"
+        },
+        {
+            "id": 26,
+            "name": "Luke",
+            "age": 0,
+            "description": "Meigo, dengoss e dócil",
+            "raca": "golden",
+            "raca2": "Golden",
+            "regiao": "pampulha",
+            "esp": "cachorros",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119345734630785094/luke.png"
+        },
+        {
+            "id": 27,
+            "name": "Mike",
+            "age": 0,
+            "description": "Muito amável e carinhoso",
+            "raca": "srd",
+            "raca2": "Sem raça",
+            "regiao": "pampulha",
+            "esp": "gatos",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119345791530713158/Mike.png"
+        },
+        {
+            "id": 28,
+            "name": "Alpha",
+            "age": 3,
+            "description": "Carinhoso",
+            "raca": "srd",
+            "raca2": "Sem raça",
+            "regiao": "regiaoNordeste",
+            "esp": "cachorros",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119336335153561751/cao-feliz-vertical-uma-imagem-aproximada-de-um-cachorro-com-lingua-para-fora-e-olhar-em-seu-rosto-210914013.webp"
+        },
+        {
+            "id": 29,
+            "name": "Garfild",
+            "age": 4,
+            "description": "Companheiro",
+            "raca": "srd",
+            "raca2": "Sem raça",
+            "regiao": "vendaNova",
+            "esp": "gatos",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119345694847815680/Garfild.png"
+        },
+        {
+            "id": 30,
+            "name": "Bolt",
+            "age": 3,
+            "description": "Carente",
+            "raca": "srd",
+            "raca2": "Sem raça",
+            "regiao": "regiaoOeste",
+            "esp": "cachorros",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119345703865561218/Bolt.png"
+        },
+        {
+            "id": 31,
+            "name": "Frajola",
+            "age": 5,
+            "description": "Calmo e atento",
+            "raca": "srd",
+            "raca2": "Sem raça",
+            "regiao": "pampulha",
+            "esp": "gatos",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119345710899400714/Frajola.png"
+        },
+        {
+            "id": 32,
+            "name": "Sol",
+            "age": 5,
+            "description": "Feliz",
+            "raca": "salsinha",
+            "raca2": "Salsinha",
+            "regiao": "regiaoLeste",
+            "esp": "cachorros",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119345724518318080/Sol.png"
+        },
+        {
+            "id": 33,
+            "name": "Samba",
+            "age": 4,
+            "description": "Agitado",
+            "raca": "srd",
+            "raca2": "Sem raça",
+            "regiao": "barreiro",
+            "esp": "gatos",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119345739932368906/Samba.png"
+        },
+        {
+            "id": 34,
+            "name": "Pixie",
+            "age": 4,
+            "description": "Feliz",
+            "raca": "srd",
+            "raca2": "Sem raça",
+            "regiao": "barreiro",
+            "esp": "gatos",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119346225179791450/Luke.png"
+        },
+        {
+            "id": 35,
+            "name": "Atlas",
+            "age": 4,
+            "description": "Bravo",
+            "raca": "chihuahua",
+            "raca2": "Chihuahua",
+            "regiao": "regiaoNordeste",
+            "esp": "cachorros",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119345761407217725/chiwawa.png"
+        },
+        {
+            "id": 36,
+            "name": "Alfa",
+            "age": 3,
+            "description": "Quieto",
+            "raca": "yorkshire",
+            "raca2": "Yorkshire",
+            "regiao": "regiaoNoroeste",
+            "esp": "cachorros",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119345780478718063/Alfa.png"
+        },
+        {
+            "id": 37,
+            "name": "Pops",
+            "age": 2,
+            "description": "Fofo",
+            "raca": "husky",
+            "raca2": "Husky",
+            "regiao": "vendaNova",
+            "esp": "cachorros",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119345717903888494/Pops.png"
+        },
+        {
+            "id": 38,
+            "name": "Koda",
+            "age": 3,
+            "description": "Fofo",
+            "raca": "shiba",
+            "raca2": "Shiba",
+            "regiao": "pampulha",
+            "esp": "cachorros",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119336606105620611/shiba.png"
+        },
+        {
+            "id": 39,
+            "name": "Meggy",
+            "age": 6,
+            "description": "Quieto",
+            "raca": "srd",
+            "raca2": "Sem raça",
+            "regiao": "pampulha",
+            "esp": "cachorros",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119345798166085733/Meggy.png"
+        },
+        {
+            "id": 40,
+            "name": "Lua",
+            "age": 4,
+            "description": "Quieto",
+            "raca": "srd",
+            "raca2": "Sem raça",
+            "regiao": "regiaoNoroeste",
+            "esp": "cachorros",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119336634949849128/Semtitulo.png"
+        },
+        {
+            "id": 41,
+            "name": "Brutus",
+            "age": 1,
+            "description": "Calmo",
+            "raca": "pastor",
+            "raca2": "Pastor Alemão",
+            "regiao": "regiaoOeste",
+            "esp": "cachorros",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119337045526073354/retrato-de-um-cao-pastor-alemao-em-preto.png"
+        },
+        {
+            "id": 42,
+            "name": "Cookie",
+            "age": 0,
+            "description": "Quieto",
+            "raca": "bernese",
+            "raca2": "Bernese",
+            "regiao": "regiaoOeste",
+            "esp": "cachorros",
+            "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119337055869210694/cachorrinho-fofo-no-jardim.png"
         }
     ]
 }
