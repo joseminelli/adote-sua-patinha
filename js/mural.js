@@ -23,6 +23,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     const racaSelect = document.getElementById("raca");
     const especieSelect = document.getElementById("especie");
 
+    regiaoSelect.addEventListener("change", atualizarFiltro2);
+    idadeSelect.addEventListener("change", atualizarFiltro2);
+    racaSelect.addEventListener("change", atualizarFiltro2);
+    especieSelect.addEventListener("change", atualizarFiltro2);
+    chkFavoritos.addEventListener("change", atualizarFiltro2);
+    
     regiaoSelect.addEventListener("change", atualizarFiltro);
     idadeSelect.addEventListener("change", atualizarFiltro);
     racaSelect.addEventListener("change", atualizarFiltro);
@@ -30,11 +36,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     chkFavoritos.addEventListener("change", atualizarFiltro);
 
     
-    regiaoSelect.addEventListener("change", atualizarFiltro2);
-    idadeSelect.addEventListener("change", atualizarFiltro2);
-    racaSelect.addEventListener("change", atualizarFiltro2);
-    especieSelect.addEventListener("change", atualizarFiltro2);
-    chkFavoritos.addEventListener("change", atualizarFiltro2);
 
     function atualizarFiltro2() {
       currentPage = 1;
