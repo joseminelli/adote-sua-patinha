@@ -6,10 +6,10 @@ const telefone1 = document.getElementById('telefone');
 const fotopet = document.getElementById('fotopet');
 var login = localStorage.getItem("login");
 const delBtnDiv = document.getElementById("delBtnDiv");
-const btnDel = document.getElementById("btnDel");
 
 
 document.addEventListener("DOMContentLoaded", function () {
+    
     //não acessa a página se não tiver login
     if(login != "true"){
         window.location.href = "index.html";
@@ -21,7 +21,17 @@ document.addEventListener("DOMContentLoaded", function () {
     var caminhoImagem = localStorage.getItem("imagempessoa");
     var caminhoImagem2 = localStorage.getItem("imagempet");
     var telefone = localStorage.getItem("telefone");
-
+    delBtnDiv.addEventListener("click", function () {
+        localStorage.removeItem("nome");
+        localStorage.removeItem("idade");
+        localStorage.removeItem("raca");
+        localStorage.removeItem("descricao");
+        localStorage.removeItem("imagempet");
+        imgElement2.style.display = "none";
+        comPet.style.display = "none";
+        semPet.style.display = "run-in";
+        delBtnDiv.style.display = "none";
+    });
     // Exibe eles na página
     nome.innerHTML = nome2;
     idade.innerHTML = idade2 + " Anos";
@@ -38,10 +48,12 @@ document.addEventListener("DOMContentLoaded", function () {
         imgElement2.style.display = "none";
         comPet.style.display = "none";
         semPet.style.display = "run-in";
+        delBtnDiv.style.display = "none";
     }else{
         imgElement2.src = caminhoImagem2;
         semPet.style.display = "none";
         comPet.style.display = "run-in";
+        delBtnDiv.style.display = "run-in";
     }
 
 });

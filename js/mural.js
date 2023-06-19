@@ -12,12 +12,11 @@ document.addEventListener("DOMContentLoaded", async function () {
   var response = await fetch("js/pets.json");
   var data = await response.json();
   var qtdPets = data.pets.length;
-  const petsPorPagina = 28; // Número máximo de pets por página
-  let currentPage = 1; // Página atual
-  const totalPages = Math.ceil(qtdPets / petsPorPagina); // Número total de páginas
+  const petsPorPagina = 28;
+  let currentPage = 1;
+  const totalPages = Math.ceil(qtdPets / petsPorPagina);
   console.log(qtdPets);
   if (taNoMural) {
-
     const regiaoSelect = document.getElementById("bairro2");
     const idadeSelect = document.getElementById("idade");
     const racaSelect = document.getElementById("raca");
@@ -35,15 +34,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     especieSelect.addEventListener("change", atualizarFiltro);
     chkFavoritos.addEventListener("change", atualizarFiltro);
 
-    
-
     function atualizarFiltro2() {
       currentPage = 1;
       currentPageSpan.textContent = "Página " + currentPage;
     }
 
     function atualizarFiltro() {
-      let petsDisponiveis = 0; // Contador de pets disponíveis
+      let petsDisponiveis = 0;
       const startIndex = (currentPage - 1) * petsPorPagina;
       const endIndex = startIndex + petsPorPagina;
 
@@ -71,16 +68,17 @@ document.addEventListener("DOMContentLoaded", async function () {
       }
 
       const petsContainer = document.getElementById("petsf");
-      petsContainer.innerHTML = ""; // Limpar os pets exibidos anteriormente
+      petsContainer.innerHTML = "";
 
       if (petsFiltrados.length === 0) {
-        textoMural.textContent = "Nenhum pet disponível com os filtros selecionados.";
-        return; // Encerrar a função se não houver pets filtrados
+        textoMural.textContent =
+          "Nenhum pet disponível com os filtros selecionados.";
+        return;
       }
 
       for (let i = startIndex; i < endIndex; i++) {
         if (i >= petsFiltrados.length) {
-          break; // Encerrar o loop se não houver mais pets para exibir
+          break;
         }
 
         const pet = petsFiltrados[i];
@@ -163,11 +161,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         currentPage--;
         currentPageSpan.textContent = "Página " + currentPage;
         atualizarFiltro();
-    window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
       }
     });
-    
-    
+
     nextPageBtn.addEventListener("click", function () {
       if (currentPage < totalPages) {
         currentPage++;
