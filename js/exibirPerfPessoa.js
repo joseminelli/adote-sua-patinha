@@ -1,9 +1,12 @@
 const nome = document.getElementById('name');
+const fotoPet = document.getElementById('fotoPet');
 const idade = document.getElementById('idade');
 const bairro1 = document.getElementById('bairro');
 const telefone1 = document.getElementById('telefone');
 const fotopet = document.getElementById('fotopet');
 var login = localStorage.getItem("login");
+const delBtnDiv = document.getElementById("delBtnDiv");
+const btnDel = document.getElementById("btnDel");
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -31,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var imgElement2 = document.getElementById("fotopet");
     const comPet = document.getElementById('spet');
     const semPet = document.getElementById('npet');
-
     if(caminhoImagem2 == null){
         imgElement2.style.display = "none";
         comPet.style.display = "none";

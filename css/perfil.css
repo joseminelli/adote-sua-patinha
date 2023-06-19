@@ -283,6 +283,28 @@ button[type="submit"]:hover {
   display: none;
 }
 
+.x1 {
+  width: 15px;
+  border-bottom: solid 4px#ff0000;
+  border-radius: 35%;
+  transform: rotate(45deg);
+}
+
+.x2 {
+  position: absolute;
+  width: 16px;
+  border-bottom: solid 4px#ff0000;
+  border-radius: 35%;
+  transform: rotate(-45deg);
+}
+
+.btnDel {
+  display: flex;
+  position: relative;
+  right: -90%;
+  margin-bottom: -7%;
+}
+
 .picture {
   border-radius: 10px;
   width: 200px;
@@ -460,6 +482,12 @@ button[type="submit"]:hover {
 
   #box {
     height: 400px;
+  }
+
+
+  .btnDel {
+    right: -83%;
+    margin-bottom: -25%;
   }
 
   .content img {
