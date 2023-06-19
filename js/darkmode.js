@@ -2,8 +2,8 @@ var sun = document.getElementById("sun");
 const body = document.querySelector("body");
 const p = document.querySelector("div.mural > p");
 const h1 = document.querySelector("div#texto > h1");
+const noPostsMessage = document.getElementById("noPostsMessage");
 
-// Verifica o estado do modo escuro no localStorage ao carregar a página
 document.addEventListener("DOMContentLoaded", function () {
   var darkModeEnabled = localStorage.getItem("darkModeEnabled");
 
@@ -12,11 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Alterna o modo escuro ao clicar no botão "sun"
 sun.onclick = function () {
   sun.classList.toggle("night");
-
-  // Verifica se o modo escuro está ativado
   var darkModeEnabled = localStorage.getItem("darkModeEnabled");
 
   if (darkModeEnabled === "true") {
@@ -26,30 +23,30 @@ sun.onclick = function () {
   }
 };
 
-// Função para ativar o modo escuro
+
 function enableDarkMode() {
-  // Atualiza a classe do botão "sun"
   sun.classList.add("darkToggle");
-
-  // Aplica as alterações de estilo para o modo escuro
   body.style.background = "#1a1a1a";
-  p.style.color = "#ffffff";
   body.style.transition = "1s";
-
-  // Armazena o estado do modo escuro no localStorage
   localStorage.setItem("darkModeEnabled", "true");
+  if(p){
+    p.style.color = "#ffffff";
+  }
+  if(noPostsMessage){
+    noPostsMessage.style.color = "#ffffff";
+  }
 }
 
-// Função para desativar o modo escuro
+
 function disableDarkMode() {
-  // Remove a classe do botão "sun"
   sun.classList.remove("darkToggle");
-
-  // Reverte as alterações de estilo para o modo claro
   body.style.background = "#ffffff";
-  p.style.color = "#1a1a1a";
   body.style.transition = "1s";
-
-  // Armazena o estado do modo escuro no localStorage
   localStorage.setItem("darkModeEnabled", "false");
+  if(p){
+    p.style.color = "#1a1a1a";
+  }
+  if(noPostsMessage){
+    noPostsMessage.style.color = "#1a1a1a";
+  }
 }

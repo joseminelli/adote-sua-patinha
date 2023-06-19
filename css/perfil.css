@@ -275,7 +275,7 @@ button[type="submit"]:hover {
 #linha-vertical {
   height: 600px;
   margin-left: 10%;
-  border-right: 4px solid #074786;
+  border-right: 4px solid #165ea8;
   border-radius: 10px;
 }
 
@@ -403,7 +403,7 @@ button[type="submit"]:hover {
     height: 400px;
     margin-left: 10%;
     margin-top: 8%;
-    border-right: 4px solid #074786;
+    border-right: 4px solid #165ea8;
     border-radius: 10px;
   }
 
@@ -427,7 +427,7 @@ button[type="submit"]:hover {
     height: 400px;
     margin-left: 10%;
     margin-top: 4%;
-    border-right: 4px solid #074786;
+    border-right: 4px solid #165ea8;
     border-radius: 10px;
   }
 
@@ -494,7 +494,7 @@ button[type="submit"]:hover {
   #linha-vertical {
     height: 0px;
     margin-left: 0%;
-    border-right: 0px solid #074786;
+    border-right: 0px solid #165ea8;
     border-radius: 0px;
   }
 

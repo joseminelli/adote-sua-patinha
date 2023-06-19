@@ -46,7 +46,7 @@ h1 {
 #linha-horizontal {
   margin-top: 9px;
   width: 200px;
-  border: 1px solid #074786;
+  border: 1px solid #165ea8;
 }
 
 h2 {
@@ -210,7 +210,7 @@ h1 {
   margin-right: 15%;
   margin-bottom: 5%;
   height: 200px;
-  border-right: 4px solid #074786;
+  border-right: 4px solid #165ea8;
   border-radius: 1px;
 }
 

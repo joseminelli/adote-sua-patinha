@@ -477,6 +477,9 @@ button[type="submit"]:hover {
   margin-left: 4%;
   justify-content: center;
 }
+#textoMural{
+ font-size: 21px;
+}
 
 .mural p {
   margin-left: 50px;
@@ -515,7 +518,7 @@ button[type="submit"]:hover {
   width: 100px;
   margin-bottom: 2%;
   height: 20px;
-  border-top: 2px solid #074786;
+  border-top: 2px solid #165ea8;
 }
 
 @media screen and (max-width: 576px) {
@@ -548,7 +551,7 @@ button[type="submit"]:hover {
     width: 100px;
     margin-bottom: 5%;
     height: 20px;
-    border-top: 2px solid #074786;
+    border-top: 2px solid #165ea8;
   }
 
   .mural img {
@@ -667,5 +670,8 @@ button[type="submit"]:hover {
 @media (max-width: 1700px) {
   .mural {
     margin-left: 7.2%;
+  }
+  #textoMural{
+   font-size: 18px;
   }
 }
