@@ -43,7 +43,8 @@ h1 {
 
 .imagem-container {
   position: relative;
-  display: inline-block; /* Para garantir que o contêiner tenha o tamanho adequado */
+  display: inline-block;
+  /* Para garantir que o contêiner tenha o tamanho adequado */
 }
 
 .btn-favorito {
@@ -102,6 +103,7 @@ h1 {
   -ms-user-select: none;
   user-select: none;
 }
+
 .checkbox.style-c input {
   position: absolute;
   opacity: 0;
@@ -109,18 +111,23 @@ h1 {
   height: 0;
   width: 0;
 }
-.checkbox.style-c input:checked ~ .checkbox__checkmark {
+
+.checkbox.style-c input:checked~.checkbox__checkmark {
   background-color: #165ea8;
 }
-.checkbox.style-c input:checked ~ .checkbox__checkmark:after {
+
+.checkbox.style-c input:checked~.checkbox__checkmark:after {
   opacity: 1;
 }
-.checkbox.style-c:hover input ~ .checkbox__checkmark {
+
+.checkbox.style-c:hover input~.checkbox__checkmark {
   background-color: #fcfcfc2c;
 }
-.checkbox.style-c:hover input:checked ~ .checkbox__checkmark {
+
+.checkbox.style-c:hover input:checked~.checkbox__checkmark {
   background-color: #165ea8;
 }
+
 .checkbox.style-c .checkbox__checkmark {
   position: absolute;
   top: 5px;
@@ -132,6 +139,7 @@ h1 {
   transition: background-color 0.25s ease;
   border-radius: 4px;
 }
+
 .checkbox.style-c .checkbox__checkmark:after {
   content: "";
   position: absolute;
@@ -145,6 +153,7 @@ h1 {
   opacity: 0;
   transition: opacity 0.25s ease;
 }
+
 hr {
   background-color: #165ea8;
 }
@@ -432,6 +441,7 @@ button[type="submit"] {
   background-color: #165ea8;
   cursor: pointer;
 }
+
 #favs p {
   margin-top: -10%;
 }
@@ -454,6 +464,7 @@ button[type="submit"]:hover {
   background-color: #165ea8;
   cursor: pointer;
 }
+
 #prevPage {
   margin-right: 2%;
   padding: 1rem;
@@ -466,19 +477,22 @@ button[type="submit"]:hover {
   background-color: #165ea8;
   cursor: pointer;
 }
-#pagination{
+
+#pagination {
   margin-top: 5%;
   margin-bottom: 2%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .mural {
   margin-left: 4%;
   justify-content: center;
 }
-#textoMural{
- font-size: 21px;
+
+#textoMural {
+  font-size: 21px;
 }
 
 .mural p {
@@ -533,8 +547,13 @@ button[type="submit"]:hover {
     flex-direction: column;
     gap: 5px;
   }
+
   #filtroH3 {
     margin-bottom: 1%;
+  }
+
+  #textoMural {
+    font-size:11px;
   }
 
   #formHeader {
@@ -545,6 +564,7 @@ button[type="submit"]:hover {
     left: 0;
     z-index: 1;
   }
+
 
   #linha-horizontal {
     margin-left: 33.5%;
@@ -564,6 +584,7 @@ button[type="submit"]:hover {
     width: 150px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   }
+
   #formm {
     background-color: #ffe58b;
     font-family: Arial, Helvetica, sans-serif;
@@ -671,7 +692,8 @@ button[type="submit"]:hover {
   .mural {
     margin-left: 7.2%;
   }
-  #textoMural{
-   font-size: 18px;
+
+  #textoMural {
+    font-size: 17px;
   }
 }
