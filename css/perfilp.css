@@ -381,6 +381,17 @@ button[type="submit"]:hover {
     right: -9px;
 }
 
+#erro404{
+  display: flex;
+  margin-left: 36%;
+  align-items: center;
+  justify-content: center;
+}
+
+#erro404 h2{
+  margin-left: 11%;
+}
+
 .sun.night div{
     width: 0;
 }
@@ -425,6 +436,16 @@ button[type="submit"]:hover {
     height: 400px;
   }
   
+  #erro404{
+    display: flex;
+    margin-left: 8%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #erro404 h2{
+    margin-left: 11%;
+  }
 
   .mural {
     margin-top: 17%;

@@ -284,7 +284,7 @@ button[type="submit"]:hover {
 }
 
 .x1 {
-  width: 15px;
+  width: 20px;
   border-bottom: solid 4px#ff0000;
   border-radius: 35%;
   transform: rotate(45deg);
@@ -292,7 +292,7 @@ button[type="submit"]:hover {
 
 .x2 {
   position: absolute;
-  width: 16px;
+  width: 20px;
   border-bottom: solid 4px#ff0000;
   border-radius: 35%;
   transform: rotate(-45deg);
@@ -301,8 +301,8 @@ button[type="submit"]:hover {
 .btnDel {
   display: flex;
   position: relative;
-  right: -90%;
-  margin-bottom: -7%;
+  right: -89%;
+  margin-bottom: -8%;
 }
 
 .picture {

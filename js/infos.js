@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   var data = await response.json();
   const url = new URL(window.location.href);
   const numpet = url.searchParams.get("pet");
+  const box = document.getElementById("box");
 
   const petInfo = data.pets.find(findByID);
   console.log(petInfo);
@@ -13,22 +14,18 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   if (petInfo) {
     // Atualize os elementos HTML com as informações obtidas
-
-    const nomeElement = document.getElementById("name");
-    nomeElement.innerHTML = petInfo.name;
-
-    const idadeElement = document.getElementById("idade");
-    idadeElement.innerHTML = petInfo.age;
-
-    const bairroElement = document.getElementById("raca");
-    bairroElement.innerHTML = petInfo.raca2;
-
-    const celElement = document.getElementById("desc");
-    celElement.innerHTML = petInfo.description;
-
     const picElement = document.getElementById("imagem");
+    const celElement = document.getElementById("desc");
+    const bairroElement = document.getElementById("raca");
+    const idadeElement = document.getElementById("idade");
+    const nomeElement = document.getElementById("name");
+
+    nomeElement.innerHTML = petInfo.name;
+    idadeElement.innerHTML = petInfo.age;
+    bairroElement.innerHTML = petInfo.raca2;
+    celElement.innerHTML = petInfo.description;
     picElement.src = petInfo.image;
   } else {
-    console.log("Pet não encontrado");
+    box.innerHTML = "<div id='erro404'><div><h2>Erro 404</h2><div></div><p>O pet escolhido não foi encontrado</p></div></div>";
   }
 });
