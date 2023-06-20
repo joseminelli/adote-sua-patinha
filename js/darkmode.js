@@ -1,7 +1,7 @@
 var sun = document.getElementById("sun");
 const body = document.querySelector("body");
 const p = document.querySelector("div.mural > p");
-const h1 = document.querySelector("div#texto > h1");
+const logintxt = document.getElementById("logintxt");
 const noPostsMessage = document.getElementById("noPostsMessage");
 const npet = document.getElementById("npet");
 
@@ -36,6 +36,10 @@ function enableDarkMode() {
   if(p){
     p.style.color = "#ffffff";
   }
+  if(logintxt){
+    logintxt.style.color = "#ffffff";
+    console.log("teste");
+  }
   if(npet){
     npet.style.color = "#ffffff";
   }
@@ -55,6 +59,10 @@ function disableDarkMode() {
   }
   if(npet){
     npet.style.color = "#1a1a1a";
+  }
+  if(logintxt){
+    logintxt.style.color = "#1a1a1a";
+    console.log("teste1");
   }
   if(noPostsMessage){
     noPostsMessage.style.color = "#1a1a1a";
