@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (darkModeEnabled === "true") {
     enableDarkMode();
+    sun.classList.toggle("night");
     
-  sun.classList.toggle("night");
   }
 });
 
@@ -24,52 +24,65 @@ sun.onclick = function () {
     disableDarkMode();
   } else {
     enableDarkMode();
-    
   }
 };
 
-
 function enableDarkMode() {
+  const h2Erro = document.getElementById("h2Erro");
+  const pErro = document.getElementById("pErro");
   sun.classList.add("darkToggle");
   body.style.background = "#121212";
   body.style.transition = "0.6s";
   localStorage.setItem("darkModeEnabled", "true");
-  if(p){
+  if (p) {
     p.style.color = "#ffffff";
   }
-  if(logintxt){
+  if (logintxt) {
     logintxt.style.color = "#ffffff";
   }
-  if(currentPage){
+  if (currentPage) {
     currentPage.style.color = "#ffffff";
   }
-  if(npet){
+  if (npet) {
     npet.style.color = "#ffffff";
   }
-  if(noPostsMessage){
+  if (h2Erro) {
+    h2Erro.style.color = "#ffffff";
+  }
+  if (pErro) {
+    pErro.style.color = "#ffffff";
+  }
+  if (noPostsMessage) {
     noPostsMessage.style.color = "#ffffff";
   }
 }
 
-
 function disableDarkMode() {
+  const h2Erro = document.getElementById("h2Erro");
+  const pErro = document.getElementById("pErro");
   sun.classList.remove("darkToggle");
   body.style.background = "#ffffff";
   body.style.transition = "0.6s";
   localStorage.setItem("darkModeEnabled", "false");
-  if(p){
+  if (p) {
     p.style.color = "#121212";
   }
-  if(npet){
+  if (npet) {
     npet.style.color = "#121212";
   }
-  if(logintxt){
+  if (h2Erro) {
+    h2Erro.style.color = "#121212";
+  }
+  if (pErro) {
+    pErro.style.color = "#121212";
+  }
+  if (logintxt) {
     logintxt.style.color = "#121212";
   }
-  if(currentPage){
+  if (currentPage) {
     currentPage.style.color = "#121212";
   }
-  if(noPostsMessage){
+  if (noPostsMessage) {
     noPostsMessage.style.color = "#121212";
   }
 }

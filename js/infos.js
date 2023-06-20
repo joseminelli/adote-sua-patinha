@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   const box = document.getElementById("box");
 
   const petInfo = data.pets.find(findByID);
-  console.log(petInfo);
 
   function findByID(pet) {
     return pet.id == numpet;
@@ -26,6 +25,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     celElement.innerHTML = petInfo.description;
     picElement.src = petInfo.image;
   } else {
-    box.innerHTML = "<div id='erro404'><div><h2>Erro 404</h2><div></div><p>O pet escolhido não foi encontrado</p></div></div>";
+    box.innerHTML = "<div id='erro404'><div><h2 id='h2Erro'>Erro 404</h2><p id='pErro'>O pet escolhido não foi encontrado</p></div></div>";
   }
 });
