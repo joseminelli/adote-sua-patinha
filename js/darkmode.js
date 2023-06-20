@@ -31,7 +31,7 @@ function enableDarkMode() {
   const h2Erro = document.getElementById("h2Erro");
   const pErro = document.getElementById("pErro");
   sun.classList.add("darkToggle");
-  body.style.background = "#121212";
+  body.style.background = "#282828";
   body.style.transition = "0.6s";
   localStorage.setItem("darkModeEnabled", "true");
   if (p) {
@@ -65,24 +65,24 @@ function disableDarkMode() {
   body.style.transition = "0.6s";
   localStorage.setItem("darkModeEnabled", "false");
   if (p) {
-    p.style.color = "#121212";
+    p.style.color = "#282828";
   }
   if (npet) {
-    npet.style.color = "#121212";
+    npet.style.color = "#282828";
   }
   if (h2Erro) {
-    h2Erro.style.color = "#121212";
+    h2Erro.style.color = "#282828";
   }
   if (pErro) {
-    pErro.style.color = "#121212";
+    pErro.style.color = "#282828";
   }
   if (logintxt) {
-    logintxt.style.color = "#121212";
+    logintxt.style.color = "#282828";
   }
   if (currentPage) {
-    currentPage.style.color = "#121212";
+    currentPage.style.color = "#282828";
   }
   if (noPostsMessage) {
-    noPostsMessage.style.color = "#121212";
+    noPostsMessage.style.color = "#282828";
   }
 }
