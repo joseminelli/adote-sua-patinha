@@ -6,6 +6,7 @@ const box = document.getElementById("box");
 var login = localStorage.getItem("login");
 
 document.addEventListener("DOMContentLoaded", function () {
+  var darkModeEnabled = localStorage.getItem("darkModeEnabled");
   box.style.justifyContent = "left";
   if (login != "true") {
     window.location.href = "index.html";
@@ -26,6 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
     imgElement.src = caminhoImagem;
   } else {
     box.style.justifyContent = "center";
-    box.innerHTML = "<div id='erro404'><div><h2 id='h2Erro'>Algo deu errado</h2><p id='pErro'>O pet escolhido não foi encontrado</p></div><img id='imagemErro' src='./img/4042.png'></div>";
+    box.innerHTML =
+      "<div id='erro404'><div><h2 id='h2Erro'>Algo deu errado</h2><p id='pErro'>O pet escolhido não foi encontrado</p></div><img id='imagemErro' src='./img/4042.png'></div>";
+    if (darkModeEnabled === "true") {
+      h2Erro.style.color = "#fff";
+    }
   }
 });

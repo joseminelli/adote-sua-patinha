@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", async function () {
+  var darkModeEnabled = localStorage.getItem("darkModeEnabled");
   var response = await fetch("js/pets.json");
   var data = await response.json();
   const url = new URL(window.location.href);
@@ -27,5 +28,9 @@ document.addEventListener("DOMContentLoaded", async function () {
   } else {
     box.style.justifyContent = "center";
     box.innerHTML = "<div id='erro404'><div><h2 id='h2Erro'>Algo deu errado</h2><p id='pErro'>O pet escolhido não foi encontrado</p></div><img id='imagemErro' src='./img/4042.png'></div>";
+    if (darkModeEnabled === "true") {
+      h2Erro.style.color = "#fff";
+      pErro.style.color = "#fff";
+    }
   }
 });
