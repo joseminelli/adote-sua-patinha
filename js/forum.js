@@ -162,7 +162,7 @@ function CustomAlert2() {
       alertHeader.style.display = "none";
     } else {
       alertHeader.innerHTML =
-        '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' +
+        '<i id="exclamacao" class="fa fa-exclamation-circle" aria-hidden="true"></i> ' +
         title +
         '<button id="fechaModal">X</button>';
     }
@@ -190,9 +190,9 @@ function CustomAlert2() {
     var alertFooter = document.getElementById("alertFooter");
 
     alertHeader.innerHTML =
-      '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' +
+      '<div id="headerModal"><i id="exclamacao"class="fa fa-exclamation-circle" aria-hidden="true"></i> ' +
       title +
-      '<button id="fechaModal">X</button>';
+      '<button id="fechaModal"><b>X</b></button></div>';
 
     alertBody.innerHTML =
       '<div class="input-container">' +
@@ -208,7 +208,7 @@ function CustomAlert2() {
       "  </select>" +
       "</div>" +
       '<div class="input-container">' +
-      '<p class="modalp">Descrição</p>' +
+      '<p class="modalp">Texto:</p>' +
       '  <input type="text" id="input2" class="inputmodal" placeholder="Dê mais detalhes sobre seu post">' +
       "</div>";
 

@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (darkModeEnabled === "true") {
     enableDarkMode();
+    
+  sun.classList.toggle("night");
   }
 });
 
@@ -20,6 +22,7 @@ sun.onclick = function () {
     disableDarkMode();
   } else {
     enableDarkMode();
+    
   }
 };
 

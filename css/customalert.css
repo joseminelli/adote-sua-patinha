@@ -43,6 +43,7 @@
         transform: translateZ(0) rotateY(0);
     }
 }
+
 #overlay {
     display: none;
     position: fixed;
@@ -53,16 +54,17 @@
     transition: all 1s;
     background-color: rgba(43, 43, 43, 0.295);
     backdrop-filter: blur(3px);
-  }
-  .animado{
+}
+
+.animado {
     background-color: rgba(43, 43, 43, 0.295);
     backdrop-filter: blur(3px);
     transition: all 1s;
-  }
-  
+}
+
 
 #dialogbox {
-    position:fixed;
+    position: fixed;
     top: 40%;
     left: calc(40% - 145px);
     display: none;
@@ -75,9 +77,22 @@
     margin: auto;
 }
 
+#headerModal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#fechaModal {
+    margin-left: 62%;
+}
+
+#exclamacao {
+    margin-right: 2%;
+}
 
 #dialogbox2 {
-    position:fixed;
+    position: fixed;
     top: 22%;
     left: calc(40% - 145px);
     display: none;
@@ -270,21 +285,22 @@
     width: 100%;
     box-sizing: border-box;
     transition: 0.3s;
-  }
-  
-  .dropdown:focus {
+}
+
+.dropdown:focus {
     border-color: #165ea8;
-  }
+}
+
 .input-container {
     margin-bottom: 10px;
-  }
-  
-  .input-container input,
-  .input-container select {
+}
+
+.input-container input,
+.input-container select {
     width: 100%;
     padding: 5px;
     box-sizing: border-box;
-  }
+}
 
 
 @media (max-width: 455px) {
@@ -293,12 +309,17 @@
         left: calc(38% - 100px);
         display: none;
         width: 70%;
-    }   
+    }
+
+
+    #fechaModal {
+        margin-left: 30%;
+    }
 
     #dialogbox2 {
         top: 25%;
         left: calc(30% - 100px);
         display: none;
         width: 90%;
-    }   
+    }
 }
