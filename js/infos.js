@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   if (petInfo) {
     box.style.justifyContent = "left";
-    // Atualize os elementos HTML com as informações obtidas
     const picElement = document.getElementById("imagem");
     const celElement = document.getElementById("desc");
     const bairroElement = document.getElementById("raca");
@@ -27,6 +26,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     picElement.src = petInfo.image;
   } else {
     box.style.justifyContent = "center";
-    box.innerHTML = "<div id='erro404'><div><h2 id='h2Erro'>Algo deu errado</h2><p id='pErro'>O pet escolhido não foi encontrado</p></div><img id='imagemErro' src='./img/404.png'></div>";
+    box.innerHTML = "<div id='erro404'><div><h2 id='h2Erro'>Algo deu errado</h2><p id='pErro'>O pet escolhido não foi encontrado</p></div><img id='imagemErro' src='./img/4042.png'></div>";
   }
 });
