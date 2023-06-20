@@ -4,6 +4,7 @@ const p = document.querySelector("div.mural > p");
 const logintxt = document.getElementById("logintxt");
 const noPostsMessage = document.getElementById("noPostsMessage");
 const npet = document.getElementById("npet");
+const currentPage = document.getElementById("currentPage");
 
 document.addEventListener("DOMContentLoaded", function () {
   var darkModeEnabled = localStorage.getItem("darkModeEnabled");
@@ -30,7 +31,7 @@ sun.onclick = function () {
 
 function enableDarkMode() {
   sun.classList.add("darkToggle");
-  body.style.background = "#1a1a1a";
+  body.style.background = "#121212";
   body.style.transition = "0.6s";
   localStorage.setItem("darkModeEnabled", "true");
   if(p){
@@ -38,7 +39,9 @@ function enableDarkMode() {
   }
   if(logintxt){
     logintxt.style.color = "#ffffff";
-    console.log("teste");
+  }
+  if(currentPage){
+    currentPage.style.color = "#ffffff";
   }
   if(npet){
     npet.style.color = "#ffffff";
@@ -55,16 +58,18 @@ function disableDarkMode() {
   body.style.transition = "0.6s";
   localStorage.setItem("darkModeEnabled", "false");
   if(p){
-    p.style.color = "#1a1a1a";
+    p.style.color = "#121212";
   }
   if(npet){
-    npet.style.color = "#1a1a1a";
+    npet.style.color = "#121212";
   }
   if(logintxt){
-    logintxt.style.color = "#1a1a1a";
-    console.log("teste1");
+    logintxt.style.color = "#121212";
+  }
+  if(currentPage){
+    currentPage.style.color = "#121212";
   }
   if(noPostsMessage){
-    noPostsMessage.style.color = "#1a1a1a";
+    noPostsMessage.style.color = "#121212";
   }
 }
