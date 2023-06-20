@@ -31,7 +31,7 @@ sun.onclick = function () {
 function enableDarkMode() {
   sun.classList.add("darkToggle");
   body.style.background = "#1a1a1a";
-  body.style.transition = "1s";
+  body.style.transition = "0.6s";
   localStorage.setItem("darkModeEnabled", "true");
   if(p){
     p.style.color = "#ffffff";
@@ -48,7 +48,7 @@ function enableDarkMode() {
 function disableDarkMode() {
   sun.classList.remove("darkToggle");
   body.style.background = "#ffffff";
-  body.style.transition = "1s";
+  body.style.transition = "0.6s";
   localStorage.setItem("darkModeEnabled", "false");
   if(p){
     p.style.color = "#1a1a1a";
