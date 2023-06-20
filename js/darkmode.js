@@ -3,6 +3,7 @@ const body = document.querySelector("body");
 const p = document.querySelector("div.mural > p");
 const h1 = document.querySelector("div#texto > h1");
 const noPostsMessage = document.getElementById("noPostsMessage");
+const npet = document.getElementById("npet");
 
 document.addEventListener("DOMContentLoaded", function () {
   var darkModeEnabled = localStorage.getItem("darkModeEnabled");
@@ -35,6 +36,9 @@ function enableDarkMode() {
   if(p){
     p.style.color = "#ffffff";
   }
+  if(npet){
+    npet.style.color = "#ffffff";
+  }
   if(noPostsMessage){
     noPostsMessage.style.color = "#ffffff";
   }
@@ -48,6 +52,9 @@ function disableDarkMode() {
   localStorage.setItem("darkModeEnabled", "false");
   if(p){
     p.style.color = "#1a1a1a";
+  }
+  if(npet){
+    npet.style.color = "#1a1a1a";
   }
   if(noPostsMessage){
     noPostsMessage.style.color = "#1a1a1a";
