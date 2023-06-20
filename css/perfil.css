@@ -301,7 +301,7 @@ button[type="submit"]:hover {
 .btnDel {
   display: flex;
   position: relative;
-  right: -89%;
+  right: -72%;
   margin-bottom: -8%;
 }
 
@@ -486,8 +486,8 @@ button[type="submit"]:hover {
 
 
   .btnDel {
-    right: -83%;
-    margin-bottom: -25%;
+    right: -62%;
+    margin-bottom: -22%;
   }
 
   .content img {
