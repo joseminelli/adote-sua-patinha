@@ -279,7 +279,6 @@ button[type="submit"]:hover {
   border: 2px dashed #9e9e9e;
   cursor: pointer;
   font-family: sans-serif;
-  transition: color 300ms ease-in-out, background 300ms ease-in-out;
 }
 
 .picture:hover {

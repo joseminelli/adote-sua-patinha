@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   if (petInfo) {
+    box.style.justifyContent = "left";
     // Atualize os elementos HTML com as informações obtidas
     const picElement = document.getElementById("imagem");
     const celElement = document.getElementById("desc");
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     celElement.innerHTML = petInfo.description;
     picElement.src = petInfo.image;
   } else {
-    box.innerHTML = "<div id='erro404'><div><h2 id='h2Erro'>Erro 404</h2><p id='pErro'>O pet escolhido não foi encontrado</p></div></div>";
+    box.style.justifyContent = "center";
+    box.innerHTML = "<div id='erro404'><div><h2 id='h2Erro'>Algo deu errado</h2><p id='pErro'>O pet escolhido não foi encontrado</p></div><img id='imagemErro' src='./img/404.png'></div>";
   }
 });

@@ -5,11 +5,14 @@ const logintxt = document.getElementById("logintxt");
 const noPostsMessage = document.getElementById("noPostsMessage");
 const npet = document.getElementById("npet");
 const currentPage = document.getElementById("currentPage");
+const pictureInput = document.getElementById("picture");
+var transitionTime = 0.6;
 
 document.addEventListener("DOMContentLoaded", function () {
   var darkModeEnabled = localStorage.getItem("darkModeEnabled");
 
   if (darkModeEnabled === "true") {
+    transitionTime = 0;
     enableDarkMode();
     sun.classList.toggle("night");
     
@@ -32,10 +35,15 @@ function enableDarkMode() {
   const pErro = document.getElementById("pErro");
   sun.classList.add("darkToggle");
   body.style.background = "#282828";
-  body.style.transition = "0.6s";
+  body.style.transition = transitionTime + "s";
   localStorage.setItem("darkModeEnabled", "true");
   if (p) {
     p.style.color = "#ffffff";
+  }
+  if(pictureInput){
+    pictureInput.style.transition = transitionTime + "s";
+    pictureInput.style.backgroundColor = "#353535";
+    pictureInput.style.borderColor = "#fff";
   }
   if (logintxt) {
     logintxt.style.color = "#ffffff";
@@ -55,6 +63,7 @@ function enableDarkMode() {
   if (noPostsMessage) {
     noPostsMessage.style.color = "#ffffff";
   }
+  transitionTime = 0.6;
 }
 
 function disableDarkMode() {
@@ -62,10 +71,15 @@ function disableDarkMode() {
   const pErro = document.getElementById("pErro");
   sun.classList.remove("darkToggle");
   body.style.background = "#ffffff";
-  body.style.transition = "0.6s";
+  body.style.transition = transitionTime + "s";
   localStorage.setItem("darkModeEnabled", "false");
   if (p) {
     p.style.color = "#282828";
+  }
+  if(pictureInput){
+    pictureInput.style.transition = transitionTime + "s";
+    pictureInput.style.backgroundColor = "#ddd";
+    pictureInput.style.borderColor = "#9e9e9e";
   }
   if (npet) {
     npet.style.color = "#282828";
@@ -85,4 +99,5 @@ function disableDarkMode() {
   if (noPostsMessage) {
     noPostsMessage.style.color = "#282828";
   }
+  transitionTime = 0.6;
 }

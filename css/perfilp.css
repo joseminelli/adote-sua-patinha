@@ -7,22 +7,22 @@
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: #165EA8;
-    transition: all 300ms;
+  border-radius: 10px;
+  background: #165ea8;
+  transition: all 300ms;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #0e4072;
-    transition: all 300ms;
+  background: #0e4072;
+  transition: all 300ms;
 }
 
 html {
@@ -153,13 +153,13 @@ p {
   overflow: auto;
 }
 
-.content img{
-    width: auto;
-    height: 100px;
-    border-radius: 50%;
-    justify-content: center;
-    align-items: center;
-    margin-left: 15%;
+.content img {
+  width: auto;
+  height: 100px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15%;
 }
 
 select {
@@ -235,7 +235,6 @@ h1 {
   gap: 1rem;
 }
 
-
 button[type="submit"] {
   padding: 1rem;
   font-size: 1rem;
@@ -255,12 +254,11 @@ button[type="submit"]:hover {
 }
 
 .mural {
-    margin-left: 20%;
+  margin-left: 20%;
 }
 
 .mural p {
   margin-left: 50px;
-  
 }
 
 .mural img {
@@ -271,10 +269,10 @@ button[type="submit"]:hover {
 }
 
 #linha-vertical {
-    height: 600px;
-    margin-left: 10%;
-    border-right: 4px solid #165ea8;
-    border-radius: 10px;
+  height: 600px;
+  margin-left: 10%;
+  border-right: 4px solid #165ea8;
+  border-radius: 10px;
 }
 
 #picture__input {
@@ -312,88 +310,92 @@ button[type="submit"]:hover {
   box-shadow: none;
 }
 
-.button{
-    width: 40px;
-    height: 40px;
-    background-color: none;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.sun{
-    width: 18px;
-    height: 18px;
-    background: #1a1a1a;
-    border-radius: 50%;
-    cursor: pointer;
-    position: relative;
-    border: 3px solid #ffe58b;
-}
-
-.sun div{
-    width: 2px;
-    background: #1a1a1a;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: -1;
-
-    transition: width 0.12s;
-}
-
-.sun .line1{
-    height: 30px;
-    transform: translate(-50%, -50%);
-}
-
-.sun .line2{
-    height: 30px;
-    transform: translate(-50%, -50%) rotate(90deg);
-}
-
-.sun .line3{
-    height: 25px;
-    transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.sun .line4{
-    height: 25px;
-    transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-.sun::after{
-    content: '';
-    width: 18px;
-    height: 18px;
-    background: #ffe58b;
-    border-radius: 50%;
-    position: absolute;
-    top: -21px;
-    right: -21px;
-    transition: 0.5s;
-}
-
-.sun.night::after{
-    top: -8px;
-    right: -9px;
-}
-
-#erro404{
+.button {
+  width: 40px;
+  height: 40px;
+  background-color: none;
+  border-radius: 6px;
   display: flex;
-  margin-left: 36%;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
-#erro404 h2{
-  margin-left: 11%;
+.sun {
+  width: 18px;
+  height: 18px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  border: 3px solid #ffe58b;
 }
 
-.sun.night div{
-    width: 0;
+.sun div {
+  width: 2px;
+  background: #1a1a1a;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+
+  transition: width 0.12s;
+}
+
+.sun .line1 {
+  height: 30px;
+  transform: translate(-50%, -50%);
+}
+
+.sun .line2 {
+  height: 30px;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.sun .line3 {
+  height: 25px;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.sun .line4 {
+  height: 25px;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.sun::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background: #ffe58b;
+  border-radius: 50%;
+  position: absolute;
+  top: -21px;
+  right: -21px;
+  transition: 0.5s;
+}
+
+.sun.night::after {
+  top: -8px;
+  right: -9px;
+}
+
+#imagemErro {
+  margin-top: 10%;
+  margin-left: 20%;
+  width: auto;
+  height: 300px;
+}
+
+#erro404 {
+  margin-top: 10%;
+}
+
+#erro404 p {
+  margin-left: 12%;
+}
+
+.sun.night div {
+  width: 0;
 }
 
 @media screen and (max-width: 576px) {
@@ -406,15 +408,15 @@ button[type="submit"]:hover {
   .content {
     margin-top: 13%;
   }
-  .mural{
+  .mural {
     margin-top: 13%;
   }
   #linha-vertical {
-      height: 400px;
-      margin-left: 10%;
-      border-right: 4px solid #165ea8;
-      border-radius: 10px;
-      margin-top: 13%;
+    height: 400px;
+    margin-left: 10%;
+    border-right: 4px solid #165ea8;
+    border-radius: 10px;
+    margin-top: 13%;
   }
 
   #box {
@@ -435,16 +437,23 @@ button[type="submit"]:hover {
   #box {
     height: 400px;
   }
-  
-  #erro404{
-    display: flex;
-    margin-left: 8%;
-    align-items: center;
-    justify-content: center;
+  #imagemErro {
+    margin-left: 10%;
+    width: auto;
+    height: 300px;
   }
 
-  #erro404 h2{
-    margin-left: 11%;
+  #erro404 h2 {
+    margin-left: -1%;
+    font-size: 35px;
+  }
+
+  #erro404 {
+    margin-top: 50%;
+  }
+
+  #erro404 p {
+    margin-left: 0%;
   }
 
   .mural {
@@ -452,13 +461,13 @@ button[type="submit"]:hover {
     margin-left: 3%;
   }
 
-  .content img{
-      width: auto;
-      height: 100px;
-      border-radius: 50%;
-      justify-content: center;
-      align-items: center;
-      margin-left: 10%;
+  .content img {
+    width: auto;
+    height: 100px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
   }
 
   button[type="submit"] {
@@ -477,14 +486,13 @@ button[type="submit"]:hover {
   .section-p1 {
     padding: 40px;
   }
-  
 
-#linha-vertical {
+  #linha-vertical {
     height: 0px;
     margin-left: 0%;
     border-right: 0px solid #165ea8;
     border-radius: 0px;
-}
+  }
 
   #navbar {
     display: flex;

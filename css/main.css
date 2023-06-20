@@ -91,6 +91,7 @@ h1 {
   border-width: 0px;
   background-color: rgb(255, 0, 106);
   border-radius: 50% 50% 0 0;
+  transition: all 300ms;
 }
 
 .checkbox.style-c {
@@ -548,6 +549,11 @@ button[type="submit"]:hover {
     gap: 5px;
   }
 
+  .btn-favorito {
+    top: 40px;
+    left: 50px;
+  }
+
   #filtroH3 {
     margin-bottom: 1%;
   }
@@ -631,7 +637,7 @@ button[type="submit"]:hover {
     grid-column: auto;
     border-radius: 10px;
     width: 120px;
-    box-shadow: 5px 5px 5px rgb(172, 172, 172, 0.3);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   }
 }
 

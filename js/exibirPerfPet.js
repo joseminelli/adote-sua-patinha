@@ -6,6 +6,7 @@ const box = document.getElementById("box");
 var login = localStorage.getItem("login");
 
 document.addEventListener("DOMContentLoaded", function () {
+  box.style.justifyContent = "left";
   //não acessa a página se não tiver login
   if (login != "true") {
     window.location.href = "index.html";
@@ -26,7 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var imgElement = document.getElementById("imagem");
     imgElement.src = caminhoImagem;
-  } else{
-    box.innerHTML = "<div id='erro404'><div><h2>Erro 404</h2><div></div><p>Você não cadastrou um pet ainda</p></div></div>";
+  } else {
+    box.style.justifyContent = "center";
+    box.innerHTML = "<div id='erro404'><div><h2 id='h2Erro'>Algo deu errado</h2><p id='pErro'>O pet escolhido não foi encontrado</p></div><img id='imagemErro' src='./img/404.png'></div>";
   }
 });
