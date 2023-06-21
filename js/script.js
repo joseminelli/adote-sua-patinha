@@ -3,53 +3,13 @@ const close = document.getElementById('close');
 const nav = document.getElementById('navbar');
 var logado = false;
 
-function CustomAlert() {
-    this.alert = function (message, title) {
-      var overlay = document.createElement('div');
-      overlay.id = 'overlay';
-      overlay.className = 'animado';
-  
-      var dialogBox = document.createElement('div');
-      dialogBox.id = 'dialogbox';
-      dialogBox.className = 'slit-in-vertical';
-  
-      var dialogContent = document.createElement('div');
-      dialogContent.innerHTML = '<div id="alertHeader"></div><div id="alertBody"></div><div id="alertFooter"></div>';
-  
-      dialogBox.appendChild(dialogContent);
-  
-      var body = document.getElementsByTagName('body')[0];
-      body.appendChild(overlay);
-      body.appendChild(dialogBox);
-  
-      overlay.style.height = window.innerHeight + 'px';
-      overlay.style.display = 'block';
-      dialogBox.style.display = 'block';
-  
-      var alertHeader = document.getElementById('alertHeader');
-      if (typeof title === 'undefined') {
-        alertHeader.style.display = 'none';
-      } else {
-        alertHeader.innerHTML = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' + title;
-      }
-  
-      document.getElementById('alertBody').innerHTML = message;
-      document.getElementById('alertFooter').innerHTML =
-        '<button class="pure-material-button-contained active" onclick="customAlert.ok()">OK</button>';
-    };
-  
-    this.ok = function () {
-      var overlay = document.getElementById('overlay');
-      var dialogBox = document.getElementById('dialogbox');
-      overlay.parentNode.removeChild(overlay);
-      dialogBox.parentNode.removeChild(dialogBox);
-    };
-  }
-  
-  var customAlert = new CustomAlert();
-  
-  
-  
+const section = document.getElementById("modalNovo"),
+overlay = document.querySelector(".overlay"),
+showBtn = document.querySelector(".show-modal"),
+closeBtn = document.querySelector(".close-btn");
+overlay.addEventListener("click", () => section.classList.remove("active"));
+closeBtn.addEventListener("click", () => section.classList.remove("active"));
+
 
 if (bar) {
     bar.addEventListener('click', () => {
@@ -87,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("descricao", descricao);
 
             if (nome === "" || descricao === "" || raca === "0") {
-                new customAlert.alert('Você precisa preencher todos os campos','Atenção!');
+                section.classList.add("active")
                 return;
             }
 
@@ -108,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 reader.readAsDataURL(imagem);
             } else { //obriga a colocar uma imagem
-                customAlert.alert('Seu pet precisa de uma foto','Atenção!');
+                section.classList.add("active")
                 return
             }
 
@@ -136,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var bairro = document.getElementById("bairro2").value;
             var telefone = document.getElementById("telefone").value;
             if (nome2 === "" || telefone === "" || bairro === "0") {
-                customAlert.alert('Você precisa preencher todos os campos','Atenção!');
+                section.classList.add("active")
                 return
             }
 
@@ -159,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 };
                 reader.readAsDataURL(imagem2);
             } else {
-                customAlert.alert('Você precisa escolher uma foto','Atenção!');
+                section.classList.add("active")
                 return
             }
             logado = true;
