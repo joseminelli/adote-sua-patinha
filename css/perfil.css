@@ -17,7 +17,7 @@
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background: #165EA8;
+  background: #165ea8;
   transition: all 300ms;
 }
 
@@ -237,7 +237,6 @@ h1 {
   gap: 1rem;
 }
 
-
 button[type="submit"] {
   padding: 1rem;
   font-size: 1rem;
@@ -262,7 +261,6 @@ button[type="submit"]:hover {
 
 .mural p {
   margin-left: 50px;
-
 }
 
 .mural img {
@@ -285,24 +283,35 @@ button[type="submit"]:hover {
 
 .x1 {
   width: 20px;
-  border-bottom: solid 4px#ff0000;
+  border-bottom: solid 4px#ffffff;
   border-radius: 35%;
+  margin-top: 40%;
   transform: rotate(45deg);
 }
 
 .x2 {
   position: absolute;
   width: 20px;
-  border-bottom: solid 4px#ff0000;
+  margin-top: 40%;
+  border-bottom: solid 4px#ffffff;
   border-radius: 35%;
   transform: rotate(-45deg);
+}
+
+.delBtnDiv {
+  position: relative;
+  margin-bottom: -12%;
+  margin-left: 70%;
+  border-radius: 8px;
+  width: 25px;
+  height: 25px;
+  background-color: #f44040;
 }
 
 .btnDel {
   display: flex;
   position: relative;
-  right: -72%;
-  margin-bottom: -8%;
+  right: -10%;
 }
 
 .picture {
@@ -389,7 +398,7 @@ button[type="submit"]:hover {
 }
 
 .sun::after {
-  content: '';
+  content: "";
   width: 18px;
   height: 18px;
   background: #ffe58b;
@@ -429,10 +438,8 @@ button[type="submit"]:hover {
     border-radius: 10px;
   }
 
-
   .mural {
     margin-top: 8%;
-
   }
 
   #box {
@@ -453,10 +460,8 @@ button[type="submit"]:hover {
     border-radius: 10px;
   }
 
-
   .mural {
     margin-top: 4%;
-
   }
 
   #box {
@@ -474,6 +479,41 @@ button[type="submit"]:hover {
     margin-top: 0%;
     overflow: auto;
   }
+  .x1 {
+    width: 20px;
+    margin-left: -50%;
+    border-bottom: solid 4px#ffffff;
+    border-radius: 35%;
+    margin-top: 40%;
+    transform: rotate(45deg);
+  }
+  
+  .x2 {
+    position: absolute;
+    width: 20px;
+    margin-left: -50%;
+    margin-top: 40%;
+    border-bottom: solid 4px#ffffff;
+    border-radius: 35%;
+    transform: rotate(-45deg);
+  }
+  
+  .delBtnDiv {
+    position: relative;
+    margin-bottom: -28%;
+    margin-left: 62%;
+    border-radius: 8px;
+    width: 25px;
+    height: 25px;
+    background-color: #f44040;
+  }
+  
+  .btnDel {
+    display: flex;
+    position: relative;
+    right: -10%;
+  }
+
 
   .mural {
     margin-top: 0%;
@@ -483,7 +523,6 @@ button[type="submit"]:hover {
   #box {
     height: 400px;
   }
-
 
   .btnDel {
     right: -62%;
@@ -518,14 +557,12 @@ button[type="submit"]:hover {
     padding: 40px;
   }
 
-
   #linha-vertical {
     height: 0px;
     margin-left: 0%;
     border-right: 0px solid #165ea8;
     border-radius: 0px;
   }
-
   #navbar {
     display: flex;
     flex-direction: column;

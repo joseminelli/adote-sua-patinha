@@ -451,7 +451,17 @@ h1 {
     font-size: large;
     border: none;
     display: flex;
-    margin-left: 99%;
+    margin-left: 90%;
+    width: 38px;
+    height: 38px;
+    padding: 0.5em;
+    border-radius: 10px;
+    background-color: #f44040;
+}
+.deleteBtn b{
+    margin-left: 12%;
+    margin-top: 12%;
+    color: #fff;
 }
 
 #fechaModal {
@@ -466,7 +476,7 @@ h1 {
 
 .post {
     width: 600px;
-    background-color: #f2f0f0;
+    background-color: #fbf1cd;
     padding: 10px 20px;
     border-radius: 10px;
     margin-bottom: 7%;
@@ -778,7 +788,7 @@ button[type="submit"]:hover {
 
     .post {
         width: 300px;
-        background-color: #fff;
+        background-color: #fbf1cd;
         padding: 10px 20px;
         border-radius: 10px;
         margin-bottom: 7%;
@@ -859,7 +869,7 @@ button[type="submit"]:hover {
 
     .post {
         width: 300px;
-        background-color: #f2f0f0;
+        background-color: #fbf1cd;
         padding: 10px 20px;
         border-radius: 10px;
         margin-bottom: 7%;

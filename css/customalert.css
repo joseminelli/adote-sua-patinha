@@ -37,14 +37,16 @@
 }
 .overlay {
   position: fixed;
+  filter: blur(0px); 
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.4);
   opacity: 0;
   pointer-events: none;
   transition: all 300ms;
 }
 #modalNovo.active .overlay {
+  backdrop-filter: blur(2px);
   opacity: 1;
   pointer-events: auto;
 }

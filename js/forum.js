@@ -183,6 +183,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const btncriar = document.getElementById("criarPubli");
   btncriar.addEventListener("click", function () {
+    
+    tituloInput2.style.borderColor = "#165ea8";
+    categoriaInput2.style.borderColor = "#165ea8";
+    descInput2.style.borderColor = "#165ea8";
     section.classList.add("active");
   });
 });
