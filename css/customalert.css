@@ -73,6 +73,7 @@ section.active .modal-box {
   color: #4070f4;
 }
 .modal-box h2 {
+  margin-top: 0px;
   font-size: 25px;
   font-weight: 500;
   color: #333;
@@ -129,6 +130,7 @@ section.active .modal-box {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
   .modal-box h2 {
+    margin-top: 0px;
     font-size: 23px;
     font-weight: 500;
     color: #333;
