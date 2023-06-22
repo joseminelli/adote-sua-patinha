@@ -1,34 +1,56 @@
 const section = document.getElementById("modalNovo"),
-overlay = document.querySelector(".overlay"),
-showBtn = document.querySelector(".show-modal"),
-closeBtn = document.querySelector(".close-btn"),
-closeBtn2 = document.querySelector(".close-btn2");
-if(overlay){
-    overlay.addEventListener("click", () => section.classList.remove("active"));
-    closeBtn2.addEventListener("click", () => section.classList.remove("active"));
-    closeBtn.addEventListener("click", () => {
-      var tituloInput = document.getElementById("input1").value;
-      var categoriaInput = document.getElementById("dropdown").value;
-      var descInput = document.getElementById("input2").value;
-      if (tituloInput != 0 && categoriaInput != 0 && descInput != 0) {
-        var post = {
-          titulo: tituloInput,
-          categoria: categoriaInput,
-          descricao: descInput,
-        };
-
-        var posts = JSON.parse(localStorage.getItem("posts")) || [];
-        posts.push(post);
-
-        localStorage.setItem("posts", JSON.stringify(posts));
-
-        loadPosts();
-        section.classList.remove("active")
-    }else{
-      section.classList.add("active")
-      return
-    }
+  overlay = document.querySelector(".overlay"),
+  showBtn = document.querySelector(".show-modal"),
+  closeBtn = document.querySelector(".close-btn"),
+  closeBtn2 = document.querySelector(".close-btn2");
+const modal = document.getElementById("modal");
+if (overlay) {
+  overlay.addEventListener("click", () => section.classList.remove("active"));
+  closeBtn2.addEventListener("click", () => section.classList.remove("active"));
+  closeBtn.addEventListener("click", () => {
     
+    modal.style.animation = "none";
+    var tituloInput = document.getElementById("input1").value;
+    var tituloInput2 = document.getElementById("input1");
+    var categoriaInput = document.getElementById("dropdown").value;
+    var categoriaInput2 = document.getElementById("dropdown");
+    var descInput = document.getElementById("input2").value;
+    var descInput2 = document.getElementById("input2");
+    if (tituloInput != "" && categoriaInput != 0 && descInput != "") {
+      tituloInput2.style.borderColor = "#165ea8";
+      var post = {
+        titulo: tituloInput,
+        categoria: categoriaInput,
+        descricao: descInput,
+      };
+
+      var posts = JSON.parse(localStorage.getItem("posts")) || [];
+      posts.push(post);
+
+      localStorage.setItem("posts", JSON.stringify(posts));
+
+      loadPosts();
+      section.classList.remove("active");
+    } else {
+      modal.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
+      if (tituloInput == "") {
+        tituloInput2.style.borderColor = "#ff2727";
+      } else {
+        tituloInput2.style.borderColor = "#165ea8";
+      }
+      if (categoriaInput == 0) {
+        categoriaInput2.style.borderColor = "#ff2727";
+      } else {
+        categoriaInput2.style.borderColor = "#165ea8";
+      }
+      if (descInput == "") {
+        descInput2.style.borderColor = "#ff2727";
+      } else {
+        descInput2.style.borderColor = "#165ea8";
+      }
+      section.classList.add("active");
+      return;
+    }
   });
 }
 
@@ -155,6 +177,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const btncriar = document.getElementById("criarPubli");
   btncriar.addEventListener("click", function () {
-    section.classList.add("active")
+    section.classList.add("active");
   });
 });

@@ -105,7 +105,8 @@ section.active .modal-box {
   color: #333;
   text-align: center;
 }
-.modal-box p {
+.modal-box .modalp {
+  display: inline-block;
   margin-left: -83%;
   margin-top: 15px;
   font-size: 15px;
@@ -156,4 +157,25 @@ section.active .modal-box {
     transition: all 0.3s ease;
     transform: translate(-50%, -50%) scale(1.2);
   }
+}
+@media screen and (max-width: 1700px) {
+  .modal-box {
+    position: fixed;
+    left: 50%;
+    top: 58%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@keyframes shake {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  10% { transform: translate(-52%, -50%) rotate(1deg); }
+  30% { transform: translate(-47%, -50%) rotate(0deg); }
+  40% { transform: translate(-49%, -50%) rotate(1deg); }
+  50% { transform: translate(-52%, -50%) rotate(-1deg); }
+  70% { transform: translate(-47%, -50%) rotate(1deg); }
+  80% { transform: translate(-49%, -50%) rotate(-1deg); }
+  90% { transform: translate(-52%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(0deg); }
 }

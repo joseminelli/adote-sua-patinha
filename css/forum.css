@@ -328,7 +328,7 @@ h1 {
     padding: 8px 5px;
     outline: none;
     border-radius: 5px;
-    border: 2px solid #165ea8;
+    border: 2px solid #a81616;
     background: #ffe58b;
     width: 100%;
     box-sizing: border-box;
@@ -445,17 +445,6 @@ h1 {
     margin-top: 1rem;
     background-color: #165ea8;
     cursor: pointer;
-
-}
-.modalp2 {
-    font-size: 14px;
-    margin-top: 5%;
-    color: #1c1c1dc7;
-}
-
-.modalp {
-    margin-top: 5%;
-    color: #e3e6f3;
 }
 
 .deleteBtn {
