@@ -25,6 +25,7 @@
   background-color: #f22626;
 }
 #modalbtn.show-modal,
+.modal-box2,
 .modal-box {
   position: fixed;
   left: 50%;
@@ -63,6 +64,21 @@
   transition: all 0.3s ease;
   transform: translate(-50%, -50%) scale(1.2);
 }
+.modal-box2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 380px;
+  width: 120%;
+  padding: 30px 20px;
+  border-radius: 24px;
+  background-color: #ffe58b;
+  box-shadow: 0 40px 60px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%) scale(1.2);
+}
 section.active .modal-box {
   opacity: 1;
   pointer-events: auto;
@@ -73,6 +89,22 @@ section.active .modal-box {
   color: #4070f4;
 }
 .modal-box h2 {
+  margin-top: 20px;
+  font-size: 25px;
+  font-weight: 500;
+  color: #333;
+}
+
+section.active .modal-box2 {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.modal-box2 i {
+  font-size: 70px;
+  color: #4070f4;
+}
+.modal-box2 h2 {
   margin-top: 20px;
   font-size: 25px;
   font-weight: 500;
@@ -121,7 +153,37 @@ section.active .modal-box {
   margin: 0 10px;
 }
 
+.modal-box2 h3 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+  text-align: center;
+}
+.modal-box2 p {
+  margin-left: -83%;
+  margin-top: 15px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+}
+.modal-box2 .buttons {
+  margin-top: 25px;
+}
+.modal-box2 button {
+  font-size: 14px;
+  padding: 6px 12px;
+  margin: 0 10px;
+}
+
 @media screen and (max-width: 576px) {
+  .modal-box2,
+  .modal-box {
+    position: fixed;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
   .modal-box h2 {
     margin-top: 20px;
     font-size: 23px;
@@ -135,6 +197,34 @@ section.active .modal-box {
     text-align: center;
   }
   .modal-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 380px;
+    width: 90%;
+    padding: 30px 20px;
+    border-radius: 24px;
+    background-color: #ffe58b;
+    box-shadow: 0 40px 60px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+
+  .modal-box2 h2 {
+    margin-top: 20px;
+    font-size: 23px;
+    font-weight: 500;
+    color: #333;
+  }
+  .modal-box2 h3 {
+    font-size: 15px;
+    font-weight: 400;
+    color: #333;
+    text-align: center;
+  }
+  .modal-box2 {
     display: flex;
     flex-direction: column;
     align-items: center;
