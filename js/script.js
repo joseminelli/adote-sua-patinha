@@ -12,7 +12,6 @@ if(overlay){
     closeBtn.addEventListener("click", () => section.classList.remove("active"));
 }
 
-
 if (bar) {
     bar.addEventListener('click', () => {
         nav.classList.add('active');
@@ -135,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (login2 === "true") {
                 window.location.href = "perfil.html";
             } else {
-                customAlert.alert('Você precisa criar uma conta primeiro','Atenção!');
+                section.classList.add("active")
                 return
             }
         });
