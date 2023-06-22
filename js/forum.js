@@ -76,7 +76,7 @@ function loadPosts() {
       replyContainer.innerHTML =
         '<p class="modalp2">Responder:</p>' +
         '<input type="text" class="inputmodal2 reply-input" placeholder="Digite sua resposta">' +
-        '<button class="pure-material-button-contained active reply-btn">Responder</button>';
+        '<button id="responder" class="pure-material-button-contained active reply-btn">Responder</button>';
 
       postElement.appendChild(replyContainer);
 

@@ -434,7 +434,19 @@ h1 {
 .sun.night div {
     width: 0;
 }
+#responder{
+    padding: 0.9rem;
+    font-size: 0.9rem;
+    outline: none;
+    border: none;
+    color: #e3e6f3;
+    max-width: 155px;
+    border-radius: 5px;
+    margin-top: 1rem;
+    background-color: #165ea8;
+    cursor: pointer;
 
+}
 .modalp2 {
     font-size: 14px;
     margin-top: 5%;
