@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       logado = true;
       localStorage.setItem("login", logado);
-      window.location.href = "perfilp.html";
+      window.location.href = "perfil.html";
     });
   }
   if (enviarButton2) {
@@ -192,14 +192,14 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       logado = true;
       localStorage.setItem("login", logado);
-      window.location.href = "perfil.html";
+      window.location.href = "main.html";
     });
   }
   if (loginButton) {
     loginButton.addEventListener("click", function (event) {
       login2 = localStorage.getItem("login");
       if (login2 === "true") {
-        window.location.href = "perfil.html";
+        window.location.href = "main.html";
       } else {
         section.classList.add("active");
         return;
