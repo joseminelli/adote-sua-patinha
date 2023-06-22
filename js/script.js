@@ -49,10 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var descricao3 = document.getElementById("descricao");
       var especie3 = document.getElementById("especie");
 
-      localStorage.setItem("nome", nome);
-      localStorage.setItem("idade", idade);
-      localStorage.setItem("raca", raca);
-      localStorage.setItem("descricao", descricao);
+      
 
       var inputImagem = document.getElementById("picture__input");
 
@@ -92,6 +89,11 @@ document.addEventListener("DOMContentLoaded", function () {
         section.classList.add("active");
         return;
       }
+
+      localStorage.setItem("nome", nome);
+      localStorage.setItem("idade", idade);
+      localStorage.setItem("raca", raca);
+      localStorage.setItem("descricao", descricao);
 
       if (inputImagem.files && inputImagem.files[0]) {
         var imagem = inputImagem.files[0];
@@ -173,8 +175,6 @@ document.addEventListener("DOMContentLoaded", function () {
       localStorage.setItem("idade2", idade2);
       localStorage.setItem("bairro", bairro);
       localStorage.setItem("telefone", telefone);
-
-      const inputImagem3 = document.getElementsByClassName("picture");
 
       if (inputImagem2.files && inputImagem2.files[0]) {
         var imagem2 = inputImagem2.files[0];
