@@ -125,7 +125,7 @@ section.active .modal-box {
   .modal-box {
     position: fixed;
     left: 50%;
-    top: 60%;
+    top: 70%;
     transform: translate(-50%, -50%);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
