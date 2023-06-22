@@ -47,6 +47,7 @@
 }
 #modalNovo.active .overlay {
   backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   opacity: 1;
   pointer-events: auto;
 }
