@@ -25,7 +25,6 @@ if (overlay) {
 
       var posts = JSON.parse(localStorage.getItem("posts")) || [];
       posts.push(post);
-
       localStorage.setItem("posts", JSON.stringify(posts));
 
       loadPosts();
