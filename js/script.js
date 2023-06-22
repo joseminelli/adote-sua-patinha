@@ -56,6 +56,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
       var inputImagem = document.getElementById("picture__input");
 
+      descricao3.addEventListener("click", function (event) {
+        descricao3.style.borderColor = "#165ea8";
+      });
+      nome3.addEventListener("click", function (event) {
+        nome3.style.borderColor = "#165ea8";
+      });
+      raca3.addEventListener("click", function (event) {
+        raca3.style.borderColor = "#165ea8";
+      });
+      especie3.addEventListener("click", function (event) {
+        especie3.style.borderColor = "#165ea8";
+      });
       if (nome === "" || descricao === "" || raca === "0" || especie === "0") {
         if (inputImagem.files && !inputImagem.files[0]) {
           pictureInput.style.borderColor = "#ff2727";
@@ -64,25 +76,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (descricao === "") {
           descricao3.style.borderColor = "#ff2727";
-        } else {
-          descricao3.style.borderColor = "#165ea8";
         }
         if (nome === "") {
           nome3.style.borderColor = "#ff2727";
-        } else {
-          nome3.style.borderColor = "#165ea8";
         }
 
         if (raca === "0") {
           raca3.style.borderColor = "#ff2727";
-        } else {
-          raca3.style.borderColor = "#165ea8";
         }
 
         if (especie === "0") {
           especie3.style.borderColor = "#ff2727";
-        } else {
-          especie3.style.borderColor = "#165ea8";
         }
 
         section.classList.add("active");
@@ -126,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     enviarButton2.addEventListener("click", function (event) {
       event.preventDefault();
-        
+
       var inputImagem2 = document.getElementById("picture__input");
       var nome2 = document.getElementById("input2").value;
       var idade2 = document.getElementById("idade2").value;
@@ -137,6 +141,15 @@ document.addEventListener("DOMContentLoaded", function () {
       var idade4 = document.getElementById("idade2");
       var bairro2 = document.getElementById("bairro2");
       var telefone2 = document.getElementById("telefone");
+      nome4.addEventListener("click", function (event) {
+        nome4.style.borderColor = "#165ea8";
+      });
+      telefone2.addEventListener("click", function (event) {
+        telefone2.style.borderColor = "#165ea8";
+      });
+      bairro2.addEventListener("click", function (event) {
+        bairro2.style.borderColor = "#165ea8";
+      });
       if (nome2 === "" || telefone === "" || bairro === "0") {
         if (inputImagem2.files && !inputImagem2.files[0]) {
           pictureInput.style.borderColor = "#ff2727";
@@ -145,18 +158,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (nome2 === "") {
           nome4.style.borderColor = "#ff2727";
-        } else {
-          nome4.style.borderColor = "#165ea8";
         }
         if (telefone === "") {
-            telefone2.style.borderColor = "#ff2727";
-        } else {
-            telefone2.style.borderColor = "#165ea8";
+          telefone2.style.borderColor = "#ff2727";
         }
         if (bairro === "0") {
           bairro2.style.borderColor = "#ff2727";
-        } else {
-          bairro2.style.borderColor = "#165ea8";
         }
         section.classList.add("active");
         return;
