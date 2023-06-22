@@ -457,6 +457,7 @@ h1 {
     padding: 0.5em;
     border-radius: 10px;
     background-color: #f44040;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 .deleteBtn b{
     margin-left: 12%;
@@ -480,6 +481,7 @@ h1 {
     padding: 10px 20px;
     border-radius: 10px;
     margin-bottom: 7%;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 }
 #nomerply{
     font-size: small;
