@@ -1,4 +1,3 @@
-/*ccccc*/
 #modalbtn {
   font-size: 18px;
   font-weight: 400;
@@ -13,18 +12,18 @@
   background-color: #265df2;
 }
 #cancelbtn {
-    font-size: 18px;
-    font-weight: 400;
-    color: #fff;
-    padding: 14px 22px;
-    border: none;
-    background: #f44040;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  #cancelbtn:hover {
-    background-color: #f22626;
-  }
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  padding: 14px 22px;
+  border: none;
+  background: #f44040;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#cancelbtn:hover {
+  background-color: #f22626;
+}
 #modalbtn.show-modal,
 .modal-box {
   position: fixed;
@@ -121,4 +120,33 @@ section.active .modal-box {
   padding: 6px 12px;
   margin: 0 10px;
 }
-/*ccccc*/
+
+@media screen and (max-width: 576px) {
+  .modal-box h2 {
+    margin-top: 20px;
+    font-size: 23px;
+    font-weight: 500;
+    color: #333;
+  }
+  .modal-box h3 {
+    font-size: 15px;
+    font-weight: 400;
+    color: #333;
+    text-align: center;
+  }
+  .modal-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 380px;
+    width: 90%;
+    padding: 30px 20px;
+    border-radius: 24px;
+    background-color: #ffe58b;
+    box-shadow: 0 40px 60px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
