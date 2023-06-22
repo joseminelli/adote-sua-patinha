@@ -1,3 +1,37 @@
+const section = document.getElementById("modalNovo"),
+overlay = document.querySelector(".overlay"),
+showBtn = document.querySelector(".show-modal"),
+closeBtn = document.querySelector(".close-btn"),
+closeBtn2 = document.querySelector(".close-btn2");
+if(overlay){
+    overlay.addEventListener("click", () => section.classList.remove("active"));
+    closeBtn2.addEventListener("click", () => section.classList.remove("active"));
+    closeBtn.addEventListener("click", () => {
+      var tituloInput = document.getElementById("input1").value;
+      var categoriaInput = document.getElementById("dropdown").value;
+      var descInput = document.getElementById("input2").value;
+      if (tituloInput != 0 && categoriaInput != 0 && descInput != 0) {
+        var post = {
+          titulo: tituloInput,
+          categoria: categoriaInput,
+          descricao: descInput,
+        };
+
+        var posts = JSON.parse(localStorage.getItem("posts")) || [];
+        posts.push(post);
+
+        localStorage.setItem("posts", JSON.stringify(posts));
+
+        loadPosts();
+        section.classList.remove("active")
+    }else{
+      section.classList.add("active")
+      return
+    }
+    
+  });
+}
+
 var login = localStorage.getItem("login");
 
 if (login != "true") {
@@ -116,142 +150,11 @@ function deletePost(index) {
   loadPosts();
 }
 
-function CustomAlert2() {
-  // Criação do objeto CustomAlert2
-  this.createModal = function () {
-    var overlay = document.createElement("div");
-    overlay.id = "overlay";
-    overlay.className = "animado";
-
-    var dialogbox = document.createElement("div");
-    dialogbox.id = "dialogbox2";
-    dialogbox.className = "slit-in-vertical";
-
-    var dialogContent = document.createElement("div");
-
-    var alertHeader = document.createElement("div");
-    alertHeader.id = "alertHeader";
-
-    var alertBody = document.createElement("div");
-    alertBody.id = "alertBody";
-
-    var alertFooter = document.createElement("div");
-    alertFooter.id = "alertFooter";
-
-    dialogContent.appendChild(alertHeader);
-    dialogContent.appendChild(alertBody);
-    dialogContent.appendChild(alertFooter);
-
-    dialogbox.appendChild(dialogContent);
-
-    document.body.appendChild(overlay);
-    document.body.appendChild(dialogbox);
-  };
-
-  this.displayModal = function (title) {
-    // Função para exibir o modal
-    var overlay = document.getElementById("overlay");
-    var dialogbox = document.getElementById("dialogbox2");
-    var alertHeader = document.getElementById("alertHeader");
-
-    overlay.style.display = "block";
-    dialogbox.style.display = "block";
-    alertHeader.style.display = "block";
-
-    if (typeof title === "undefined") {
-      alertHeader.style.display = "none";
-    } else {
-      alertHeader.innerHTML =
-        '<i id="exclamacao" class="fa fa-exclamation-circle" aria-hidden="true"></i> ' +
-        title +
-        '<button id="fechaModal">X</button>';
-    }
-  };
-
-  this.closeModal = function () {
-    // Função para fechar o modal
-    var dialogbox = document.getElementById("dialogbox2");
-    var overlay = document.getElementById("overlay");
-
-    dialogbox.style.display = "none";
-    overlay.style.display = "none";
-  };
-
-  this.alert = function (title) {
-    // Função para exibir o modal de alerta
-    if (!document.getElementById("overlay")) {
-      this.createModal();
-    }
-
-    this.displayModal(title);
-
-    var alertHeader = document.getElementById("alertHeader");
-    var alertBody = document.getElementById("alertBody");
-    var alertFooter = document.getElementById("alertFooter");
-
-    alertHeader.innerHTML =
-      '<div id="headerModal"><i id="exclamacao"class="fa fa-exclamation-circle" aria-hidden="true"></i> ' +
-      title +
-      '<button id="fechaModal"><b>X</b></button></div>';
-
-    alertBody.innerHTML =
-      '<div class="input-container">' +
-      '<p class="modalp">Título:</p>' +
-      '  <input type="text" id="input1" class="inputmodal"  placeholder="O que você precisa?">' +
-      "</div>" +
-      '<div class="input-container">' +
-      '<p class="modalp">Categoria:</p>' +
-      '  <select id="dropdown">' +
-      '    <option selected value="0">Selecione</option>' +
-      '    <option value="Dúvida">Dúvida</option>' +
-      '    <option value="Dica">Dica</option>' +
-      "  </select>" +
-      "</div>" +
-      '<div class="input-container">' +
-      '<p class="modalp">Texto:</p>' +
-      '  <input type="text" id="input2" class="inputmodal" placeholder="Dê mais detalhes sobre seu post">' +
-      "</div>";
-
-    alertFooter.innerHTML =
-      '<button class="pure-material-button-contained active" id="okbtn">OK</button>';
-
-    document.getElementById("fechaModal").onclick = () => {
-      this.closeModal();
-    };
-
-    document.getElementById("okbtn").onclick = () => {
-      var tituloInput = document.getElementById("input1").value;
-      var categoriaInput = document.getElementById("dropdown").value;
-      var descInput = document.getElementById("input2").value;
-      if (tituloInput != 0 && categoriaInput != 0 && descInput != 0) {
-        var post = {
-          titulo: tituloInput,
-          categoria: categoriaInput,
-          descricao: descInput,
-        };
-
-        var posts = JSON.parse(localStorage.getItem("posts")) || [];
-        posts.push(post);
-
-        localStorage.setItem("posts", JSON.stringify(posts));
-
-        this.closeModal();
-
-        loadPosts();
-      } else {
-        console.log("error");
-      }
-    };
-  };
-}
-
-const customAlert2 = new CustomAlert2();
-
 document.addEventListener("DOMContentLoaded", function () {
   loadPosts();
 
   const btncriar = document.getElementById("criarPubli");
   btncriar.addEventListener("click", function () {
-    customAlert2.alert("Detalhes do post");
+    section.classList.add("active")
   });
 });

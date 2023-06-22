@@ -1,84 +1,124 @@
-
 /*ccccc*/
 #modalbtn {
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  padding: 14px 22px;
+  border: none;
+  background: #4070f4;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#modalbtn:hover {
+  background-color: #265df2;
+}
+#cancelbtn {
     font-size: 18px;
     font-weight: 400;
     color: #fff;
     padding: 14px 22px;
     border: none;
-    background: #4070f4;
+    background: #f44040;
     border-radius: 6px;
     cursor: pointer;
   }
-  #modalbtn:hover {
-    background-color: #265df2;
+  #cancelbtn:hover {
+    background-color: #f22626;
   }
-  #modalbtn.show-modal,
-  .modal-box {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  }
-  #modalNovo.active .show-modal {
-    display: none;
-  }
-  .overlay {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 300ms;
-  }
-  #modalNovo.active .overlay {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .modal-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 380px;
-    width: 100%;
-    padding: 30px 20px;
-    border-radius: 24px;
-    background-color: #ffe58b;
-    box-shadow: 0 40px 60px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    transform: translate(-50%, -50%) scale(1.2);
-  }
-  section.active .modal-box {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  .modal-box i {
-    font-size: 70px;
-    color: #4070f4;
-  }
-  .modal-box h2 {
-    margin-top: 20px;
-    font-size: 25px;
-    font-weight: 500;
-    color: #333;
-  }
-  .modal-box h3 {
-    font-size: 16px;
-    font-weight: 400;
-    color: #333;
-    text-align: center;
-  }
-  .modal-box .buttons {
-    margin-top: 25px;
-  }
-  .modal-box button {
-    font-size: 14px;
-    padding: 6px 12px;
-    margin: 0 10px;
-  }
-  /*ccccc*/
+#modalbtn.show-modal,
+.modal-box {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+#modalNovo.active .show-modal {
+  display: none;
+}
+.overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 300ms;
+}
+#modalNovo.active .overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 380px;
+  width: 100%;
+  padding: 30px 20px;
+  border-radius: 24px;
+  background-color: #ffe58b;
+  box-shadow: 0 40px 60px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+section.active .modal-box {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.modal-box i {
+  font-size: 70px;
+  color: #4070f4;
+}
+.modal-box h2 {
+  margin-top: 20px;
+  font-size: 25px;
+  font-weight: 500;
+  color: #333;
+}
+#dropdown {
+  margin-top: 0%;
+  margin-left: -60%;
+  color: #333;
+}
+#dropdownt {
+  margin-left: -72%;
+}
+
+#dropdown:focus {
+  background: #ffe58b;
+  outline: none;
+}
+#input1 {
+  margin-top: 0%;
+  color: #333;
+}
+#input2 {
+  margin-top: 0%;
+  color: #333;
+}
+.modal-box h3 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+  text-align: center;
+}
+.modal-box p {
+  margin-left: -83%;
+  margin-top: 15px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+}
+.modal-box .buttons {
+  margin-top: 25px;
+}
+.modal-box button {
+  font-size: 14px;
+  padding: 6px 12px;
+  margin: 0 10px;
+}
+/*ccccc*/

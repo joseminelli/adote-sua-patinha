@@ -9,12 +9,33 @@
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
     <link rel="icon" type="imagem/png" href="img/logop.png" />
     <link rel="stylesheet" href="css/forum.css" />
     <link rel="stylesheet" href="css/customalert.css">
   </head>
 
   <body>
+    <section id="modalNovo">
+      <span class="overlay"></span>
+      <div class="modal-box">
+        <h2>Detalhes do post</h2>
+        <p class="modalp">Título:</p>
+        <input type="text" id="input1" class="inputmodal"  placeholder="O que você precisa?">
+        <p id="dropdownt" class="modalp">Categoria:</p>
+        <select id="dropdown">
+          <option selected value="0">Selecione</option>
+          <option value="Dúvida">Dúvida</option>
+          <option value="Dica">Dica</option>
+        </select>
+        <p class="modalp">Texto:</p>
+        <input type="text" id="input2" class="inputmodal" placeholder="Dê mais detalhes sobre seu post">
+        <div  class="buttons">
+          <button id="cancelbtn"class="close-btn2">Cancelar</button>
+          <button id="modalbtn"class="close-btn">Enviar</button>
+        </div>
+      </div>
+    </section>
     <section id="header">
       <a href="main.html"><img src="img/logo.png" class="logo" alt="" /></a>
       <div>

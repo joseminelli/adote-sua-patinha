@@ -7,8 +7,10 @@ const section = document.getElementById("modalNovo"),
 overlay = document.querySelector(".overlay"),
 showBtn = document.querySelector(".show-modal"),
 closeBtn = document.querySelector(".close-btn");
-overlay.addEventListener("click", () => section.classList.remove("active"));
-closeBtn.addEventListener("click", () => section.classList.remove("active"));
+if(overlay){
+    overlay.addEventListener("click", () => section.classList.remove("active"));
+    closeBtn.addEventListener("click", () => section.classList.remove("active"));
+}
 
 
 if (bar) {
