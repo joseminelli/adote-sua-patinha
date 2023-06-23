@@ -486,14 +486,13 @@ button[id="submit2"]:hover {
 }
 
 @media (max-width: 471px) {
-
-}
-
-@media (max-width: 471px) {
   #jaTem{
     margin-left: 0%;
   }
 
+  #linha-vertical {
+    margin-left: 10%;
+  }
   .content {
     background-color: #ffe58b;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -535,7 +534,23 @@ button[id="submit2"]:hover {
   }
 }
 
+@media (max-width: 390px) {
+  .content {
+    background-color: #ffe58b;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    min-width: 45%;
+    overflow: auto;
+    max-width: 90%;
+  }
+  #linha-vertical {
+    margin-left: 7%;
+  }
+}
+
 @media (max-width: 799px) {
+
   .section-p1 {
     padding: 40px;
   }
