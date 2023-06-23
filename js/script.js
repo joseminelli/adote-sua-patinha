@@ -1,32 +1,18 @@
 const bar = document.getElementById("bar");
 const close = document.getElementById("close");
 const nav = document.getElementById("navbar");
-const x1 = document.getElementById("top");
-const x2 = document.getElementById("bottom");
 var logado = false;
 
 const section = document.getElementById("modalNovo"),
   overlay = document.querySelector(".overlay"),
   showBtn = document.querySelector(".show-modal"),
   closeBtn = document.querySelector(".close-btn");
-if (overlay) {
-  overlay.addEventListener("click", () => section.classList.remove("active"));
-  closeBtn.addEventListener("click", () => section.classList.remove("active"));
-}
-
-if (bar) {
-  bar.addEventListener("click", () => {
-    nav.classList.add("active");
-    x1.classList.add("active");
-    x2.classList.add("active");
-  });
-}
 
 if (close) {
   close.addEventListener("click", () => {
+    bar.classList.remove("fa-square-caret-up");
+    bar.classList.add("fa-square-caret-down");
     nav.classList.remove("active");
-    x2.classList.remove("active");
-    x1.classList.remove("active");
   });
 }
 
@@ -36,6 +22,23 @@ document.addEventListener("DOMContentLoaded", function () {
   var loginButton = document.getElementById("login"); // Botão do cadastro de pessoas
   var login = localStorage.getItem("login");
   const pictureInput = document.getElementById("picture");
+
+  if (overlay) {
+    overlay.addEventListener("click", () => section.classList.remove("active"));
+    closeBtn.addEventListener("click", () =>
+      section.classList.remove("active")
+    );
+  }
+
+  if (bar) {
+    bar.addEventListener("click", (event) => {
+      bar.classList.toggle("fa-square-caret-up");
+      bar.classList.toggle("fa-square-caret-down");
+      nav.classList.toggle("active");
+    });
+  }
+  
+  
   if (enviarButton) {
     //não acessa a página se não tiver login
     if (login != "true") {
@@ -54,8 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
       var raca3 = document.getElementById("raca");
       var descricao3 = document.getElementById("descricao");
       var especie3 = document.getElementById("especie");
-
-      
 
       var inputImagem = document.getElementById("picture__input");
 
