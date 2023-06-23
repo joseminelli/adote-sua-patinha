@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (enviarButton) {
-    //não acessa a página se não tiver login
     if (login != "true") {
       window.location.href = "index.html";
     }
@@ -132,7 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   if (enviarButton2) {
     const pictureInput = document.getElementById("picture");
-    //cria as opcões de idade dinamicamente
     var selectIdade = document.getElementById("idade2");
 
     for (var i = 18; i <= 100; i++) {
