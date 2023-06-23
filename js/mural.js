@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   const petsPorPagina = 28;
   let currentPage = 1;
   const totalPages = Math.ceil(qtdPets / petsPorPagina);
-  console.log(qtdPets);
   if (taNoMural) {
     const regiaoSelect = document.getElementById("bairro2");
     const idadeSelect = document.getElementById("idade");

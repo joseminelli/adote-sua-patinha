@@ -30,7 +30,6 @@
     position: relative;
     transition: 0.3s ease;
 }
-
 #navbar li a {
     text-decoration: none;
     font-size: 16px;
@@ -241,8 +240,13 @@
         right: -21px;
         transition: 0.5s;
     }
-
-
+    .fa-square-caret-down{
+        transform: rotate(0deg);
+        transition: transform 0.4s ease-in-out;
+    }
+    .fa-square-caret-down.ativo{
+        transform: rotate(180deg);
+    }
     #mobile {
         display: flex;
     }
@@ -250,7 +254,6 @@
     #mobile i {
         color: #1a1a1a;
         font-size: 24px;
-        padding-left: 20px;
     }
 
     #bar {

@@ -13,10 +13,9 @@ document.addEventListener("click", function (e) {
   const navbar = document.getElementById("navbar");
   const clickedElement = e.target;
 
-  if (bar.classList.contains("fa-square-caret-up")) {
+  if (bar.classList.contains("ativo")) {
     if (!navbar.contains(clickedElement) && clickedElement !== bar) {
-      bar.classList.remove("fa-square-caret-up");
-      bar.classList.add("fa-square-caret-down");
+      bar.classList.remove("ativo");
       nav.classList.remove("active");
     }
   }
@@ -40,9 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
     bar.addEventListener("click", function (e) {
       nav.classList.toggle("active");
       setTimeout(() => {
-        bar.classList.toggle("fa-square-caret-up");
-        bar.classList.toggle("fa-square-caret-down");
-      }, 100);
+        bar.classList.toggle("ativo");
+      }, 10);
     });
   }
 
