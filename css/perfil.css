@@ -282,6 +282,19 @@ button[type="submit"]:hover {
   display: none;
 }
 
+
+#top {
+  width: 0;
+  height: 0;
+  transition: 0.3s;
+}
+
+#bottom {
+  width: 0;
+  height: 0;
+  transition: 0.3s;
+}
+
 .x1 {
   width: 20px;
   border-bottom: solid 4px#ffffff;
@@ -570,22 +583,100 @@ button[type="submit"]:hover {
     justify-content: flex-start;
     align-items: flex-start;
     position: fixed;
-    top: 0px;
-    right: -300px;
-    width: 300px;
+    top: 90px;
+    right: -20px;
+    width: 0;
     height: 100vh;
     background: #ffe58b;
-    box-shadow: 0 40px 60px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 80px 80px rgba(0, 0, 0, 0.25);
     transition: 0.3s;
     padding: 80px 0 0 10px;
+  }
+
+  #header {
+    padding: 20px;
+  }
+
+  #header .logo {
+    width: 80%;
+    max-height: 80px;
+    height: auto;
   }
 
   #navbar li {
     margin-bottom: 25px;
   }
 
+
   #navbar.active {
     right: 0;
+    width: 200px;
+  }
+
+  #darkToggle{
+    margin-left: 13%;
+  }
+  .sun {
+    width: 22px;
+    height: 22px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    border: 3px solid #ffe58b;
+  }
+
+  .sun .line1 {
+    height: 35px;
+    transform: translate(-50%, -50%);
+  }
+
+  .sun .line2 {
+    height: 35px;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .sun .line3 {
+    height: 30px;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .sun .line4 {
+    height: 30px;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  .sun::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background: #ffe58b;
+    border-radius: 50%;
+    position: absolute;
+    top: -21px;
+    right: -21px;
+    transition: 0.5s;
+  }
+
+  #top.active {
+    margin-bottom: -10%;
+    display: flex;
+    margin-left: 20%;
+    rotate: 45deg;
+    width: 30px;
+    height: 4px;
+    background: #1a1a1a;
+    border-radius: 10px;
+  }
+
+  #bottom.active {
+    display: flex;
+    margin-left: 20%;
+    rotate: -45deg;
+    width: 30px;
+    height: 4px;
+    background: #1a1a1a;
+    border-radius: 10px;
   }
 
   #mobile {

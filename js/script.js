@@ -1,6 +1,8 @@
 const bar = document.getElementById("bar");
 const close = document.getElementById("close");
 const nav = document.getElementById("navbar");
+const x1 = document.getElementById("top");
+const x2 = document.getElementById("bottom");
 var logado = false;
 
 const section = document.getElementById("modalNovo"),
@@ -15,12 +17,16 @@ if (overlay) {
 if (bar) {
   bar.addEventListener("click", () => {
     nav.classList.add("active");
+    x1.classList.add("active");
+    x2.classList.add("active");
   });
 }
 
 if (close) {
   close.addEventListener("click", () => {
     nav.classList.remove("active");
+    x2.classList.remove("active");
+    x1.classList.remove("active");
   });
 }
 
