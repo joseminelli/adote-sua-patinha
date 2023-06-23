@@ -1,6 +1,7 @@
 const bar = document.getElementById("bar");
 const close = document.getElementById("close");
 const nav = document.getElementById("navbar");
+const body2 = document.querySelector("body");
 var logado = false;
 
 const section = document.getElementById("modalNovo"),
@@ -8,13 +9,18 @@ const section = document.getElementById("modalNovo"),
   showBtn = document.querySelector(".show-modal"),
   closeBtn = document.querySelector(".close-btn");
 
-if (close) {
-  close.addEventListener("click", () => {
-    bar.classList.remove("fa-square-caret-up");
-    bar.classList.add("fa-square-caret-down");
-    nav.classList.remove("active");
-  });
-}
+document.addEventListener("click", function (e) {
+  const navbar = document.getElementById("navbar");
+  const clickedElement = e.target;
+
+  if (bar.classList.contains("fa-square-caret-up")) {
+    if (!navbar.contains(clickedElement) && clickedElement !== bar) {
+      bar.classList.remove("fa-square-caret-up");
+      bar.classList.add("fa-square-caret-down");
+      nav.classList.remove("active");
+    }
+  }
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   var enviarButton = document.getElementById("enviar"); // Botão do cadastro de pet
@@ -31,14 +37,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (bar) {
-    bar.addEventListener("click", (event) => {
-      bar.classList.toggle("fa-square-caret-up");
-      bar.classList.toggle("fa-square-caret-down");
+    bar.addEventListener("click", function (e) {
       nav.classList.toggle("active");
+      setTimeout(() => {
+        bar.classList.toggle("fa-square-caret-up");
+        bar.classList.toggle("fa-square-caret-down");
+      }, 100);
     });
   }
-  
-  
+
   if (enviarButton) {
     //não acessa a página se não tiver login
     if (login != "true") {
