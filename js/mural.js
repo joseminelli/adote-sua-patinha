@@ -91,6 +91,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         picfotopeti.src = pet.image;
 
         const favoritoBtn = document.createElement("button");
+        favoritoBtn.innerHTML = "❤";
         favoritoBtn.classList.add("btn-favorito");
         favoritoBtn.classList.add("botaofav" + petId);
         favoritoBtn.dataset.petId = petId;
@@ -107,11 +108,15 @@ document.addEventListener("DOMContentLoaded", async function () {
           if (favoritos.includes(petId)) {
             favoritos.splice(favoritos.indexOf(petId), 1);
             this.classList.remove("favoritado");
-            atualizarFiltro();
+            setTimeout(function () {
+              atualizarFiltro();
+            }, 200);
           } else {
             favoritos.push(petId);
             this.classList.add("favoritado");
-            atualizarFiltro();
+            setTimeout(function () {
+              atualizarFiltro();
+            }, 200);
           }
 
           localStorage.setItem("favoritos", JSON.stringify(favoritos));
