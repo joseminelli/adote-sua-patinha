@@ -87,12 +87,13 @@ p {
 }
 
 .content img {
-  width: auto;
+  width: 100px;
   height: 100px;
   border-radius: 50%;
+  object-fit: cover;
   justify-content: center;
   align-items: center;
-  margin-left: 15%;
+  margin-left: 10%;
 }
 
 select {
@@ -411,12 +412,12 @@ button[type="submit"]:hover {
   }
 
   .content img {
-    width: auto;
+    width: 100px;
     height: 100px;
     border-radius: 50%;
     justify-content: center;
     align-items: center;
-    margin-left: 10%;
+    margin-left: -2%;
   }
 
   button[type="submit"] {
