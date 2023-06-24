@@ -57,24 +57,51 @@ h1 {
   height: 0;
   transition: 0.3s;
 }
+
 .btn-favorito {
-  color: #a7a7a7;
-  font-size: 40px;
   position: absolute;
-  top: 32px;
+  top: 40px;
   left: 60px;
   border: none;
   background: transparent;
   z-index: 1;
-  transition: all 200ms ease-in-out;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-
 }
 
-.btn-favorito.favoritado{
-  font-size: 50px;
-  color: #d60f5b;
-  transition: all 200ms ease-in-out;
+.btn-favorito::before,
+.btn-favorito::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 20px;
+  height: 29px;
+  background-color: #d3d3d3;
+  border-width: 3px;
+  border-radius: 50px 50px 0 0;
+  transition: background-color 300ms ease-in-out;
+}
+
+.btn-favorito::before {
+  left: 9px;
+  transform: rotate(-310deg);
+}
+
+.btn-favorito::after {
+  left: 0;
+  transform: rotate(310deg);
+}
+
+.btn-favorito.favoritado::before,
+.btn-favorito.favoritado::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 20px;
+  height: 29px;
+  border: none;
+  border-width: 0px;
+  background-color: rgb(255, 0, 106);
+  border-radius: 50px 50px 0 0;
+  transition: background-color 300ms ease-in-out;
 }
 
 .checkbox.style-c {
@@ -402,8 +429,8 @@ button[type="submit"]:hover {
   }
 
   .btn-favorito {
-    top: 30px;
-    left: 40px;
+    top: 40px;
+    left: 50px;
   }
 
   #filtroH3 {
