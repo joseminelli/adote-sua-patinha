@@ -91,7 +91,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         picfotopeti.src = pet.image;
 
         const favoritoBtn = document.createElement("button");
-        favoritoBtn.innerHTML = "❤";
         favoritoBtn.classList.add("btn-favorito");
         favoritoBtn.classList.add("botaofav" + petId);
         favoritoBtn.dataset.petId = petId;
