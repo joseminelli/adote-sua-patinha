@@ -116,7 +116,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
           localStorage.setItem("imagempet", imagemBase64);
         };
-
         reader.readAsDataURL(imagem);
       } else {
         pictureInput.style.borderColor = "#ff2727";
