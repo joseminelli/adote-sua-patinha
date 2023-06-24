@@ -8,20 +8,23 @@ const section = document.getElementById("modalNovo"),
   overlay = document.querySelector(".overlay"),
   showBtn = document.querySelector(".show-modal"),
   closeBtn = document.querySelector(".close-btn");
-
-document.addEventListener("click", function (e) {
-  const navbar = document.getElementById("navbar");
-  const clickedElement = e.target;
-
-  if (bar.classList.contains("ativo")) {
-    if (!navbar.contains(clickedElement) && clickedElement !== bar) {
-      bar.classList.remove("ativo");
-      nav.classList.remove("active");
+if(bar){
+  document.addEventListener("click", function (e) {
+    const navbar = document.getElementById("navbar");
+    const clickedElement = e.target;
+  
+    if (bar.classList.contains("ativo")) {
+      if (!navbar.contains(clickedElement) && clickedElement !== bar) {
+        bar.classList.remove("ativo");
+        nav.classList.remove("active");
+      }
     }
-  }
-});
+  });
+}
+
 
 document.addEventListener("DOMContentLoaded", function () {
+
   var enviarButton = document.getElementById("enviar"); // Botão do cadastro de pet
   var enviarButton2 = document.getElementById("enviar2"); // Botão do cadastro de pessoas
   var loginButton = document.getElementById("login"); // Botão do cadastro de pessoas
@@ -100,6 +103,14 @@ document.addEventListener("DOMContentLoaded", function () {
         section.classList.add("active");
         return;
       }
+      var imagemdopet = localStorage.getItem("imagempet");
+      if(imagemdopet != null){
+        localStorage.removeItem("imagempet");
+        localStorage.removeItem("nome");
+        localStorage.removeItem("idade");
+        localStorage.removeItem("raca");
+        localStorage.removeItem("descricao");
+      }
 
       localStorage.setItem("nome", nome);
       localStorage.setItem("idade", idade);
@@ -108,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (inputImagem.files && inputImagem.files[0]) {
         var imagem = inputImagem.files[0];
-
+        
         var reader = new FileReader();
 
         reader.onload = function (e) {
@@ -116,14 +127,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
           localStorage.setItem("imagempet", imagemBase64);
         };
-
         reader.readAsDataURL(imagem);
       } else {
         pictureInput.style.borderColor = "#ff2727";
         section.classList.add("active");
         return;
       }
-
+      
       logado = true;
       localStorage.setItem("login", logado);
       window.location.href = "perfil.html";
@@ -150,7 +160,6 @@ document.addEventListener("DOMContentLoaded", function () {
       var telefone = document.getElementById("telefone").value;
 
       var nome4 = document.getElementById("input2");
-      var idade4 = document.getElementById("idade2");
       var bairro2 = document.getElementById("bairro2");
       var telefone2 = document.getElementById("telefone");
       nome4.addEventListener("click", function (event) {
@@ -179,6 +188,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         section.classList.add("active");
         return;
+      }
+      var imagemdapessoa = localStorage.getItem("imagempessoa");
+      if(imagemdapessoa != null){
+        console.log("entrou"); 
+        localStorage.removeItem("imagempessoa");
+        localStorage.removeItem("nome2");
+        localStorage.removeItem("idade2");
+        localStorage.removeItem("bairro");
+        localStorage.removeItem("telefone");
       }
 
       localStorage.setItem("nome2", nome2);
