@@ -99,17 +99,36 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         if (favoritos.includes(petId)) {
           favoritoBtn.classList.add("favoritado");
+
+          if (apenasFavoritos) {
+            if (a2.parentNode) {
+            a2.parentNode.classList.add("encolher");
+            }
+          }
         }
 
         favoritoBtn.addEventListener("click", function () {
           const petId = this.dataset.petId;
-
+          const container = this.parentNode;
+        
           if (favoritos.includes(petId)) {
             favoritos.splice(favoritos.indexOf(petId), 1);
             this.classList.remove("favoritado");
-            setTimeout(function () {
+        
+            if (container) {
+              if (apenasFavoritos){
+                container.classList.add("encolher");
+              }
+        
+              setTimeout(function () {
+                if (container.parentNode) {
+                  container.parentNode.removeChild(container);
+                }
+                atualizarFiltro();
+              }, 300);
+            } else {
               atualizarFiltro();
-            }, 200);
+            }
           } else {
             favoritos.push(petId);
             this.classList.add("favoritado");
@@ -117,9 +136,10 @@ document.addEventListener("DOMContentLoaded", async function () {
               atualizarFiltro();
             }, 200);
           }
-
+        
           localStorage.setItem("favoritos", JSON.stringify(favoritos));
         });
+        
 
         const container = document.createElement("div");
         container.classList.add("imagem-container");
