@@ -1,7 +1,19 @@
 var login = localStorage.getItem("login");
 const taNoMural = document.getElementById("formm");
+const section = document.getElementById("modalNovo"),
+  overlay = document.querySelector(".overlay"),
+  showBtn = document.querySelector(".show-modal"),
+  neverBtn = document.querySelector(".never-btn");
+  var abrirModal = localStorage.getItem("consciente");
 
 document.addEventListener("DOMContentLoaded", async function () {
+  neverBtn.addEventListener("click", function () { 
+    localStorage.setItem("consciente", "true");
+    section.classList.remove("active")
+  });
+  if(abrirModal != "true"){
+    section.classList.add("active")
+  }
   let loginId;
   const chkFavoritos = document.getElementById("chkFavoritos");
   const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];

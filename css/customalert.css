@@ -7,9 +7,27 @@
   background: #4070f4;
   border-radius: 6px;
   cursor: pointer;
+  transition: all 100ms ease;
 }
 #modalbtn:hover {
-  background-color: #265df2;
+  background-color: #1e4cca;
+}
+#modalbtn2 {
+  font-size: 17px;
+  font-weight: 400;
+  color: #212121;
+  padding: 14px 22px;
+  border: none;
+  background: none;
+  border: 3px solid #4070f4;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 100ms ease;
+}
+#modalbtn2:hover {
+  color: #fff;
+  background-color: #4070f4;
+  border: 0px solid #4070f4;
 }
 #cancelbtn {
   font-size: 18px;
@@ -25,6 +43,7 @@
   background-color: #f22626;
 }
 #modalbtn.show-modal,
+#modalbtn2.show-modal,
 .modal-box {
   position: fixed;
   left: 50%;
@@ -37,7 +56,7 @@
 }
 .overlay {
   position: fixed;
-  filter: blur(0px); 
+  filter: blur(0px);
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.4);
@@ -124,7 +143,6 @@ section.active .modal-box {
   padding: 6px 12px;
   margin: 0 10px;
 }
-
 @media screen and (max-width: 576px) {
   .modal-box {
     position: fixed;
@@ -132,6 +150,16 @@ section.active .modal-box {
     top: 57%;
     transform: translate(-50%, -50%);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  #modalbtn {
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  #modalbtn2 {
+    font-weight: 500;
+    font-size: 14.5px;
   }
   .modal-box h2 {
     margin-top: 0px;
@@ -171,14 +199,44 @@ section.active .modal-box {
   }
 }
 
+@media screen and (max-width: 390px) {
+
+  #modalbtn {
+    font-weight: 500;
+    font-size: 13px;
+  }
+
+  #modalbtn2 {
+    font-weight: 500;
+    font-size: 13px;
+  }
+}
 @keyframes shake {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  10% { transform: translate(-52%, -50%) rotate(1deg); }
-  30% { transform: translate(-47%, -50%) rotate(0deg); }
-  40% { transform: translate(-49%, -50%) rotate(1deg); }
-  50% { transform: translate(-52%, -50%) rotate(-1deg); }
-  70% { transform: translate(-47%, -50%) rotate(1deg); }
-  80% { transform: translate(-49%, -50%) rotate(-1deg); }
-  90% { transform: translate(-52%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(0deg); }
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  10% {
+    transform: translate(-52%, -50%) rotate(1deg);
+  }
+  30% {
+    transform: translate(-47%, -50%) rotate(0deg);
+  }
+  40% {
+    transform: translate(-49%, -50%) rotate(1deg);
+  }
+  50% {
+    transform: translate(-52%, -50%) rotate(-1deg);
+  }
+  70% {
+    transform: translate(-47%, -50%) rotate(1deg);
+  }
+  80% {
+    transform: translate(-49%, -50%) rotate(-1deg);
+  }
+  90% {
+    transform: translate(-52%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
 }
