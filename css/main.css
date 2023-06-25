@@ -54,10 +54,8 @@ h1 {
     transform: scale(0);
   }
 }
-
 .imagem-container {
   position:relative;
-  z-index: -1;
   display: inline-block;
 }
 
@@ -498,7 +496,6 @@ button[type="submit"]:hover {
 
   .content {
     position: relative;
-    z-index: -1;
     min-height: 20%;
     margin-left: 5%;
     margin-right: 5%;
