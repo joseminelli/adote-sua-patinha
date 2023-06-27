@@ -59,8 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var descricao = document.getElementById("descricao").value;
       var especie = document.getElementById("especie").value;
 
-      var nome3 = document.getElementById("input");
-      var idade3 = document.getElementById("idade");
+      var nome3 = document.getElementById("input");  
       var raca3 = document.getElementById("raca");
       var descricao3 = document.getElementById("descricao");
       var especie3 = document.getElementById("especie");
