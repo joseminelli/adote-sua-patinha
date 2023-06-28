@@ -180,7 +180,7 @@ function deletePost(index) {
 
 document.addEventListener("DOMContentLoaded", function () {
   loadPosts();
-
+  
   const btncriar = document.getElementById("criarPubli");
   btncriar.addEventListener("click", function () {
     
