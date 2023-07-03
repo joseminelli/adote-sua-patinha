@@ -10,17 +10,17 @@ const delBtnDiv = document.getElementById("delBtnDiv");
 
 document.addEventListener("DOMContentLoaded", function () {
     
-    //não acessa a página se não tiver login
+    
     if(login != "true"){
         window.location.href = "index.html";
     }
-    // Recupera os dados do localStorage
-    var nome2 = localStorage.getItem("nome2");
-    var idade2 = localStorage.getItem("idade2");
-    var bairro = localStorage.getItem("bairro");
-    var caminhoImagem = localStorage.getItem("imagempessoa");
-    var caminhoImagem2 = localStorage.getItem("imagempet");
-    var telefone = localStorage.getItem("telefone");
+    const editar = document.getElementById("editar");
+    var nome2 = localStorage.getItem("nome2"),
+     idade2 = localStorage.getItem("idade2"),
+     bairro = localStorage.getItem("bairro"),
+     caminhoImagem = localStorage.getItem("imagempessoa"),
+     caminhoImagem2 = localStorage.getItem("imagempet"),
+     telefone = localStorage.getItem("telefone");
     delBtnDiv.addEventListener("click", function () {
         localStorage.removeItem("nome");
         localStorage.removeItem("idade");
@@ -32,7 +32,9 @@ document.addEventListener("DOMContentLoaded", function () {
         semPet.style.display = "run-in";
         delBtnDiv.style.display = "none";
     });
-    // Exibe eles na página
+    editar.addEventListener("click", function () {
+        window.location.href = "cadastro1.html";
+    });
     nome.innerHTML = nome2;
     idade.innerHTML = idade2 + " Anos";
     bairro1.innerHTML = bairro;

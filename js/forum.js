@@ -216,7 +216,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (filteredPosts.length === 0) {
       const noPostsMessage = document.getElementById("noPostsMessage");
-      noPostsMessage.innerHTML = "Não há publicações correspondentes à busca";
+      if (posts.length === 0) { 
+        noPostsMessage.innerHTML = "Não há publicações";
+      }else{
+        noPostsMessage.innerHTML = "Não há publicações correspondentes à busca";
+      }
       content.style.display = "none";
     } else {
       noPostsMessage.innerHTML = "";

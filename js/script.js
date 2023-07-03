@@ -30,7 +30,11 @@ document.addEventListener("DOMContentLoaded", function () {
   var loginButton = document.getElementById("login"); // Botão do cadastro de pessoas
   var login = localStorage.getItem("login");
   const pictureInput = document.getElementById("picture");
-
+  if (document.location.pathname.endsWith("/index.html")) {
+    if (login == "true") {
+      window.location.href = "main.html";
+    }
+  }
   if (overlay) {
     overlay.addEventListener("click", () => section.classList.remove("active"));
     if (closeBtn) {

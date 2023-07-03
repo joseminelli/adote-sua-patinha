@@ -86,6 +86,14 @@ p {
   overflow: auto;
 }
 
+#editar {
+  position: absolute;
+  font-size: 20px;
+  margin-left: 8%;
+  margin-top: -24%;
+  color: #165ea8;
+}
+
 .content img {
   width: 100px;
   height: 100px;
@@ -213,7 +221,6 @@ button[type="submit"]:hover {
   display: none;
 }
 
-
 #top {
   width: 0;
   height: 0;
@@ -328,12 +335,28 @@ button[type="submit"]:hover {
     height: 400px;
   }
 }
+@media (max-width: 1800px) {
+  #editar {
+    position: absolute;
+    font-size: 20px;
+    margin-left: 8%;
+    margin-top: -19%;
+    color: #165ea8;
+  }
+}
 
 @media (max-width: 1700px) {
   .content {
     margin-top: 4%;
   }
 
+  #editar {
+    position: absolute;
+    font-size: 20px;
+    margin-left: 9%;
+    margin-top: -26.5%;
+    color: #165ea8;
+  }
   #linha-vertical {
     height: 400px;
     margin-left: 10%;
@@ -351,7 +374,15 @@ button[type="submit"]:hover {
   }
 }
 
-@media (max-width: 455px) {
+@media (max-width: 440px) {
+  #editar {
+    position: absolute;
+    font-size: 20px;
+    margin-left: 36%;
+    margin-top: -114%;
+    color: #165ea8;
+  }
+
   .content {
     background-color: #ffe58b;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -369,7 +400,7 @@ button[type="submit"]:hover {
     margin-top: 40%;
     transform: rotate(45deg);
   }
-  
+
   .x2 {
     position: absolute;
     width: 20px;
@@ -379,7 +410,7 @@ button[type="submit"]:hover {
     border-radius: 35%;
     transform: rotate(-45deg);
   }
-  
+
   .delBtnDiv {
     position: relative;
     margin-bottom: -31%;
@@ -389,13 +420,12 @@ button[type="submit"]:hover {
     height: 25px;
     background-color: #f44040;
   }
-  
+
   .btnDel {
     display: flex;
     position: relative;
     right: -10%;
   }
-
 
   .mural {
     margin-top: 0%;
@@ -438,7 +468,7 @@ button[type="submit"]:hover {
   .section-p1 {
     padding: 40px;
   }
-  
+
   #linha-vertical {
     height: 0px;
     margin-left: 0%;
