@@ -544,7 +544,8 @@ button[type="submit"]:hover {
   left: 13%;
   transform: translate(-50%, -50%);
   transition: all 1s;
-  width: 50px;
+  width: 200px;
+  cursor: pointer;
   height: 50px;
   background: transparent;
   box-sizing: border-box;
@@ -554,6 +555,7 @@ button[type="submit"]:hover {
 
 #searchInput {
   position: absolute;
+  display: block;
   top: 0;
   left: 0;
   width: 100%;
@@ -562,7 +564,6 @@ button[type="submit"]:hover {
   line-height: 30px;
   outline: 0;
   border: 2px solid #165ea8;
-  display: none;
   font-size: 1em;
   border-radius: 5px;
   padding: 0 20px;
@@ -575,14 +576,15 @@ button[type="submit"]:hover {
 .fa {
   box-sizing: border-box;
   padding: 10px;
-  width: 42.5px;
-  height: 42.5px;
+  width: 43.5px;
+  height: 43.5px;
   position: absolute;
-  top: 3.8px;
+  top: 4px;
   right: 3px;
   border-radius: 5px;
-  color: #282828;
+  color: #282828 !important;
   text-align: center;
+  background: #ffe58b;
   font-size: 1.2em;
   transition: all 1s;
 }
@@ -621,6 +623,51 @@ button[type="submit"]:hover {
     left: 27%;
   }
   
+.search {
+  position: absolute;
+  margin-top: 3rem;
+  left: 13%;
+  transform: translate(-50%, -50%);
+  transition: all 1s;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#searchInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  line-height: 30px;
+  outline: 0;
+  border: 2px solid #165ea8;
+  display: none;
+  font-size: 1em;
+  border-radius: 5px;
+  padding: 0 20px;
+  transition: all 1s;
+}
+
+.fa {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 42.5px;
+  height: 42.5px;
+  position: absolute;
+  top: 3.8px;
+  right: 3px;
+  border-radius: 5px;
+  color: #282828;
+  text-align: center;
+  font-size: 1.2em;
+  transition: all 1s;
+}
   .box-select {
     flex-direction: column;
     gap: 5px;
