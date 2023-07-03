@@ -1,12 +1,13 @@
-var sun = document.getElementById("sun");
+var sun = document.getElementById("sun"),
+transitionTime = 0.6;
 const body = document.querySelector("body");
-const p = document.querySelector("div.mural > p");
-const logintxt = document.getElementById("logintxt");
-const noPostsMessage = document.getElementById("noPostsMessage");
-const npet = document.getElementById("npet");
-const currentPage = document.getElementById("currentPage");
-const pictureInput = document.getElementById("picture");
-var transitionTime = 0.6;
+ p = document.querySelector("div.mural > p"),
+ logintxt = document.getElementById("logintxt"),
+ noPostsMessage = document.getElementById("noPostsMessage"),
+ npet = document.getElementById("npet"),
+ iconProcura = document.getElementById("searchButton"),
+ currentPage = document.getElementById("currentPage"),
+ pictureInput = document.getElementById("picture");
 
 document.addEventListener("DOMContentLoaded", function () {
   var darkModeEnabled = localStorage.getItem("darkModeEnabled");
@@ -39,6 +40,9 @@ function enableDarkMode() {
   localStorage.setItem("darkModeEnabled", "true");
   if (p) {
     p.style.color = "#ffffff";
+  }
+  if(iconProcura){
+    iconProcura.style.color = "#ffffff";
   }
   if(pictureInput){
     pictureInput.style.transition = transitionTime + "s";
@@ -80,6 +84,9 @@ function disableDarkMode() {
     pictureInput.style.transition = transitionTime + "s";
     pictureInput.style.backgroundColor = "#ddd";
     pictureInput.style.borderColor = "#9e9e9e";
+  }
+  if(iconProcura){
+    iconProcura.style.color = "#282828";
   }
   if (npet) {
     npet.style.color = "#282828";
