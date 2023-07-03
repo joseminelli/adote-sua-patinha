@@ -2,12 +2,13 @@ const section = document.getElementById("modalNovo"),
   overlay = document.querySelector(".overlay"),
   showBtn = document.querySelector(".show-modal"),
   closeBtn = document.querySelector(".close-btn3"),
-  closeBtn2 = document.querySelector(".close-btn2");
-const modal = document.getElementById("modal");
+  closeBtn2 = document.querySelector(".close-btn2"),
+  modal = document.getElementById("modal");
 if (overlay) {
   var tituloInput2 = document.getElementById("input1");
   var categoriaInput2 = document.getElementById("dropdown");
   var descInput2 = document.getElementById("input2");
+  
   overlay.addEventListener("click", () => section.classList.remove("active"));
   closeBtn2.addEventListener("click", () => section.classList.remove("active"));
   closeBtn.addEventListener("click", () => {
@@ -67,7 +68,6 @@ if (login != "true") {
 }
 
 function loadPosts() {
-  // Função que carrega as publicações
   var posts = JSON.parse(localStorage.getItem("posts")) || [];
 
   var content = document.querySelector(".content");
@@ -110,7 +110,6 @@ function loadPosts() {
 
       content.appendChild(postElement);
 
-      // Verifica se há respostas para exibir
       if (post.respostas && post.respostas.length > 0) {
         var repliesContainer = document.createElement("div");
         repliesContainer.className = "replies-container";
@@ -134,7 +133,7 @@ function loadPosts() {
       }
     });
 
-    var deleteButtons = document.querySelectorAll(".deleteBtn"); // Configura os botões que deletam a publicação
+    var deleteButtons = document.querySelectorAll(".deleteBtn"); 
     deleteButtons.forEach(function (button) {
       button.addEventListener("click", function () {
         var index = parseInt(button.getAttribute("data-index"));
@@ -142,7 +141,7 @@ function loadPosts() {
       });
     });
 
-    var replyButtons = document.querySelectorAll(".reply-btn"); // Configura os botões de resposta
+    var replyButtons = document.querySelectorAll(".reply-btn"); 
     replyButtons.forEach(function (button) {
       button.addEventListener("click", function () {
         var postElement = button.parentNode.parentNode;
@@ -171,7 +170,6 @@ function loadPosts() {
 var nomeresp = localStorage.getItem("nome2");
 
 function deletePost(index) {
-  // função para deletar o post
   var posts = JSON.parse(localStorage.getItem("posts")) || [];
   posts.splice(index, 1);
   localStorage.setItem("posts", JSON.stringify(posts));
