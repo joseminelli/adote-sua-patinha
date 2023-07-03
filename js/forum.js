@@ -6,7 +6,60 @@ const closeBtn2 = document.querySelector(".close-btn2");
 const modal = document.getElementById("modal");
 
 if (overlay) {
-  // Código existente omitido para brevidade
+  var tituloInput2 = document.getElementById("input1");
+  var categoriaInput2 = document.getElementById("dropdown");
+  var descInput2 = document.getElementById("input2");
+  
+  overlay.addEventListener("click", () => section.classList.remove("active"));
+  closeBtn2.addEventListener("click", () => section.classList.remove("active"));
+  closeBtn.addEventListener("click", () => {
+    modal.style.animation = "none";
+    var tituloInput = document.getElementById("input1").value;
+    var categoriaInput = document.getElementById("dropdown").value;
+    var descInput = document.getElementById("input2").value;
+    if (tituloInput != "" && categoriaInput != 0 && descInput != "") {
+      tituloInput2.style.borderColor = "#165ea8";
+      var post = {
+        titulo: tituloInput,
+        categoria: categoriaInput,
+        descricao: descInput,
+      };
+
+      var posts = JSON.parse(localStorage.getItem("posts")) || [];
+      posts.push(post);
+      localStorage.setItem("posts", JSON.stringify(posts));
+
+      loadPosts();
+      section.classList.remove("active");
+    } else {
+      section.classList.add("active");
+      modal.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
+      if (tituloInput == "") {
+        tituloInput2.style.borderColor = "#ff2727";
+      }
+      if (categoriaInput == 0) {
+        categoriaInput2.style.borderColor = "#ff2727";
+      } else {
+        categoriaInput2.style.borderColor = "#165ea8";
+      }
+      if (descInput == "") {
+        descInput2.style.borderColor = "#ff2727";
+      } else {
+        descInput2.style.borderColor = "#165ea8";
+      }
+      return;
+    }
+  });
+
+  tituloInput2.addEventListener("click", function (event) {
+    tituloInput2.style.borderColor = "#165ea8";
+  });
+  categoriaInput2.addEventListener("click", function (event) {
+    categoriaInput2.style.borderColor = "#165ea8";
+  });
+  descInput2.addEventListener("click", function (event) {
+    descInput2.style.borderColor = "#165ea8";
+  });
 }
 
 var login = localStorage.getItem("login");
