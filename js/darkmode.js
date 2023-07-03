@@ -6,6 +6,7 @@ const body = document.querySelector("body");
  noPostsMessage = document.getElementById("noPostsMessage"),
  npet = document.getElementById("npet"),
  iconProcura = document.getElementById("searchButton"),
+ inputProcura = document.getElementById("searchInput"),
  currentPage = document.getElementById("currentPage"),
  pictureInput = document.getElementById("picture");
 
@@ -43,6 +44,9 @@ function enableDarkMode() {
   }
   if(iconProcura){
     iconProcura.style.color = "#ffffff";
+  }
+  if(inputProcura){
+    inputProcura.style.color = "#ffffff";
   }
   if(pictureInput){
     pictureInput.style.transition = transitionTime + "s";
@@ -87,6 +91,9 @@ function disableDarkMode() {
   }
   if(iconProcura){
     iconProcura.style.color = "#282828";
+  }
+  if(inputProcura){
+    inputProcura.style.color = "#282828";
   }
   if (npet) {
     npet.style.color = "#282828";
