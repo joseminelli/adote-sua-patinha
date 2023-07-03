@@ -575,7 +575,7 @@ button[type="submit"]:hover {
 
 .fa {
   box-sizing: border-box;
-  padding: 10px;
+  padding: 12px;
   width: 47px;
   height: 47px;
   position: absolute;
@@ -607,7 +607,6 @@ button[type="submit"]:hover {
   color: #ffffff !important;
   top: 1px;
   right: 1px;
-  color: 282828;
 }
 
 @media screen and (max-width: 576px) {
@@ -656,7 +655,7 @@ button[type="submit"]:hover {
 
   .fa {
     box-sizing: border-box;
-    padding: 10px;
+    padding: 13px;
     width: 50px;
     height: 50px;
     position: absolute;
