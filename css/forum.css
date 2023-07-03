@@ -625,7 +625,7 @@ button[type="submit"]:hover {
 
   .search {
     position: absolute;
-    margin-top: 3rem;
+    margin-top: 3.2rem;
     left: 13%;
     transform: translate(-50%, -50%);
     transition: all 1s;
