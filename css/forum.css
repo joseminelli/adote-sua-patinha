@@ -582,9 +582,9 @@ button[type="submit"]:hover {
   top: 4px;
   right: 3px;
   border-radius: 5px;
-  color: #282828 !important;
+  color: #ffffff !important;
   text-align: center;
-  background: #ffe58b;
+  background: #165ea8;
   font-size: 1.2em;
   transition: all 1s;
 }
@@ -604,9 +604,8 @@ button[type="submit"]:hover {
 .search:valid .fa {
   width: 43.5px;
   height: 43.5px;
-  color: #282828 !important;
+  color: #ffffff !important;
   top: 4px;
-  background: #ffe58b;
   color: 282828;
 }
 
