@@ -1,7 +1,7 @@
 const section = document.getElementById("modalNovo"),
   overlay = document.querySelector(".overlay"),
   showBtn = document.querySelector(".show-modal"),
-  closeBtn = document.querySelector(".close-btn"),
+  closeBtn = document.querySelector(".close-btn3"),
   closeBtn2 = document.querySelector(".close-btn2");
 const modal = document.getElementById("modal");
 if (overlay) {
@@ -30,6 +30,7 @@ if (overlay) {
       loadPosts();
       section.classList.remove("active");
     } else {
+      section.classList.add("active");
       modal.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
       if (tituloInput == "") {
         tituloInput2.style.borderColor = "#ff2727";
@@ -44,7 +45,6 @@ if (overlay) {
       } else {
         descInput2.style.borderColor = "#165ea8";
       }
-      section.classList.add("active");
       return;
     }
   });

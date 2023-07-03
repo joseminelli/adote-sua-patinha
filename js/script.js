@@ -33,9 +33,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (overlay) {
     overlay.addEventListener("click", () => section.classList.remove("active"));
-    closeBtn.addEventListener("click", () =>
-      section.classList.remove("active")
-    );
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () =>
+        section.classList.remove("active")
+      );
+    }
   }
 
   if (bar) {
