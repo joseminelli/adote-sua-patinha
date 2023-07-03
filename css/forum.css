@@ -569,18 +569,18 @@ button[type="submit"]:hover {
   padding: 0 20px;
   transition: all 1s;
 }
-#searchInput::placeholder{
-    color: #8b8b8b;
+#searchInput::placeholder {
+  color: #8b8b8b;
 }
 
 .fa {
   box-sizing: border-box;
   padding: 10px;
-  width: 43.5px;
-  height: 43.5px;
+  width: 47px;
+  height: 47px;
   position: absolute;
-  top: 4px;
-  right: 3px;
+  top: 1px;
+  right: 1px;
   border-radius: 5px;
   color: #ffffff !important;
   text-align: center;
@@ -602,10 +602,11 @@ button[type="submit"]:hover {
 
 .search:hover .fa,
 .search:valid .fa {
-  width: 43.5px;
-  height: 43.5px;
+  width: 47px;
+  height: 47px;
   color: #ffffff !important;
-  top: 4px;
+  top: 1px;
+  right: 1px;
   color: 282828;
 }
 
@@ -621,52 +622,52 @@ button[type="submit"]:hover {
   .search:valid {
     left: 27%;
   }
-  
-.search {
-  position: absolute;
-  margin-top: 3rem;
-  left: 13%;
-  transform: translate(-50%, -50%);
-  transition: all 1s;
-  width: 50px;
-  height: 50px;
-  background: transparent;
-  box-sizing: border-box;
-  border-radius: 5px;
-  padding: 5px;
-}
 
-#searchInput {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  line-height: 30px;
-  outline: 0;
-  border: 2px solid #165ea8;
-  display: none;
-  font-size: 1em;
-  border-radius: 5px;
-  padding: 0 20px;
-  transition: all 1s;
-}
+  .search {
+    position: absolute;
+    margin-top: 3rem;
+    left: 13%;
+    transform: translate(-50%, -50%);
+    transition: all 1s;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 5px;
+  }
 
-.fa {
-  box-sizing: border-box;
-  padding: 10px;
-  width: 42.5px;
-  height: 42.5px;
-  position: absolute;
-  top: 3.8px;
-  right: 3px;
-  border-radius: 5px;
-  color: #282828;
-  text-align: center;
-  font-size: 1.2em;
-  transition: all 1s;
-}
+  #searchInput {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    line-height: 30px;
+    outline: 0;
+    border: 2px solid #165ea8;
+    display: none;
+    font-size: 1em;
+    border-radius: 5px;
+    padding: 0 20px;
+    transition: all 1s;
+  }
+
+  .fa {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    border-radius: 5px;
+    color: #282828;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;
+  }
   .box-select {
     flex-direction: column;
     gap: 5px;
