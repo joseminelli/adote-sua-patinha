@@ -378,6 +378,10 @@ button[id="submit2"]:hover {
     margin-left: 10%;
   }
 
+
+  #box {
+    height: 100px;
+  }
   .content {
     background-color: #ffe58b;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -391,7 +395,7 @@ button[id="submit2"]:hover {
 
   button[type="submit"] {
     margin-top: 60%;
-    margin-left:28%;
+    margin-left:2%;
   }
 
   #faca-agora {
@@ -427,7 +431,6 @@ button[id="submit2"]:hover {
     padding: 1rem;
     margin-top: 0%;
     border-radius: 10px;
-    width: 200px;
     min-width: 17%;
     overflow: auto;
   }
