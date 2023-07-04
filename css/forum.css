@@ -1,10 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Varela Round', sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -181,7 +180,7 @@ p {
 }
 
 #box {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Varela Round', sans-serif;
   background-color: var(--color-dark1);
   color: var(--color-white);
   display: flex;
@@ -191,7 +190,7 @@ p {
 
 #formm {
   background-color: #ffe58b;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Varela Round', sans-serif;
   background-color: var(--color-dark1);
   color: var(--color-white);
   display: flex;
@@ -719,7 +718,7 @@ button[type="submit"]:hover {
 @media screen and (min-width: 1800px) {
   #formm {
     background-color: #ffe58b;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Varela Round', sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
     display: flex;
@@ -813,7 +812,7 @@ button[type="submit"]:hover {
 
   #formm {
     background-color: #ffe58b;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Varela Round', sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
     display: flex;
@@ -891,7 +890,7 @@ button[type="submit"]:hover {
 
   #formm {
     background-color: #ffe58b;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Varela Round', sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
     display: flex;
