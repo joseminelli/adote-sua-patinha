@@ -368,8 +368,7 @@ button[id="submit2"]:hover {
     gap: 5px;
   }
 }
-
-@media (max-width: 471px) {
+@media screen and (max-width: 500px) {
   #jaTem {
     margin-left: 0%;
   }
@@ -390,18 +389,76 @@ button[id="submit2"]:hover {
     min-width: 75%;
     margin-top: 100%;
     overflow: auto;
+    max-width: 70%;
+  }
+  #linha-horizontal {
+    margin-top: -5%;
+    margin-bottom: 5%;
+  }
+
+  button[type="submit"] {
+    margin-top: 60%;
+    margin-left:28%;
+  }
+  #fazer-login{
+    margin-left: 9%;
+  }
+  #form {
+    justify-content: start;
+    display: flex;
+    gap: 1rem;
+  }
+
+  button[id="submit2"] {
+    margin-left: -8%;
+    width: 90px;
+    max-width: 115px;
+    margin-top: 60%;
+  }
+
+
+  .mural img {
+    margin-top: 10%;
+    margin-left: 40px;
+    border-radius: 10px;
+    width: 105px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (max-width: 450px) {
+  #jaTem {
+    margin-left: 0%;
+  }
+
+  #linha-horizontal {
+    margin-top: -5%;
+    margin-bottom: 15%;
+  }
+
+
+  #box {
+    height: 60px;
+  }
+  .content {
+    background-color: #ffe58b;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    min-width: 75%;
+    margin-top: 100%;
+    overflow: auto;
     max-width: 85%;
   }
 
   button[type="submit"] {
     margin-top: 60%;
-    margin-left:2%;
+    margin-left:27%;
   }
 
-  #faca-agora {
-    margin-left: -8%;
+  #fazer-login {
+    margin-left: 5%;
   }
-
   button[id="submit2"] {
     margin-left: -8%;
     width: 90px;
