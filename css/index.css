@@ -143,7 +143,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-self: center;
-  margin-left: 2%;
+  margin-left: 20%;
 }
 
 #fazer-login p {
@@ -515,13 +515,6 @@ button[id="submit2"]:hover {
     margin-left: 10%;
   }
 }
-@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
-  /* Estilos para o iPhone 12 */
-  #fazer-login {
-    margin-left: 50%;
-  }
-}
-
 @media (max-width: 390px) {
   .content {
     background-color: #ffe58b;

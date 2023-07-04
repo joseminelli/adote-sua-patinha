@@ -25,8 +25,8 @@ if(bar){
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  var enviarButton = document.getElementById("enviar"); // Botão do cadastro de pet
-  var enviarButton2 = document.getElementById("enviar2"); // Botão do cadastro de pessoas
+  var enviarButton = document.getElementById("enviar"); // Botão de pet
+  var enviarButton2 = document.getElementById("enviar2"); // Botão de pessoas
   var loginButton = document.getElementById("login"); // Botão do cadastro de pessoas
   var login = localStorage.getItem("login");
   const pictureInput = document.getElementById("picture");
