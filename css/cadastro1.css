@@ -75,8 +75,7 @@ p {
   border-radius: 10px;
   min-width: 30%;
   max-height: 400px;
-  overflow: scroll;
-  overflow: auto;
+  overflow-y: scroll;
 }
 
 select {
@@ -229,7 +228,6 @@ button[type="submit"]:hover {
     flex-direction: column;
     gap: 5px;
   }
-
   #box {
     margin-top: 1%;
     height: 500px;
