@@ -152,6 +152,7 @@ h1 {
 
 #submit2 {
   margin-left: 28%;
+  color:#165ea8;
 }
 
 .inputs {
@@ -247,7 +248,9 @@ button[id="submit2"] {
   background-color: #165ea8;
   cursor: pointer;
 }
-
+a{
+  text-decoration: none;
+}
 button[id="submit2"]:hover {
   background-color: #053c74;
 }

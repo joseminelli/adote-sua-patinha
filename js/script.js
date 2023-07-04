@@ -147,7 +147,15 @@ document.addEventListener("DOMContentLoaded", function () {
   if (enviarButton2) {
     const pictureInput = document.getElementById("picture");
     var selectIdade = document.getElementById("idade2");
-
+    const emailDiv = document.getElementById("emailDiv");
+    const senhaDiv = document.getElementById("senhaDiv");
+    if(login == "true"){
+      emailDiv.style.display = "none";
+      senhaDiv.style.display = "none";
+    } else {
+      emailDiv.style.display = "block";
+      senhaDiv.style.display = "block";
+    }
     for (var i = 18; i <= 100; i++) {
       var option = document.createElement("option");
       option.setAttribute("value", i);
@@ -163,12 +171,22 @@ document.addEventListener("DOMContentLoaded", function () {
       var idade2 = document.getElementById("idade2").value;
       var bairro = document.getElementById("bairro2").value;
       var telefone = document.getElementById("telefone").value;
+      var email = document.getElementById("email").value;
+      var senha = document.getElementById("senha").value;
 
       var nome4 = document.getElementById("input2");
       var bairro2 = document.getElementById("bairro2");
       var telefone2 = document.getElementById("telefone");
+      var email2 = document.getElementById("email");
+      var senha2 = document.getElementById("senha");
       nome4.addEventListener("click", function (event) {
         nome4.style.borderColor = "#165ea8";
+      });
+      email2.addEventListener("click", function (event) {
+        email2.style.borderColor = "#165ea8";
+      });
+      senha2.addEventListener("click", function (event) {
+        senha2.style.borderColor = "#165ea8";
       });
       telefone2.addEventListener("click", function (event) {
         telefone2.style.borderColor = "#165ea8";
@@ -176,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
       bairro2.addEventListener("click", function (event) {
         bairro2.style.borderColor = "#165ea8";
       });
-      if (nome2 === "" || telefone === "" || bairro === "0") {
+      if (nome2 === "" || telefone === "" || bairro === "0" || email === "" || senha === "") {
         if (inputImagem2.files && !inputImagem2.files[0]) {
           pictureInput.style.borderColor = "#ff2727";
         } else {
@@ -187,6 +205,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (telefone === "") {
           telefone2.style.borderColor = "#ff2727";
+        }
+        if (senha === "") {
+          senha2.style.borderColor = "#ff2727";
+        }
+        if (email === "") {
+          email2.style.borderColor = "#ff2727";
         }
         if (bairro === "0") {
           bairro2.style.borderColor = "#ff2727";
