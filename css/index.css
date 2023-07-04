@@ -515,17 +515,6 @@ button[id="submit2"]:hover {
     margin-left: 10%;
   }
 }
-@media (min-width: 1000px) {
-  .content {
-    background-color: #ffe58b;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-    padding: 1rem;
-    margin-top: 0%;
-    border-radius: 10px;
-    min-width: 21%;
-    overflow: auto;
-  }
-}
 @media (max-width: 390px) {
   .content {
     background-color: #ffe58b;
