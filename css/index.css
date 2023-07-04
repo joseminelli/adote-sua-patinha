@@ -383,14 +383,15 @@ button[id="submit2"]:hover {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 2rem;
     border-radius: 10px;
-    min-width: 45%;
+    min-width: 75%;
+    margin-top: 100%;
     overflow: auto;
     max-width: 85%;
   }
 
   button[type="submit"] {
     margin-top: 60%;
-    margin-left: 5%;
+    margin-left:28%;
   }
 
   #faca-agora {
@@ -414,7 +415,28 @@ button[id="submit2"]:hover {
   }
 }
 
-@media (max-width: 1700px) {
+@media (min-width: 1901px) {
+  #box {
+    margin-top: 2%;
+    height: 400px;
+  }
+
+  .content {
+    background-color: #ffe58b;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    margin-top: 0%;
+    border-radius: 10px;
+    width: 200px;
+    min-width: 17%;
+    overflow: auto;
+  }
+  #fazer-login{
+    margin-left: 19%;
+  }
+}
+
+@media (min-width: 1500px) and (max-width: 1900px) {
   #box {
     margin-top: 2%;
     height: 400px;
@@ -429,8 +451,11 @@ button[id="submit2"]:hover {
     min-width: 17%;
     overflow: auto;
   }
+  #fazer-login{
+    margin-left: 10%;
+  }
 }
-@media (max-width: 1300px) {
+@media (min-width: 1000px) {
   .content {
     background-color: #ffe58b;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
