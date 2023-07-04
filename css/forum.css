@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Spartan", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -179,9 +179,9 @@ p {
   color: #56465b;
   margin: 15px 0 20px 0;
 }
-/*----------------- Cadastro animal -----------------*/
+
 #box {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background-color: var(--color-dark1);
   color: var(--color-white);
   display: flex;
@@ -189,10 +189,9 @@ p {
   align-items: center;
 }
 
-/*----------------- Cadastro animal -----------------*/
 #formm {
   background-color: #ffe58b;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background-color: var(--color-dark1);
   color: var(--color-white);
   display: flex;
@@ -720,7 +719,7 @@ button[type="submit"]:hover {
 @media screen and (min-width: 1800px) {
   #formm {
     background-color: #ffe58b;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
     display: flex;
@@ -814,7 +813,7 @@ button[type="submit"]:hover {
 
   #formm {
     background-color: #ffe58b;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
     display: flex;
@@ -892,7 +891,7 @@ button[type="submit"]:hover {
 
   #formm {
     background-color: #ffe58b;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
     display: flex;
