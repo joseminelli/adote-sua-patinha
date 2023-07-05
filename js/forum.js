@@ -61,7 +61,6 @@ if (overlay) {
   closeBtn2.addEventListener("click", () => section.classList.remove("active"));
   closeBtn.addEventListener("click", () => {
     console.log("clicou");
-    modal.style.animation = "none";
     var tituloInput = document.getElementById("input1").value;
     var categoriaInput = document.getElementById("dropdown").value;
     var descInput = document.getElementById("input2").value;
@@ -75,14 +74,18 @@ if (overlay) {
       var posts = JSON.parse(localStorage.getItem("posts")) || [];
       posts.push(post);
       localStorage.setItem("posts", JSON.stringify(posts));
-
+  
       loadPosts();
       showModalSuccess();
     } else {
-      
       iconmodal.style.display = "none";
       section.classList.add("active");
-      modal.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
+  
+      modal.classList.add("shake-animation");
+      setTimeout(() => {
+        modal.classList.remove("shake-animation");
+      }, 820);
+  
       if (tituloInput == "") {
         tituloInput2.style.borderColor = "#ff2727";
       }
@@ -99,6 +102,8 @@ if (overlay) {
       return;
     }
   });
+  
+  
 
   tituloInput2.addEventListener("click", function (event) {
     tituloInput2.style.borderColor = "#165ea8";

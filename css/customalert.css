@@ -219,30 +219,20 @@ section.active .modal-box {
     font-size: 13px;
   }
 }
+.shake-animation {
+  animation-name: shake;
+  animation-duration: 0.82s;
+  animation-timing-function: cubic-bezier(.36, .07, .19, .97);
+}
 @keyframes shake {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
   }
-  10% {
+  10%, 30%, 50%, 70%, 90% {
     transform: translate(-52%, -50%) rotate(1deg);
   }
-  30% {
-    transform: translate(-47%, -50%) rotate(0deg);
-  }
-  40% {
-    transform: translate(-49%, -50%) rotate(1deg);
-  }
-  50% {
-    transform: translate(-52%, -50%) rotate(-1deg);
-  }
-  70% {
-    transform: translate(-47%, -50%) rotate(1deg);
-  }
-  80% {
-    transform: translate(-49%, -50%) rotate(-1deg);
-  }
-  90% {
-    transform: translate(-52%, -50%) rotate(0deg);
+  20%, 40%, 60%, 80% {
+    transform: translate(-48%, -50%) rotate(-1deg);
   }
   100% {
     transform: translate(-50%, -50%) rotate(0deg);
