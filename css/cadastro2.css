@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@200;300;400;500;600;700&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Kumbh Sans', sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -59,7 +59,7 @@ p {
 
 #box {
   background-color: #ffe58b;
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Kumbh Sans', sans-serif;
   background-color: var(--color-dark1);
   color: var(--color-white);
   display: flex;
@@ -206,7 +206,7 @@ button[type="submit"]:hover {
   color: #757474;
   border: 2px dashed #9e9e9e;
   cursor: pointer;
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Kumbh Sans', sans-serif;
 }
 
 .picture:hover {
@@ -329,7 +329,7 @@ section.active .modal-box {
 
   #box {
     background-color: #ffe58b;
-    font-family: 'Varela Round', sans-serif;
+    font-family: 'Kumbh Sans', sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
     display: flex;
@@ -375,7 +375,7 @@ section.active .modal-box {
 
   #box {
     background-color: #ffe58b;
-    font-family: 'Varela Round', sans-serif;
+    font-family: 'Kumbh Sans', sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
     display: flex;
@@ -393,7 +393,7 @@ section.active .modal-box {
     color: #757474;
     border: 2px dashed #9e9e9e;
     cursor: pointer;
-    font-family: 'Varela Round', sans-serif;
+    font-family: 'Kumbh Sans', sans-serif;
     transition: color 300ms ease-in-out, background 300ms ease-in-out;
   }
 

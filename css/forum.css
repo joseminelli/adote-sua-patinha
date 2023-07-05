@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@200;300;400;500;600;700&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Kumbh Sans', sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -180,7 +180,7 @@ p {
 }
 
 #box {
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Kumbh Sans', sans-serif;
   background-color: var(--color-dark1);
   color: var(--color-white);
   display: flex;
@@ -190,7 +190,7 @@ p {
 
 #formm {
   background-color: #ffe58b;
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Kumbh Sans', sans-serif;
   background-color: var(--color-dark1);
   color: var(--color-white);
   display: flex;
@@ -718,7 +718,7 @@ button[type="submit"]:hover {
 @media screen and (min-width: 1800px) {
   #formm {
     background-color: #ffe58b;
-    font-family: 'Varela Round', sans-serif;
+    font-family: 'Kumbh Sans', sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
     display: flex;
@@ -812,7 +812,7 @@ button[type="submit"]:hover {
 
   #formm {
     background-color: #ffe58b;
-    font-family: 'Varela Round', sans-serif;
+    font-family: 'Kumbh Sans', sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
     display: flex;
@@ -890,7 +890,7 @@ button[type="submit"]:hover {
 
   #formm {
     background-color: #ffe58b;
-    font-family: 'Varela Round', sans-serif;
+    font-family: 'Kumbh Sans', sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
     display: flex;
