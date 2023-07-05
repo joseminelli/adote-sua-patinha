@@ -4,15 +4,63 @@ const showBtn = document.querySelector(".show-modal");
 const closeBtn = document.querySelector(".close-btn3");
 const closeBtn2 = document.querySelector(".close-btn2");
 const modal = document.getElementById("modal");
+const iconmodal = document.getElementById("iconmodal");
+const modalh2 = document.getElementById("modalh2");
+
+const modalp = document.getElementById("modalp");
+const titulop = document.getElementById("titulop");
+const input1 = document.getElementById("input1");
+const dropdownt = document.getElementById("dropdownt");
+const dropdown = document.getElementById("dropdown");
+const input2 = document.getElementById("input2");
+const cancelbtn = document.getElementById("cancelbtn");
+const modalbtn = document.getElementById("modalbtn");
+modal.style.height = "500px";
+modal.style.width = "500px";
 
 if (overlay) {
   var tituloInput2 = document.getElementById("input1");
   var categoriaInput2 = document.getElementById("dropdown");
   var descInput2 = document.getElementById("input2");
+  function showModalSuccess() {
+    modal.style.height = "250px";
+    modal.style.width = "250px";
+    titulop.style.display = "none";
+    input1.style.display = "none";
+    dropdownt.style.display = "none";
+    dropdown.style.display = "none";
+    input2.style.display = "none";
+    cancelbtn.style.display = "none";
+    modalbtn.style.display = "none";
+    iconmodal.style.display = "block";
+    modalh2.innerHTML = "Post enviado";
+    iconmodal.style.marginTop = "20%";
+    modalp.style.display = "none";
+    setTimeout(function () {
+      section.classList.remove("active");
+      showModalDetails();
+    }, 2000);
+  }
   
+  function showModalDetails() {
+    modal.style.height = "500px";
+    modal.style.width = "500px";
+    titulop.style.display = "block";
+    input1.style.display = "block";
+    dropdownt.style.display = "block";
+    dropdown.style.display = "block";
+    input2.style.display = "block";
+    cancelbtn.style.display = "inline-block";
+    modalbtn.style.display = "inline-block";
+    iconmodal.style.display = "none";
+    modalh2.innerHTML = "Detahes do post";
+    modalp.style.display = "block";
+  }
+
   overlay.addEventListener("click", () => section.classList.remove("active"));
   closeBtn2.addEventListener("click", () => section.classList.remove("active"));
   closeBtn.addEventListener("click", () => {
+    console.log("clicou");
     modal.style.animation = "none";
     var tituloInput = document.getElementById("input1").value;
     var categoriaInput = document.getElementById("dropdown").value;
@@ -24,14 +72,15 @@ if (overlay) {
         categoria: categoriaInput,
         descricao: descInput,
       };
-
       var posts = JSON.parse(localStorage.getItem("posts")) || [];
       posts.push(post);
       localStorage.setItem("posts", JSON.stringify(posts));
 
       loadPosts();
-      section.classList.remove("active");
+      showModalSuccess();
     } else {
+      
+      iconmodal.style.display = "none";
       section.classList.add("active");
       modal.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
       if (tituloInput == "") {
@@ -183,14 +232,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const clearInput = () => {
     const input = document.getElementsById("searchInput")[0];
     input.value = "";
-  }
-  
+  };
+
   const clearBtn = document.getElementById("clear-btn");
   clearBtn.addEventListener("click", clearInput);
 
-  
   const btncriar = document.getElementById("criarPubli");
   btncriar.addEventListener("click", function () {
+    iconmodal.style.display = "none";
     section.classList.add("active");
   });
 
@@ -216,9 +265,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (filteredPosts.length === 0) {
       const noPostsMessage = document.getElementById("noPostsMessage");
-      if (posts.length === 0) { 
+      if (posts.length === 0) {
         noPostsMessage.innerHTML = "Não há publicações";
-      }else{
+      } else {
         noPostsMessage.innerHTML = "Não há publicações correspondentes à busca";
       }
       content.style.display = "none";
