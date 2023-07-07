@@ -300,7 +300,7 @@ summary {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 500;
+  font-weight: 450;
   cursor: pointer;
 }
 
@@ -325,8 +325,13 @@ summary:focus::after {
 summary::-webkit-details-marker {
   display: none;
 }
-
+.details-container summary .control-icon {
+  max-width: 24px;
+  min-width: 24px;
+  height: auto;
+}
 .control-icon {
+  margin-left: 2%;
   fill: #165ea8;
   font-size: 50px;
   font-display: block;
@@ -949,6 +954,17 @@ button[type="submit"]:hover {
 }
 
 @media screen and (max-width: 768px) {
+  summary {
+    justify-content: center;
+  }
+
+  .details-container summary .control-icon {
+    margin-right: -20%;
+    max-width: 64px;
+    min-width: 34px;
+    height: auto;
+  }
+  
   .details-container {
     display: flex;
     margin-bottom: 2%;
