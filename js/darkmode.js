@@ -2,6 +2,8 @@ var sun = document.getElementById("sun"),
 transitionTime = 0.6;
 const body = document.querySelector("body");
  p = document.querySelector("div.mural > p"),
+ h1Sobre = document.querySelector("section#formm > h1"),
+ h2Sobre = document.querySelector("section#faq  > h2"),
  logintxt = document.getElementById("logintxt"),
  noPostsMessage = document.getElementById("noPostsMessage"),
  npet = document.getElementById("npet"),
@@ -47,6 +49,12 @@ function enableDarkMode() {
   }
   if(inputProcura){
     inputProcura.style.color = "#ffffff";
+  }
+  if(h1Sobre){
+    h1Sobre.style.color = "#ffffff";
+  }
+  if(h2Sobre){
+    h2Sobre.style.color = "#ffffff";
   }
   if(pictureInput){
     pictureInput.style.transition = transitionTime + "s";
@@ -94,6 +102,12 @@ function disableDarkMode() {
   }
   if(inputProcura){
     inputProcura.style.color = "#282828";
+  }
+  if(h1Sobre){
+    h1Sobre.style.color = "#282828";
+  }
+  if(h2Sobre){
+    h2Sobre.style.color = "#282828";
   }
   if (npet) {
     npet.style.color = "#282828";

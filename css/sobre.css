@@ -977,11 +977,6 @@ button[type="submit"]:hover {
   details p {
     font-size: 19px;
   }
-  #faq {
-    display: flex;
-    flex-direction: column;
-    margin-top: 140%;
-  }
   .social-buttons {
     display: none;
   }
@@ -1045,16 +1040,26 @@ button[type="submit"]:hover {
     max-width: 150px;
   }
 
+  #faq {
+    display: flex;
+    flex-direction: column;
+    margin-top: 120%;
+  }
   #formm {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 225%;
     margin-bottom: 20%;
   }
+  #formm h1{
+    font-size: 30px;
+  }
   #teste {
-    margin-top: 270%;
+    margin-top: 0%;
     display: flex;
-    margin-bottom: 20%;
+    margin-bottom: -20%;
+    margin-left: 5%;
   }
   #texto p {
     font-size: 20px;
