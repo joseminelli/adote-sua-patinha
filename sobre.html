@@ -10,10 +10,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
     <link rel="icon" type="imagem/png" href="img/logo.ico" />
     <link rel="stylesheet" href="css/sobre.css" />
+    <link rel="stylesheet" href="css/customalert.css">
     <link rel="stylesheet" href="css/nav.css">
 </head>
 
 <body>
+    <section id="modalNovo">
+      <span class="overlay"></span>
+      <div class="modal-box">
+          <i class="fa-regular fa-circle-xmark"></i>
+        <h2>Aviso!</h2>
+        <h3>Este site encontra em desenvolvimento, qualquer erro/problema ainda será resolvido</h3>
+        <div class="buttons">
+          <button id="modalbtn"class="close-btn">Fechar</button>
+          <button id="modalbtn2"class="never-btn">Não exibir isso</button>
+        </div>
+      </div>
+    </section>
     <section id="header">
         <a href="main.html"><img src="img/logo.png" class="logo" alt="" /></a>
         <div>
@@ -43,7 +56,7 @@
             <div id="texto">
                 <p><b>Bem-vindo ao nosso site de adoção de pets!</b><br><br>
 
-                    Nós somos uma plataforma originada de um trabalho da PUC Minas que tem como objetivo a facilitar a
+                    Nós somos uma plataforma originada de um trabalho da PUC Minas que tem como objetivo facilitar a
                     adoção de animais de estimação e conectar animais que
                     estão em busca de um lar amoroso com pessoas incríveis como você. Acreditamos que todos os animais
                     merecem uma segunda chance e uma família que os ame incondicionalmente.<br><br>
@@ -135,7 +148,7 @@
     </script>
     <script src="js/script.js"></script>
     <script src="js/darkmode.js"></script>
-    <script type="module" src="js/forum.js"></script>
+    <script type="module" src="js/mural.js"></script>
 </body>
 
 </html>

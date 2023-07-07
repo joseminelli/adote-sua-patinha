@@ -1,5 +1,5 @@
 var login = localStorage.getItem("login");
-const taNoMural = document.getElementById("formm");
+const taNoMural = document.getElementById("formm2");
 const section = document.getElementById("modalNovo"),
   overlay = document.querySelector(".overlay"),
   showBtn = document.querySelector(".show-modal"),

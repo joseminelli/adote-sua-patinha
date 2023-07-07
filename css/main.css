@@ -212,7 +212,7 @@ p {
   align-items: center;
 }
 
-#formm {
+#formm2 {
   background-color: #ffe58b;
   font-family: 'Kumbh Sans', sans-serif;
   background-color: var(--color-dark1);
@@ -473,7 +473,7 @@ button[type="submit"]:hover {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   }
 
-  #formm {
+  #formm2 {
     background-color: #ffe58b;
     font-family: 'Kumbh Sans', sans-serif;
     background-color: var(--color-dark1);
