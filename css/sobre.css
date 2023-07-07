@@ -236,16 +236,124 @@ select {
 select:focus {
   outline: none;
 }
-
-h1 {
+.details-container {
+  display: flex;
+  margin-bottom: 1%;
+  flex-direction: row;
+}
+details:first-child {
+  margin-top: 1%;
+}
+#faq {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+}
+#faq h1 {
   margin-bottom: 1rem;
   text-align: center;
 }
-.social-buttons {
+
+#faq h2 {
+  margin: 20px auto 80px;
+  font-size: 38px;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 2px;
+  line-height: 1.5;
+}
+
+details {
+  height: 130px;
+  width: 90%;
+  min-height: 5px;
+  max-width: 700px;
+  padding: 45px 70px 45px 45px;
   margin: 0 auto;
-  margin-top: 2%;
+  position: relative;
+  font-size: 22px;
+  background-color: #ffe58b;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
+
+details + details {
+  margin-top: 20px;
+}
+
+details[open] {
+  height: auto !important;
+  min-height: 50px;
+  background-color: #ffe58b;
+  border: 3.5px solid #165ea8;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+details p {
+  color: #282828;
+  font-weight: 300;
+}
+
+summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+details p {
+  font-size: 20px;
+}
+
+summary:focus {
+  outline: none;
+}
+
+summary:focus::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.control-icon {
+  fill: #165ea8;
+  font-size: 50px;
+  font-display: block;
+  transition: 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.control-icon-close {
+  display: none;
+}
+
+details[open] .control-icon-close {
+  display: block;
+  fill: #165ea8;
+  transition: 0.3s ease;
+}
+
+details[open] .control-icon-expand {
+  display: none;
+}
+
+.social-buttons {
+  left: 45%;
+  top: 90%;
   width: 10%;
   display: flex;
+  position: fixed;
   justify-content: center;
   align-items: center;
   background-color: #ffe58b;
@@ -301,13 +409,13 @@ h1 {
   fill: #f2f2f2;
 }
 .instagram2 svg {
-    width: 0px;
-    height: 0px;
-  }
-  .github2 svg {
-    width: 0px;
-    height: 0px;
-  }
+  width: 0px;
+  height: 0px;
+}
+.github2 svg {
+  width: 0px;
+  height: 0px;
+}
 
 .instagram:hover svg {
   fill: #c13584;
@@ -841,10 +949,27 @@ button[type="submit"]:hover {
 }
 
 @media screen and (max-width: 768px) {
+  .details-container {
+    display: flex;
+    margin-bottom: 2%;
+    flex-direction: column;
+  }
+  details {
+    margin-bottom: 3%;
+    height: 170px;
+  }
+  details p {
+    font-size: 19px;
+  }
+  #faq {
+    display: flex;
+    flex-direction: column;
+    margin-top: 140%;
+  }
   .social-buttons {
     display: none;
   }
-  #social{
+  #social {
     display: flex;
     justify-content: space-evenly;
   }
@@ -860,11 +985,11 @@ button[type="submit"]:hover {
     fill: #282828;
     transition: fill 300ms ease-in-out;
   }
-  
-  .instagram2 svg:hover{
+
+  .instagram2 svg:hover {
     fill: #c13584;
   }
-  .github2 svg :hover{
+  .github2 svg :hover {
     fill: #333;
   }
   #social {
@@ -913,6 +1038,7 @@ button[type="submit"]:hover {
   #teste {
     margin-top: 270%;
     display: flex;
+    margin-bottom: 20%;
   }
   #texto p {
     font-size: 20px;
@@ -923,6 +1049,7 @@ button[type="submit"]:hover {
     box-shadow: 5px 5px 5px rgba(3, 3, 3, 0.3);
     padding: 2rem;
     border-radius: 10px;
+    height: 100%;
     width: 90%;
   }
   #img img {
