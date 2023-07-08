@@ -427,7 +427,7 @@ button[type="submit"]:hover {
 
 @media (max-width: 1700px) {
   .mural{
-    margin-left: -8%;
+    margin-left: -2%;
   }
     #textoMural {
       font-size: 17px;
