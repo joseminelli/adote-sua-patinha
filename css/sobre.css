@@ -417,11 +417,17 @@ button[type="submit"]:hover {
   details {
     max-width: 500px;
   }
+  .social-buttons {
+    width: 12%;
+  }
 }
 @media screen and (max-width: 1040px) {
   details {
     max-width: 400px;
     height: 150px;
+  }
+  .social-buttons {
+    width: 15%;
   }
 }
 @media screen and (max-width: 810px) {
@@ -429,7 +435,8 @@ button[type="submit"]:hover {
     max-width: 350px;
     height: 180px;
   }
-  #texto {
+  .social-buttons {
+    width: 18%;
   }
 }
 @media screen and (max-width: 606px) {
