@@ -370,11 +370,17 @@ button[type="submit"]:hover {
 }
 
 .mural {
-  margin-left: 4%;
+  grid-area: produtos-destaque;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1920px));
+  text-align: center;
   justify-content: center;
+  margin: 0 0 20px 0;
+  grid-row-gap: 1em;
 }
 
 #textoMural {
+  margin-top: 2%;
   font-size: 21px;
 }
 
@@ -418,6 +424,35 @@ button[type="submit"]:hover {
   border-top: 2px solid #165ea8;
 }
 
+
+@media (max-width: 1700px) {
+  .mural{
+    margin-left: -8%;
+  }
+    #textoMural {
+      font-size: 17px;
+    }
+  }
+@media (max-width: 800px) {
+  .content {
+    margin-top: 5%;
+    position: relative;
+    min-height: 20%;
+    margin-inline: 5%;
+    background-color: #ffe58b;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    border-radius: 10px;
+    overflow: auto;
+  }
+
+  .content form {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    gap: 2rem;
+  }
+}
 @media screen and (max-width: 576px) {
   .box-select {
     flex-direction: column;
@@ -441,7 +476,7 @@ button[type="submit"]:hover {
   }
 
   #textoMural {
-    font-size: 11px;
+    margin-top: 7%;
   }
 
   #formHeader {
@@ -502,11 +537,6 @@ button[type="submit"]:hover {
     justify-content: left;
     gap: 2rem;
   }
-
-  .mural {
-    margin-top: 5%;
-    margin-left: 6%;
-  }
 }
 
 @media (max-width: 427px) {
@@ -519,15 +549,5 @@ button[type="submit"]:hover {
     border-radius: 10px;
     width: 120px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-  }
-}
-
-@media (max-width: 1700px) {
-  .mural {
-    margin-left: 7.2%;
-  }
-
-  #textoMural {
-    font-size: 17px;
   }
 }
