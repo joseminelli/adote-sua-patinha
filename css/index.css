@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@200;300;400;500;600;700&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Kumbh Sans', sans-serif;
+  font-family: "Kumbh Sans", sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -17,7 +17,7 @@
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background: #165EA8;
+  background: #165ea8;
   transition: all 300ms;
 }
 
@@ -26,58 +26,58 @@
   transition: all 300ms;
 }
 
-form{
+form {
   height: 520px;
   width: 400px;
   background-color: #ffe58b;
   position: absolute;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
   border-radius: 10px;
   backdrop-filter: blur(10px);
-  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
   padding: 50px 35px;
 }
-form *{
-  font-family: 'Kumbh Sans', sans-serif;
+form * {
+  font-family: "Kumbh Sans", sans-serif;
   color: #282828;
   letter-spacing: 0.5px;
   outline: none;
   border: none;
 }
-form h3{
+form h3 {
   font-size: 32px;
   font-weight: 500;
   line-height: 42px;
   text-align: center;
 }
 
-label{
+label {
   display: block;
   margin-top: 30px;
   font-size: 16px;
   font-weight: 500;
 }
-.content a{
+.content a {
   display: flex;
   width: auto;
   text-decoration: none;
   transition: all 300ms ease-in-out;
   justify-content: center;
 }
-.content a:hover{
+.content a:hover {
   text-decoration: underline;
 }
-.content p{
+.content p {
   color: #3e4c5c;
   transition: all 300ms ease-in-out;
 }
 
-.content p:hover{
+.content p:hover {
   color: #165ea8;
 }
-input{
+input {
   display: block;
   height: 50px;
   width: 100%;
@@ -89,10 +89,10 @@ input{
   font-size: 14px;
   font-weight: 300;
 }
-::placeholder{
+::placeholder {
   color: #727272;
 }
-button{
+button {
   margin-top: 50px;
   width: 100%;
   background-color: #165ea8;
@@ -103,30 +103,6 @@ button{
   border-radius: 5px;
   cursor: pointer;
 }
-.social{
-margin-top: 30px;
-display: flex;
-}
-.social div{
-background: red;
-width: 150px;
-border-radius: 3px;
-padding: 5px 10px 10px 5px;
-background-color: rgba(255,255,255,0.27);
-color: #eaf0fb;
-text-align: center;
-}
-.social div:hover{
-background-color: rgba(255,255,255,0.47);
-}
-.social .fb{
-margin-left: 25px;
-}
-.social i{
-margin-right: 4px;
-}
-
-
 
 html {
   scroll-behavior: smooth;
@@ -175,7 +151,7 @@ p {
 
 #box {
   background-color: #ffe58b;
-  font-family: 'Kumbh Sans', sans-serif;
+  font-family: "Kumbh Sans", sans-serif;
   background-color: var(--color-dark1);
   color: var(--color-white);
   display: flex;
@@ -195,93 +171,12 @@ p {
   overflow: auto;
 }
 
-select {
-  border: 2px solid #165ea8;
-  background: #ffe58b;
-  max-width: 100px;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
-select:focus {
-  outline: none;
-}
-
-select {
-  border: 2px solid #165ea8;
-  background: #ffe58b;
-  max-width: 150px;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
-select:focus {
-  outline: none;
-}
-
 h1 {
   margin-bottom: 1rem;
   text-align: center;
 }
 
-#form {
-  display: flex;
-  gap: 1rem;
-}
-
-#fazer-login {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  margin-left: 2%;
-}
-
-#fazer-login p {
-  margin-top: 20%;
-}
-
-#submit2 {
-  margin-left: 28%;
-}
-
-.inputs {
-  padding: 8px 5px;
-  outline: none;
-  border-radius: 5px;
-  border: 2px solid #165ea8;
-  background: #ffe58b;
-  width: 100%;
-  box-sizing: border-box;
-  transition: 0.3s;
-}
-
-.inputs:focus {
-  border-color: #165ea8;
-}
-
-.inputsn {
-  padding: 8px 5px;
-  outline: none;
-  max-width: 200px;
-  border-radius: 5px;
-  border: 2px solid #165ea8;
-  background: #ffe58b;
-  width: 100%;
-  box-sizing: border-box;
-  transition: 0.3s;
-}
-
-.inputsn:focus {
-  border-color: #165ea8;
-}
-
-.box-select {
-  display: flex;
-  justify-content: space-evenly;
-  font-weight: bold;
-  gap: 1rem;
-}
-#botao{
+#botao {
   justify-content: center;
   display: flex;
 }
@@ -299,115 +194,12 @@ button[type="submit"] {
   background-color: #165ea8;
   cursor: pointer;
 }
-
-.modalp {
-  display: block;
-  margin-top: 15px;
-  font-size: 15px;
-  font-weight: 500;
-  color: #282828;
-}
-
 button[type="submit"]:hover {
   background-color: #053c74;
 }
 
-button[id="submit2"] {
-  padding: 1rem;
-  font-size: 1rem;
-  outline: none;
-  border: none;
-  justify-content: center;
-  align-items: center;
-  color: #e3e6f3;
-  max-width: 115px;
-  border-radius: 5px;
-  margin-top: 2rem;
-  background-color: #165ea8;
-  cursor: pointer;
-}
-
-button[id="submit2"]:hover {
-  background-color: #053c74;
-}
-
-.mural {
-  margin-left: 9%;
-}
-
-.mural p {
-  margin-left: 50px;
-}
-
-.mural img {
-  margin-left: 50px;
-  border-radius: 10px;
-  width: 200px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-}
-
-#picture__input {
-  display: none;
-}
-
-.picture {
-  border-radius: 10px;
-  width: 200px;
-  aspect-ratio: 9/16;
-  padding: 0.7rem;
-  background: #ddd;
-  color: #757474;
-  border: 2px dashed #9e9e9e;
-  cursor: pointer;
-  font-family: 'Kumbh Sans', sans-serif;
-  transition: color 300ms ease-in-out, background 300ms ease-in-out;
-}
-
-.picture:hover {
-  color: #414141;
-  background: #ccc;
-}
-
-.picture:active {
-  border-color: turquoise;
-  color: turquoise;
-  background: #eee;
-}
-
-.picture:focus {
-  color: none;
-  border: 0px;
-  background: none;
-  box-shadow: none;
-}
-
-.button {
-  width: 40px;
-  height: 40px;
-  background-color: none;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-#jaTem {
-  margin-left: 20%;
-}
-
 @media screen and (max-width: 1700px) {
-
-  #jaTem {
-    margin-left: 0%;
-  }
-
-
-  #submit2 {
-    margin-left: 32%;
-  }
-
-  #botao{
+  #botao {
     justify-content: center;
     display: flex;
   }
@@ -429,17 +221,7 @@ button[id="submit2"]:hover {
   }
 }
 
-@media screen and (max-width: 576px) {
-  .box-select {
-    flex-direction: column;
-    gap: 5px;
-  }
-}
 @media screen and (max-width: 500px) {
-  #jaTem {
-    margin-left: 0%;
-  }
-
   #linha-vertical {
     margin-left: 10%;
   }
@@ -460,27 +242,20 @@ button[id="submit2"]:hover {
     margin-top: -5%;
     margin-bottom: 5%;
   }
-  #botao{
+  #botao {
     justify-content: center;
     display: flex;
   }
   button[type="submit"] {
     margin-top: 20%;
   }
-
 }
 
 @media (max-width: 450px) {
-  #jaTem {
-    margin-left: 0%;
-  }
-
   #linha-horizontal {
     margin-top: -5%;
     margin-bottom: 15%;
   }
-
-
   #box {
     height: 60px;
   }
@@ -494,23 +269,12 @@ button[id="submit2"]:hover {
     overflow: auto;
     max-width: 85%;
   }
-
-  #botao{
+  #botao {
     justify-content: center;
     display: flex;
   }
   button[type="submit"] {
     margin-top: 20%;
-  }
-
-
-
-  .mural img {
-    margin-top: 10%;
-    margin-left: 40px;
-    border-radius: 10px;
-    width: 105px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -529,9 +293,6 @@ button[id="submit2"]:hover {
     width: 20%;
     overflow: auto;
   }
-  #fazer-login{
-    margin-left: 13%;
-  }
 }
 @media (min-width: 798px) and (max-width: 1500px) {
   .content {
@@ -546,11 +307,11 @@ button[id="submit2"]:hover {
     height: auto;
     margin-top: 30%;
   }
-  
-#botao{
-  justify-content: center;
-  display: flex;
-}
+
+  #botao {
+    justify-content: center;
+    display: flex;
+  }
   button[type="submit"] {
     margin-top: 20%;
   }
@@ -561,7 +322,6 @@ button[id="submit2"]:hover {
     margin-top: 2%;
     height: 400px;
   }
-
   .content {
     background-color: #ffe58b;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
@@ -570,9 +330,6 @@ button[id="submit2"]:hover {
     border-radius: 10px;
     width: 20%;
     overflow: auto;
-  }
-  #fazer-login{
-    margin-left: 2%;
   }
 }
 
@@ -588,13 +345,7 @@ button[id="submit2"]:hover {
     width: auto;
     height: auto;
   }
-
-  #fazer-login {
-    margin-left: 11%;
-    margin-top: -15%;
-  }
-
-  #botao{
+  #botao {
     justify-content: center;
     display: flex;
   }
@@ -608,15 +359,6 @@ button[id="submit2"]:hover {
 }
 
 @media (min-width: 501px) and (max-width: 799px) {
-
-  .section-p1 {
-    padding: 40px;
-  }
-
-  #jaTem {
-    margin-left: 0%;
-  }
-
   .content {
     background-color: #ffe58b;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -629,11 +371,11 @@ button[id="submit2"]:hover {
     height: auto;
     margin-top: 60%;
   }
-  
-#botao{
-  justify-content: center;
-  display: flex;
-}
+
+  #botao {
+    justify-content: center;
+    display: flex;
+  }
   button[type="submit"] {
     margin-top: 20%;
   }
