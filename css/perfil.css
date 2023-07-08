@@ -305,12 +305,6 @@ button[type="submit"]:hover {
   justify-content: center;
   overflow: hidden;
 }
-@media screen and (max-width: 576px) {
-  .box-select {
-    flex-direction: column;
-    gap: 5px;
-  }
-}
 
 @media (max-width: 1800px) {
   .content {
@@ -371,7 +365,111 @@ button[type="submit"]:hover {
     height: 400px;
   }
 }
+@media (max-width: 1445px) {
+  #editar {
+    margin-left: 9.5%;
+    margin-top: -28.5%;
+  }
+}
+@media (max-width: 1325px) {
+  #editar {
+    margin-left: 10%;
+    margin-top: -32%;
+  }
+}
+@media (max-width: 1210px) {
+  #editar {
+    margin-left: 11%;
+    margin-top: -36%;
+  }
+  button[type="submit"] {
+    font-size: 90%;
+    margin-left: 80%;
+  }
+}
+@media (max-width: 1101px) {
+  #editar {
+    margin-left: 12%;
+    margin-top: -39%;
+  }
+}
+@media (max-width: 1010px) {
+  #editar {
+    margin-left: 14%;
+    margin-top: -44%;
+  }
+}
+@media (max-width: 911px) {
+  #editar {
+    margin-left: 15%;
+    margin-top: -49%;
+  }
+}
+@media (max-width: 830px) {
+  #editar {
+    margin-left: 16%;
+    margin-top: -53%;
+  }
+}
+@media (max-width: 740px) {
+  #editar {
+    margin-left: 18%;
+    margin-top: -60%;
+  }
+  button[type="submit"] {
+    font-size: 90%;
+    margin-left: 70%;
+  }
+}
+@media (max-width: 650px) {
+  #editar {
+    margin-left: 20%;
+    margin-top: -69%;
+  }
+  .delBtnDiv {
+    position: relative;
+    margin-bottom: -25%;
+    margin-left: 68%;
+    border-radius: 8px;
+    width: 25px;
+    height: 25px;
+    background-color: #f44040;
+  }
 
+  .btnDel {
+    display: flex;
+    position: relative;
+    right: -10%;
+  }
+
+  .mural img {
+    margin-top: 10%;
+    margin-left: 40px;
+    border-radius: 10px;
+    width: 150px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  }
+}
+@media (max-width: 500px) {
+  #editar {
+    margin-left: 27%;
+    margin-top: -92%;
+  }
+  button[type="submit"] {
+    font-size: 90%;
+    margin-left: 70%;
+  }
+}
+@media (max-width: 470px) {
+  #editar {
+    margin-left: 28%;
+    margin-top: -97%;
+  }
+  button[type="submit"] {
+    font-size: 90%;
+    margin-left: 70%;
+  }
+}
 @media (max-width: 440px) {
   #editar {
     position: absolute;
@@ -461,12 +559,14 @@ button[type="submit"]:hover {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   }
 }
+@media (max-width: 380px) {
+  #editar {
+    margin-left: 35%;
+    margin-top: -127%;
+  }
+}
 
 @media (max-width: 799px) {
-  .section-p1 {
-    padding: 40px;
-  }
-
   #linha-vertical {
     height: 0px;
     margin-left: 0%;
