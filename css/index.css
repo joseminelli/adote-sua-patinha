@@ -26,18 +26,107 @@
   transition: all 300ms;
 }
 
-
-#top {
-  width: 0;
-  height: 0;
-  transition: 0.3s;
+form{
+  height: 520px;
+  width: 400px;
+  background-color: #ffe58b;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  padding: 50px 35px;
+}
+form *{
+  font-family: 'Kumbh Sans', sans-serif;
+  color: #282828;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+}
+form h3{
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 42px;
+  text-align: center;
 }
 
-#bottom {
-  width: 0;
-  height: 0;
-  transition: 0.3s;
+label{
+  display: block;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 500;
 }
+.content a{
+  display: flex;
+  width: auto;
+  text-decoration: none;
+  transition: all 300ms ease-in-out;
+  justify-content: center;
+}
+.content a:hover{
+  text-decoration: underline;
+}
+.content p{
+  color: #3e4c5c;
+  transition: all 300ms ease-in-out;
+}
+
+.content p:hover{
+  color: #165ea8;
+}
+input{
+  display: block;
+  height: 50px;
+  width: 100%;
+  background-color: transparent;
+  border: 2px solid #165ea8;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300;
+}
+::placeholder{
+  color: #727272;
+}
+button{
+  margin-top: 50px;
+  width: 100%;
+  background-color: #165ea8;
+  color: #e3e6f3;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.social{
+margin-top: 30px;
+display: flex;
+}
+.social div{
+background: red;
+width: 150px;
+border-radius: 3px;
+padding: 5px 10px 10px 5px;
+background-color: rgba(255,255,255,0.27);
+color: #eaf0fb;
+text-align: center;
+}
+.social div:hover{
+background-color: rgba(255,255,255,0.47);
+}
+.social .fb{
+margin-left: 25px;
+}
+.social i{
+margin-right: 4px;
+}
+
+
 
 html {
   scroll-behavior: smooth;
@@ -102,7 +191,7 @@ p {
   padding: 3rem;
   margin-top: 20%;
   border-radius: 10px;
-  min-width: 17%;
+  width: 20%;
   overflow: auto;
 }
 
@@ -192,13 +281,17 @@ h1 {
   font-weight: bold;
   gap: 1rem;
 }
-
+#botao{
+  justify-content: center;
+  display: flex;
+}
 button[type="submit"] {
+  display: flex;
   padding: 1rem;
   font-size: 1rem;
   outline: none;
   border: none;
-  margin-left: 25%;
+  justify-content: center;
   color: #e3e6f3;
   max-width: 115px;
   border-radius: 5px;
@@ -213,21 +306,6 @@ button[type="submit"] {
   font-size: 15px;
   font-weight: 500;
   color: #282828;
-}
-
-#input1 {
-  padding: 8px 5px;
-  outline: none;
-  border-radius: 5px;
-  border: 2px solid #165ea8;
-  background: #ffe58b;
-  width: 130%;
-  box-sizing: border-box;
-  transition: 0.3s;
-}
-
-#input1:focus {
-  border-color: #165ea8;
 }
 
 button[type="submit"]:hover {
@@ -329,12 +407,15 @@ button[id="submit2"]:hover {
     margin-left: 32%;
   }
 
+  #botao{
+    justify-content: center;
+    display: flex;
+  }
   button[type="submit"] {
     padding: 1rem;
     font-size: 1rem;
     outline: none;
     border: none;
-    margin-left: 30%;
     color: #e3e6f3;
     max-width: 120px;
     border-radius: 5px;
@@ -345,21 +426,6 @@ button[id="submit2"]:hover {
 
   button[type="submit"]:hover {
     background-color: #053c74;
-  }
-
-  button[id="submit2"] {
-    padding: 1rem;
-    font-size: 1rem;
-    outline: none;
-    border: none;
-    justify-content: center;
-    align-items: center;
-    color: #e3e6f3;
-    max-width: 125px;
-    border-radius: 5px;
-    margin-top: 2rem;
-    background-color: #165ea8;
-    cursor: pointer;
   }
 }
 
@@ -377,54 +443,31 @@ button[id="submit2"]:hover {
   #linha-vertical {
     margin-left: 10%;
   }
-
-
   #box {
     height: 60px;
   }
   .content {
     background-color: #ffe58b;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-    padding: 2rem;
+    padding: 2.5rem;
     border-radius: 10px;
-    min-width: 75%;
     margin-top: 100%;
     overflow: auto;
+    width: auto;
     max-width: 70%;
   }
   #linha-horizontal {
     margin-top: -5%;
     margin-bottom: 5%;
   }
-
-  button[type="submit"] {
-    margin-top: 60%;
-    margin-left:28%;
-  }
-  #fazer-login{
-    margin-left: 9%;
-  }
-  #form {
-    justify-content: start;
+  #botao{
+    justify-content: center;
     display: flex;
-    gap: 1rem;
+  }
+  button[type="submit"] {
+    margin-top: 20%;
   }
 
-  button[id="submit2"] {
-    margin-left: -8%;
-    width: 90px;
-    max-width: 115px;
-    margin-top: 60%;
-  }
-
-
-  .mural img {
-    margin-top: 10%;
-    margin-left: 40px;
-    border-radius: 10px;
-    width: 105px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-  }
 }
 
 @media (max-width: 450px) {
@@ -446,26 +489,20 @@ button[id="submit2"]:hover {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 2rem;
     border-radius: 10px;
-    min-width: 75%;
+    width: auto;
     margin-top: 100%;
     overflow: auto;
     max-width: 85%;
   }
 
+  #botao{
+    justify-content: center;
+    display: flex;
+  }
   button[type="submit"] {
-    margin-top: 60%;
-    margin-left:27%;
+    margin-top: 20%;
   }
 
-  #fazer-login {
-    margin-left: 5%;
-  }
-  button[id="submit2"] {
-    margin-left: -8%;
-    width: 90px;
-    max-width: 115px;
-    margin-top: 60%;
-  }
 
 
   .mural img {
@@ -489,11 +526,33 @@ button[id="submit2"]:hover {
     padding: 1rem;
     margin-top: 0%;
     border-radius: 10px;
-    min-width: 17%;
+    width: 20%;
     overflow: auto;
   }
   #fazer-login{
     margin-left: 13%;
+  }
+}
+@media (min-width: 798px) and (max-width: 1500px) {
+  .content {
+    background-color: #ffe58b;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    padding-top: 2.5em;
+    border-radius: 10px;
+    width: auto;
+    overflow: auto;
+    width: auto;
+    height: auto;
+    margin-top: 30%;
+  }
+  
+#botao{
+  justify-content: center;
+  display: flex;
+}
+  button[type="submit"] {
+    margin-top: 20%;
   }
 }
 
@@ -506,10 +565,10 @@ button[id="submit2"]:hover {
   .content {
     background-color: #ffe58b;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-    padding: 1rem;
+    padding: 2rem;
     margin-top: 0%;
     border-radius: 10px;
-    min-width: 17%;
+    width: 20%;
     overflow: auto;
   }
   #fazer-login{
@@ -521,13 +580,13 @@ button[id="submit2"]:hover {
   .content {
     background-color: #ffe58b;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-    padding: 0rem;
+    padding: 2rem;
     padding-top: 2.5em;
     border-radius: 10px;
     width: auto;
     overflow: auto;
-    max-width: 90%;
-    height: 400px;
+    width: auto;
+    height: auto;
   }
 
   #fazer-login {
@@ -535,17 +594,20 @@ button[id="submit2"]:hover {
     margin-top: -15%;
   }
 
+  #botao{
+    justify-content: center;
+    display: flex;
+  }
   button[type="submit"] {
     margin-top: 20%;
-    margin-left: 28%;
   }
 
   #linha-horizontal {
-    margin-top: -10%;
+    margin-top: -5%;
   }
 }
 
-@media (max-width: 799px) {
+@media (min-width: 501px) and (max-width: 799px) {
 
   .section-p1 {
     padding: 40px;
@@ -553,5 +615,26 @@ button[id="submit2"]:hover {
 
   #jaTem {
     margin-left: 0%;
+  }
+
+  .content {
+    background-color: #ffe58b;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    padding-top: 2.5em;
+    border-radius: 10px;
+    width: auto;
+    overflow: auto;
+    width: auto;
+    height: auto;
+    margin-top: 60%;
+  }
+  
+#botao{
+  justify-content: center;
+  display: flex;
+}
+  button[type="submit"] {
+    margin-top: 20%;
   }
 }
