@@ -267,12 +267,6 @@ button[type="submit"]:hover {
 }
 
 
-@media screen and (max-width: 576px) {
-  .box-select {
-    flex-direction: column;
-    gap: 5px;
-  }
-}
 @media (max-width: 1700px) {
   .content {
     margin-top: 13%;
@@ -290,6 +284,15 @@ button[type="submit"]:hover {
 
   #box {
     height: 400px;
+  }
+}
+@media (max-width: 650px) {
+  .mural img {
+    margin-top: 10%;
+    margin-left: 40px;
+    border-radius: 10px;
+    width: 150px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   }
 }
 @media (max-width: 455px) {
