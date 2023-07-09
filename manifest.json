@@ -3,14 +3,19 @@
     "name": "Adote sua patinha",
     "icons": [
     {
-      "src":"favicon.ico",
+      "src":"/img/logo2.png",
       "sizes": "144x144",
-      "type": "image/ico"
+      "type": "image/png"
+    },
+    {
+      "src":"/img/logo3.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
    ],
-   "start_url": "/",
+   "start_url": "adotesuapatinha.com.com",
    "description": "Encontre o companheiro perfeito no nosso site de adoção de pets. Cadastre animais para adoção e ajude a conectá-los a pessoas amorosas. Simplificamos o processo de adoção, tornando mais fácil encontrar e adotar um novo membro para a sua família. Venha fazer parte dessa jornada de amor e cuidado pelos animais!",
    "background_color": "#fff",
-   "Theme_color": "#ffe58b",
-   "display": "browser"
+   "theme_color": "#ffe58b",
+   "display": "fullscreen"
   }
