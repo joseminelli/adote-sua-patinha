@@ -40,7 +40,7 @@ app.post('/salvar', (req, res) => {
 
     jsonData.pets.push(newPet);
 
-    fs.writeFile('dados.json', JSON.stringify(jsonData), (err) => {
+    fs.writeFile('pets.json', JSON.stringify(jsonData), (err) => {
       if (err) {
         console.error(err);
         res.status(500).send('Erro ao salvar os dados');
@@ -56,7 +56,7 @@ app.listen(port, () => {
 });
 
 
-app.get('/', (req, res) => {
+app.get('/pets', (req, res) => {
   fs.readFile('pets.json', 'utf8', (err, data) => {
     if (err) {
       console.error(err);

@@ -66,101 +66,36 @@ document.addEventListener("DOMContentLoaded", function () {
       var descricao = document.getElementById("descricao").value;
       var especie = document.getElementById("especie").value;
 
-      var nome3 = document.getElementById("input");
-      var raca3 = document.getElementById("raca");
-      var descricao3 = document.getElementById("descricao");
-      var especie3 = document.getElementById("especie");
-
-      var inputImagem = document.getElementById("picture__input");
-
-      descricao3.addEventListener("click", function (event) {
-        descricao3.style.borderColor = "#165ea8";
-      });
-      nome3.addEventListener("click", function (event) {
-        nome3.style.borderColor = "#165ea8";
-      });
-      raca3.addEventListener("click", function (event) {
-        raca3.style.borderColor = "#165ea8";
-      });
-      especie3.addEventListener("click", function (event) {
-        especie3.style.borderColor = "#165ea8";
-      });
-      if (nome === "" || descricao === "" || raca === "0" || especie === "0") {
-        if (inputImagem.files && !inputImagem.files[0]) {
-          pictureInput.style.borderColor = "#ff2727";
-        } else {
-          pictureInput.style.borderColor = "#fff";
-        }
-        if (descricao === "") {
-          descricao3.style.borderColor = "#ff2727";
-        }
-        if (nome === "") {
-          nome3.style.borderColor = "#ff2727";
-        }
-
-        if (raca === "0") {
-          raca3.style.borderColor = "#ff2727";
-        }
-
-        if (especie === "0") {
-          especie3.style.borderColor = "#ff2727";
-        }
-
-        section.classList.add("active");
-        return;
-      }
-      var imagemdopet = localStorage.getItem("imagempet");
-      if (imagemdopet != null) {
-        localStorage.removeItem("imagempet");
-        localStorage.removeItem("nome");
-        localStorage.removeItem("idade");
-        localStorage.removeItem("raca");
-        localStorage.removeItem("descricao");
-      }
-
-      localStorage.setItem("nome", nome);
-      localStorage.setItem("idade", idade);
-      localStorage.setItem("raca", raca);
-      localStorage.setItem("descricao", descricao);
-
+     
       if (inputImagem.files && inputImagem.files[0]) {
         var imagem = inputImagem.files[0];
 
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-          var imagemBase64 = e.target.result;
-
-          localStorage.setItem("imagempet", imagemBase64);
-
-          const data = {
-            nome: nome,
-            idade: idade,
-            raca: raca,
-            descricao: descricao,
-            especie: especie,
-            imagem: imagem,
-          };
-
-          const port = process.env.PORT || 3000;
-          fetch(`http://localhost:${port}/salvar`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          })
-            .then((response) => response.text())
-            .then((result) => {
-              console.log(result);
-              // Lógica adicional após salvar os dados
-            })
-            .catch((error) => {
-              console.error(error);
-              // Lógica adicional para tratar erros
-            });
+        const data = {
+          nome: nome,
+          idade: idade,
+          raca: raca,
+          descricao: descricao,
+          especie: especie,
+          imagem: imagem,
         };
-        reader.readAsDataURL(imagem);
+
+        const port = process.env.PORT || 3000;
+        fetch(`http://localhost:${port}/salvar`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.text())
+          .then((result) => {
+            console.log(result);
+            // Lógica adicional após salvar os dados
+          })
+          .catch((error) => {
+            console.error(error);
+            // Lógica adicional para tratar erros
+          });
       } else {
         pictureInput.style.borderColor = "#ff2727";
         section.classList.add("active");
