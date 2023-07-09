@@ -15,7 +15,7 @@ app.post('/salvar', (req, res) => {
   const especie = req.body.especie;
   const imagem = req.body.imagem;
 
-  fs.readFile('dados.json', 'utf8', (err, data) => {
+  fs.readFile('pets.json', 'utf8', (err, data) => {
     if (err) {
       console.error(err);
       res.status(500).send('Erro ao ler o arquivo JSON');
@@ -55,6 +55,15 @@ app.listen(port, () => {
 });
 
 
-app.get('/', (req, res) => {
-  res.send('Hello from Express server!');
+app.get('/dados', (req, res) => {
+  fs.readFile('pets.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Erro ao ler o arquivo JSON');
+      return;
+    }
+
+    const jsonData = JSON.parse(data);
+    res.json(jsonData);
+  });
 });
