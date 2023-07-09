@@ -55,7 +55,7 @@ app.listen(port, () => {
 });
 
 
-app.get('/dados', (req, res) => {
+app.get('/', (req, res) => {
   fs.readFile('pets.json', 'utf8', (err, data) => {
     if (err) {
       console.error(err);
