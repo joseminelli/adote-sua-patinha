@@ -123,6 +123,32 @@ document.addEventListener("DOMContentLoaded", function () {
       localStorage.setItem("raca", raca);
       localStorage.setItem("descricao", descricao);
 
+      const data = {
+        nome: nome,
+        idade: idade,
+        raca: raca,
+        descricao: descricao,
+        especie: especie,
+        imagem: imagem
+      };
+    
+      fetch('/salvar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => response.text())
+        .then(result => {
+          console.log(result);
+          // Lógica adicional após salvar os dados
+        })
+        .catch(error => {
+          console.error(error);
+          // Lógica adicional para tratar erros
+        });
+
       if (inputImagem.files && inputImagem.files[0]) {
         var imagem = inputImagem.files[0];
 
@@ -142,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       logado = true;
       localStorage.setItem("login", logado);
-      window.location.href = "perfil.html";
+      //window.location.href = "perfil.html";
     });
   }
   if (enviarButton2) {
