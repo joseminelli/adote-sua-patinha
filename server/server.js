@@ -8,6 +8,7 @@ const fs = require('fs');
 app.use(express.json());
 
 app.post('/salvar', (req, res) => {
+  res.status(500).send('recebeu a req');
   const nome = req.body.nome;
   const idade = req.body.idade;
   const raca = req.body.raca;
