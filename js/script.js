@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
             imagem: imagem
           };
         
-          fetch('http://localhost:3000/salvar', {
+          fetch('https://localhost:3000/salvar', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
