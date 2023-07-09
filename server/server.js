@@ -4,6 +4,7 @@ const port = process.env.PORT || 3000;
 
 const fs = require('fs');
 
+
 app.use(express.json());
 
 app.post('/salvar', (req, res) => {
@@ -51,4 +52,9 @@ app.post('/salvar', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Servidor ouvindo na porta ${port}`);
+});
+
+
+app.get('/', (req, res) => {
+  res.send('Hello from Express server!');
 });
