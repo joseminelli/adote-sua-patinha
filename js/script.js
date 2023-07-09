@@ -132,29 +132,30 @@ document.addEventListener("DOMContentLoaded", function () {
           var imagemBase64 = e.target.result;
 
           localStorage.setItem("imagempet", imagemBase64);
-          
+
           const data = {
             nome: nome,
             idade: idade,
             raca: raca,
             descricao: descricao,
             especie: especie,
-            imagem: imagem
+            imagem: imagem,
           };
-        
-          fetch('https://localhost:3000/salvar', {
-            method: 'POST',
+
+          const port = process.env.PORT || 3000;
+          fetch(`http://localhost:${port}/salvar`, {
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json'
+              "Content-Type": "application/json",
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
           })
-            .then(response => response.text())
-            .then(result => {
+            .then((response) => response.text())
+            .then((result) => {
               console.log(result);
               // Lógica adicional após salvar os dados
             })
-            .catch(error => {
+            .catch((error) => {
               console.error(error);
               // Lógica adicional para tratar erros
             });
@@ -168,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       logado = true;
       localStorage.setItem("login", logado);
-      window.location.href = "perfil.html";
+      //window.location.href = "perfil.html";
     });
   }
   if (enviarButton2) {
@@ -241,7 +242,13 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
       } else {
-        if (nome2 === "" || telefone === "" || bairro === "0" || email === "" || senha === "") {
+        if (
+          nome2 === "" ||
+          telefone === "" ||
+          bairro === "0" ||
+          email === "" ||
+          senha === ""
+        ) {
           if (inputImagem2.files && !inputImagem2.files[0]) {
             pictureInput.style.borderColor = "#ff2727";
           } else {
