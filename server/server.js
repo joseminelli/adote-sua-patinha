@@ -56,11 +56,11 @@ app.listen(port, () => {
 });
 
 
-app.get('/', (req, res) => {
+app.get('/pets', (req, res) => {
   fs.readFile('pets.json', 'utf8', (err, data) => {
     if (err) {
       console.error(err);
-      res.status(500).send('Servidor Adote sua patinha');
+      res.status(500).send('Erro ao ler o arquivo JSON');
       return;
     }
 

@@ -15,8 +15,27 @@ const dropdown = document.getElementById("dropdown");
 const input2 = document.getElementById("input2");
 const cancelbtn = document.getElementById("cancelbtn");
 const modalbtn = document.getElementById("modalbtn");
+const fecharbutton = document.getElementById("limpar");
+var mobile = false;
 modal.style.height = "500px";
 modal.style.width = "500px";
+
+function toggleClassOnDeviceWidth() {
+  var container = document.querySelector(".search-wrapper");
+  var screenWidth = window.innerWidth;
+
+  if (screenWidth < 800) {
+    container.classList.remove("active");
+    searchInput.style.color ="#282828";
+    mobile = true;
+  } else { 
+    container.classList.add("active");
+    searchInput.style.color ="#282828";
+    mobile = false;
+  }
+}
+
+window.addEventListener("load", toggleClassOnDeviceWidth);
 
 if (overlay) {
   var tituloInput2 = document.getElementById("input1");
@@ -41,7 +60,7 @@ if (overlay) {
       showModalDetails();
     }, 2000);
   }
-  
+
   function showModalDetails() {
     modal.style.height = "500px";
     modal.style.width = "500px";
@@ -74,18 +93,18 @@ if (overlay) {
       var posts = JSON.parse(localStorage.getItem("posts")) || [];
       posts.push(post);
       localStorage.setItem("posts", JSON.stringify(posts));
-  
+
       loadPosts();
       showModalSuccess();
     } else {
       iconmodal.style.display = "none";
       section.classList.add("active");
-  
+
       modal.classList.add("shake-animation");
       setTimeout(() => {
         modal.classList.remove("shake-animation");
       }, 820);
-  
+
       if (tituloInput == "") {
         tituloInput2.style.borderColor = "#ff2727";
       }
@@ -102,8 +121,6 @@ if (overlay) {
       return;
     }
   });
-  
-  
 
   tituloInput2.addEventListener("click", function (event) {
     tituloInput2.style.borderColor = "#165ea8";
@@ -230,29 +247,38 @@ function deletePost(index) {
   localStorage.setItem("posts", JSON.stringify(posts));
   loadPosts();
 }
-
 document.addEventListener("DOMContentLoaded", function () {
   loadPosts();
-
-  const clearInput = () => {
-    const input = document.getElementsById("searchInput")[0];
-    input.value = "";
-  };
-
-  const clearBtn = document.getElementById("clear-btn");
-  clearBtn.addEventListener("click", clearInput);
-
+  var container = document.getElementById("search-wrapper");
   const btncriar = document.getElementById("criarPubli");
   btncriar.addEventListener("click", function () {
     iconmodal.style.display = "none";
     section.classList.add("active");
   });
-
+  fecharbutton.addEventListener("click", function () {
+    if(mobile == true){
+      container.querySelector(".search-input").value = "";
+      container.classList.remove("active");
+    }else{
+      container.querySelector(".search-input").value = "";
+    }
+});
   const searchButton = document.getElementById("searchButton");
   searchButton.addEventListener("click", function () {
+
+    if (!container.classList.contains("active")) {
+      container.classList.add("active");
+    } else if (
+      container.classList.contains("active") &&
+      !document.getElementById("input-holder")
+    ) {
+      container.classList.remove("active");
+      container.querySelector(".search-input").value = "";
+    }
+
     const searchInput = document.getElementById("searchInput");
     const searchTerm = searchInput.value.toLowerCase().trim();
-
+    searchInput.style.color ="#282828"
     const posts = JSON.parse(localStorage.getItem("posts")) || [];
     const filteredPosts = posts.filter(function (post) {
       const titulo = post.titulo.toLowerCase();

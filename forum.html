@@ -59,11 +59,13 @@
       </div>
     </section>
     <section>
-      <div class="search"action="">
-        <input id="searchInput" placeholder="procurar...">
-        <i id="searchButton" class="fa fa-search"></i>
-        <i id="clear-btn" href="javascript:void(0)"></i>
-      </div>
+      <div class="search-wrapper" id="search-wrapper">
+        <div class="input-holder" id="input-holder">
+            <input type="text" class="search-input" id="searchInput" placeholder="Procurar..." style="color: rgb(40, 40, 40)" />
+            <button class="search-icon" id="searchButton" ><span></span></button>
+        </div>
+        <span class="close" id="limpar"></span>
+    </div>
       <div id="criarp">
         <button type="submit" id="criarPubli">Faça sua publicação</button>
       </div>
