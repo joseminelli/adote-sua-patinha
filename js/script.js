@@ -2,7 +2,6 @@ const bar = document.getElementById("bar");
 const close = document.getElementById("close");
 const nav = document.getElementById("navbar");
 const body2 = document.querySelector("body");
-const express = require('express');
 var logado = false;
 
 const section = document.getElementById("modalNovo"),
@@ -143,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
             imagem: imagem
           };
           
-          const port = process.env.PORT || 3000;
+          const port = 3000;
         
           fetch(`https://adotesuapatinha.com:${port}/salvar`, {
             method: 'POST',
