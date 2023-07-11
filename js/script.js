@@ -2,6 +2,7 @@ const bar = document.getElementById("bar");
 const close = document.getElementById("close");
 const nav = document.getElementById("navbar");
 const body2 = document.querySelector("body");
+const express = require('express');
 var logado = false;
 
 const section = document.getElementById("modalNovo"),
