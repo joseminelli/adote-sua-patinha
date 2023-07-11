@@ -142,9 +142,9 @@ document.addEventListener("DOMContentLoaded", function () {
             imagem: imagem
           };
           
-          const port = 3000;
+          const port = process.env.PORT || 3000;
         
-          fetch(`https://adotesuapatinha.com:${port}/salvar`, {
+          fetch(`http://localhost:${port}/salvar`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       logado = true;
       localStorage.setItem("login", logado);
-      //window.location.href = "perfil.html";
+      window.location.href = "perfil.html";
     });
   }
   if (enviarButton2) {
