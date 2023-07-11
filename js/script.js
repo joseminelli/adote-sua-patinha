@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       logado = true;
       localStorage.setItem("login", logado);
-      window.location.href = "perfil.html";
+      //window.location.href = "perfil.html";
     });
   }
   if (enviarButton2) {
