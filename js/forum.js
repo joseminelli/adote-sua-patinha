@@ -189,7 +189,7 @@ function loadPosts() {
 
         post.respostas.forEach(function (resposta) {
           var replyElement = document.createElement("div");
-          replyElement.className = "reply"; // Inicialmente minimizado
+          replyElement.className = "reply"; 
           replyElement.innerHTML =
             "<p id='nomerply'>" +
             nomeresp +
@@ -372,7 +372,7 @@ document.addEventListener("DOMContentLoaded", function () {
           repliesContainer.className = "replies-container";
           post.respostas.forEach(function (resposta) {
             var replyElement = document.createElement("div");
-            replyElement.className = "reply minimizado"; // Inicialmente minimizado
+            replyElement.className = "reply minimizado"; 
             replyElement.innerHTML =
               "<p id='nomerply'>" +
               nomeresp +

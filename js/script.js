@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
           
           const port = process.env.PORT || 3000;
         
-          fetch(`http://localhost:${port}/salvar`, {
+          fetch(`https://adotesuapatinha.com:${port}/salvar`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

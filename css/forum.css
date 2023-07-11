@@ -873,7 +873,7 @@ button[type="submit"]:hover {
     position: absolute;
     z-index: 1;
     top: 24px;
-    right: 20px;
+    right: 21px;
     width: 25px;
     height: 25px;
     cursor: pointer;
