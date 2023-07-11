@@ -43,7 +43,6 @@ h1 {
 .imagem-container {
   position: relative;
   display: inline-block;
-  /* Para garantir que o contêiner tenha o tamanho adequado */
 }
 
 .btn-favorito {

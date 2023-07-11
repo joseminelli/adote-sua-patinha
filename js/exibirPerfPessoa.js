@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "index.html";
     }
     const editar = document.getElementById("editar");
+    const comPet = document.getElementById('spet');
+    const semPet = document.getElementById('npet');
     var nome2 = localStorage.getItem("nome2"),
      idade2 = localStorage.getItem("idade2"),
      bairro = localStorage.getItem("bairro"),
@@ -22,6 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
      caminhoImagem2 = localStorage.getItem("imagempet"),
      telefone = localStorage.getItem("telefone");
     delBtnDiv.addEventListener("click", function () {
+        imgElement2.classList.add("encolher");
+        delBtnDiv.classList.add("encolher");
+        setTimeout(function () {
         localStorage.removeItem("nome");
         localStorage.removeItem("idade");
         localStorage.removeItem("raca");
@@ -31,6 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
         comPet.style.display = "none";
         semPet.style.display = "run-in";
         delBtnDiv.style.display = "none";
+        imgElement2.classList.remove("encolher");
+        delBtnDiv.classList.remove("encolher");
+        }, 300);
     });
     editar.addEventListener("click", function () {
         window.location.href = "cadastro1.html";
@@ -44,8 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
     imgElement.src = caminhoImagem;
 
     var imgElement2 = document.getElementById("fotopet");
-    const comPet = document.getElementById('spet');
-    const semPet = document.getElementById('npet');
     if(caminhoImagem2 == null){
         imgElement2.style.display = "none";
         comPet.style.display = "none";
