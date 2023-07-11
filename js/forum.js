@@ -26,11 +26,11 @@ function toggleClassOnDeviceWidth() {
 
   if (screenWidth < 800) {
     container.classList.remove("active");
-    searchInput.style.color ="#282828";
+    searchInput.style.color = "#282828";
     mobile = true;
-  } else { 
+  } else {
     container.classList.add("active");
-    searchInput.style.color ="#282828";
+    searchInput.style.color = "#282828";
     mobile = false;
   }
 }
@@ -173,6 +173,7 @@ function loadPosts() {
 
       var replyContainer = document.createElement("div");
       replyContainer.className = "reply-container";
+      replyContainer.className = "reply-input-container";
       replyContainer.innerHTML =
         '<p class="modalp2">Responder:</p>' +
         '<input type="text" class="inputmodal2 reply-input" placeholder="Digite sua resposta">' +
@@ -188,7 +189,7 @@ function loadPosts() {
 
         post.respostas.forEach(function (resposta) {
           var replyElement = document.createElement("div");
-          replyElement.className = "reply";
+          replyElement.className = "reply"; // Inicialmente minimizado
           replyElement.innerHTML =
             "<p id='nomerply'>" +
             nomeresp +
@@ -202,6 +203,11 @@ function loadPosts() {
         });
 
         postElement.appendChild(repliesContainer);
+
+        if (post.respostas.length > 1) {
+          var replyButton = createReplyButton(repliesContainer);
+          replyContainer.appendChild(replyButton);
+        }
       }
     });
 
@@ -247,6 +253,35 @@ function deletePost(index) {
   localStorage.setItem("posts", JSON.stringify(posts));
   loadPosts();
 }
+function createReplyButton(repliesContainer) {
+  var replyButton = document.createElement("button");
+  replyButton.className = "reply-toggle-btn";
+  replyButton.className = "minimize-btn";
+  repliesContainer.querySelectorAll(".reply").forEach(function (reply) {
+    reply.classList.add("minimizado");
+  });
+  replyButton.textContent = "Mostrar respostas";
+  var isMinimized = true;
+
+  replyButton.addEventListener("click", function () {
+    isMinimized = !isMinimized;
+
+    if (isMinimized) {
+      replyButton.textContent = "Mostrar respostas";
+      repliesContainer.querySelectorAll(".reply").forEach(function (reply) {
+        reply.classList.add("minimizado");
+      });
+    } else {
+      replyButton.textContent = "Minimizar";
+      repliesContainer.querySelectorAll(".reply").forEach(function (reply) {
+        reply.classList.remove("minimizado");
+      });
+    }
+  });
+
+  return replyButton;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   loadPosts();
   var container = document.getElementById("search-wrapper");
@@ -256,16 +291,15 @@ document.addEventListener("DOMContentLoaded", function () {
     section.classList.add("active");
   });
   fecharbutton.addEventListener("click", function () {
-    if(mobile == true){
+    if (mobile == true) {
       container.querySelector(".search-input").value = "";
       container.classList.remove("active");
-    }else{
+    } else {
       container.querySelector(".search-input").value = "";
     }
-});
+  });
   const searchButton = document.getElementById("searchButton");
   searchButton.addEventListener("click", function () {
-
     if (!container.classList.contains("active")) {
       container.classList.add("active");
     } else if (
@@ -278,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const searchInput = document.getElementById("searchInput");
     const searchTerm = searchInput.value.toLowerCase().trim();
-    searchInput.style.color ="#282828"
+    searchInput.style.color = "#282828";
     const posts = JSON.parse(localStorage.getItem("posts")) || [];
     const filteredPosts = posts.filter(function (post) {
       const titulo = post.titulo.toLowerCase();
@@ -333,13 +367,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         content.appendChild(postElement);
 
-        if (post.respostas && post.respostas.length > 0) {
-          var repliesContainer = document.createElement("div");
+        if (post.respostas && post.respostas.length <= 1) {
+          var repliesContainer = document.createElement("div")
           repliesContainer.className = "replies-container";
-
           post.respostas.forEach(function (resposta) {
             var replyElement = document.createElement("div");
-            replyElement.className = "reply";
+            replyElement.className = "reply minimizado"; // Inicialmente minimizado
             replyElement.innerHTML =
               "<p id='nomerply'>" +
               nomeresp +
@@ -353,6 +386,11 @@ document.addEventListener("DOMContentLoaded", function () {
           });
 
           postElement.appendChild(repliesContainer);
+
+          if (post.respostas.length > 1) {
+            var replyButton = createReplyButton(repliesContainer);
+            repliesContainer.appendChild(replyButton);
+          }
         }
       });
 
