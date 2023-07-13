@@ -9,6 +9,9 @@ const multer = require("multer");
 app.use(express.json());
 app.use(cors());
 app.post("/salvar", (req, res) => {
+  if(fs.existsSync("pets.json") === false) {
+    fs.writeFileSync("pets.json", '{"pets": []}');
+  }
   console.log(req.body);
   const nome = req.body.nome;
   const idade = req.body.idade;
