@@ -138,8 +138,9 @@ document.addEventListener("DOMContentLoaded", function () {
       
           var formData = new FormData();
           formData.append("file", imagem);
+          formData.append("content", nome);
       
-          var discordWebhookURL = "https://discord.com/api/webhooks/1129084090948272248/oO6CTw736_xhd0rp8q4q4PAlSbZG1jdGLsG9DzR6mEjfA_TcWi7YiRCKeWtwkNbPmYeH"; // Substitua pelo URL do seu webhook do Discord
+          var discordWebhookURL = "https://discord.com/api/webhooks/1129099280775393451/L6wPnNBc_gMd0vn-hmUCLbKixkEYa0GZ--_hR6wII4mIBn_Qp4_4exkxgU0HpzI6T1UD"; // Substitua pelo URL do seu webhook do Discord
           
           fetch(discordWebhookURL, {
             method: "POST",
@@ -152,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return response.json();
           })
           .then(function (discordResponse) {
-            var imageUrl = discordResponse.attachments[0].url; 
+            var imageUrl = discordResponse.attachments[0].url; // Obtém a URL da imagem enviada para o Discord
             
             var data = {
               nome: nome,
@@ -163,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
               imagem: imageUrl,
             };
       
-            fetch(`http://localhost:3000/salvarPet`, {
+            fetch(`https://adotesuapatinhaapi.azurewebsites.net/salvar`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -205,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       logado = true;
       localStorage.setItem("login", logado);
-      window.location.href = "perfil.html";
+      //window.location.href = "perfil.html";
     });
   }
   if (enviarButton2) {
