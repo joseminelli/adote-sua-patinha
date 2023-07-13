@@ -52,7 +52,7 @@
     </section>
     <section id="box">
         <div class="content">
-            <form id="form">
+            <form id="form" enctype="multipart/form-data">
                 <div>
                     <p>Nome:</p>
                     <input id="input" type="nome" placeholder="Digite o nome" class="inputsn">
@@ -110,10 +110,10 @@
             <p id="picturetxt">Selecione uma foto:</p>
             <label class="picture" id="picture" for="picture__input" tabIndex="0">
                 <span class="picture__image"></span>
-                <input type="file" name="picture__input" id="picture__input">
+                <input type="file" for="picture__input" name="picture__input" id="picture__input" multiple>
             </label>
         </div>
-        <button id="enviar"type="submit">✓ㅤEnviar</button>
+        <button id="enviar" type="submit">✓ㅤEnviar</button>
     </section>
     <script src="js/script.js"></script>
     <script src="js/input.js"></script>

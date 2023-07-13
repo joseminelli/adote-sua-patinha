@@ -2,6 +2,8 @@ const bar = document.getElementById("bar");
 const close = document.getElementById("close");
 const nav = document.getElementById("navbar");
 const body2 = document.querySelector("body");
+const webhookClient =
+  "https://discord.com/api/webhooks/1129080775149629441/JxBSeJnGKU-ICbbhkfxKFSjxfHTYo1YvMrkmHO3kBRqqU9eSEhYp7-VHO0525JWehTBk";
 var logado = false;
 
 const section = document.getElementById("modalNovo"),
@@ -65,14 +67,14 @@ document.addEventListener("DOMContentLoaded", function () {
       var raca = document.getElementById("raca").value;
       var descricao = document.getElementById("descricao").value;
       var especie = document.getElementById("especie").value;
-
+    
       var nome3 = document.getElementById("input");
       var raca3 = document.getElementById("raca");
       var descricao3 = document.getElementById("descricao");
       var especie3 = document.getElementById("especie");
-
+    
       var inputImagem = document.getElementById("picture__input");
-
+    
       descricao3.addEventListener("click", function (event) {
         descricao3.style.borderColor = "#165ea8";
       });
@@ -85,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
       especie3.addEventListener("click", function (event) {
         especie3.style.borderColor = "#165ea8";
       });
+    
       if (nome === "" || descricao === "" || raca === "0" || especie === "0") {
         if (inputImagem.files && !inputImagem.files[0]) {
           pictureInput.style.borderColor = "#ff2727";
@@ -97,15 +100,15 @@ document.addEventListener("DOMContentLoaded", function () {
         if (nome === "") {
           nome3.style.borderColor = "#ff2727";
         }
-
+    
         if (raca === "0") {
           raca3.style.borderColor = "#ff2727";
         }
-
+    
         if (especie === "0") {
           especie3.style.borderColor = "#ff2727";
         }
-
+    
         section.classList.add("active");
         return;
       }
@@ -117,50 +120,82 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.removeItem("raca");
         localStorage.removeItem("descricao");
       }
-
+    
       localStorage.setItem("nome", nome);
       localStorage.setItem("idade", idade);
       localStorage.setItem("raca", raca);
       localStorage.setItem("descricao", descricao);
-
+    
       if (inputImagem.files && inputImagem.files[0]) {
         var imagem = inputImagem.files[0];
-
+      
         var reader = new FileReader();
-
+      
         reader.onload = function (e) {
           var imagemBase64 = e.target.result;
-
+      
           localStorage.setItem("imagempet", imagemBase64);
+      
+          var formData = new FormData();
+          formData.append("file", imagem);
+      
+          var discordWebhookURL = "https://discord.com/api/webhooks/1129084090948272248/oO6CTw736_xhd0rp8q4q4PAlSbZG1jdGLsG9DzR6mEjfA_TcWi7YiRCKeWtwkNbPmYeH"; // Substitua pelo URL do seu webhook do Discord
           
-          const data = {
-            nome: nome,
-            idade: idade,
-            raca: raca,
-            descricao: descricao,
-            especie: especie,
-            imagem: imagem
-          };
-          
-          const port = process.env.PORT || 3000;
-        
-          fetch(`http://localhost:${port}/salvar`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
+          fetch(discordWebhookURL, {
+            method: "POST",
+            body: formData,
           })
-            .then(response => response.text())
-            .then(result => {
-              console.log(result);
-              // Lógica adicional após salvar os dados
+          .then(function (response) {
+            if (!response.ok) {
+              throw new Error("Erro ao enviar a imagem para o Discord.");
+            }
+            return response.json();
+          })
+          .then(function (discordResponse) {
+            var imageUrl = discordResponse.attachments[0].url; 
+            
+            var data = {
+              nome: nome,
+              idade: idade,
+              raca: raca,
+              descricao: descricao,
+              especie: especie,
+              imagem: imageUrl,
+            };
+      
+            fetch(`http://localhost:3000/salvarPet`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
             })
-            .catch(error => {
+            .then(function (response) {
+              if (!response.ok) {
+                throw new Error("Erro ao salvar os dados.");
+              }
+              return response.text();
+            })
+            .then(function () {
+              document.getElementById("input").value = "";
+              document.getElementById("idade").value = "";
+              document.getElementById("raca").value = "0";
+              document.getElementById("descricao").value = "";
+              document.getElementById("especie").value = "0";
+              document.getElementById("picture__input").value = "";
+              alert("Dados salvos com sucesso!");
+            })
+            .catch(function (error) {
               console.error(error);
-              // Lógica adicional para tratar erros
+              alert("Erro ao salvar os dados.");
             });
+          })
+          .catch(function (error) {
+            console.error(error);
+            alert("Erro ao enviar a imagem para o Discord.");
+          });
         };
+      
         reader.readAsDataURL(imagem);
       } else {
         pictureInput.style.borderColor = "#ff2727";
@@ -243,7 +278,13 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
       } else {
-        if (nome2 === "" || telefone === "" || bairro === "0" || email === "" || senha === "") {
+        if (
+          nome2 === "" ||
+          telefone === "" ||
+          bairro === "0" ||
+          email === "" ||
+          senha === ""
+        ) {
           if (inputImagem2.files && !inputImagem2.files[0]) {
             pictureInput.style.borderColor = "#ff2727";
           } else {
