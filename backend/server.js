@@ -8,8 +8,11 @@ const fs = require("fs");
 app.use(express.json());
 app.use(cors());
 app.post("/salvar", (req, res) => {
-  if(fs.existsSync("pets.json") === false) {
-    fs.writeFileSync("pets.json", '{"pets": []}');
+  if (fs.existsSync("pets.json") === false) {
+    fs.writeFile(
+      "pets.json",
+      '{"pets": [ { "id": 1, "name": "Luke", "age": 2, "description": "Dócil e animado", "raca": "golden", "raca2": "Golden", "regiao": "pampulha", "esp": "cachorros", "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119346225179791450/Luke.png" }]}'
+    );
   }
   console.log(req.body);
   const nome = req.body.nome;
@@ -40,7 +43,7 @@ app.post("/salvar", (req, res) => {
       esp: especie,
       image: imagem,
     };
-    
+
     jsonData.pets.push(newPet);
     console.log(JSON.stringify(newPet));
     fs.writeFile("pets.json", JSON.stringify(jsonData), (err) => {
