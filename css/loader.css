@@ -18,13 +18,21 @@
     opacity: 1;
     pointer-events: auto;
   }
-
+#loader{
+    justify-content: center;
+    align-items: center;
+    position:fixed;
+    display: flex;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
 .wheel-and-hamster {
     --dur: 1s;
-    position:fixed;
+    position: relative;
+    display: flex;
     width: 12em;
-    top: 40%;
-    left: 42%;
     height: 12em;
     font-size: 18px;
     opacity: 0;
