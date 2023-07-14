@@ -8,10 +8,10 @@ const fs = require("fs");
 app.use(express.json());
 app.use(cors());
 app.post("/salvar", (req, res) => {
-  if (fs.existsSync("pets.json") === false) {
+  if (fs.existsSync("../../pets.json") === false) {
     fs.writeFile(
-      "pets.json",
-      '{"pets": [ { "id": 1, "name": "Luke", "age": 2, "description": "Dócil e animado", "raca": "golden", "raca2": "Golden", "regiao": "pampulha", "esp": "cachorros", "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119346225179791450/Luke.png" }]}',
+      "../../pets.json",
+      '{"pets": []}',
       () => {}
     );
   }
@@ -21,9 +21,9 @@ app.post("/salvar", (req, res) => {
   const raca = req.body.raca;
   const descricao = req.body.descricao;
   const especie = req.body.especie;
-  const imagem = req.body.imagem; // Acessar o arquivo enviado através de req.file
+  const imagem = req.body.imagem; 
 
-  fs.readFile("pets.json", "utf8", (err, data) => {
+  fs.readFile("../../pets.json", "utf8", (err, data) => {
     if (err) {
       console.error(err);
       res.status(500).send("Erro ao ler o arquivo JSON");
@@ -47,7 +47,7 @@ app.post("/salvar", (req, res) => {
 
     jsonData.pets.push(newPet);
     console.log(JSON.stringify(newPet));
-    fs.writeFile("pets.json", JSON.stringify(jsonData), (err) => {
+    fs.writeFile("../../pets.json", JSON.stringify(jsonData), (err) => {
       if (err) {
         console.error(err);
         res.status(500).send("Erro ao salvar os dados");
@@ -63,14 +63,14 @@ app.listen(port, () => {
 });
 
 app.get("/", (req, res) => {
-  if (fs.existsSync("pets.json") === false) {
+  if (fs.existsSync("../../pets.json") === false) {
     fs.writeFile(
-      "pets.json",
+      "../../pets.json",
       '{"pets": []}',
       () => {}
     );
   }
-  fs.readFile("pets.json", "utf8", (err, data) => {
+  fs.readFile("../../pets.json", "utf8", (err, data) => {
     if (err) {
       console.error(err);
       res.status(500).send("Erro ao ler o arquivo JSON");

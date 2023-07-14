@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async function () {
   var darkModeEnabled = localStorage.getItem("darkModeEnabled");
-  var response = await fetch("js/pets.json");
+  var response = await fetch(`https://adotesuapatinhaapi.azurewebsites.net/`);
   var data = await response.json();
   const url = new URL(window.location.href);
   const numpet = url.searchParams.get("pet");
