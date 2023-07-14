@@ -11,7 +11,8 @@ app.post("/salvar", (req, res) => {
   if (fs.existsSync("pets.json") === false) {
     fs.writeFile(
       "pets.json",
-      '{"pets": [ { "id": 1, "name": "Luke", "age": 2, "description": "Dócil e animado", "raca": "golden", "raca2": "Golden", "regiao": "pampulha", "esp": "cachorros", "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119346225179791450/Luke.png" }]}'
+      '{"pets": [ { "id": 1, "name": "Luke", "age": 2, "description": "Dócil e animado", "raca": "golden", "raca2": "Golden", "regiao": "pampulha", "esp": "cachorros", "image": "https://cdn.discordapp.com/attachments/1109149984357613638/1119346225179791450/Luke.png" }]}',
+      () => {}
     );
   }
   console.log(req.body);
@@ -62,6 +63,13 @@ app.listen(port, () => {
 });
 
 app.get("/", (req, res) => {
+  if (fs.existsSync("pets.json") === false) {
+    fs.writeFile(
+      "pets.json",
+      '{"pets": []}',
+      () => {}
+    );
+  }
   fs.readFile("pets.json", "utf8", (err, data) => {
     if (err) {
       console.error(err);
