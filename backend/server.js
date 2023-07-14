@@ -62,7 +62,6 @@ app.listen(port, () => {
   console.log(`Servidor ouvindo na porta ${port}`);
 });
 
-
 app.get("/", (req, res) => {
   if (fs.existsSync("../../pets.json") === false) {
     fs.writeFile(
