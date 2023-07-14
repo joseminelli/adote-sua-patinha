@@ -130,15 +130,37 @@ app.get("/", (req, res) => {
       res.status(500).send("Erro ao ler o arquivo JSON");
       return;
     }
+    const jsonData = JSON.parse(data);
+    res.json(jsonData);
+  });
+});
+
+
+app.get("/getPets", (req, res) => {
+  if (fs.existsSync("../../pets.json") === false) {
+    fs.writeFile(
+      "../../pets.json",
+      '{"pets": []}',
+      () => {}
+    );
+  }
+  fs.readFile("../../pets.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo JSON");
+      return;
+    }
 
     const jsonData = JSON.parse(data);
     res.json(jsonData);
   });
+});
 
+app.get("/getUsuarios", (req, res) => {
   if (fs.existsSync("../../usuarios.json") === false) {
     fs.writeFile(
-      "../../pets.json",
-      '{"pets": []}',
+      "../../usuarios.json",
+      '{"usuarios": []}',
       () => {}
     );
   }

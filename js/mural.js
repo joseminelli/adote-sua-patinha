@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   if (login != "true") {
     window.location.href = "index.html";
   }
-  var response = await fetch(`https://adotesuapatinhaapi.azurewebsites.net/`);
+  var response = await fetch(`https://adotesuapatinhaapi.azurewebsites.net/getPets`);
   var data = await response.json();
   var qtdPets = data.pets.length;
   const petsPorPagina = 28;
