@@ -329,6 +329,7 @@ document.addEventListener("DOMContentLoaded", function () {
       bairro2.addEventListener("click", function (event) {
         bairro2.style.borderColor = "#165ea8";
       });
+      
       if (login === "true") {
         if (nome2 === "" || telefone === "" || bairro === "0") {
           if (inputImagem2.files && !inputImagem2.files[0]) {
