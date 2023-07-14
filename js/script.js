@@ -3,6 +3,10 @@ const close = document.getElementById("close");
 const nav = document.getElementById("navbar");
 const body2 = document.querySelector("body");
 const hamster = document.getElementById("hamster");
+const titulom = document.getElementById("titulom");
+const descm = document.getElementById("descm");
+const iconm = document.getElementById("iconm");
+const modalbtn = document.getElementById("modalbtn");
 const webhookClient =
   "https://discord.com/api/webhooks/1129080775149629441/JxBSeJnGKU-ICbbhkfxKFSjxfHTYo1YvMrkmHO3kBRqqU9eSEhYp7-VHO0525JWehTBk";
 var logado = false;
@@ -31,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var loginButton = document.getElementById("login"); // Botão do cadastro de pessoas
   var login = localStorage.getItem("login");
   const pictureInput = document.getElementById("picture");
+
   if (
     document.location.pathname.endsWith("/index.html") ||
     document.location.pathname.endsWith("/")
@@ -178,6 +183,22 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(function (response) {
               if (!response.ok) {
                 hamster.classList.remove("active");
+                section.classList.add("active");
+                hamster.classList.remove("active");
+                titulom.innerHTML = "Erro ao salvar os dados.";
+                descm.innerHTML = "";
+                iconm.classList.add("fa-circle-check");
+                iconm.classList.remove("fa-circle-xmark");
+                modalbtn.style.display = "none";
+                setTimeout(function () {
+                  section.classList.remove("active");
+                  hamster.classList.remove("active");
+                  titulom.innerHTML = "Formulário não enviado";
+                  descm.innerHTML = "Você precisa preencher todos os campos e colocar uma imagem";
+                  iconm.classList.remove("fa-circle-check");
+                  iconm.classList.add("fa-circle-xmark");
+                  modalbtn.style.display = "block";
+                } , 1500);
                 throw new Error("Erro ao salvar os dados.");
               }
               return response.text();
@@ -189,18 +210,60 @@ document.addEventListener("DOMContentLoaded", function () {
               document.getElementById("descricao").value = "";
               document.getElementById("especie").value = "0";
               document.getElementById("picture__input").value = "";
-              alert("Dados salvos com sucesso!");
+              hamster.classList.remove("active");
+              section.classList.add("active");
+              hamster.classList.remove("active");
+              titulom.innerHTML = "Pet cadastrado!";
+              descm.innerHTML = "";
+              iconm.classList.add("fa-circle-check");
+              iconm.classList.remove("fa-circle-xmark");
+              modalbtn.style.display = "none";
+              setTimeout(function () {
+                section.classList.remove("active");
+                window.location.href = "perfil.html";
+                modalbtn.style.display = "block";
+              } , 1500);
             })
             .catch(function (error) {
               console.error(error);
               hamster.classList.remove("active");
-              alert("Erro ao salvar os dados.");
+              section.classList.add("active");
+              hamster.classList.remove("active");
+              titulom.innerHTML = "Erro ao salvar os dados.";
+              descm.innerHTML = "";
+              iconm.classList.add("fa-circle-check");
+              iconm.classList.remove("fa-circle-xmark");
+              modalbtn.style.display = "none";
+              setTimeout(function () {
+                section.classList.remove("active");
+                hamster.classList.remove("active");
+                titulom.innerHTML = "Formulário não enviado";
+                descm.innerHTML = "Você precisa preencher todos os campos e colocar uma imagem";
+                iconm.classList.remove("fa-circle-check");
+                iconm.classList.add("fa-circle-xmark");
+                modalbtn.style.display = "block";
+              } , 1500);
             });
           })
           .catch(function (error) {
             console.error(error);
             hamster.classList.remove("active");
-            alert("Erro ao enviar a imagem para o Discord.");
+            section.classList.add("active");
+            hamster.classList.remove("active");
+            titulom.innerHTML = "Erro ao salvar a imagem.";
+            descm.innerHTML = "";
+            iconm.classList.add("fa-circle-check");
+            iconm.classList.remove("fa-circle-xmark");
+            modalbtn.style.display = "none";
+            setTimeout(function () {
+              section.classList.remove("active");
+              hamster.classList.remove("active");
+              titulom.innerHTML = "Formulário não enviado";
+              descm.innerHTML = "Você precisa preencher todos os campos e colocar uma imagem";
+              iconm.classList.remove("fa-circle-check");
+              iconm.classList.add("fa-circle-xmark");
+              modalbtn.style.display = "block";
+            } , 1500);
           });
         };
       
@@ -213,7 +276,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       logado = true;
       localStorage.setItem("login", logado);
-      window.location.href = "perfil.html";
     });
   }
   if (enviarButton2) {
