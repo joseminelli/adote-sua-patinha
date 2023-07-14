@@ -2,6 +2,7 @@ const bar = document.getElementById("bar");
 const close = document.getElementById("close");
 const nav = document.getElementById("navbar");
 const body2 = document.querySelector("body");
+const hamster = document.getElementById("hamster");
 const webhookClient =
   "https://discord.com/api/webhooks/1129080775149629441/JxBSeJnGKU-ICbbhkfxKFSjxfHTYo1YvMrkmHO3kBRqqU9eSEhYp7-VHO0525JWehTBk";
 var logado = false;
@@ -61,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = "index.html";
     }
     enviarButton.addEventListener("click", function (event) {
+      hamster.classList.add("active");
       event.preventDefault();
       var nome = document.getElementById("input").value;
       var idade = document.getElementById("idade").value;
@@ -108,7 +110,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (especie === "0") {
           especie3.style.borderColor = "#ff2727";
         }
-    
+        
+        hamster.classList.remove("active");
         section.classList.add("active");
         return;
       }
@@ -148,6 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
           })
           .then(function (response) {
             if (!response.ok) {
+              hamster.classList.remove("active");
               throw new Error("Erro ao enviar a imagem para o Discord.");
             }
             return response.json();
@@ -173,6 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(function (response) {
               if (!response.ok) {
+                hamster.classList.remove("active");
                 throw new Error("Erro ao salvar os dados.");
               }
               return response.text();
@@ -188,11 +193,13 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(function (error) {
               console.error(error);
+              hamster.classList.remove("active");
               alert("Erro ao salvar os dados.");
             });
           })
           .catch(function (error) {
             console.error(error);
+            hamster.classList.remove("active");
             alert("Erro ao enviar a imagem para o Discord.");
           });
         };
@@ -206,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       logado = true;
       localStorage.setItem("login", logado);
-      //window.location.href = "perfil.html";
+      window.location.href = "perfil.html";
     });
   }
   if (enviarButton2) {
