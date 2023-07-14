@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
               imagem: imageUrl,
             };
       
-            fetch(`https://adotesuapatinhaapi.azurewebsites.net/salvar`, {
+            fetch(`https://adotesuapatinhaapi.azurewebsites.net/salvarPet`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

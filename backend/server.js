@@ -7,7 +7,7 @@ const fs = require("fs");
 
 app.use(express.json());
 app.use(cors());
-app.post("/salvar", (req, res) => {
+app.post("/salvarPet", (req, res) => {
   if (fs.existsSync("../../pets.json") === false) {
     fs.writeFile(
       "../../pets.json",
@@ -116,26 +116,6 @@ app.listen(port, () => {
   console.log(`Servidor ouvindo na porta ${port}`);
 });
 
-app.get("/", (req, res) => {
-  if (fs.existsSync("../../pets.json") === false) {
-    fs.writeFile(
-      "../../pets.json",
-      '{"pets": []}',
-      () => {}
-    );
-  }
-  fs.readFile("../../pets.json", "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send("Erro ao ler o arquivo JSON");
-      return;
-    }
-    const jsonData = JSON.parse(data);
-    res.json(jsonData);
-  });
-});
-
-
 app.get("/getPets", (req, res) => {
   if (fs.existsSync("../../pets.json") === false) {
     fs.writeFile(
@@ -153,25 +133,5 @@ app.get("/getPets", (req, res) => {
 
     const jsonData = JSON.parse(data);
     res.json(jsonData);
-  });
-});
-
-app.get("/getUsuarios", (req, res) => {
-  if (fs.existsSync("../../usuarios.json") === false) {
-    fs.writeFile(
-      "../../usuarios.json",
-      '{"usuarios": []}',
-      () => {}
-    );
-  }
-  fs.readFile("../../usuarios.json", "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send("Erro ao ler o arquivo JSON");
-      return;
-    }
-
-    const jsonData = JSON.parse(data);
-    res.json("\n" + jsonData);
   });
 });
