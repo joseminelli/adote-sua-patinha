@@ -3,6 +3,7 @@ const close = document.getElementById("close");
 const nav = document.getElementById("navbar");
 const body2 = document.querySelector("body");
 const hamster = document.getElementById("hamster");
+const loader = document.getElementById("loader");
 const titulom = document.getElementById("titulom");
 const descm = document.getElementById("descm");
 const iconm = document.getElementById("iconm");
@@ -67,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = "index.html";
     }
     enviarButton.addEventListener("click", function (event) {
+      loader.style.display = "flex";
       hamster.classList.add("active");
       event.preventDefault();
       var nome = document.getElementById("input").value;
@@ -117,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         
         hamster.classList.remove("active");
+        loader.style.display = "none";
         section.classList.add("active");
         return;
       }
@@ -157,6 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
           .then(function (response) {
             if (!response.ok) {
               hamster.classList.remove("active");
+              loader.style.display = "none";
               throw new Error("Erro ao enviar a imagem para o Discord.");
             }
             return response.json();
@@ -184,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
               if (!response.ok) {
                 hamster.classList.remove("active");
                 section.classList.add("active");
-                hamster.classList.remove("active");
+                loader.style.display = "none";
                 titulom.innerHTML = "Erro ao salvar os dados.";
                 descm.innerHTML = "";
                 iconm.classList.add("fa-circle-check");
@@ -192,7 +196,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 modalbtn.style.display = "none";
                 setTimeout(function () {
                   section.classList.remove("active");
-                  hamster.classList.remove("active");
                   titulom.innerHTML = "Formulário não enviado";
                   descm.innerHTML = "Você precisa preencher todos os campos e colocar uma imagem";
                   iconm.classList.remove("fa-circle-check");
@@ -211,8 +214,8 @@ document.addEventListener("DOMContentLoaded", function () {
               document.getElementById("especie").value = "0";
               document.getElementById("picture__input").value = "";
               hamster.classList.remove("active");
+              loader.style.display = "none";
               section.classList.add("active");
-              hamster.classList.remove("active");
               titulom.innerHTML = "Pet cadastrado!";
               descm.innerHTML = "";
               iconm.classList.add("fa-circle-check");
@@ -226,9 +229,9 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(function (error) {
               console.error(error);
+              loader.style.display = "none";
               hamster.classList.remove("active");
               section.classList.add("active");
-              hamster.classList.remove("active");
               titulom.innerHTML = "Erro ao salvar os dados.";
               descm.innerHTML = "";
               iconm.classList.add("fa-circle-check");
@@ -236,7 +239,6 @@ document.addEventListener("DOMContentLoaded", function () {
               modalbtn.style.display = "none";
               setTimeout(function () {
                 section.classList.remove("active");
-                hamster.classList.remove("active");
                 titulom.innerHTML = "Formulário não enviado";
                 descm.innerHTML = "Você precisa preencher todos os campos e colocar uma imagem";
                 iconm.classList.remove("fa-circle-check");
@@ -247,9 +249,9 @@ document.addEventListener("DOMContentLoaded", function () {
           })
           .catch(function (error) {
             console.error(error);
+            loader.style.display = "none";
             hamster.classList.remove("active");
             section.classList.add("active");
-            hamster.classList.remove("active");
             titulom.innerHTML = "Erro ao salvar a imagem.";
             descm.innerHTML = "";
             iconm.classList.add("fa-circle-check");
@@ -257,7 +259,6 @@ document.addEventListener("DOMContentLoaded", function () {
             modalbtn.style.display = "none";
             setTimeout(function () {
               section.classList.remove("active");
-              hamster.classList.remove("active");
               titulom.innerHTML = "Formulário não enviado";
               descm.innerHTML = "Você precisa preencher todos os campos e colocar uma imagem";
               iconm.classList.remove("fa-circle-check");

@@ -22,7 +22,7 @@
     justify-content: center;
     align-items: center;
     position:fixed;
-    display: flex;
+    display: none;
     left: 0;
     top: 0;
     height: 100%;
