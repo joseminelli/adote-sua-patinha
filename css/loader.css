@@ -219,10 +219,9 @@
 }
 
 @media screen and (max-width: 576px) {
-  
-.wheel-and-hamster {
-  font-size: 15px;
-}
+  .wheel-and-hamster {
+    font-size: 15px;
+  }
 }
 
 @keyframes hamster {

@@ -1,7 +1,20 @@
 document.addEventListener("DOMContentLoaded", async function () {
   var darkModeEnabled = localStorage.getItem("darkModeEnabled");
+  const loader = document.getElementById("loader");
+  const hamster = document.getElementById("hamster");
+  loader.style.display = "flex";
+  hamster.classList.add("active");
   var response = await fetch(`https://adotesuapatinhaapi.azurewebsites.net/`);
   var data = await response.json();
+  if(data){
+    setTimeout(function () {
+      loader.style.display = "none";
+      hamster.classList.remove("active");
+    }, 400);
+  }else{
+    loader.style.display = "flex";
+    hamster.classList.add("active");
+  }
   const url = new URL(window.location.href);
   const numpet = url.searchParams.get("pet");
   const box = document.getElementById("box");
