@@ -31,7 +31,7 @@ app.post("/salvar", (req, res) => {
     }
 
     let jsonData = JSON.parse(data);
-    const newId = jsonData.pets.length + 1;
+    const newId = jsonData.pets.length > 0 ? jsonData.pets[jsonData.pets.length - 1].id + 1 : 1;
 
     const newPet = {
       id: newId,
