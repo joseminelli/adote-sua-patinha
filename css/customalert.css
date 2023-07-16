@@ -51,7 +51,7 @@
 #modalbtn.show-modal,
 #modalbtn2.show-modal,
 .modal-box {
-  z-index: 1000;
+  z-index: 1100;
   position: fixed;
   left: 50%;
   top: 50%;
@@ -62,7 +62,7 @@
   display: none;
 }
 .overlay {
-  z-index: 1000;
+  z-index: 1100;
   position: fixed;
   filter: blur(0px);
   height: 100%;
