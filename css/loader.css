@@ -1,7 +1,7 @@
 .overlayr {
   left: 0;
   top: 0;
-  z-index: 999;
+  z-index: 1000;
   position: fixed;
   filter: blur(0px);
   height: 100%;
@@ -20,7 +20,7 @@
 #loader {
   justify-content: center;
   align-items: center;
-  position: fixed;
+  position: absolute;
   display: none;
   left: 0;
   top: 0;
@@ -29,7 +29,7 @@
 }
 .wheel-and-hamster {
   --dur: 1s;
-  position: relative;
+  position: absolute;
   display: flex;
   width: 12em;
   height: 12em;
@@ -64,7 +64,7 @@
     hsla(0, 0%, 60%, 0) 47.8%,
     hsl(0, 0%, 60%) 48%
   );
-  z-index: 1002;
+  z-index: 1003;
 }
 
 .hamster {
@@ -75,7 +75,7 @@
   height: 3.75em;
   transform: rotate(4deg) translate(-0.8em, 1.85em);
   transform-origin: 50% 0;
-  z-index: 1001;
+  z-index: 1002;
 }
 
 .hamster__head {
@@ -218,7 +218,13 @@
       50% 50% / 99% 99% no-repeat;
 }
 
-/* Animations */
+@media screen and (max-width: 576px) {
+  
+.wheel-and-hamster {
+  font-size: 15px;
+}
+}
+
 @keyframes hamster {
   from,
   to {

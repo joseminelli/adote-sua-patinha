@@ -1,18 +1,22 @@
 var login = localStorage.getItem("login");
 const taNoMural = document.getElementById("formm2");
+const loader = document.getElementById("loader");
+const hamster = document.getElementById("hamster");
 const section = document.getElementById("modalNovo"),
   overlay = document.querySelector(".overlay"),
   showBtn = document.querySelector(".show-modal"),
   neverBtn = document.querySelector(".never-btn");
-  var abrirModal = localStorage.getItem("consciente");
+var abrirModal = localStorage.getItem("consciente");
+  loader.style.display = "flex";
+  hamster.classList.add("active");
 
 document.addEventListener("DOMContentLoaded", async function () {
-  neverBtn.addEventListener("click", function () { 
+  neverBtn.addEventListener("click", function () {
     localStorage.setItem("consciente", "true");
-    section.classList.remove("active")
+    section.classList.remove("active");
   });
-  if(abrirModal != "true"){
-    section.classList.add("active")
+  if (abrirModal != "true") {
+    section.classList.add("active");
   }
   let loginId;
   const chkFavoritos = document.getElementById("chkFavoritos");
@@ -22,7 +26,18 @@ document.addEventListener("DOMContentLoaded", async function () {
     window.location.href = "index.html";
   }
   var response = await fetch(`https://adotesuapatinhaapi.azurewebsites.net/`);
+  
   var data = await response.json();
+  
+  if(data){
+    setTimeout(function () {
+      loader.style.display = "none";
+      hamster.classList.remove("active");
+    }, 400);
+  }else{
+    loader.style.display = "flex";
+    hamster.classList.add("active");
+  }
   var qtdPets = data.pets.length;
   const petsPorPagina = 28;
   let currentPage = 1;
@@ -114,7 +129,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
           if (apenasFavoritos) {
             if (a2.parentNode) {
-            a2.parentNode.classList.add("encolher");
+              a2.parentNode.classList.add("encolher");
             }
           }
         }
@@ -122,16 +137,16 @@ document.addEventListener("DOMContentLoaded", async function () {
         favoritoBtn.addEventListener("click", function () {
           const petId = this.dataset.petId;
           const container = this.parentNode;
-        
+
           if (favoritos.includes(petId)) {
             favoritos.splice(favoritos.indexOf(petId), 1);
             this.classList.remove("favoritado");
-        
+
             if (container) {
-              if (apenasFavoritos){
+              if (apenasFavoritos) {
                 container.classList.add("encolher");
               }
-        
+
               setTimeout(function () {
                 if (container.parentNode) {
                   container.parentNode.removeChild(container);
@@ -148,10 +163,9 @@ document.addEventListener("DOMContentLoaded", async function () {
               atualizarFiltro();
             }, 200);
           }
-        
+
           localStorage.setItem("favoritos", JSON.stringify(favoritos));
         });
-        
 
         const container = document.createElement("div");
         container.classList.add("imagem-container");
