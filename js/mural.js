@@ -31,9 +31,11 @@ document.addEventListener("DOMContentLoaded", async function () {
   
   if(data){
     setTimeout(function () {
-      loader.style.display = "none";
       hamster.classList.remove("active");
-    }, 400);
+      setTimeout(function () {
+        loader.style.display = "none";
+      }, 300);
+    }, 300);
   }else{
     loader.style.display = "flex";
     hamster.classList.add("active");
