@@ -546,7 +546,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const email = document.getElementById("input1").value;
       const senha = document.getElementById("input2").value;
 
-      fetch("/login", {
+      fetch("https://adotesuapatinhaapi.azurewebsites.net/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
