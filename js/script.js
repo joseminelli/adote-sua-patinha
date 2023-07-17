@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 const bar = document.getElementById("bar");
 const close = document.getElementById("close");
 const nav = document.getElementById("navbar");
@@ -580,6 +581,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => response.json())
         .then((data) => {
           if (data.redirect) {
+            Cookies.set("userId", data.userId);
             logado = true;
             localStorage.setItem("login", logado);
             window.location.href = data.redirect;

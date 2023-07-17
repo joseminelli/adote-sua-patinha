@@ -1,12 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const app = express();
 const port = process.env.PORT || 3000;
 
 const fs = require("fs");
 
 app.use(express.static('public'));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors());
@@ -132,6 +134,7 @@ app.post("/login", (req, res) => {
       (user) => user.email === email && user.senha === senha
     );
     if (usuario) {
+      res.cookie("userId", usuario.id);
       res.json({ redirect: "/main.html" });
     } else {
       res.status(401).send("Email ou senha inválidos");
