@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const editar = document.getElementById("editar");
   const comPet = document.getElementById("spet");
   const semPet = document.getElementById("npet");
-  const userId = localStorage.getItem("userId");
+  const userId = Cookies.get("userId");
 
   try {
     const response = await fetch(
@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     imgElement.src = usuario.image;
   } catch (error) {
     console.error(error);
-    // Tratar o erro ao obter as informações do usuário
   }
   editar.addEventListener("click", function () {
     window.location.href = "cadastro1.html";
