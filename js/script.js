@@ -580,6 +580,8 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => response.json())
         .then((data) => {
           if (data.redirect) {
+            logado = true;
+            localStorage.setItem("login", logado);
             window.location.href = data.redirect;
           } else {
             loader.style.display = "none";
