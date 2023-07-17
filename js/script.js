@@ -542,12 +542,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   if (loginButton) {
+    const eye = document.querySelector(".feather-eye");
+    const eyeoff = document.querySelector(".feather-eye-off");
+    const passwordField = document.querySelector("input[type=password]");
+
+    eye.addEventListener("click", () => {
+      eye.style.display = "none";
+      eyeoff.style.display = "block";
+
+      passwordField.type = "text";
+    });
+
+    eyeoff.addEventListener("click", () => {
+      eyeoff.style.display = "none";
+      eye.style.display = "block";
+
+      passwordField.type = "password";
+    });
     loginButton.addEventListener("click", function (event) {
       loader.style.display = "flex";
       hamster.classList.add("active");
       const email = document.getElementById("input1").value;
       const senha = document.getElementById("input2").value;
-
       fetch(`https://adotesuapatinhaapi.azurewebsites.net/login`, {
         method: "POST",
         headers: {

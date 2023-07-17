@@ -100,7 +100,13 @@
           <input type="text" placeholder="Email" id="input1" />
 
           <label for="input2">Senha:</label>
-          <input type="password" placeholder="Senha" id="input2" />
+          <div id="senhabox">
+            <input type="password" placeholder="Senha" id="input2" />
+            <div class="password-icon">
+              <i data-feather="eye"></i>
+              <i data-feather="eye-off"></i>
+            </div>
+          </div>
           <div id="botao">
             <button id="login" type="submit">Log In</button>
           </div>
@@ -113,5 +119,9 @@
     </section>
     <script src="js/darkmode.js"></script>
     <script src="js/script.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+      feather.replace();
+    </script>
   </body>
 </html>

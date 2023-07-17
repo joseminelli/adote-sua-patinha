@@ -25,7 +25,26 @@
   background: #0e4072;
   transition: all 300ms;
 }
+.password-icon {
+  width: 1.2rem;
+  margin-left: 5%;
+  margin-right: 2%;
+  color: #165ea8;
+  transition: color 0.2s;
+}
+#senhabox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.password-icon .feather-eye-off {
+  display: none;
+}
 
+.password-icon:hover {
+  cursor: pointer;
+  color: #0e4072;
+}
 form {
   height: 520px;
   width: 400px;
@@ -258,6 +277,14 @@ button[type="submit"]:hover {
   }
   #box {
     height: 60px;
+  }
+
+  .password-icon {
+    width: 1.2rem;
+    margin-left: 4%;
+    margin-right: -4%;
+    color: #165ea8;
+    transition: color 0.2s;
   }
   .content {
     background-color: #ffe58b;
