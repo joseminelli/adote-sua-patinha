@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     window.location.href = "index.html";
   }
   var response = await fetch(`https://adotesuapatinhaapi.azurewebsites.net/`, {
-    credentials: 'include',
+    credentials: 'same-origin',
   });
 
   var data = await response.json();

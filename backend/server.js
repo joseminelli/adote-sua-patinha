@@ -19,10 +19,7 @@ app.use(express.static("public"));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(cors({
-  origin: 'https://adotesuapatinhaapi.azurewebsites.net',
-  credentials: true,
-}));
+app.use(cors());
 
 app.post("/salvar", (req, res) => {
   const logId = verificarAutenticacao(req);
