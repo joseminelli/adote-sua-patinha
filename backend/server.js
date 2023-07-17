@@ -114,6 +114,32 @@ app.listen(port, () => {
   console.log(`Servidor ouvindo na porta ${port}`);
 });
 
+app.post("/login", (req, res) => {
+  const email = req.body.email;
+  const senha = req.body.senha;
+
+  fs.readFile("../../usuarios.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo de usuários");
+      return;
+    }
+
+    const usuarios = JSON.parse(data);
+
+    
+    const usuario = usuarios.find(
+      (user) => user.email === email && user.senha === senha
+    );
+
+    if (usuario) {
+      res.redirect("/main.html");
+    } else {
+      res.status(401).send("Email ou senha inválidos");
+    }
+  });
+});
+
 app.get("/", (req, res) => {
   if (fs.existsSync("../../pets.json") === false) {
     fs.writeFile(

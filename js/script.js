@@ -76,14 +76,14 @@ document.addEventListener("DOMContentLoaded", function () {
       var raca = document.getElementById("raca").value;
       var descricao = document.getElementById("descricao").value;
       var especie = document.getElementById("especie").value;
-    
+
       var nome3 = document.getElementById("input");
       var raca3 = document.getElementById("raca");
       var descricao3 = document.getElementById("descricao");
       var especie3 = document.getElementById("especie");
-    
+
       var inputImagem = document.getElementById("picture__input");
-    
+
       descricao3.addEventListener("click", function (event) {
         descricao3.style.borderColor = "#165ea8";
       });
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
       especie3.addEventListener("click", function (event) {
         especie3.style.borderColor = "#165ea8";
       });
-    
+
       if (nome === "" || descricao === "" || raca === "0" || especie === "0") {
         if (inputImagem.files && !inputImagem.files[0]) {
           pictureInput.style.borderColor = "#ff2727";
@@ -109,15 +109,15 @@ document.addEventListener("DOMContentLoaded", function () {
         if (nome === "") {
           nome3.style.borderColor = "#ff2727";
         }
-    
+
         if (raca === "0") {
           raca3.style.borderColor = "#ff2727";
         }
-    
+
         if (especie === "0") {
           especie3.style.borderColor = "#ff2727";
         }
-        
+
         hamster.classList.remove("active");
         loader.style.display = "none";
         section.classList.add("active");
@@ -131,108 +131,131 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.removeItem("raca");
         localStorage.removeItem("descricao");
       }
-    
+
       localStorage.setItem("nome", nome);
       localStorage.setItem("idade", idade);
       localStorage.setItem("raca", raca);
       localStorage.setItem("descricao", descricao);
-    
+
       if (inputImagem.files && inputImagem.files[0]) {
         var imagem = inputImagem.files[0];
-      
+
         var reader = new FileReader();
-      
+
         reader.onload = function (e) {
           var imagemBase64 = e.target.result;
-      
+
           localStorage.setItem("imagempet", imagemBase64);
-      
+
           var formData = new FormData();
           formData.append("file", imagem);
           formData.append("content", nome);
-      
-          var discordWebhookURL = "https://discord.com/api/webhooks/1129099280775393451/L6wPnNBc_gMd0vn-hmUCLbKixkEYa0GZ--_hR6wII4mIBn_Qp4_4exkxgU0HpzI6T1UD"; // Substitua pelo URL do seu webhook do Discord
-          
+
+          var discordWebhookURL =
+            "https://discord.com/api/webhooks/1129099280775393451/L6wPnNBc_gMd0vn-hmUCLbKixkEYa0GZ--_hR6wII4mIBn_Qp4_4exkxgU0HpzI6T1UD"; // Substitua pelo URL do seu webhook do Discord
+
           fetch(discordWebhookURL, {
             method: "POST",
             body: formData,
           })
-          .then(function (response) {
-            if (!response.ok) {
-              hamster.classList.remove("active");
-              loader.style.display = "none";
-              throw new Error("Erro ao enviar a imagem para o Discord.");
-            }
-            return response.json();
-          })
-          .then(function (discordResponse) {
-            var imageUrl = discordResponse.attachments[0].url; // Obtém a URL da imagem enviada para o Discord
-            
-            var data = {
-              nome: nome,
-              idade: idade,
-              raca: raca,
-              descricao: descricao,
-              especie: especie,
-              imagem: imageUrl,
-            };
-      
-            fetch(`https://adotesuapatinhaapi.azurewebsites.net/salvar`, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(data),
-            })
             .then(function (response) {
               if (!response.ok) {
                 hamster.classList.remove("active");
-                section.classList.add("active");
                 loader.style.display = "none";
-                titulom.innerHTML = "Erro ao salvar os dados.";
-                descm.innerHTML = "";
-                iconm.classList.add("fa-circle-check");
-                iconm.classList.remove("fa-circle-xmark");
-                modalbtn.style.display = "none";
-                setTimeout(function () {
-                  section.classList.remove("active");
-                  titulom.innerHTML = "Formulário não enviado";
-                  descm.innerHTML = "Você precisa preencher todos os campos e colocar uma imagem";
-                  iconm.classList.remove("fa-circle-check");
-                  iconm.classList.add("fa-circle-xmark");
-                  modalbtn.style.display = "block";
-                } , 1500);
-                throw new Error("Erro ao salvar os dados.");
+                throw new Error("Erro ao enviar a imagem para o Discord.");
               }
-              return response.text();
+              return response.json();
             })
-            .then(function () {
-              document.getElementById("input").value = "";
-              document.getElementById("idade").value = "";
-              document.getElementById("raca").value = "0";
-              document.getElementById("descricao").value = "";
-              document.getElementById("especie").value = "0";
-              document.getElementById("picture__input").value = "";
-              hamster.classList.remove("active");
-              loader.style.display = "none";
-              section.classList.add("active");
-              titulom.innerHTML = "Pet cadastrado!";
-              descm.innerHTML = "";
-              iconm.classList.add("fa-circle-check");
-              iconm.classList.remove("fa-circle-xmark");
-              modalbtn.style.display = "none";
-              setTimeout(function () {
-                section.classList.remove("active");
-                window.location.href = "perfil.html";
-                modalbtn.style.display = "block";
-              } , 1500);
+            .then(function (discordResponse) {
+              var imageUrl = discordResponse.attachments[0].url; // Obtém a URL da imagem enviada para o Discord
+
+              var data = {
+                nome: nome,
+                idade: idade,
+                raca: raca,
+                descricao: descricao,
+                especie: especie,
+                imagem: imageUrl,
+              };
+
+              fetch(`https://adotesuapatinhaapi.azurewebsites.net/salvar`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+              })
+                .then(function (response) {
+                  if (!response.ok) {
+                    hamster.classList.remove("active");
+                    section.classList.add("active");
+                    loader.style.display = "none";
+                    titulom.innerHTML = "Erro ao salvar os dados.";
+                    descm.innerHTML = "";
+                    iconm.classList.add("fa-circle-check");
+                    iconm.classList.remove("fa-circle-xmark");
+                    modalbtn.style.display = "none";
+                    setTimeout(function () {
+                      section.classList.remove("active");
+                      titulom.innerHTML = "Formulário não enviado";
+                      descm.innerHTML =
+                        "Você precisa preencher todos os campos e colocar uma imagem";
+                      iconm.classList.remove("fa-circle-check");
+                      iconm.classList.add("fa-circle-xmark");
+                      modalbtn.style.display = "block";
+                    }, 1500);
+                    throw new Error("Erro ao salvar os dados.");
+                  }
+                  return response.text();
+                })
+                .then(function () {
+                  document.getElementById("input").value = "";
+                  document.getElementById("idade").value = "";
+                  document.getElementById("raca").value = "0";
+                  document.getElementById("descricao").value = "";
+                  document.getElementById("especie").value = "0";
+                  document.getElementById("picture__input").value = "";
+                  hamster.classList.remove("active");
+                  loader.style.display = "none";
+                  section.classList.add("active");
+                  titulom.innerHTML = "Pet cadastrado!";
+                  descm.innerHTML = "";
+                  iconm.classList.add("fa-circle-check");
+                  iconm.classList.remove("fa-circle-xmark");
+                  modalbtn.style.display = "none";
+                  setTimeout(function () {
+                    section.classList.remove("active");
+                    window.location.href = "perfil.html";
+                    modalbtn.style.display = "block";
+                  }, 1500);
+                })
+                .catch(function (error) {
+                  console.error(error);
+                  loader.style.display = "none";
+                  hamster.classList.remove("active");
+                  section.classList.add("active");
+                  titulom.innerHTML = "Erro ao salvar os dados.";
+                  descm.innerHTML = "";
+                  iconm.classList.add("fa-circle-check");
+                  iconm.classList.remove("fa-circle-xmark");
+                  modalbtn.style.display = "none";
+                  setTimeout(function () {
+                    section.classList.remove("active");
+                    titulom.innerHTML = "Formulário não enviado";
+                    descm.innerHTML =
+                      "Você precisa preencher todos os campos e colocar uma imagem";
+                    iconm.classList.remove("fa-circle-check");
+                    iconm.classList.add("fa-circle-xmark");
+                    modalbtn.style.display = "block";
+                  }, 1500);
+                });
             })
             .catch(function (error) {
               console.error(error);
               loader.style.display = "none";
               hamster.classList.remove("active");
               section.classList.add("active");
-              titulom.innerHTML = "Erro ao salvar os dados.";
+              titulom.innerHTML = "Erro ao salvar a imagem.";
               descm.innerHTML = "";
               iconm.classList.add("fa-circle-check");
               iconm.classList.remove("fa-circle-xmark");
@@ -240,34 +263,15 @@ document.addEventListener("DOMContentLoaded", function () {
               setTimeout(function () {
                 section.classList.remove("active");
                 titulom.innerHTML = "Formulário não enviado";
-                descm.innerHTML = "Você precisa preencher todos os campos e colocar uma imagem";
+                descm.innerHTML =
+                  "Você precisa preencher todos os campos e colocar uma imagem";
                 iconm.classList.remove("fa-circle-check");
                 iconm.classList.add("fa-circle-xmark");
                 modalbtn.style.display = "block";
-              } , 1500);
+              }, 1500);
             });
-          })
-          .catch(function (error) {
-            console.error(error);
-            loader.style.display = "none";
-            hamster.classList.remove("active");
-            section.classList.add("active");
-            titulom.innerHTML = "Erro ao salvar a imagem.";
-            descm.innerHTML = "";
-            iconm.classList.add("fa-circle-check");
-            iconm.classList.remove("fa-circle-xmark");
-            modalbtn.style.display = "none";
-            setTimeout(function () {
-              section.classList.remove("active");
-              titulom.innerHTML = "Formulário não enviado";
-              descm.innerHTML = "Você precisa preencher todos os campos e colocar uma imagem";
-              iconm.classList.remove("fa-circle-check");
-              iconm.classList.add("fa-circle-xmark");
-              modalbtn.style.display = "block";
-            } , 1500);
-          });
         };
-      
+
         reader.readAsDataURL(imagem);
       } else {
         pictureInput.style.borderColor = "#ff2727";
@@ -407,90 +411,110 @@ document.addEventListener("DOMContentLoaded", function () {
           var formData = new FormData();
           formData.append("file", imagem2);
           formData.append("content", nome2);
-      
-          var discordWebhookURL = "https://discord.com/api/webhooks/1129099280775393451/L6wPnNBc_gMd0vn-hmUCLbKixkEYa0GZ--_hR6wII4mIBn_Qp4_4exkxgU0HpzI6T1UD"; // Substitua pelo URL do seu webhook do Discord
-          
+
+          var discordWebhookURL =
+            "https://discord.com/api/webhooks/1129099280775393451/L6wPnNBc_gMd0vn-hmUCLbKixkEYa0GZ--_hR6wII4mIBn_Qp4_4exkxgU0HpzI6T1UD"; // Substitua pelo URL do seu webhook do Discord
+
           fetch(discordWebhookURL, {
             method: "POST",
             body: formData,
           })
-          .then(function (response) {
-            if (!response.ok) {
-              hamster.classList.remove("active");
-              loader.style.display = "none";
-              throw new Error("Erro ao enviar a imagem para o Discord.");
-            }
-            return response.json();
-          })
-          .then(function (discordResponse) {
-            var imageUrl = discordResponse.attachments[0].url; // Obtém a URL da imagem enviada para o Discord
-            
-            var data = {
-              nome: nome2,
-              idade: idade2,
-              bairro: bairro,
-              telefone: telefone,
-              email: email,
-              senha: senha,
-              imagem: imageUrl,
-            };
-      
-            fetch(`https://adotesuapatinhaapi.azurewebsites.net/salvarPessoa`, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(data),
-            })
             .then(function (response) {
               if (!response.ok) {
                 hamster.classList.remove("active");
-                section.classList.add("active");
                 loader.style.display = "none";
-                titulom.innerHTML = "Erro ao salvar os dados.";
-                descm.innerHTML = "";
-                iconm.classList.add("fa-circle-check");
-                iconm.classList.remove("fa-circle-xmark");
-                modalbtn.style.display = "none";
-                setTimeout(function () {
-                  section.classList.remove("active");
-                  titulom.innerHTML = "Formulário não enviado";
-                  descm.innerHTML = "Você precisa preencher todos os campos e colocar uma imagem";
-                  iconm.classList.remove("fa-circle-check");
-                  iconm.classList.add("fa-circle-xmark");
-                  modalbtn.style.display = "block";
-                } , 1500);
-                throw new Error("Erro ao salvar os dados.");
+                throw new Error("Erro ao enviar a imagem para o Discord.");
               }
-              return response.text();
+              return response.json();
             })
-            .then(function () {
-              document.getElementById("input").value = "";
-              document.getElementById("idade").value = "";
-              document.getElementById("raca").value = "0";
-              document.getElementById("descricao").value = "";
-              document.getElementById("especie").value = "0";
-              document.getElementById("picture__input").value = "";
-              hamster.classList.remove("active");
-              loader.style.display = "none";
-              section.classList.add("active");
-              titulom.innerHTML = "Pet cadastrado!";
-              descm.innerHTML = "";
-              iconm.classList.add("fa-circle-check");
-              iconm.classList.remove("fa-circle-xmark");
-              modalbtn.style.display = "none";
-              setTimeout(function () {
-                section.classList.remove("active");
-                window.location.href = "perfil.html";
-                modalbtn.style.display = "block";
-              } , 1500);
+            .then(function (discordResponse) {
+              var imageUrl = discordResponse.attachments[0].url; // Obtém a URL da imagem enviada para o Discord
+
+              var data = {
+                nome: nome2,
+                idade: idade2,
+                bairro: bairro,
+                telefone: telefone,
+                email: email,
+                senha: senha,
+                imagem: imageUrl,
+              };
+
+              fetch(
+                `https://adotesuapatinhaapi.azurewebsites.net/salvarPessoa`,
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(data),
+                }
+              )
+                .then(function (response) {
+                  if (!response.ok) {
+                    hamster.classList.remove("active");
+                    section.classList.add("active");
+                    loader.style.display = "none";
+                    titulom.innerHTML = "Erro ao salvar os dados.";
+                    descm.innerHTML = "";
+                    iconm.classList.add("fa-circle-check");
+                    iconm.classList.remove("fa-circle-xmark");
+                    modalbtn.style.display = "none";
+                    setTimeout(function () {
+                      section.classList.remove("active");
+                      titulom.innerHTML = "Formulário não enviado";
+                      descm.innerHTML =
+                        "Você precisa preencher todos os campos e colocar uma imagem";
+                      iconm.classList.remove("fa-circle-check");
+                      iconm.classList.add("fa-circle-xmark");
+                      modalbtn.style.display = "block";
+                    }, 1500);
+                    throw new Error("Erro ao salvar os dados.");
+                  }
+                  return response.text();
+                })
+                .then(function () {
+                  hamster.classList.remove("active");
+                  loader.style.display = "none";
+                  section.classList.add("active");
+                  titulom.innerHTML = "Conta cadastrada!";
+                  descm.innerHTML = "";
+                  iconm.classList.add("fa-circle-check");
+                  iconm.classList.remove("fa-circle-xmark");
+                  modalbtn.style.display = "none";
+                  setTimeout(function () {
+                    section.classList.remove("active");
+                    window.location.href = "perfil.html";
+                    modalbtn.style.display = "block";
+                  }, 1500);
+                })
+                .catch(function (error) {
+                  console.error(error);
+                  loader.style.display = "none";
+                  hamster.classList.remove("active");
+                  section.classList.add("active");
+                  titulom.innerHTML = "Erro ao salvar os dados.";
+                  descm.innerHTML = "";
+                  iconm.classList.add("fa-circle-check");
+                  iconm.classList.remove("fa-circle-xmark");
+                  modalbtn.style.display = "none";
+                  setTimeout(function () {
+                    section.classList.remove("active");
+                    titulom.innerHTML = "Formulário não enviado";
+                    descm.innerHTML =
+                      "Você precisa preencher todos os campos e colocar uma imagem";
+                    iconm.classList.remove("fa-circle-check");
+                    iconm.classList.add("fa-circle-xmark");
+                    modalbtn.style.display = "block";
+                  }, 1500);
+                });
             })
             .catch(function (error) {
               console.error(error);
               loader.style.display = "none";
               hamster.classList.remove("active");
               section.classList.add("active");
-              titulom.innerHTML = "Erro ao salvar os dados.";
+              titulom.innerHTML = "Erro ao salvar a imagem.";
               descm.innerHTML = "";
               iconm.classList.add("fa-circle-check");
               iconm.classList.remove("fa-circle-xmark");
@@ -498,34 +522,15 @@ document.addEventListener("DOMContentLoaded", function () {
               setTimeout(function () {
                 section.classList.remove("active");
                 titulom.innerHTML = "Formulário não enviado";
-                descm.innerHTML = "Você precisa preencher todos os campos e colocar uma imagem";
+                descm.innerHTML =
+                  "Você precisa preencher todos os campos e colocar uma imagem";
                 iconm.classList.remove("fa-circle-check");
                 iconm.classList.add("fa-circle-xmark");
                 modalbtn.style.display = "block";
-              } , 1500);
+              }, 1500);
             });
-          })
-          .catch(function (error) {
-            console.error(error);
-            loader.style.display = "none";
-            hamster.classList.remove("active");
-            section.classList.add("active");
-            titulom.innerHTML = "Erro ao salvar a imagem.";
-            descm.innerHTML = "";
-            iconm.classList.add("fa-circle-check");
-            iconm.classList.remove("fa-circle-xmark");
-            modalbtn.style.display = "none";
-            setTimeout(function () {
-              section.classList.remove("active");
-              titulom.innerHTML = "Formulário não enviado";
-              descm.innerHTML = "Você precisa preencher todos os campos e colocar uma imagem";
-              iconm.classList.remove("fa-circle-check");
-              iconm.classList.add("fa-circle-xmark");
-              modalbtn.style.display = "block";
-            } , 1500);
-          });
         };
-      
+
         reader.readAsDataURL(imagem2);
       } else {
         pictureInput.style.borderColor = "#ff2727";
@@ -534,18 +539,52 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       logado = true;
       localStorage.setItem("login", logado);
-      //window.location.href = "main.html";
+      window.location.href = "main.html";
     });
   }
   if (loginButton) {
     loginButton.addEventListener("click", function (event) {
-      login2 = localStorage.getItem("login");
-      if (login2 === "true") {
-        window.location.href = "main.html";
-      } else {
-        section.classList.add("active");
-        return;
-      }
+      const email = document.getElementById("input1").value;
+      const senha = document.getElementById("input2").value;
+
+      fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, senha }),
+      })
+        .then((response) => {
+          if (response.ok) {
+            window.location.href = "/main.html";
+          } else {
+            loader.style.display = "none";
+            hamster.classList.remove("active");
+            section.classList.add("active");
+            titulom.innerHTML = "Email ou senha inválidos.";
+            descm.innerHTML = "";
+            iconm.classList.add("fa-circle-check");
+            iconm.classList.remove("fa-circle-xmark");
+            modalbtn.style.display = "none";
+            setTimeout(function () {
+              section.classList.remove("active");
+            }, 1500);
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          loader.style.display = "none";
+          hamster.classList.remove("active");
+          section.classList.add("active");
+          titulom.innerHTML = "Erro ao fazer login.";
+          descm.innerHTML = "";
+          iconm.classList.add("fa-circle-check");
+          iconm.classList.remove("fa-circle-xmark");
+          modalbtn.style.display = "none";
+          setTimeout(function () {
+            section.classList.remove("active");
+          }, 1500);
+        });
     });
   }
 });
