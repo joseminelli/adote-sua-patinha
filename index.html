@@ -1,83 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="googlebot" content="notranslate" />
-    <meta name="description"
-        content="Encontre o companheiro perfeito no nosso site de adoção de pets. Cadastre animais para adoção e ajude a conectá-los a pessoas amorosas. Simplificamos o processo de adoção, tornando mais fácil encontrar e adotar um novo membro para a sua família. Venha fazer parte dessa jornada de amor e cuidado pelos animais!"/>
-    <meta name="robots" content="adote, adoção, patinha, pata, cachorro, gato" />
-    <meta name="theme-color" content="#ffe58b"/>
+    <meta
+      name="description"
+      content="Encontre o companheiro perfeito no nosso site de adoção de pets. Cadastre animais para adoção e ajude a conectá-los a pessoas amorosas. Simplificamos o processo de adoção, tornando mais fácil encontrar e adotar um novo membro para a sua família. Venha fazer parte dessa jornada de amor e cuidado pelos animais!"
+    />
+    <meta
+      name="robots"
+      content="adote, adoção, patinha, pata, cachorro, gato"
+    />
+    <meta name="theme-color" content="#ffe58b" />
     <title>Adote sua patinha</title>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
     <link rel="shortcut icon" type="imagem/ico" href="favicon.ico" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/customalert.css" />
     <link rel="stylesheet" href="css/nav.css" />
-    <link rel="manifest" href="/manifest.json">
-</head>
+    <link rel="manifest" href="/manifest.json" />
+  </head>
 
-<body>
-    <section id="modalNovo">
-        <span class="overlay"></span>
-        <div class="modal-box">
-            <i class="fa-regular fa-circle-xmark"></i>
-            <h2>Devagar aí</h2>
-            <h3>Você precisa criar uma conta para acessar o site</h3>
-            <div class="buttons">
-                <button id="modalbtn" class="close-btn">Ok, vou verificar</button>
+  <body>
+    <div id="loader">
+      <div role="img" class="wheel-and-hamster" id="hamster">
+        <div class="wheel"></div>
+        <div class="hamster">
+          <div class="hamster__body">
+            <div class="hamster__head">
+              <div class="hamster__ear"></div>
+              <div class="hamster__eye"></div>
+              <div class="hamster__nose"></div>
             </div>
+            <div class="hamster__limb hamster__limb--fr"></div>
+            <div class="hamster__limb hamster__limb--fl"></div>
+            <div class="hamster__limb hamster__limb--br"></div>
+            <div class="hamster__limb hamster__limb--bl"></div>
+            <div class="hamster__tail"></div>
+          </div>
         </div>
+        <span class="overlayr"></span>
+        <div class="spoke"></div>
+      </div>
+    </div>
+    <section id="modalNovo">
+      <span class="overlay"></span>
+      <div class="modal-box">
+        <i class="fa-regular fa-circle-xmark"></i>
+        <h2>Devagar aí</h2>
+        <h3>Você precisa criar uma conta para acessar o site</h3>
+        <div class="buttons">
+          <button id="modalbtn" class="close-btn">Ok, vou verificar</button>
+        </div>
+      </div>
     </section>
     <section id="header">
-        <a><img src="img/logo.png" class="logo" alt="" /></a>
-        <div>
-            <ul id="navbar">
-                <h3>Menu</h3>
-                <div id="linha-horizontal2"></div>
-                <li class="button" id="darkToggle">
-                    <div class="sun" id="sun">
-                        <div class="line1"></div>
-                        <div class="line2"></div>
-                        <div class="line3"></div>
-                        <div class="line4"></div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div id="mobile">
-            <i id="bar" class="fa-regular fa-square-caret-down" style="color: #165ea8"></i>
-        </div>
+      <a><img src="img/logo.png" class="logo" alt="" /></a>
+      <div>
+        <ul id="navbar">
+          <h3>Menu</h3>
+          <div id="linha-horizontal2"></div>
+          <li class="button" id="darkToggle">
+            <div class="sun" id="sun">
+              <div class="line1"></div>
+              <div class="line2"></div>
+              <div class="line3"></div>
+              <div class="line4"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="mobile">
+        <i
+          id="bar"
+          class="fa-regular fa-square-caret-down"
+          style="color: #165ea8"
+        ></i>
+      </div>
     </section>
     <div id="texto">
-        <h1 id="logintxt">Login</h1>
-        <div id="linha-horizontal"></div>
+      <h1 id="logintxt">Login</h1>
+      <div id="linha-horizontal"></div>
     </div>
-    
+
     <section id="box">
-        <div class="content">
-            <div>
-                <label for="input1">Email:</label>
-                <input type="text" placeholder="Email" id="input1">
-        
-                <label for="input2">Senha:</label>
-                <input type="password" placeholder="Senha" id="input2">
-                <div id="botao">
+      <div class="content">
+        <div>
+          <label for="input1">Email:</label>
+          <input type="text" placeholder="Email" id="input1" />
 
-                    <button id="login" type="submit">Log In</button>
-                </div>
+          <label for="input2">Senha:</label>
+          <input type="password" placeholder="Senha" id="input2" />
+          <div id="botao">
+            <button id="login" type="submit">Log In</button>
+          </div>
 
-                <a href="cadastro1.html">
-                    <p>Não possui conta?</p>
-                </a>
-            </div>
+          <a href="cadastro1.html">
+            <p>Não possui conta?</p>
+          </a>
         </div>
+      </div>
     </section>
     <script src="js/darkmode.js"></script>
     <script src="js/script.js"></script>
-</body>
-
+  </body>
 </html>
