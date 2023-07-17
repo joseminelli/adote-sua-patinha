@@ -178,7 +178,13 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/usuarios", (req, res) => {
+app.get("/usuario", (req, res) => {
+  const logId = verificarAutenticacao(req);
+  if (!logId) {
+    return;
+  }
+  const userId = req.cookies["userId"];
+
   fs.readFile("../../usuarios.json", "utf8", (err, data) => {
     if (err) {
       console.error(err);
@@ -187,12 +193,13 @@ app.get("/usuarios", (req, res) => {
     }
 
     const jsonData = JSON.parse(data);
-    res.json(jsonData);
+    const usuario = jsonData.usuarios.find((user) => user.id === userId);
+    res.json(usuario);
   });
 });
 
 app.get("/perfil", (req, res) => {
-  const userId = req.cookies.userId; // Obtém o ID do usuário do cookie
+  const userId = req.cookies["userId"];
 
   fs.readFile("../../pets.json", "utf8", (err, data) => {
     if (err) {
