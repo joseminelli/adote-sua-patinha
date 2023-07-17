@@ -548,7 +548,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const email = document.getElementById("input1").value;
       const senha = document.getElementById("input2").value;
 
-      fetch("https://adotesuapatinhaapi.azurewebsites.net/login", {
+      fetch(`https://adotesuapatinhaapi.azurewebsites.net/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -557,7 +557,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
         .then((response) => {
           if (response.ok) {
-            window.location.href = "/main.html";
+            window.location.href = "main.html";
           } else {
             loader.style.display = "none";
             hamster.classList.remove("active");

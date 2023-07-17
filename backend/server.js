@@ -9,6 +9,7 @@ const fs = require("fs");
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors());
+
 app.post("/salvar", (req, res) => {
   if (fs.existsSync("../../pets.json") === false) {
     fs.writeFile(
