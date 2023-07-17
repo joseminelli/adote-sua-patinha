@@ -132,7 +132,7 @@ app.post("/login", (req, res) => {
       (user) => user.email === email && user.senha === senha
     );
     if (usuario) {
-      res.redirect("/main.html");
+      res.json({ redirect: "/main.html" });
     } else {
       res.status(401).send("Email ou senha inválidos");
     }

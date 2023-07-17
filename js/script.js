@@ -30,6 +30,11 @@ if (bar) {
   });
 }
 
+function validarEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   var enviarButton = document.getElementById("enviar"); // Botão de pet
   var enviarButton2 = document.getElementById("enviar2"); // Botão de pessoas
@@ -358,7 +363,8 @@ document.addEventListener("DOMContentLoaded", function () {
           telefone === "" ||
           bairro === "0" ||
           email === "" ||
-          senha === ""
+          senha === "" ||
+          !validarEmail(email)
         ) {
           if (inputImagem2.files && !inputImagem2.files[0]) {
             pictureInput.style.borderColor = "#ff2727";
@@ -374,7 +380,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (senha === "") {
             senha2.style.borderColor = "#ff2727";
           }
-          if (email === "") {
+          if (email === "" || !validarEmail(email)) {
             email2.style.borderColor = "#ff2727";
           }
           if (bairro === "0") {
@@ -571,9 +577,10 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         body: JSON.stringify({ email, senha }),
       })
-        .then((response) => {
-          if (response.ok) {
-            window.location.href = "main.html";
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.redirect) {
+            window.location.href = data.redirect;
           } else {
             loader.style.display = "none";
             hamster.classList.remove("active");
