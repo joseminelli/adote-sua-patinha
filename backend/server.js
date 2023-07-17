@@ -112,10 +112,6 @@ app.post("/salvarPessoa", (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Servidor ouvindo na porta ${port}`);
-});
-
 app.post("/login", (req, res) => {
   const email = req.body.email;
   const senha = req.body.senha;
@@ -140,6 +136,10 @@ app.post("/login", (req, res) => {
       res.status(401).send("Email ou senha inválidos");
     }
   });
+});
+
+app.listen(port, () => {
+  console.log(`Servidor ouvindo na porta ${port}`);
 });
 
 app.get("/", (req, res) => {

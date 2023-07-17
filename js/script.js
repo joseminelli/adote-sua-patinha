@@ -484,7 +484,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   modalbtn.style.display = "none";
                   setTimeout(function () {
                     section.classList.remove("active");
-                    window.location.href = "perfil.html";
+                    window.location.href = "main.html";
                     modalbtn.style.display = "block";
                   }, 1500);
                 })
@@ -539,7 +539,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       logado = true;
       localStorage.setItem("login", logado);
-      window.location.href = "main.html";
     });
   }
   if (loginButton) {
