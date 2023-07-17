@@ -123,16 +123,15 @@ app.post("/login", (req, res) => {
       res.status(500).send("Erro ao ler o arquivo de usuários");
       return;
     }
-
-    const usuarios = JSON.parse(data);
-
-    
+  
+    const jsonData = JSON.parse(data);
+    const usuarios = jsonData.usuarios;
+  
     const usuario = usuarios.find(
       (user) => user.email === email && user.senha === senha
     );
-
     if (usuario) {
-      //res.redirect("/main.html");
+      //res.redirect("main.html");
     } else {
       res.status(401).send("Email ou senha inválidos");
     }
