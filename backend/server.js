@@ -28,6 +28,7 @@ app.post("/salvar", (req, res) => {
   const descricao = req.body.descricao;
   const especie = req.body.especie;
   const imagem = req.body.imagem; 
+  const userId = req.cookies; 
 
   fs.readFile("../../pets.json", "utf8", (err, data) => {
     if (err) {
@@ -38,7 +39,7 @@ app.post("/salvar", (req, res) => {
 
     let jsonData = JSON.parse(data);
     const newId = jsonData.pets.length > 0 ? jsonData.pets[jsonData.pets.length - 1].id + 1 : 1;
-    const userId = req.cookies.userId; 
+    
 
     const newPet = {
       id: newId,
@@ -184,5 +185,32 @@ app.get("/usuarios", (req, res) => {
 
     const jsonData = JSON.parse(data);
     res.json(jsonData);
+  });
+});
+
+app.get("/perfil", (req, res) => {
+  const userId = req.cookies.userId; // Obtém o ID do usuário do cookie
+
+  fs.readFile("../../pets.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo JSON de pets");
+      return;
+    }
+
+    const jsonData = JSON.parse(data);
+    const pets = jsonData.pets;
+    
+    const userPets = pets.filter((pet) => pet.userId === userId);
+    
+    const petElements = userPets.map((pet) => {
+      return `
+        <a href="perfilpf.html?pet=${pet.id}">
+          <img id="fotopet" src="${pet.image}">
+        </a>
+      `;
+    });
+
+    res.send(petElements.join(""));
   });
 });

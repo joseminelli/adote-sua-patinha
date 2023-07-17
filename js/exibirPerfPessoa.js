@@ -21,30 +21,36 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   try {
     const response = await fetch(
-      "https://adotesuapatinhaapi.azurewebsites.net/usuarios"
+      "https://adotesuapatinhaapi.azurewebsites.net/usuarios",
+      {
+        headers: {
+          Cookie: `userId=${document.cookie.match(/userId=([^;]+)/)[1]}`,
+        },
+      }
     );
     if (!response.ok) {
       throw new Error("Erro ao obter as informações do usuário");
     }
     const jsonData = await response.json();
-
+  
     const usuarios = jsonData.usuarios;
     const usuario = usuarios.find((user) => user.id === parseInt(userId));
-
+  
     if (!usuario) {
       throw new Error("Usuário não encontrado");
     }
-
+  
     nome.innerHTML = usuario.name;
     idade.innerHTML = `${usuario.age} Anos`;
     bairro1.innerHTML = usuario.regiao;
     telefone1.innerHTML = usuario.telefone;
-
+  
     var imgElement = document.getElementById("pic");
     imgElement.src = usuario.image;
   } catch (error) {
     console.error(error);
   }
+  
   editar.addEventListener("click", function () {
     window.location.href = "cadastro1.html";
   });

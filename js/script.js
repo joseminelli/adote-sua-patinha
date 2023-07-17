@@ -187,6 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
+                  "Cookie": `userId=${document.cookie.match(/userId=([^;]+)/)[1]}`,
                 },
                 body: JSON.stringify(data),
               })
