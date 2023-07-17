@@ -58,6 +58,58 @@ app.post("/salvar", (req, res) => {
   });
 });
 
+
+app.post("/salvarPessoa", (req, res) => {
+  if (fs.existsSync("../../usuarios.json") === false) {
+    fs.writeFile(
+      "../../usuarios.json",
+      '{"usuarios": []}',
+      () => {}
+    );
+  }
+  console.log(req.body);
+  const nome = req.body.nome;
+  const idade = req.body.idade;
+  const regiao = req.body.bairro;
+  const telefone = req.body.telefone;
+  const email = req.body.email;
+  const senha = req.body.senha;
+  const imagem = req.body.imagem; 
+
+  fs.readFile("../../usuarios.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo JSON");
+      return;
+    }
+
+    let jsonData = JSON.parse(data);
+    const newId = jsonData.usuarios.length > 0 ? jsonData.usuarios[jsonData.usuarios.length - 1].id + 1 : 1;
+
+    const newUsuario = {
+      id: newId,
+      name: nome,
+      age: idade,
+      regiao: regiao,
+      telefone: telefone,
+      email: email,
+      senha: senha,
+      image: imagem,
+    };
+
+    jsonData.usuarios.push(newUsuario);
+    console.log(JSON.stringify(newUsuario));
+    fs.writeFile("../../usuarios.json", JSON.stringify(jsonData), (err) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send("Erro ao salvar os dados");
+      } else {
+        res.send("Dados salvos com sucesso");
+      }
+    });
+  });
+});
+
 app.listen(port, () => {
   console.log(`Servidor ouvindo na porta ${port}`);
 });
@@ -67,6 +119,13 @@ app.get("/", (req, res) => {
     fs.writeFile(
       "../../pets.json",
       '{"pets": []}',
+      () => {}
+    );
+  }
+  if (fs.existsSync("../../usuarios.json") === false) {
+    fs.writeFile(
+      "../../usuarios.json",
+      '{"usuarios": []}',
       () => {}
     );
   }
