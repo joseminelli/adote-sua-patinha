@@ -134,8 +134,7 @@ app.post("/login", (req, res) => {
       (user) => user.email === email && user.senha === senha
     );
     if (usuario) {
-      res.json({ userId: usuario.id });
-      res.json({ redirect: "/main.html" });
+      res.json({ userId: usuario.id, redirect: "/main.html" });
     } else {
       res.status(401).send("Email ou senha inválidos");
     }
