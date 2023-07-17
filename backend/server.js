@@ -134,7 +134,7 @@ app.post("/login", (req, res) => {
       (user) => user.email === email && user.senha === senha
     );
     if (usuario) {
-      res.cookie("userId", usuario.id);
+      res.json({ userId: usuario.id });
       res.json({ redirect: "/main.html" });
     } else {
       res.status(401).send("Email ou senha inválidos");
@@ -165,6 +165,19 @@ app.get("/", (req, res) => {
     if (err) {
       console.error(err);
       res.status(500).send("Erro ao ler o arquivo JSON");
+      return;
+    }
+
+    const jsonData = JSON.parse(data);
+    res.json(jsonData);
+  });
+});
+
+app.get("/usuarios", (req, res) => {
+  fs.readFile("../../usuarios.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo de usuários");
       return;
     }
 

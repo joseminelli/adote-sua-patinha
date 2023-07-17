@@ -580,9 +580,11 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => response.json())
         .then((data) => {
           if (data.redirect) {
-            Cookies.set("userId", data.userId);
             logado = true;
             localStorage.setItem("login", logado);
+            Cookies.set("userId", data.userId);
+            const userId = Cookies.get("userId");
+            console.log(data.userId);
             window.location.href = data.redirect;
           } else {
             loader.style.display = "none";

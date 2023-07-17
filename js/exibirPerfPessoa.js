@@ -1,67 +1,65 @@
-const nome = document.getElementById('name');
-const fotoPet = document.getElementById('fotoPet');
-const idade = document.getElementById('idade');
-const bairro1 = document.getElementById('bairro');
-const telefone1 = document.getElementById('telefone');
-const fotopet = document.getElementById('fotopet');
+const nome = document.getElementById("name");
+const fotoPet = document.getElementById("fotoPet");
+const idade = document.getElementById("idade");
+const bairro1 = document.getElementById("bairro");
+const telefone1 = document.getElementById("telefone");
+const fotopet = document.getElementById("fotopet");
 var login = localStorage.getItem("login");
 const delBtnDiv = document.getElementById("delBtnDiv");
 
+document.addEventListener("DOMContentLoaded", async function () {
+  const login = localStorage.getItem("login");
+  if (login !== "true") {
+    window.location.href = "index.html";
+    return;
+  }
 
-document.addEventListener("DOMContentLoaded", function () {
-    
-    
-    if(login != "true"){
-        window.location.href = "index.html";
+  const editar = document.getElementById("editar");
+  const comPet = document.getElementById("spet");
+  const semPet = document.getElementById("npet");
+  const userId = localStorage.getItem("userId");
+
+  try {
+    const response = await fetch(
+      "https://adotesuapatinhaapi.azurewebsites.net/usuarios"
+    );
+    if (!response.ok) {
+      throw new Error("Erro ao obter as informações do usuário");
     }
-    const editar = document.getElementById("editar");
-    const comPet = document.getElementById('spet');
-    const semPet = document.getElementById('npet');
-    var nome2 = localStorage.getItem("nome2"),
-     idade2 = localStorage.getItem("idade2"),
-     bairro = localStorage.getItem("bairro"),
-     caminhoImagem = localStorage.getItem("imagempessoa"),
-     caminhoImagem2 = localStorage.getItem("imagempet"),
-     telefone = localStorage.getItem("telefone");
-    delBtnDiv.addEventListener("click", function () {
-        imgElement2.classList.add("encolher");
-        delBtnDiv.classList.add("encolher");
-        setTimeout(function () {
-        localStorage.removeItem("nome");
-        localStorage.removeItem("idade");
-        localStorage.removeItem("raca");
-        localStorage.removeItem("descricao");
-        localStorage.removeItem("imagempet");
-        imgElement2.style.display = "none";
-        comPet.style.display = "none";
-        semPet.style.display = "run-in";
-        delBtnDiv.style.display = "none";
-        imgElement2.classList.remove("encolher");
-        delBtnDiv.classList.remove("encolher");
-        }, 300);
-    });
-    editar.addEventListener("click", function () {
-        window.location.href = "cadastro1.html";
-    });
-    nome.innerHTML = nome2;
-    idade.innerHTML = idade2 + " Anos";
-    bairro1.innerHTML = bairro;
-    telefone1.innerHTML = telefone;
+    const jsonData = await response.json();
+
+    const usuarios = jsonData.usuarios;
+    const usuario = usuarios.find((user) => user.id === parseInt(userId));
+
+    if (!usuario) {
+      throw new Error("Usuário não encontrado");
+    }
+
+    nome.innerHTML = usuario.name;
+    idade.innerHTML = `${usuario.age} Anos`;
+    bairro1.innerHTML = usuario.regiao;
+    telefone1.innerHTML = usuario.telefone;
 
     var imgElement = document.getElementById("pic");
-    imgElement.src = caminhoImagem;
+    imgElement.src = usuario.image;
+  } catch (error) {
+    console.error(error);
+    // Tratar o erro ao obter as informações do usuário
+  }
+  editar.addEventListener("click", function () {
+    window.location.href = "cadastro1.html";
+  });
 
-    var imgElement2 = document.getElementById("fotopet");
-    if(caminhoImagem2 == null){
-        imgElement2.style.display = "none";
-        comPet.style.display = "none";
-        semPet.style.display = "run-in";
-        delBtnDiv.style.display = "none";
-    }else{
-        imgElement2.src = caminhoImagem2;
-        semPet.style.display = "none";
-        comPet.style.display = "run-in";
-        delBtnDiv.style.display = "run-in";
-    }
-
+  var imgElement2 = document.getElementById("fotopet");
+  if (caminhoImagem2 == null) {
+    imgElement2.style.display = "none";
+    comPet.style.display = "none";
+    semPet.style.display = "run-in";
+    delBtnDiv.style.display = "none";
+  } else {
+    imgElement2.src = caminhoImagem2;
+    semPet.style.display = "none";
+    comPet.style.display = "run-in";
+    delBtnDiv.style.display = "run-in";
+  }
 });
