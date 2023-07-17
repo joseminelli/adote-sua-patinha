@@ -38,6 +38,7 @@ app.post("/salvar", (req, res) => {
 
     let jsonData = JSON.parse(data);
     const newId = jsonData.pets.length > 0 ? jsonData.pets[jsonData.pets.length - 1].id + 1 : 1;
+    const userId = req.cookies.userId; 
 
     const newPet = {
       id: newId,
@@ -49,6 +50,7 @@ app.post("/salvar", (req, res) => {
       regiao: "pampulha",
       esp: especie,
       image: imagem,
+      userId: userId, 
     };
 
     jsonData.pets.push(newPet);
