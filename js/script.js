@@ -1,4 +1,3 @@
-import Cookies from "js-cookie";
 const bar = document.getElementById("bar");
 const close = document.getElementById("close");
 const nav = document.getElementById("navbar");
