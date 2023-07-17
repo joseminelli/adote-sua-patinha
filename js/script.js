@@ -187,7 +187,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
-                  "Cookie": `userId=${document.cookie.match(/userId=([^;]+)/)[1]}`,
                 },
                 body: JSON.stringify(data),
               })
@@ -583,9 +582,6 @@ document.addEventListener("DOMContentLoaded", function () {
           if (data.redirect) {
             logado = true;
             localStorage.setItem("login", logado);
-            Cookies.set("userId", data.userId);
-            const userId = Cookies.get("userId");
-            console.log(data.userId);
             window.location.href = data.redirect;
           } else {
             loader.style.display = "none";

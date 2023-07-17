@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const editar = document.getElementById("editar");
   const comPet = document.getElementById("spet");
   const semPet = document.getElementById("npet");
-  const userId = Cookies.get("userId");
+  const userId = document.cookie.match(/userId=([^;]+)/)[1];
 
   try {
     const response = await fetch(

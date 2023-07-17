@@ -4,22 +4,30 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const app = express();
 const port = process.env.PORT || 3000;
-
+function verificarAutenticacao(req) {
+  const userId = req.cookies["userId"];
+  if (!userId) {
+    res.status(401).send("Usuário não autenticado");
+    return;
+  } else {
+    return userId;
+  }
+}
 const fs = require("fs");
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors());
 
 app.post("/salvar", (req, res) => {
+  const logId = verificarAutenticacao(req);
+  if (!logId) {
+    return;
+  }
   if (fs.existsSync("../../pets.json") === false) {
-    fs.writeFile(
-      "../../pets.json",
-      '{"pets": []}',
-      () => {}
-    );
+    fs.writeFile("../../pets.json", '{"pets": []}', () => {});
   }
   console.log(req.body);
   const nome = req.body.nome;
@@ -27,8 +35,8 @@ app.post("/salvar", (req, res) => {
   const raca = req.body.raca;
   const descricao = req.body.descricao;
   const especie = req.body.especie;
-  const imagem = req.body.imagem; 
-  const userId = req.cookies; 
+  const imagem = req.body.imagem;
+  const userId = req.cookies["userId"];
 
   fs.readFile("../../pets.json", "utf8", (err, data) => {
     if (err) {
@@ -38,8 +46,10 @@ app.post("/salvar", (req, res) => {
     }
 
     let jsonData = JSON.parse(data);
-    const newId = jsonData.pets.length > 0 ? jsonData.pets[jsonData.pets.length - 1].id + 1 : 1;
-    
+    const newId =
+      jsonData.pets.length > 0
+        ? jsonData.pets[jsonData.pets.length - 1].id + 1
+        : 1;
 
     const newPet = {
       id: newId,
@@ -51,7 +61,7 @@ app.post("/salvar", (req, res) => {
       regiao: "pampulha",
       esp: especie,
       image: imagem,
-      userId: userId, 
+      userId: userId,
     };
 
     jsonData.pets.push(newPet);
@@ -67,14 +77,9 @@ app.post("/salvar", (req, res) => {
   });
 });
 
-
 app.post("/salvarPessoa", (req, res) => {
   if (fs.existsSync("../../usuarios.json") === false) {
-    fs.writeFile(
-      "../../usuarios.json",
-      '{"usuarios": []}',
-      () => {}
-    );
+    fs.writeFile("../../usuarios.json", '{"usuarios": []}', () => {});
   }
   console.log(req.body);
   const nome = req.body.nome;
@@ -83,7 +88,7 @@ app.post("/salvarPessoa", (req, res) => {
   const telefone = req.body.telefone;
   const email = req.body.email;
   const senha = req.body.senha;
-  const imagem = req.body.imagem; 
+  const imagem = req.body.imagem;
 
   fs.readFile("../../usuarios.json", "utf8", (err, data) => {
     if (err) {
@@ -93,7 +98,10 @@ app.post("/salvarPessoa", (req, res) => {
     }
 
     let jsonData = JSON.parse(data);
-    const newId = jsonData.usuarios.length > 0 ? jsonData.usuarios[jsonData.usuarios.length - 1].id + 1 : 1;
+    const newId =
+      jsonData.usuarios.length > 0
+        ? jsonData.usuarios[jsonData.usuarios.length - 1].id + 1
+        : 1;
 
     const newUsuario = {
       id: newId,
@@ -108,6 +116,8 @@ app.post("/salvarPessoa", (req, res) => {
 
     jsonData.usuarios.push(newUsuario);
     console.log(JSON.stringify(newUsuario));
+    res.cookie("userId", usuario.id, { maxAge: 900000, httpOnly: true });
+
     fs.writeFile("../../usuarios.json", JSON.stringify(jsonData), (err) => {
       if (err) {
         console.error(err);
@@ -129,15 +139,16 @@ app.post("/login", (req, res) => {
       res.status(500).send("Erro ao ler o arquivo de usuários");
       return;
     }
-  
+
     const jsonData = JSON.parse(data);
     const usuarios = jsonData.usuarios;
-  
+
     const usuario = usuarios.find(
       (user) => user.email === email && user.senha === senha
     );
     if (usuario) {
-      res.json({ userId: usuario.id, redirect: "/main.html" });
+      res.cookie("userId", usuario.id, { maxAge: 900000, httpOnly: true });
+      res.json({ redirect: "/main.html" });
     } else {
       res.status(401).send("Email ou senha inválidos");
     }
@@ -150,18 +161,10 @@ app.listen(port, () => {
 
 app.get("/", (req, res) => {
   if (fs.existsSync("../../pets.json") === false) {
-    fs.writeFile(
-      "../../pets.json",
-      '{"pets": []}',
-      () => {}
-    );
+    fs.writeFile("../../pets.json", '{"pets": []}', () => {});
   }
   if (fs.existsSync("../../usuarios.json") === false) {
-    fs.writeFile(
-      "../../usuarios.json",
-      '{"usuarios": []}',
-      () => {}
-    );
+    fs.writeFile("../../usuarios.json", '{"usuarios": []}', () => {});
   }
   fs.readFile("../../pets.json", "utf8", (err, data) => {
     if (err) {
@@ -200,9 +203,9 @@ app.get("/perfil", (req, res) => {
 
     const jsonData = JSON.parse(data);
     const pets = jsonData.pets;
-    
+
     const userPets = pets.filter((pet) => pet.userId === userId);
-    
+
     const petElements = userPets.map((pet) => {
       return `
         <a href="perfilpf.html?pet=${pet.id}">
