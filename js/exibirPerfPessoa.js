@@ -20,12 +20,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   try {
     const response = await fetch(
-      "https://adotesuapatinhaapi.azurewebsites.net/usuario"
-    );
+        "https://adotesuapatinhaapi.azurewebsites.net/usuario",
+        { credentials: "same-origin" }
+      );
     if (!response.ok) {
       throw new Error("Erro ao obter as informações do usuário");
     }
     const usuario = await response.json();
+
 
     if (!usuario) {
       throw new Error("Usuário não encontrado");

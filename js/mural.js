@@ -7,8 +7,8 @@ const section = document.getElementById("modalNovo"),
   showBtn = document.querySelector(".show-modal"),
   neverBtn = document.querySelector(".never-btn");
 var abrirModal = localStorage.getItem("consciente");
-  loader.style.display = "flex";
-  hamster.classList.add("active");
+loader.style.display = "flex";
+hamster.classList.add("active");
 
 document.addEventListener("DOMContentLoaded", async function () {
   neverBtn.addEventListener("click", function () {
@@ -25,18 +25,20 @@ document.addEventListener("DOMContentLoaded", async function () {
   if (login != "true") {
     window.location.href = "index.html";
   }
-  var response = await fetch(`https://adotesuapatinhaapi.azurewebsites.net/`);
-  
+  var response = await fetch(`https://adotesuapatinhaapi.azurewebsites.net/`, {
+    credentials: 'include',
+  });
+
   var data = await response.json();
-  
-  if(data){
+
+  if (data) {
     setTimeout(function () {
       hamster.classList.remove("active");
       setTimeout(function () {
         loader.style.display = "none";
       }, 300);
     }, 300);
-  }else{
+  } else {
     loader.style.display = "flex";
     hamster.classList.add("active");
   }
