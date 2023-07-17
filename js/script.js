@@ -543,6 +543,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   if (loginButton) {
     loginButton.addEventListener("click", function (event) {
+      loader.style.display = "flex";
+      hamster.classList.add("active");
       const email = document.getElementById("input1").value;
       const senha = document.getElementById("input2").value;
 
