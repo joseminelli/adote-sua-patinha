@@ -6,9 +6,21 @@ const telefone1 = document.getElementById("telefone");
 const fotopetDiv = document.getElementById("fotoPet2");
 const hamster = document.getElementById("hamster");
 const loader = document.getElementById("loader");
-var login = localStorage.getItem("login");
 const delBtnDiv = document.getElementById("delBtnDiv");
 var imgElement2 = document.getElementById("fotopet");
+
+function checkCookieExists(cookieName) {
+  const cookies = document.cookie.split("; ");
+  for (const cookie of cookies) {
+    const [name, value] = cookie.split("=");
+    if (name === cookieName) {
+      return true;
+    }
+  }
+  return false;
+}
+const cookieName = "userId";
+const cookieExists = checkCookieExists(cookieName);
 
 document.addEventListener("DOMContentLoaded", async function () {
   const exibirPets = async () => {
@@ -45,10 +57,9 @@ document.addEventListener("DOMContentLoaded", async function () {
   exibirPets();
   loader.style.display = "flex";
   hamster.classList.add("active");
-  const login = localStorage.getItem("login");
-  if (login !== "true") {
+  
+  if (!cookieExists) {
     window.location.href = "index.html";
-    return;
   }
 
   const editar = document.getElementById("editar");

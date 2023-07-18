@@ -35,18 +35,30 @@ function validarEmail(email) {
   return regex.test(email);
 }
 
+function checkCookieExists(cookieName) {
+  const cookies = document.cookie.split("; ");
+  for (const cookie of cookies) {
+    const [name, value] = cookie.split("=");
+    if (name === cookieName) {
+      return true;
+    }
+  }
+  return false;
+}
+const cookieName = "userId";
+const cookieExists = checkCookieExists(cookieName);
+
 document.addEventListener("DOMContentLoaded", function () {
   var enviarButton = document.getElementById("enviar"); // Botão de pet
   var enviarButton2 = document.getElementById("enviar2"); // Botão de pessoas
   var loginButton = document.getElementById("login"); // Botão do cadastro de pessoas
-  var login = localStorage.getItem("login");
   const pictureInput = document.getElementById("picture");
 
   if (
     document.location.pathname.endsWith("/index.html") ||
     document.location.pathname.endsWith("/")
   ) {
-    if (login == "true") {
+    if (cookieExists) {
       window.location.href = "main.html";
     }
   }
@@ -69,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (enviarButton) {
-    if (login != "true") {
+    if (!cookieExists) {
       window.location.href = "index.html";
     }
     enviarButton.addEventListener("click", async function (event) {
@@ -83,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
           throw new Error("Erro ao obter os pets do usuário");
         }
 
-        const userPets = await response.text();
+        const userPets = await response.json();
         console.log(userPets.length);
         console.log(userPets);
         if (userPets.length >= 3) {
@@ -152,7 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
         var imagemdopet = localStorage.getItem("imagempet");
-
 
         if (inputImagem.files && inputImagem.files[0]) {
           var imagem = inputImagem.files[0];
@@ -464,7 +475,8 @@ document.addEventListener("DOMContentLoaded", function () {
               };
 
               fetch(
-                `https://adotesuapatinhaapi.azurewebsites.net/salvarPessoa`, {
+                `https://adotesuapatinhaapi.azurewebsites.net/salvarPessoa`,
+                {
                   method: "POST",
                   credentials: "include",
                   headers: {
@@ -622,7 +634,8 @@ document.addEventListener("DOMContentLoaded", function () {
           section.classList.add("active");
           titulom.innerHTML = "Erro ao fazer login.";
           descm.innerHTML = "";
-          iconm.classList.add("fa-circle-xmark");xmark
+          iconm.classList.add("fa-circle-xmark");
+          xmark;
           iconm.classList.remove("fa-circle-check");
           modalbtn.style.display = "none";
           setTimeout(function () {

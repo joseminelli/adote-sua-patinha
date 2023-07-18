@@ -1,4 +1,3 @@
-var login = localStorage.getItem("login");
 const taNoMural = document.getElementById("formm2");
 const loader = document.getElementById("loader");
 const hamster = document.getElementById("hamster");
@@ -9,6 +8,20 @@ const section = document.getElementById("modalNovo"),
 var abrirModal = localStorage.getItem("consciente");
 loader.style.display = "flex";
 hamster.classList.add("active");
+
+
+function checkCookieExists(cookieName) {
+  const cookies = document.cookie.split("; ");
+  for (const cookie of cookies) {
+    const [name, value] = cookie.split("=");
+    if (name === cookieName) {
+      return true;
+    }
+  }
+  return false;
+}
+const cookieName = "userId";
+const cookieExists = checkCookieExists(cookieName);
 
 document.addEventListener("DOMContentLoaded", async function () {
   neverBtn.addEventListener("click", function () {
@@ -22,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const chkFavoritos = document.getElementById("chkFavoritos");
   const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
   const textoMural = document.getElementById("textoMural");
-  if (login != "true") {
+  if (!cookieExists) {
     window.location.href = "index.html";
   }
   var response = await fetch(`https://adotesuapatinhaapi.azurewebsites.net/mural`,
