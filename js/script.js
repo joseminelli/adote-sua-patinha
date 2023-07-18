@@ -46,8 +46,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.location.pathname.endsWith("/index.html") ||
     document.location.pathname.endsWith("/")
   ) {
-    if (login != "true") {
-      window.location.href = "index.html";
+    if (login == "true") {
+      window.location.href = "main.html";
     }
   }
   if (overlay) {

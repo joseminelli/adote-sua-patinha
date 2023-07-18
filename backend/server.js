@@ -228,16 +228,16 @@ app.get("/perfil", (req, res) => {
     console.log(userPets);
     const petElements = userPets.map((pet) => {
       return `
-      <div id="pet" class="pet"> 
-      <div id="delBtnDiv${pet.id}" class="delBtnDiv">
-                    <div class="btnDel">
-                        <div class="x1"></div>
-                        <div class="x2"></div>
-                    </div>
-                </div>
-        <a href="perfilpf.html?pet=${pet.id}">
-          <img id="fotopet" src="${pet.image}">
-        </a>
+        <div id="pet" class="pet"> 
+          <div id="delBtnDiv${pet.id}" class="delBtnDiv">
+            <div class="btnDel" onclick="excluirPet(${pet.id})">
+              <div class="x1"></div>
+              <div class="x2"></div>
+            </div>
+          </div>
+          <a href="perfilpf.html?pet=${pet.id}">
+            <img id="fotopet" src="${pet.image}">
+          </a>
         </div>
       `;
     });
@@ -264,6 +264,46 @@ app.get("/maxPets", (req, res) => {
     const userPets = pets.filter((pet) => pet.userId === userId);
 
     res.json(userPets);
+  });
+});
+
+app.delete("/excluirPet/:petId", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  const userId = req.cookies["userId"];
+  const petId = parseInt(req.params.petId);
+
+  fs.readFile("../../pets.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo JSON de pets");
+      return;
+    }
+
+    try {
+      const jsonData = JSON.parse(data);
+      const pets = jsonData.pets;
+
+      const petIndex = pets.findIndex((pet) => pet.id === petId && pet.userId === userId);
+      if (petIndex === -1) {
+        res.status(404).json({ message: "Pet não encontrado ou não pertence ao usuário." });
+        return;
+      }
+
+      pets.splice(petIndex, 1);
+
+      fs.writeFile("../../pets.json", JSON.stringify(jsonData, null, 2), (err) => {
+        if (err) {
+          console.error(err);
+          res.status(500).send("Erro ao salvar o arquivo JSON de pets após a exclusão");
+          return;
+        }
+
+        res.json({ message: "Pet excluído com sucesso!" });
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Erro ao processar a exclusão do pet");
+    }
   });
 });
 
