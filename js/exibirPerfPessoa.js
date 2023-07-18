@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         semPet.style.display = "run-in";
         btnDel.style.display = "none";
       } else {
-        fotopetDiv.style.display = "inline-block";
+        fotopetDiv.style.display = "flex";
         semPet.style.display = "none";
         comPet.style.display = "run-in";
         btnDel.style.display = "run-in";

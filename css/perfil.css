@@ -43,6 +43,9 @@ h2 {
 #fotoPet2 {
   display: inline-block;
 }
+#pet{
+  margin-bottom: 0px;
+}
 h4 {
   font-size: 20px;
   color: #222;
@@ -416,6 +419,12 @@ button[type="submit"]:hover {
     margin-left: 16%;
     margin-top: -53%;
   }
+  #fotoPet2 {
+    display: inline-block !important;
+  }
+  .mural img {
+    width: 116px;
+  }
 }
 @media (max-width: 740px) {
   #editar {
@@ -447,13 +456,12 @@ button[type="submit"]:hover {
     position: relative;
     right: -10%;
   }
-
-  .mural img {
-    margin-top: 10%;
-    margin-left: 40px;
-    border-radius: 10px;
-    width: 120px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  .mural {
+    margin-top: 15%;
+  }
+  .mural p {
+    margin-bottom: 20px;
+    margin-left: 50px;
   }
 }
 @media (max-width: 500px) {
@@ -488,7 +496,13 @@ button[type="submit"]:hover {
     margin-top: -114%;
     color: #165ea8;
   }
-
+  #pet{
+    margin-bottom: 20px;
+  }
+  .mural p {
+    margin-bottom: 20px;
+    margin-left: 50px;
+  }
   .content {
     background-color: #ffe58b;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
