@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       console.log(petElementsHTML);
       fotopetDiv.innerHTML = petElementsHTML;
 
-      if (petElementsHTML == " ") {
+      if (petElementsHTML == "") {
         fotopetDiv.style.display = "none";
         comPet.style.display = "none";
         semPet.style.display = "run-in";

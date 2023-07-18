@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const userPets = await response.text();
         console.log(userPets);
-        if (userPets.length >= 3) {
+        if (userPets.length >= 9) {
           alert("Você já cadastrou 3 pets. Não é possível cadastrar mais.");
           return;
         }
@@ -151,18 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
         var imagemdopet = localStorage.getItem("imagempet");
-        if (imagemdopet != null) {
-          localStorage.removeItem("imagempet");
-          localStorage.removeItem("nome");
-          localStorage.removeItem("idade");
-          localStorage.removeItem("raca");
-          localStorage.removeItem("descricao");
-        }
 
-        localStorage.setItem("nome", nome);
-        localStorage.setItem("idade", idade);
-        localStorage.setItem("raca", raca);
-        localStorage.setItem("descricao", descricao);
 
         if (inputImagem.files && inputImagem.files[0]) {
           var imagem = inputImagem.files[0];
@@ -617,8 +606,8 @@ document.addEventListener("DOMContentLoaded", function () {
             section.classList.add("active");
             titulom.innerHTML = "Email ou senha inválidos.";
             descm.innerHTML = "";
-            iconm.classList.add("fa-circle-check");
-            iconm.classList.remove("fa-circle-xmark");
+            iconm.classList.add("fa-circle-xmark");
+            iconm.classList.remove("fa-circle-check");
             modalbtn.style.display = "none";
             setTimeout(function () {
               section.classList.remove("active");
@@ -632,8 +621,8 @@ document.addEventListener("DOMContentLoaded", function () {
           section.classList.add("active");
           titulom.innerHTML = "Erro ao fazer login.";
           descm.innerHTML = "";
-          iconm.classList.add("fa-circle-check");
-          iconm.classList.remove("fa-circle-xmark");
+          iconm.classList.add("fa-circle-xmark");xmark
+          iconm.classList.remove("fa-circle-check");
           modalbtn.style.display = "none";
           setTimeout(function () {
             section.classList.remove("active");
