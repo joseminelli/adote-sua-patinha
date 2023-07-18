@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   try {
     const response = await fetch(
         "https://adotesuapatinhaapi.azurewebsites.net/usuario",
-        { credentials: "same-origin" }
+        { credentials: "include" }
       );
     if (!response.ok) {
       throw new Error("Erro ao obter as informações do usuário");

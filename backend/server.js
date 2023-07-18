@@ -19,7 +19,7 @@ app.use(express.static("public"));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(cors());
+app.use(cors({ credentials: true, origin: true }));
 
 app.post("/salvar", (req, res) => {
   const logId = verificarAutenticacao(req, res);
@@ -179,6 +179,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/usuario", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   const logId = verificarAutenticacao(req, res);
   if (!logId) {
     return;
