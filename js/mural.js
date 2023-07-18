@@ -1,3 +1,4 @@
+var login = localStorage.getItem("login");
 const taNoMural = document.getElementById("formm2");
 const loader = document.getElementById("loader");
 const hamster = document.getElementById("hamster");
@@ -9,19 +10,6 @@ var abrirModal = localStorage.getItem("consciente");
 loader.style.display = "flex";
 hamster.classList.add("active");
 
-
-function checkCookieExists(cookieName) {
-  const cookies = document.cookie.split("; ");
-  for (const cookie of cookies) {
-    const [name, value] = cookie.split("=");
-    if (name === cookieName) {
-      return true;
-    }
-  }
-  return false;
-}
-const cookieName = "userId";
-const cookieExists = checkCookieExists(cookieName);
 
 document.addEventListener("DOMContentLoaded", async function () {
   neverBtn.addEventListener("click", function () {
@@ -53,9 +41,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     hamster.classList.add("active");
   }
   
-  if (!cookieExists) {
+  if (login != "true") {
     window.location.href = "index.html";
   }
+
   var qtdPets = data.pets.length;
   const petsPorPagina = 28;
   let currentPage = 1;

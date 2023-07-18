@@ -1,3 +1,5 @@
+
+var login = localStorage.getItem("login");
 const nome = document.getElementById("name");
 const fotoPet = document.getElementById("fotoPet");
 const idade = document.getElementById("idade");
@@ -91,9 +93,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     console.error(error);
   }
 
-  if (!cookieExists) {
+  if (login != "true") {
     window.location.href = "index.html";
   }
+
   editar.addEventListener("click", function () {
     window.location.href = "cadastro1.html";
   });

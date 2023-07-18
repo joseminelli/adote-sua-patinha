@@ -1,5 +1,6 @@
 const bar = document.getElementById("bar");
 const close = document.getElementById("close");
+var login = localStorage.getItem("login");
 const nav = document.getElementById("navbar");
 const body2 = document.querySelector("body");
 const hamster = document.getElementById("hamster");
@@ -35,19 +36,6 @@ function validarEmail(email) {
   return regex.test(email);
 }
 
-function checkCookieExists(cookieName) {
-  const cookies = document.cookie.split("; ");
-  for (const cookie of cookies) {
-    const [name, value] = cookie.split("=");
-    if (name === cookieName) {
-      return true;
-    }
-  }
-  return false;
-}
-const cookieName = "userId";
-const cookieExists = checkCookieExists(cookieName);
-
 document.addEventListener("DOMContentLoaded", function () {
   var enviarButton = document.getElementById("enviar"); // Botão de pet
   var enviarButton2 = document.getElementById("enviar2"); // Botão de pessoas
@@ -58,8 +46,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.location.pathname.endsWith("/index.html") ||
     document.location.pathname.endsWith("/")
   ) {
-    if (cookieExists) {
-      window.location.href = "main.html";
+    if (login != "true") {
+      window.location.href = "index.html";
     }
   }
   if (overlay) {
@@ -81,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (enviarButton) {
-    if (!cookieExists) {
+    if (login != "true") {
       window.location.href = "index.html";
     }
     enviarButton.addEventListener("click", async function (event) {
