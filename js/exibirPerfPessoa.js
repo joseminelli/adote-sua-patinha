@@ -8,7 +8,7 @@ const telefone1 = document.getElementById("telefone");
 const fotopetDiv = document.getElementById("fotoPet2");
 const hamster = document.getElementById("hamster");
 const loader = document.getElementById("loader");
-const delBtnDiv = document.getElementById("delBtnDiv");
+const btnDel = document.getElementById("btnDel");
 var imgElement2 = document.getElementById("fotopet");
 
 function checkCookieExists(cookieName) {
@@ -44,12 +44,12 @@ document.addEventListener("DOMContentLoaded", async function () {
         fotopetDiv.style.display = "none";
         comPet.style.display = "none";
         semPet.style.display = "run-in";
-        delBtnDiv.style.display = "none";
+        btnDel.style.display = "none";
       } else {
         fotopetDiv.style.display = "inline-block";
         semPet.style.display = "none";
         comPet.style.display = "run-in";
-        delBtnDiv.style.display = "run-in";
+        btnDel.style.display = "run-in";
       }
     } catch (error) {
       console.error(error);

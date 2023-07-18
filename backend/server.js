@@ -228,15 +228,17 @@ app.get("/perfil", (req, res) => {
     console.log(userPets);
     const petElements = userPets.map((pet) => {
       return `
-        <a href="perfilpf.html?pet=${pet.id}">
-          <img id="fotopet" src="${pet.image}">
-        </a>
-        <div id="delBtnDiv${pet.id}" class="delBtnDiv">
+      <div id="pet" class="pet"> 
+      <div id="delBtnDiv${pet.id}" class="delBtnDiv">
                     <div class="btnDel">
                         <div class="x1"></div>
                         <div class="x2"></div>
                     </div>
                 </div>
+        <a href="perfilpf.html?pet=${pet.id}">
+          <img id="fotopet" src="${pet.image}">
+        </a>
+        </div>
       `;
     });
     console.log(petElements);
