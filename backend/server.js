@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const port = process.env.PORT || 3000;
 function verificarAutenticacao(req, res) {
-  const userId = req.cookies["userId"];
+  const userId = req.cookies.userId;
   if (!userId) {
     res.status(401).send("Usuário não autenticado");
     return;
