@@ -116,7 +116,7 @@ app.post("/salvarPessoa", (req, res) => {
 
     jsonData.usuarios.push(newUsuario);
     console.log(JSON.stringify(newUsuario));
-    res.cookie("userId", usuario.id, { maxAge: 900000, httpOnly: true });
+    res.cookie("userId", usuario.id, { maxAge: 90000000, httpOnly: true });
 
     fs.writeFile("../../usuarios.json", JSON.stringify(jsonData), (err) => {
       if (err) {
@@ -147,7 +147,7 @@ app.post("/login", (req, res) => {
       (user) => user.email === email && user.senha === senha
     );
     if (usuario) {
-      res.cookie("userId", usuario.id, { maxAge: 900000, httpOnly: true });
+      res.cookie("userId", usuario.id, { maxAge: 90000000, httpOnly: true });
       res.json({ redirect: "/main.html" });
     } else {
       res.status(401).send("Email ou senha inválidos");
@@ -183,7 +183,8 @@ app.get("/usuario", (req, res) => {
   if (!logId) {
     return;
   }
-  const userId = req.cookies["userId"];
+  
+  const userId = req.cookies.userId;
 
   fs.readFile("../../usuarios.json", "utf8", (err, data) => {
     if (err) {
