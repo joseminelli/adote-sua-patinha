@@ -58,9 +58,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   loader.style.display = "flex";
   hamster.classList.add("active");
   
-  if (!cookieExists) {
-    window.location.href = "index.html";
-  }
 
   const editar = document.getElementById("editar");
   const comPet = document.getElementById("spet");
@@ -94,6 +91,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     console.error(error);
   }
 
+  if (!cookieExists) {
+    window.location.href = "index.html";
+  }
   editar.addEventListener("click", function () {
     window.location.href = "cadastro1.html";
   });

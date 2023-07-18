@@ -35,9 +35,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   const chkFavoritos = document.getElementById("chkFavoritos");
   const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
   const textoMural = document.getElementById("textoMural");
-  if (!cookieExists) {
-    window.location.href = "index.html";
-  }
   var response = await fetch(`https://adotesuapatinhaapi.azurewebsites.net/mural`,
   { credentials: "include" }
 );
@@ -54,6 +51,10 @@ document.addEventListener("DOMContentLoaded", async function () {
   } else {
     loader.style.display = "flex";
     hamster.classList.add("active");
+  }
+  
+  if (!cookieExists) {
+    window.location.href = "index.html";
   }
   var qtdPets = data.pets.length;
   const petsPorPagina = 28;
