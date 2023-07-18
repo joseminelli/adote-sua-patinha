@@ -27,12 +27,12 @@ document.addEventListener("DOMContentLoaded", async function () {
       fotopetDiv.innerHTML = petElementsHTML;
 
       if (petElementsHTML == " ") {
-        imgElefotopetDivment2.style.display = "none";
+        fotopetDiv.style.display = "none";
         comPet.style.display = "none";
         semPet.style.display = "run-in";
         delBtnDiv.style.display = "none";
       } else {
-        imgElefotopetDivment2.style.display = "inline-block";
+        fotopetDiv.style.display = "inline-block";
         semPet.style.display = "none";
         comPet.style.display = "run-in";
         delBtnDiv.style.display = "run-in";
