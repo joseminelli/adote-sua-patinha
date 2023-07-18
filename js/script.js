@@ -86,8 +86,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const userPets = await response.json();
         console.log(userPets.length);
         console.log(userPets);
-        if (userPets.length >= 3) {
-          alert("Você já cadastrou 3 pets. Não é possível cadastrar mais.");
+        if (userPets.length >= 2) {
+          alert("Você já cadastrou 2 pets. Não é possível cadastrar mais.");
           return;
         }
 

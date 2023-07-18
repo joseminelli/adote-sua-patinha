@@ -200,6 +200,7 @@ button[type="submit"]:hover {
 }
 
 .mural p {
+  margin-bottom: 40px;
   margin-left: 50px;
 }
 
@@ -400,6 +401,9 @@ button[type="submit"]:hover {
     margin-left: 14%;
     margin-top: -44%;
   }
+  .mural img {
+    width: 150px;
+  }
 }
 @media (max-width: 911px) {
   #editar {
@@ -448,7 +452,7 @@ button[type="submit"]:hover {
     margin-top: 10%;
     margin-left: 40px;
     border-radius: 10px;
-    width: 150px;
+    width: 120px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   }
 }
@@ -460,6 +464,10 @@ button[type="submit"]:hover {
   button[type="submit"] {
     font-size: 90%;
     margin-left: 70%;
+  }
+  .mural p {
+    margin-bottom: 0px;
+    margin-left: 50px;
   }
 }
 @media (max-width: 470px) {
@@ -526,7 +534,7 @@ button[type="submit"]:hover {
   }
 
   .mural {
-    margin-top: 0%;
+    margin-top: 20%;
     margin-left: 5%;
   }
 
