@@ -25,9 +25,9 @@ document.addEventListener("DOMContentLoaded", async function () {
   if (login != "true") {
     window.location.href = "index.html";
   }
-  var response = await fetch(`https://adotesuapatinhaapi.azurewebsites.net/`, {
-    credentials: 'same-origin',
-  });
+  var response = await fetch(`https://adotesuapatinhaapi.azurewebsites.net/mural`,
+  { credentials: "include" }
+);
 
   var data = await response.json();
 

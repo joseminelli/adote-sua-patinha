@@ -185,6 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
               fetch(`https://adotesuapatinhaapi.azurewebsites.net/salvar`, {
                 method: "POST",
+                credentials: "include",
                 headers: {
                   "Content-Type": "application/json",
                 },
@@ -450,6 +451,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 `https://adotesuapatinhaapi.azurewebsites.net/salvarPessoa`,
                 {
                   method: "POST",
+                  credentials: "include",
                   headers: {
                     "Content-Type": "application/json",
                   },
@@ -572,6 +574,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const senha = document.getElementById("input2").value;
       fetch(`https://adotesuapatinhaapi.azurewebsites.net/login`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },

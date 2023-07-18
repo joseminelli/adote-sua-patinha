@@ -159,7 +159,8 @@ app.listen(port, () => {
   console.log(`Servidor ouvindo na porta ${port}`);
 });
 
-app.get("/", (req, res) => {
+app.get("/mural", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   if (fs.existsSync("../../pets.json") === false) {
     fs.writeFile("../../pets.json", '{"pets": []}', () => {});
   }
@@ -201,6 +202,7 @@ app.get("/usuario", (req, res) => {
 });
 
 app.get("/perfil", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   const userId = req.cookies.userId;
 
   fs.readFile("../../pets.json", "utf8", (err, data) => {

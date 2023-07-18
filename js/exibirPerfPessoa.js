@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
     const usuario = await response.json();
 
-
     if (!usuario) {
       throw new Error("Usuário não encontrado");
     }
