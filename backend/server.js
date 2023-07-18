@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: ['https://adotesuapatinha.com', 'http://localhost:3000']
+    origin: ['https://adotesuapatinha.com', 'http://127.0.0.1:5500/']
   })
 );
 
