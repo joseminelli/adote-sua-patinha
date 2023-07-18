@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const port = process.env.PORT || 3000;
 function verificarAutenticacao(req, res) {
-  const userId = req.cookies.userId;
+  const userId = req.cookies["userId"];
   if (!userId) {
     res.status(401).send("Usuário não autenticado");
     return;
@@ -189,7 +189,7 @@ app.get("/usuario", (req, res) => {
     return;
   }
   
-  const userId = req.cookies.userId;
+  const userId = req.cookies["userId"];
 
   fs.readFile("../../usuarios.json", "utf8", (err, data) => {
     if (err) {
@@ -206,7 +206,7 @@ app.get("/usuario", (req, res) => {
 
 app.get("/perfil", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
-  const userId = req.cookies.userId;
+  const userId = req.cookies["userId"];
 
   fs.readFile("../../pets.json", "utf8", (err, data) => {
     if (err) {

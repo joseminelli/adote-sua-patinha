@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     return;
   }
   
-
   const editar = document.getElementById("editar");
   const comPet = document.getElementById("spet");
   const semPet = document.getElementById("npet");
@@ -32,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (!usuario) {
       throw new Error("Usuário não encontrado");
     }
-
+    console.log(usuario);
     nome.innerHTML = usuario.name;
     idade.innerHTML = `${usuario.age} Anos`;
     bairro1.innerHTML = usuario.regiao;
