@@ -19,7 +19,12 @@ app.use(express.static("public"));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(cors({ credentials: true, origin: 'https://adotesuapatinha.com' }));
+app.use(
+  cors({
+    credentials: true,
+    origin: ['https://adotesuapatinha.com', 'http://localhost:3000']
+  })
+);
 
 app.post("/salvar", (req, res) => {
   const logId = verificarAutenticacao(req, res);
