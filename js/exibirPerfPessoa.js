@@ -76,15 +76,15 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 
   var imgElement2 = document.getElementById("fotopet");
-  /*if (caminhoImagem2 == null) {
+  if (petElementsHTML == " ") {
     imgElement2.style.display = "none";
     comPet.style.display = "none";
     semPet.style.display = "run-in";
     delBtnDiv.style.display = "none";
   } else {
-    imgElement2.src = caminhoImagem2;
+    imgElement2.style.display = "run-in";
     semPet.style.display = "none";
     comPet.style.display = "run-in";
     delBtnDiv.style.display = "run-in";
-  }*/
+  }
 });

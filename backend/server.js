@@ -218,8 +218,8 @@ app.get("/perfil", (req, res) => {
     const jsonData = JSON.parse(data);
     const pets = jsonData.pets;
 
-    const userPets = pets.filter((pet) => pet.userId === parseInt(userId));
-
+    const userPets = pets.filter((pet) => pet.userId === userId);
+    console.log(userPets);
     const petElements = userPets.map((pet) => {
       return `
         <a href="perfilpf.html?pet=${pet.id}">
@@ -227,6 +227,7 @@ app.get("/perfil", (req, res) => {
         </a>
       `;
     });
+    console.log(petElements);
 
     res.send(petElements.join(""));
   });
