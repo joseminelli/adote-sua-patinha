@@ -473,8 +473,7 @@ document.addEventListener("DOMContentLoaded", function () {
               };
 
               fetch(
-                `https://adotesuapatinhaapi.azurewebsites.net/salvarPessoa`,
-                {
+                `https://adotesuapatinhaapi.azurewebsites.net/salvarPessoa`, {
                   method: "POST",
                   credentials: "include",
                   headers: {

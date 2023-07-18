@@ -8,10 +8,10 @@ const hamster = document.getElementById("hamster");
 const loader = document.getElementById("loader");
 var login = localStorage.getItem("login");
 const delBtnDiv = document.getElementById("delBtnDiv");
+var imgElement2 = document.getElementById("fotopet");
 
 document.addEventListener("DOMContentLoaded", async function () {
-
-   const exibirPets = async () => {
+  const exibirPets = async () => {
     try {
       const response = await fetch(
         "https://adotesuapatinhaapi.azurewebsites.net/perfil",
@@ -25,6 +25,18 @@ document.addEventListener("DOMContentLoaded", async function () {
       const petElementsHTML = await response.text();
       console.log(petElementsHTML);
       fotopetDiv.innerHTML = petElementsHTML;
+
+      if (petElementsHTML == " ") {
+        imgElement2.style.display = "none";
+        comPet.style.display = "none";
+        semPet.style.display = "run-in";
+        delBtnDiv.style.display = "none";
+      } else {
+        imgElement2.style.display = "run-in";
+        semPet.style.display = "none";
+        comPet.style.display = "run-in";
+        delBtnDiv.style.display = "run-in";
+      }
     } catch (error) {
       console.error(error);
     }
@@ -38,16 +50,16 @@ document.addEventListener("DOMContentLoaded", async function () {
     window.location.href = "index.html";
     return;
   }
-  
+
   const editar = document.getElementById("editar");
   const comPet = document.getElementById("spet");
   const semPet = document.getElementById("npet");
 
   try {
     const response = await fetch(
-        "https://adotesuapatinhaapi.azurewebsites.net/usuario",
-        { credentials: "include" }
-      );
+      "https://adotesuapatinhaapi.azurewebsites.net/usuario",
+      { credentials: "include" }
+    );
     if (!response.ok) {
       throw new Error("Erro ao obter as informações do usuário");
     }
@@ -74,17 +86,4 @@ document.addEventListener("DOMContentLoaded", async function () {
   editar.addEventListener("click", function () {
     window.location.href = "cadastro1.html";
   });
-
-  var imgElement2 = document.getElementById("fotopet");
-  if (petElementsHTML == " ") {
-    imgElement2.style.display = "none";
-    comPet.style.display = "none";
-    semPet.style.display = "run-in";
-    delBtnDiv.style.display = "none";
-  } else {
-    imgElement2.style.display = "run-in";
-    semPet.style.display = "none";
-    comPet.style.display = "run-in";
-    delBtnDiv.style.display = "run-in";
-  }
 });

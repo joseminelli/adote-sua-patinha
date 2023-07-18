@@ -78,6 +78,7 @@ app.post("/salvar", (req, res) => {
 });
 
 app.post("/salvarPessoa", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   if (fs.existsSync("../../usuarios.json") === false) {
     fs.writeFile("../../usuarios.json", '{"usuarios": []}', () => {});
   }
