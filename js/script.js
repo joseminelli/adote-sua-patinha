@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
           throw new Error("Erro ao obter os pets do usuário");
         }
 
-        const userPets = await response.json();
+        const userPets = await response.text();
         if (userPets.length >= 3) {
           alert("Você já cadastrou 3 pets. Não é possível cadastrar mais.");
           return;
