@@ -199,7 +199,7 @@ app.get("/usuario", (req, res) => {
     }
 
     const jsonData = JSON.parse(data);
-    const usuario = jsonData.usuarios.find((user) => user.id === userId);
+    const usuario = jsonData.usuarios.find((user) => user.id === parseInt(userId));
     res.json(usuario);
   });
 });
