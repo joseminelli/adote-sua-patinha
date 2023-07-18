@@ -19,7 +19,7 @@ app.use(express.static("public"));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(cors({ credentials: true, origin: 'https://adotesuapatinha.com' }));
+app.use(cors({ credentials: true, origin: "https://adotesuapatinha.com" }));
 
 app.post("/salvar", (req, res) => {
   const logId = verificarAutenticacao(req, res);
@@ -116,7 +116,12 @@ app.post("/salvarPessoa", (req, res) => {
 
     jsonData.usuarios.push(newUsuario);
     console.log(JSON.stringify(newUsuario));
-    res.cookie("userId", usuario.id, { maxAge: 90000000, httpOnly: true });
+    res.cookie("userId", userId, {
+      maxAge: 9000000,
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+    });
 
     fs.writeFile("../../usuarios.json", JSON.stringify(jsonData), (err) => {
       if (err) {
@@ -147,7 +152,12 @@ app.post("/login", (req, res) => {
       (user) => user.email === email && user.senha === senha
     );
     if (usuario) {
-      res.cookie("userId", usuario.id, { maxAge: 90000000, httpOnly: true });
+      res.cookie("userId", userId, {
+        maxAge: 9000000,
+        httpOnly: true,
+        sameSite: "None",
+        secure: true,
+      });
       res.json({ redirect: "/main.html" });
     } else {
       res.status(401).send("Email ou senha inválidos");
@@ -158,7 +168,6 @@ app.post("/login", (req, res) => {
 app.listen(port, () => {
   console.log(`Servidor ouvindo na porta ${port}`);
 });
-
 
 app.get("/mural", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -186,7 +195,7 @@ app.get("/usuario", (req, res) => {
   if (!logId) {
     return;
   }
-  
+
   const userId = req.cookies.userId;
 
   fs.readFile("../../usuarios.json", "utf8", (err, data) => {
