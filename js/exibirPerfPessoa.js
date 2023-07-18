@@ -11,7 +11,6 @@ const delBtnDiv = document.getElementById("delBtnDiv");
 
 document.addEventListener("DOMContentLoaded", async function () {
 
-   // Função para obter os pets do usuário e exibi-los na página
    const exibirPets = async () => {
     try {
       const response = await fetch(
@@ -24,6 +23,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       }
 
       const petElementsHTML = await response.text();
+      console.log(petElementsHTML);
       fotopetDiv.innerHTML = petElementsHTML;
     } catch (error) {
       console.error(error);
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 
   var imgElement2 = document.getElementById("fotopet");
-  if (caminhoImagem2 == null) {
+  /*if (caminhoImagem2 == null) {
     imgElement2.style.display = "none";
     comPet.style.display = "none";
     semPet.style.display = "run-in";
@@ -86,5 +86,5 @@ document.addEventListener("DOMContentLoaded", async function () {
     semPet.style.display = "none";
     comPet.style.display = "run-in";
     delBtnDiv.style.display = "run-in";
-  }
+  }*/
 });
