@@ -72,131 +72,196 @@ document.addEventListener("DOMContentLoaded", function () {
     if (login != "true") {
       window.location.href = "index.html";
     }
-    enviarButton.addEventListener("click", function (event) {
-      loader.style.display = "flex";
-      hamster.classList.add("active");
-      event.preventDefault();
-      var nome = document.getElementById("input").value;
-      var idade = document.getElementById("idade").value;
-      var raca = document.getElementById("raca").value;
-      var descricao = document.getElementById("descricao").value;
-      var especie = document.getElementById("especie").value;
+    enviarButton.addEventListener("click", async function (event) {
+      try {
+        const response = await fetch(
+          "https://adotesuapatinhaapi.azurewebsites.net/perfil",
+          { credentials: "include" }
+        );
 
-      var nome3 = document.getElementById("input");
-      var raca3 = document.getElementById("raca");
-      var descricao3 = document.getElementById("descricao");
-      var especie3 = document.getElementById("especie");
-
-      var inputImagem = document.getElementById("picture__input");
-
-      descricao3.addEventListener("click", function (event) {
-        descricao3.style.borderColor = "#165ea8";
-      });
-      nome3.addEventListener("click", function (event) {
-        nome3.style.borderColor = "#165ea8";
-      });
-      raca3.addEventListener("click", function (event) {
-        raca3.style.borderColor = "#165ea8";
-      });
-      especie3.addEventListener("click", function (event) {
-        especie3.style.borderColor = "#165ea8";
-      });
-
-      if (nome === "" || descricao === "" || raca === "0" || especie === "0") {
-        if (inputImagem.files && !inputImagem.files[0]) {
-          pictureInput.style.borderColor = "#ff2727";
-        } else {
-          pictureInput.style.borderColor = "#fff";
-        }
-        if (descricao === "") {
-          descricao3.style.borderColor = "#ff2727";
-        }
-        if (nome === "") {
-          nome3.style.borderColor = "#ff2727";
+        if (!response.ok) {
+          throw new Error("Erro ao obter os pets do usuário");
         }
 
-        if (raca === "0") {
-          raca3.style.borderColor = "#ff2727";
+        const userPets = await response.json();
+        if (userPets.length >= 3) {
+          alert("Você já cadastrou 3 pets. Não é possível cadastrar mais.");
+          return;
         }
 
-        if (especie === "0") {
-          especie3.style.borderColor = "#ff2727";
+        loader.style.display = "flex";
+        hamster.classList.add("active");
+        event.preventDefault();
+        var nome = document.getElementById("input").value;
+        var idade = document.getElementById("idade").value;
+        var raca = document.getElementById("raca").value;
+        var descricao = document.getElementById("descricao").value;
+        var especie = document.getElementById("especie").value;
+
+        var nome3 = document.getElementById("input");
+        var raca3 = document.getElementById("raca");
+        var descricao3 = document.getElementById("descricao");
+        var especie3 = document.getElementById("especie");
+
+        var inputImagem = document.getElementById("picture__input");
+
+        descricao3.addEventListener("click", function (event) {
+          descricao3.style.borderColor = "#165ea8";
+        });
+        nome3.addEventListener("click", function (event) {
+          nome3.style.borderColor = "#165ea8";
+        });
+        raca3.addEventListener("click", function (event) {
+          raca3.style.borderColor = "#165ea8";
+        });
+        especie3.addEventListener("click", function (event) {
+          especie3.style.borderColor = "#165ea8";
+        });
+
+        if (
+          nome === "" ||
+          descricao === "" ||
+          raca === "0" ||
+          especie === "0"
+        ) {
+          if (inputImagem.files && !inputImagem.files[0]) {
+            pictureInput.style.borderColor = "#ff2727";
+          } else {
+            pictureInput.style.borderColor = "#fff";
+          }
+          if (descricao === "") {
+            descricao3.style.borderColor = "#ff2727";
+          }
+          if (nome === "") {
+            nome3.style.borderColor = "#ff2727";
+          }
+
+          if (raca === "0") {
+            raca3.style.borderColor = "#ff2727";
+          }
+
+          if (especie === "0") {
+            especie3.style.borderColor = "#ff2727";
+          }
+
+          hamster.classList.remove("active");
+          loader.style.display = "none";
+          section.classList.add("active");
+          return;
+        }
+        var imagemdopet = localStorage.getItem("imagempet");
+        if (imagemdopet != null) {
+          localStorage.removeItem("imagempet");
+          localStorage.removeItem("nome");
+          localStorage.removeItem("idade");
+          localStorage.removeItem("raca");
+          localStorage.removeItem("descricao");
         }
 
-        hamster.classList.remove("active");
-        loader.style.display = "none";
-        section.classList.add("active");
-        return;
-      }
-      var imagemdopet = localStorage.getItem("imagempet");
-      if (imagemdopet != null) {
-        localStorage.removeItem("imagempet");
-        localStorage.removeItem("nome");
-        localStorage.removeItem("idade");
-        localStorage.removeItem("raca");
-        localStorage.removeItem("descricao");
-      }
+        localStorage.setItem("nome", nome);
+        localStorage.setItem("idade", idade);
+        localStorage.setItem("raca", raca);
+        localStorage.setItem("descricao", descricao);
 
-      localStorage.setItem("nome", nome);
-      localStorage.setItem("idade", idade);
-      localStorage.setItem("raca", raca);
-      localStorage.setItem("descricao", descricao);
+        if (inputImagem.files && inputImagem.files[0]) {
+          var imagem = inputImagem.files[0];
 
-      if (inputImagem.files && inputImagem.files[0]) {
-        var imagem = inputImagem.files[0];
+          var reader = new FileReader();
 
-        var reader = new FileReader();
+          reader.onload = function (e) {
+            var imagemBase64 = e.target.result;
 
-        reader.onload = function (e) {
-          var imagemBase64 = e.target.result;
+            localStorage.setItem("imagempet", imagemBase64);
 
-          localStorage.setItem("imagempet", imagemBase64);
+            var formData = new FormData();
+            formData.append("file", imagem);
+            formData.append("content", nome);
 
-          var formData = new FormData();
-          formData.append("file", imagem);
-          formData.append("content", nome);
+            var discordWebhookURL =
+              "https://discord.com/api/webhooks/1129099280775393451/L6wPnNBc_gMd0vn-hmUCLbKixkEYa0GZ--_hR6wII4mIBn_Qp4_4exkxgU0HpzI6T1UD"; // Substitua pelo URL do seu webhook do Discord
 
-          var discordWebhookURL =
-            "https://discord.com/api/webhooks/1129099280775393451/L6wPnNBc_gMd0vn-hmUCLbKixkEYa0GZ--_hR6wII4mIBn_Qp4_4exkxgU0HpzI6T1UD"; // Substitua pelo URL do seu webhook do Discord
-
-          fetch(discordWebhookURL, {
-            method: "POST",
-            body: formData,
-          })
-            .then(function (response) {
-              if (!response.ok) {
-                hamster.classList.remove("active");
-                loader.style.display = "none";
-                throw new Error("Erro ao enviar a imagem para o Discord.");
-              }
-              return response.json();
+            fetch(discordWebhookURL, {
+              method: "POST",
+              body: formData,
             })
-            .then(function (discordResponse) {
-              var imageUrl = discordResponse.attachments[0].url; // Obtém a URL da imagem enviada para o Discord
-
-              var data = {
-                nome: nome,
-                idade: idade,
-                raca: raca,
-                descricao: descricao,
-                especie: especie,
-                imagem: imageUrl,
-              };
-
-              fetch(`https://adotesuapatinhaapi.azurewebsites.net/salvar`, {
-                method: "POST",
-                
-                credentials: "include",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
+              .then(function (response) {
+                if (!response.ok) {
+                  hamster.classList.remove("active");
+                  loader.style.display = "none";
+                  throw new Error("Erro ao enviar a imagem para o Discord.");
+                }
+                return response.json();
               })
-                .then(function (response) {
-                  if (!response.ok) {
+              .then(function (discordResponse) {
+                var imageUrl = discordResponse.attachments[0].url; // Obtém a URL da imagem enviada para o Discord
+
+                var data = {
+                  nome: nome,
+                  idade: idade,
+                  raca: raca,
+                  descricao: descricao,
+                  especie: especie,
+                  imagem: imageUrl,
+                };
+
+                fetch(`https://adotesuapatinhaapi.azurewebsites.net/salvar`, {
+                  method: "POST",
+
+                  credentials: "include",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(data),
+                })
+                  .then(function (response) {
+                    if (!response.ok) {
+                      hamster.classList.remove("active");
+                      section.classList.add("active");
+                      loader.style.display = "none";
+                      titulom.innerHTML = "Erro ao salvar os dados.";
+                      descm.innerHTML = "";
+                      iconm.classList.add("fa-circle-check");
+                      iconm.classList.remove("fa-circle-xmark");
+                      modalbtn.style.display = "none";
+                      setTimeout(function () {
+                        section.classList.remove("active");
+                        titulom.innerHTML = "Formulário não enviado";
+                        descm.innerHTML =
+                          "Você precisa preencher todos os campos e colocar uma imagem";
+                        iconm.classList.remove("fa-circle-check");
+                        iconm.classList.add("fa-circle-xmark");
+                        modalbtn.style.display = "block";
+                      }, 1500);
+                      throw new Error("Erro ao salvar os dados.");
+                    }
+                    return response.text();
+                  })
+                  .then(function () {
+                    document.getElementById("input").value = "";
+                    document.getElementById("idade").value = "";
+                    document.getElementById("raca").value = "0";
+                    document.getElementById("descricao").value = "";
+                    document.getElementById("especie").value = "0";
+                    document.getElementById("picture__input").value = "";
+                    hamster.classList.remove("active");
+                    loader.style.display = "none";
+                    section.classList.add("active");
+                    titulom.innerHTML = "Pet cadastrado!";
+                    descm.innerHTML = "";
+                    iconm.classList.add("fa-circle-check");
+                    iconm.classList.remove("fa-circle-xmark");
+                    modalbtn.style.display = "none";
+                    setTimeout(function () {
+                      section.classList.remove("active");
+                      window.location.href = "perfil.html";
+                      modalbtn.style.display = "block";
+                    }, 1500);
+                  })
+                  .catch(function (error) {
+                    console.error(error);
+                    loader.style.display = "none";
                     hamster.classList.remove("active");
                     section.classList.add("active");
-                    loader.style.display = "none";
                     titulom.innerHTML = "Erro ao salvar os dados.";
                     descm.innerHTML = "";
                     iconm.classList.add("fa-circle-check");
@@ -211,81 +276,40 @@ document.addEventListener("DOMContentLoaded", function () {
                       iconm.classList.add("fa-circle-xmark");
                       modalbtn.style.display = "block";
                     }, 1500);
-                    throw new Error("Erro ao salvar os dados.");
-                  }
-                  return response.text();
-                })
-                .then(function () {
-                  document.getElementById("input").value = "";
-                  document.getElementById("idade").value = "";
-                  document.getElementById("raca").value = "0";
-                  document.getElementById("descricao").value = "";
-                  document.getElementById("especie").value = "0";
-                  document.getElementById("picture__input").value = "";
-                  hamster.classList.remove("active");
-                  loader.style.display = "none";
-                  section.classList.add("active");
-                  titulom.innerHTML = "Pet cadastrado!";
-                  descm.innerHTML = "";
-                  iconm.classList.add("fa-circle-check");
-                  iconm.classList.remove("fa-circle-xmark");
-                  modalbtn.style.display = "none";
-                  setTimeout(function () {
-                    section.classList.remove("active");
-                    window.location.href = "perfil.html";
-                    modalbtn.style.display = "block";
-                  }, 1500);
-                })
-                .catch(function (error) {
-                  console.error(error);
-                  loader.style.display = "none";
-                  hamster.classList.remove("active");
-                  section.classList.add("active");
-                  titulom.innerHTML = "Erro ao salvar os dados.";
-                  descm.innerHTML = "";
-                  iconm.classList.add("fa-circle-check");
-                  iconm.classList.remove("fa-circle-xmark");
-                  modalbtn.style.display = "none";
-                  setTimeout(function () {
-                    section.classList.remove("active");
-                    titulom.innerHTML = "Formulário não enviado";
-                    descm.innerHTML =
-                      "Você precisa preencher todos os campos e colocar uma imagem";
-                    iconm.classList.remove("fa-circle-check");
-                    iconm.classList.add("fa-circle-xmark");
-                    modalbtn.style.display = "block";
-                  }, 1500);
-                });
-            })
-            .catch(function (error) {
-              console.error(error);
-              loader.style.display = "none";
-              hamster.classList.remove("active");
-              section.classList.add("active");
-              titulom.innerHTML = "Erro ao salvar a imagem.";
-              descm.innerHTML = "";
-              iconm.classList.add("fa-circle-check");
-              iconm.classList.remove("fa-circle-xmark");
-              modalbtn.style.display = "none";
-              setTimeout(function () {
-                section.classList.remove("active");
-                titulom.innerHTML = "Formulário não enviado";
-                descm.innerHTML =
-                  "Você precisa preencher todos os campos e colocar uma imagem";
-                iconm.classList.remove("fa-circle-check");
-                iconm.classList.add("fa-circle-xmark");
-                modalbtn.style.display = "block";
-              }, 1500);
-            });
-        };
+                  });
+              })
+              .catch(function (error) {
+                console.error(error);
+                loader.style.display = "none";
+                hamster.classList.remove("active");
+                section.classList.add("active");
+                titulom.innerHTML = "Erro ao salvar a imagem.";
+                descm.innerHTML = "";
+                iconm.classList.add("fa-circle-check");
+                iconm.classList.remove("fa-circle-xmark");
+                modalbtn.style.display = "none";
+                setTimeout(function () {
+                  section.classList.remove("active");
+                  titulom.innerHTML = "Formulário não enviado";
+                  descm.innerHTML =
+                    "Você precisa preencher todos os campos e colocar uma imagem";
+                  iconm.classList.remove("fa-circle-check");
+                  iconm.classList.add("fa-circle-xmark");
+                  modalbtn.style.display = "block";
+                }, 1500);
+              });
+          };
 
-        reader.readAsDataURL(imagem);
-      } else {
-        pictureInput.style.borderColor = "#ff2727";
-        section.classList.add("active");
-        return;
+          reader.readAsDataURL(imagem);
+        } else {
+          pictureInput.style.borderColor = "#ff2727";
+          section.classList.add("active");
+          return;
+        }
+      } catch (error) {
+        console.error(error);
+        alert("Erro ao cadastrar o pet.");
       }
-
       logado = true;
       localStorage.setItem("login", logado);
     });

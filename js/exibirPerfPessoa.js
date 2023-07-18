@@ -3,11 +3,36 @@ const fotoPet = document.getElementById("fotoPet");
 const idade = document.getElementById("idade");
 const bairro1 = document.getElementById("bairro");
 const telefone1 = document.getElementById("telefone");
-const fotopet = document.getElementById("fotopet");
+const fotopetDiv = document.getElementById("fotopet");
+const hamster = document.getElementById("hamster");
+const loader = document.getElementById("loader");
 var login = localStorage.getItem("login");
 const delBtnDiv = document.getElementById("delBtnDiv");
 
 document.addEventListener("DOMContentLoaded", async function () {
+
+   // Função para obter os pets do usuário e exibi-los na página
+   const exibirPets = async () => {
+    try {
+      const response = await fetch(
+        "https://adotesuapatinhaapi.azurewebsites.net/perfil",
+        { credentials: "include" }
+      );
+
+      if (!response.ok) {
+        throw new Error("Erro ao obter as fotos dos pets");
+      }
+
+      const petElementsHTML = await response.text();
+      fotopetDiv.innerHTML = petElementsHTML;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  exibirPets();
+  loader.style.display = "flex";
+  hamster.classList.add("active");
   const login = localStorage.getItem("login");
   if (login !== "true") {
     window.location.href = "index.html";
@@ -30,6 +55,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     if (!usuario) {
       throw new Error("Usuário não encontrado");
+    } else {
+      loader.style.display = "none";
+      hamster.classList.remove("active");
     }
     console.log(usuario);
     nome.innerHTML = usuario.name;

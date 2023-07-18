@@ -218,7 +218,7 @@ app.get("/perfil", (req, res) => {
     const jsonData = JSON.parse(data);
     const pets = jsonData.pets;
 
-    const userPets = pets.filter((pet) => pet.userId === userId);
+    const userPets = pets.filter((pet) => pet.userId === parseInt(userId));
 
     const petElements = userPets.map((pet) => {
       return `
