@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(cors());
 
 app.post("/salvar", (req, res) => {
-  const logId = verificarAutenticacao(req);
+  const logId = verificarAutenticacao(req, res);
   if (!logId) {
     return;
   }
@@ -179,7 +179,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/usuario", (req, res) => {
-  const logId = verificarAutenticacao(req);
+  const logId = verificarAutenticacao(req, res);
   if (!logId) {
     return;
   }
