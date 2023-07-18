@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
     enviarButton.addEventListener("click", async function (event) {
       try {
         const response = await fetch(
-          "https://adotesuapatinhaapi.azurewebsites.net/perfil",
+          "https://adotesuapatinhaapi.azurewebsites.net/maxPets",
           { credentials: "include" }
         );
 
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const userPets = await response.text();
         console.log(userPets.length);
         console.log(userPets);
-        if (userPets.length >= 9) {
+        if (userPets.length >= 3) {
           alert("Você já cadastrou 3 pets. Não é possível cadastrar mais.");
           return;
         }

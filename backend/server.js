@@ -238,3 +238,24 @@ app.get("/perfil", (req, res) => {
     res.send(petElements.join(""));
   });
 });
+
+app.get("/maxPets", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  const userId = req.cookies["userId"];
+
+  fs.readFile("../../pets.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo JSON de pets");
+      return;
+    }
+
+    const jsonData = JSON.parse(data);
+    const pets = jsonData.pets;
+
+    const userPets = pets.filter((pet) => pet.userId === userId);
+
+    res.json(userPets);
+  });
+});
+
