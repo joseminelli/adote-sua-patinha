@@ -230,7 +230,7 @@ app.get("/perfil", (req, res) => {
       return `
         <div id="pet" class="pet"> 
           <div id="delBtnDiv${pet.id}" class="delBtnDiv">
-            <div class="btnDel" onclick="excluirPet(${pet.id})">
+            <div id="btnDel" class="btnDel" onclick="excluirPet(${pet.id})">
               <div class="x1"></div>
               <div class="x2"></div>
             </div>

@@ -24,6 +24,26 @@ function checkCookieExists(cookieName) {
 const cookieName = "userId";
 const cookieExists = checkCookieExists(cookieName);
 
+function excluirPet(petId) {
+    
+  fetch(`https://adotesuapatinhaapi.azurewebsites.net/excluirPet/${petId}`, {
+    method: "DELETE",
+    credentials: "include",
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erro ao excluir o pet.");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Pet excluído com sucesso!", data);
+      exibirPets();
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
 document.addEventListener("DOMContentLoaded", async function () {
   const exibirPets = async () => {
     try {
@@ -101,24 +121,5 @@ document.addEventListener("DOMContentLoaded", async function () {
     window.location.href = "cadastro1.html";
   });
 
-  function excluirPet(petId) {
-    
-    fetch(`https://adotesuapatinhaapi.azurewebsites.net/excluirPet/${petId}`, {
-      method: "DELETE",
-      credentials: "include",
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Erro ao excluir o pet.");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Pet excluído com sucesso!", data);
-        exibirPets();
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+  
 });
