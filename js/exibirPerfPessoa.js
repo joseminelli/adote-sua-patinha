@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     window.location.href = "index.html";
     return;
   }
+  
 
   const editar = document.getElementById("editar");
   const comPet = document.getElementById("spet");

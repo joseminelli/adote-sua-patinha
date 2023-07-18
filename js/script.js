@@ -185,6 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
               fetch(`https://adotesuapatinhaapi.azurewebsites.net/salvar`, {
                 method: "POST",
+                
                 credentials: "include",
                 headers: {
                   "Content-Type": "application/json",

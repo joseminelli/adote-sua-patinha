@@ -159,6 +159,7 @@ app.listen(port, () => {
   console.log(`Servidor ouvindo na porta ${port}`);
 });
 
+
 app.get("/mural", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   if (fs.existsSync("../../pets.json") === false) {
