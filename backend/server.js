@@ -380,13 +380,28 @@ app.post("/salvarPost", (req, res) => {
 
 app.get("/posts", (req, res) => {
   let posts = [];
-  if (fs.existsSync("../../posts.json")) {
-    const data = fs.readFileSync("../../posts.json", "utf8");
+  if (fs.existsSync("posts.json")) {
+    const data = fs.readFileSync("posts.json", "utf8");
     posts = JSON.parse(data);
   }
 
-  res.json(posts);
+  const searchTerm = req.query.search; 
+
+  if (!searchTerm || searchTerm.trim() === "") {
+    
+    res.json(posts);
+  } else {
+    const filteredPosts = posts.filter((post) => {
+      return (
+        post.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.descricao.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.categoria.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    });
+    res.json(filteredPosts);
+  }
 });
+
 
 app.delete("/post/:id", (req, res) => {
   const postId = parseInt(req.params.id);

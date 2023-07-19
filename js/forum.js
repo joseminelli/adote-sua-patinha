@@ -384,21 +384,23 @@ document.addEventListener("DOMContentLoaded", function () {
       container.classList.remove("active");
       container.querySelector(".search-input").value = "";
     }
-
+  
     const searchInput = document.getElementById("searchInput");
     const searchTerm = searchInput.value.toLowerCase().trim();
     searchInput.style.color = "#282828";
-
-    fetch(
-      `https://adotesuapatinhaapi.azurewebsites.net/posts?search=${searchTerm}`
-    )
+  
+    const url = searchTerm
+      ? `https://adotesuapatinhaapi.azurewebsites.net/posts?search=${searchTerm}`
+      : "https://adotesuapatinhaapi.azurewebsites.net/posts";
+  
+    fetch(url)
       .then((response) => response.json())
       .then((posts) => {
         var content = document.querySelector(".content");
         var noPostsMessage = document.getElementById("noPostsMessage");
-
+  
         content.innerHTML = "";
-
+  
         if (posts.length === 0) {
           noPostsMessage.innerHTML =
             "Não há publicações correspondentes à busca";
@@ -406,7 +408,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           noPostsMessage.innerHTML = "";
           content.style.display = "block";
-
+  
           posts.forEach(function (post) {
             var postElement = document.createElement("div");
             postElement.className = "post";
@@ -423,18 +425,18 @@ document.addEventListener("DOMContentLoaded", function () {
               "<p>" +
               post.descricao +
               "</p>";
-
+  
             var replyContainer = document.createElement("div");
             replyContainer.className = "reply-container";
             replyContainer.innerHTML =
               '<p class="modalp2">Responder:</p>' +
               '<input type="text" class="inputmodal2 reply-input" placeholder="Digite sua resposta">' +
               '<button id="responder" class="pure-material-button-contained active reply-btn">Responder</button>';
-
+  
             postElement.appendChild(replyContainer);
-
+  
             content.appendChild(postElement);
-
+  
             if (post.respostas && post.respostas.length <= 1) {
               var repliesContainer = document.createElement("div");
               repliesContainer.className = "replies-container";
@@ -449,28 +451,28 @@ document.addEventListener("DOMContentLoaded", function () {
                   "<p id='descrply'>" +
                   resposta.descricao +
                   "</p>";
-
+  
                 repliesContainer.appendChild(replyElement);
               });
-
+  
               postElement.appendChild(repliesContainer);
-
+  
               if (post.respostas.length > 1) {
                 var replyButton = createReplyButton(repliesContainer);
                 repliesContainer.appendChild(replyButton);
               }
             }
           });
-
+  
           var deleteButtons = document.querySelectorAll(".deleteBtn");
           deleteButtons.forEach(function (button) {
             button.addEventListener("click", function () {
               var id = button.getAttribute("data-id");
               deletePost(id);
-              console.log(id)
+              console.log(id);
             });
           });
-
+  
           var replyButtons = document.querySelectorAll(".reply-btn");
           replyButtons.forEach(function (button) {
             button.addEventListener("click", function () {
@@ -484,7 +486,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 var replyPost = {
                   descricao: replyText,
                 };
-
+  
                 fetch(
                   `https://adotesuapatinhaapi.azurewebsites.net/posts/${postId}/respostas`,
                   {
