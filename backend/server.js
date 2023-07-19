@@ -132,7 +132,7 @@ app.post("/salvarPessoa", upload.single("file"), (req, res) => {
   const telefone = req.body.telefone;
   const email = req.body.email;
   const senha = req.body.senha;
-  const imagem = req.file.buffer;
+  const imagem = req.body.imagem;
 
   fs.readFile("../../usuarios.json", "utf8", (err, data) => {
     if (err) {
