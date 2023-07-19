@@ -35,6 +35,9 @@ app.post("/verificarCookie", (req, res) => {
   if (!userId) {
     res.json({ redirect: "/index.html" });
     return;
+  } else if (userId) {
+    res.json({ redirect: "/main.html" });
+    return;
   }
 });
 
@@ -174,7 +177,7 @@ app.post("/salvarPessoa", upload.single("file"), (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  const email = req.body.email;
+  const email = req.body.email.trim().toLowerCase();
   const senha = req.body.senha;
 
   fs.readFile("../../usuarios.json", "utf8", (err, data) => {
@@ -188,7 +191,7 @@ app.post("/login", (req, res) => {
     const usuarios = jsonData.usuarios;
 
     const usuario = usuarios.find(
-      (user) => user.email === email && user.senha === senha
+      (user) => user.email.trim().toLowerCase() === email && user.senha === senha
     );
     if (usuario) {
       res.cookie("userId", usuario.id, { maxAge: 9000000, httpOnly: true, secure: true, sameSite: 'none' });

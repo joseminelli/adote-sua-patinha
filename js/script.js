@@ -29,6 +29,26 @@ if (bar) {
   });
 }
 
+async function verificarCookie() {
+  try {
+    const response = await fetch("https://adotesuapatinhaapi.azurewebsites.net/verificarCookie", {
+      method: "POST",
+      credentials: "include", 
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      if (data.redirect) {
+        window.location.href = data.redirect;
+      }
+    } else {
+      console.error("Erro ao verificar o cookie:", response.status);
+    }
+  } catch (error) {
+    console.error("Erro na requisição:", error);
+  }
+}
+
 async function verificarCookieTF() {
   try {
     const response = await fetch(
@@ -338,7 +358,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   if (enviarButton2) {
-    enviarButton2.disabled = true;
+    //enviarButton2.disabled = true;
     if (redirecionarUsuario() == "true") {
       window.location.href = "main.html";
     }
@@ -394,9 +414,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       if (redirecionarUsuario() === "true") {
         if (nome2 === "" || telefone === "" || bairro === "0") {
-          loader.style.display = "none";
-          hamster.classList.remove("active");
-          if (pictureImage.childElementCount != 1) {
+          if (pictureImage.childElementCount !== 1) {
             pictureInput.style.borderColor = "#ff2727";
           } else {
             pictureInput.style.borderColor = "#fff";
@@ -411,6 +429,9 @@ document.addEventListener("DOMContentLoaded", function () {
             bairro2.style.borderColor = "#ff2727";
           }
           section.classList.add("active");
+          
+          loader.style.display = "none";
+          hamster.classList.remove("active");
           return;
         }
       } else {
@@ -420,12 +441,10 @@ document.addEventListener("DOMContentLoaded", function () {
           bairro === "0" ||
           email === "" ||
           senha === "" ||
-          !validarEmail(email)
+          !validarEmail(email) ||
+          pictureImage.childElementCount !== 1
         ) {
-          
-          loader.style.display = "none";
-          hamster.classList.remove("active");
-          if (pictureImage.childElementCount != 1) {
+          if (pictureImage.childElementCount !== 1) {
             pictureInput.style.borderColor = "#ff2727";
           } else {
             pictureInput.style.borderColor = "#fff";
@@ -445,6 +464,8 @@ document.addEventListener("DOMContentLoaded", function () {
           if (bairro === "0") {
             bairro2.style.borderColor = "#ff2727";
           }
+          loader.style.display = "none";
+          hamster.classList.remove("active");
           section.classList.add("active");
           return;
         }
@@ -594,9 +615,8 @@ document.addEventListener("DOMContentLoaded", function () {
       
     });
   }
-  
-
   if (loginButton) {
+    verificarCookie();
     const eye = document.querySelector(".feather-eye");
     const eyeoff = document.querySelector(".feather-eye-off");
     const passwordField = document.querySelector("input[type=password]");
