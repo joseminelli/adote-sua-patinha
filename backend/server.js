@@ -78,6 +78,12 @@ app.post("/salvar", (req, res) => {
       }
       const usersData = JSON.parse(userData);
       const user = usersData.usuarios.find((user) => user.id === userId);
+
+      if (!user) {
+        res.status(404).send("Usuário não encontrado");
+        return;
+      }
+
       let jsonData = JSON.parse(petData);
       const newId =
         jsonData.pets.length > 0
@@ -97,7 +103,6 @@ app.post("/salvar", (req, res) => {
         userId: userId,
       };
 
-
       jsonData.pets.push(newPet);
       console.log(JSON.stringify(newPet));
       fs.writeFile("../../pets.json", JSON.stringify(jsonData), (err) => {
@@ -111,6 +116,7 @@ app.post("/salvar", (req, res) => {
     });
   });
 });
+
 
 app.post("/salvarPessoa", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
