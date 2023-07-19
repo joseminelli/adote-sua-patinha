@@ -46,6 +46,7 @@ app.post("/verificarCookieTF", (req, res) => {
 });
 
 app.post("/salvar", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   const logId = verificarAutenticacao(req, res);
   if (!logId) {
     return;
@@ -90,8 +91,6 @@ app.post("/salvar", (req, res) => {
         throw new Error("Usuário não encontrado");
       } else {
         console.log("Usuário encontrado:", usuario);
-        loader.style.display = "none";
-        hamster.classList.remove("active");
       }
 
       const newPet = {
@@ -101,7 +100,7 @@ app.post("/salvar", (req, res) => {
         description: descricao,
         raca: raca,
         raca2: raca,
-        regiao: usuario.regiao, // Atribuir a região do usuário logado ao novo pet
+        regiao: usuario.regiao,
         esp: especie,
         image: imagem,
         userId: userId,
