@@ -58,6 +58,7 @@
   transform: translate(-50%, -50%);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
+#modalNovo2.active .show-modal,
 #modalNovo.active .show-modal {
   display: none;
 }
@@ -72,6 +73,7 @@
   pointer-events: none;
   transition: all 300ms;
 }
+#modalNovo2.active .overlay,
 #modalNovo.active .overlay {
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);

@@ -126,6 +126,15 @@ details:first-child {
   margin-bottom: 1rem;
   text-align: center;
 }
+.cf h2 {
+  margin-bottom: 50px;
+  margin-top: 80px;
+  font-size: 38px;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 2px;
+  line-height: 1.5;
+}
 
 #faq h2 {
   margin: 20px auto 80px;
@@ -264,9 +273,8 @@ details[open] .control-icon-expand {
 }
 
 .github {
-  background-color: #333;
+  background-color: #4267B2;
 }
-
 .github svg {
   width: 25px;
   height: 25px;
@@ -274,7 +282,7 @@ details[open] .control-icon-expand {
 }
 
 .github:hover svg {
-  fill: #333;
+  fill: #4267B2;
 }
 
 .instagram {
@@ -323,6 +331,60 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #053c74;
+}
+
+.cf {
+  max-width: 600px;
+  text-align: center;
+  margin: 20px auto;
+}
+input, textarea {
+  border-radius: 5px;
+  border: 2px solid #165ea8;
+  background: #ffe58b;
+  outline:0;
+  padding: 1em;
+  @include border-radius(8px);
+  display: block;
+  width: 100%;
+  margin-top: 1em;
+  font-family: "Kumbh Sans", sans-serif;
+  @include box-shadow(0 1px 1px rgba(black, 0.1));
+  resize: none;
+ 
+ &:focus {
+    @include box-shadow(0 0px 2px rgba($red, 1)!important);
+ }
+}
+
+
+#input-submit {
+  padding: 1rem;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  color: #e3e6f3;
+  min-width: 355px;
+  border-radius: 5px;
+  margin-top: 1rem;
+  background-color: #165ea8;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+#input-submit:hover {
+  background-color: #0d3e6e;
+}
+#input-submit {
+  color: white; 
+  background: 165ea8;
+  cursor: pointer;
+}
+
+textarea {
+   height: 126px;
+}
+.cf{
+  margin-bottom: 6%;
 }
 @media screen and (max-width: 576px) {
   .box-select {
@@ -461,6 +523,9 @@ button[type="submit"]:hover {
     height: auto;
   }
 
+  .cf {
+    max-width: 400px;
+  }
   .details-container {
     display: flex;
     margin-bottom: 2%;
@@ -597,6 +662,22 @@ button[type="submit"]:hover {
 @media screen and (max-width: 455px) {
   #faq {
     margin-top: 00%;
+  }
+  #input-submit {
+    padding: 1rem;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    color: #e3e6f3;
+    min-width: 240px;
+    border-radius: 5px;
+    margin-top: 1rem;
+    background-color: #165ea8;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  .cf {
+    max-width: 300px;
   }
 }
 

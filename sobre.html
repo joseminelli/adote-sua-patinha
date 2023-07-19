@@ -18,15 +18,25 @@
     <section id="modalNovo">
         <span class="overlay"></span>
         <div class="modal-box">
-            <i class="fa-regular fa-circle-xmark"></i>
-            <h2>Aviso!</h2>
-            <h3>Este site encontra em desenvolvimento, qualquer erro/problema ainda será resolvido</h3>
-            <div class="buttons">
-                <button id="modalbtn" class="close-btn">Fechar</button>
-                <button id="modalbtn2" class="never-btn">Não exibir isso</button>
-            </div>
+          <i class="fa-regular fa-circle-xmark"></i>
+          <h2>Devagar aí</h2>
+          <h3>Você precisa preencher todos os campos antes de enviar</h3>
+          <div  class="buttons">
+            <button id="modalbtn"class="close-btn">Ok, vou verificar</button>
+          </div>
         </div>
-    </section>
+      </section>
+      <section id="modalNovo2">
+        <span class="overlay"></span>
+        <div class="modal-box">
+          <i class="fa-regular fa-circle-check"></i>
+          <h2>Email enviado!</h2>
+          <h3>Faremos o possível para te responder o mais rápido possível</h3>
+          <div  class="buttons">
+            <button id="modalbtn"class="close-btn2">Tudo bem</button>
+          </div>
+        </div>
+      </section>
     <section id="header">
         <a href="main.html"><img src="img/logo.png" class="logo" alt="" /></a>
         <div>
@@ -132,7 +142,7 @@
             </div>
 
             <div class="details-container">
-                <details >
+                <details>
                     <summary>
                         O site já está pronto?
                         <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
@@ -171,7 +181,7 @@
         <div class="details-container">
             <details>
                 <summary>
-                    Como  adotar um animal de estimação?
+                    Como adotar um animal de estimação?
                     <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" />
                     </svg>
@@ -198,7 +208,7 @@
             </details>
         </div>
 
-        <div class="details-container" >
+        <div class="details-container">
             <details>
                 <summary>
                     Tem suporte pós-adoção ou orientações de cuidados?
@@ -209,7 +219,10 @@
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" />
                     </svg>
                 </summary>
-                <p>Infelizmente, não podemos fornecer suporte específico para os processos de adoção, pois não temos controle direto sobre as conversas e procedimentos. No entanto, na seção "Fórum" do nosso site, você pode fazer perguntas e tirar dúvidas relacionadas à adoção de pets. Nossa comunidade está pronta para ajudar e compartilhar informações valiosas.</p>
+                <p>Infelizmente, não podemos fornecer suporte específico para os processos de adoção, pois não temos
+                    controle direto sobre as conversas e procedimentos. No entanto, na seção "Fórum" do nosso site, você
+                    pode fazer perguntas e tirar dúvidas relacionadas à adoção de pets. Nossa comunidade está pronta
+                    para ajudar e compartilhar informações valiosas.</p>
             </details>
             <details>
                 <summary>
@@ -221,17 +234,22 @@
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" />
                     </svg>
                 </summary>
-                <p>Atualmente, o site está disponível apenas para a região de Belo Horizonte, MG. No entanto, temos planos de expandir gradualmente para abranger todo o país no futuro.</p>
+                <p>Atualmente, o site está disponível apenas para a região de Belo Horizonte, MG. No entanto, temos
+                    planos de expandir gradualmente para abranger todo o país no futuro.</p>
             </details>
         </div>
     </section>
+    <div class="cf">
+        <h2>Fale Conosco</h2>
+          <input type="text" id="input-name" placeholder="Nome">
+          <input type="email" id="input-email" placeholder="Email">
+          <textarea type="text" id="input-message" placeholder="Mensagem"></textarea>
+        <button id="input-submit" onclick="mandarEmail()">Enviar Email</button>
+      </div>
     <div class="social-buttons">
-        <a href="https://github.com/joseminelli/adote-sua-patinha" class="social-button github">
-            <svg class="cf-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 0 19 19">
-                <path
-                    d="M9.464 17.178a4.506 4.506 0 0 1-2.013.317 4.29 4.29 0 0 1-2.007-.317.746.746 0 0 1-.277-.587c0-.22-.008-.798-.012-1.567-2.564.557-3.105-1.236-3.105-1.236a2.44 2.44 0 0 0-1.024-1.348c-.836-.572.063-.56.063-.56a1.937 1.937 0 0 1 1.412.95 1.962 1.962 0 0 0 2.682.765 1.971 1.971 0 0 1 .586-1.233c-2.046-.232-4.198-1.023-4.198-4.554a3.566 3.566 0 0 1 .948-2.474 3.313 3.313 0 0 1 .091-2.438s.773-.248 2.534.945a8.727 8.727 0 0 1 4.615 0c1.76-1.193 2.532-.945 2.532-.945a3.31 3.31 0 0 1 .092 2.438 3.562 3.562 0 0 1 .947 2.474c0 3.54-2.155 4.32-4.208 4.548a2.195 2.195 0 0 1 .625 1.706c0 1.232-.011 2.227-.011 2.529a.694.694 0 0 1-.272.587z">
-                </path>
-            </svg>
+        <a href="https://www.facebook.com/people/Adote-Sua-Patinha/pfbid08iJ2mUa2XNpDgfNpQy1Gtn9unpyiJPKbFfy4ZWsSZRc8WHUFPB7pnGE7LTQXZsRFl/"
+            class="social-button github">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
         </a>
         <a href="https://www.instagram.com/adotesuapatinha/" class="social-button instagram">
             <svg width="800px" height="800px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -255,6 +273,7 @@
     "></script>
     <script type="module" src="js/script.js"></script>
     <script src="js/darkmode.js"></script>
+    <script src="js/mandarEmail.js"></script>
     <script type="module" src="js/mural.js"></script>
 </body>
 
