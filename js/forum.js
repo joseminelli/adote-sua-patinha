@@ -307,7 +307,7 @@ function loadPosts() {
 var nomeresp = localStorage.getItem("nome2");
 
 function deletePost(id) {
-  fetch(`https://adotesuapatinhaapi.azurewebsites.net/posts/:${id}`, {
+  fetch(`https://adotesuapatinhaapi.azurewebsites.net/posts/${id}`, {
     method: "DELETE",
   })
     .then((response) => {

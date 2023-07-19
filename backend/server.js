@@ -396,7 +396,7 @@ app.delete("/post/:id", (req, res) => {
     const data = fs.readFileSync("../../posts.json", "utf8");
     posts = JSON.parse(data);
   }
-
+  console.log(posts);
   const postIndex = posts.findIndex((post) => post.id === postId);
 
   if (postIndex !== -1) {
@@ -447,7 +447,7 @@ app.post("/posts/:id/respostas", (req, res) => {
     
     const usuariosData = fs.readFileSync("../../usuarios.json", "utf8");
     const usuarios = JSON.parse(usuariosData);
-    const user = usuarios.find((usuario) => usuario.userId === userId);
+    const user = usuarios.usuarios.find((usuario) => usuario.userId === userId);
     const nomeUsuario = user ? user.name : "";
 
     resposta.autor = nomeUsuario;
