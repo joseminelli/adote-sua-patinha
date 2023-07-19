@@ -230,13 +230,6 @@ button[type="submit"]:hover {
   background: #eee;
 }
 
-.picture:focus {
-  color: none;
-  border: 0px;
-  background: none;
-  box-shadow: none;
-}
-
 @media screen and (max-width: 1800px) {
   .button-container {
     margin-top: 1%;
