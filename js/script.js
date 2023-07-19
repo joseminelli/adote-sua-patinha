@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
           reader.onload = function (e) {
             var imagemBase64 = e.target.result;
 
-            localStorage.setItem("imagempet", imagemBase64);
+            //localStorage.setItem("imagempet", imagemBase64);
 
             var formData = new FormData();
             formData.append("file", imagem);
@@ -449,11 +449,6 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.removeItem("telefone");
       }
 
-      localStorage.setItem("nome2", nome2);
-      localStorage.setItem("idade2", idade2);
-      localStorage.setItem("bairro", bairro);
-      localStorage.setItem("telefone", telefone);
-
       if (inputImagem2.files && inputImagem2.files[0]) {
         var imagem2 = inputImagem2.files[0];
 
@@ -461,7 +456,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         reader.onload = function (e) {
           var imagemBase642 = e.target.result;
-          localStorage.setItem("imagempessoa", imagemBase642);
+          //localStorage.setItem("imagempessoa", imagemBase642);
 
           var formData = new FormData();
           formData.append("file", imagem2);

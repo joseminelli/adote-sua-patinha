@@ -46,7 +46,6 @@ app.post("/verificarCookieTF", (req, res) => {
 });
 
 app.post("/salvar", (req, res) => {
-  res.setHeader("Access-Control-Allow-Credentials", "true");
   const logId = verificarAutenticacao(req, res);
   if (!logId) {
     return;
@@ -63,25 +62,36 @@ app.post("/salvar", (req, res) => {
   const imagem = req.body.imagem;
   const userId = req.cookies["userId"];
 
-  fs.readFile("../../usuarios.json", "utf8", (err, userData) => {
+  fs.readFile("../../pets.json", "utf8", async (err, data) => {
     if (err) {
       console.error(err);
-      res.status(500).send("Erro ao ler o arquivo JSON de usuários");
+      res.status(500).send("Erro ao ler o arquivo JSON");
       return;
     }
 
-    fs.readFile("../../pets.json", "utf8", (err, petData) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send("Erro ao ler o arquivo JSON de pets");
-        return;
-      }
+    let jsonData = JSON.parse(data);
+    const newId =
+      jsonData.pets.length > 0
+        ? jsonData.pets[jsonData.pets.length - 1].id + 1
+        : 1;
 
-      let jsonData = JSON.parse(petData);
-      const newId =
-        jsonData.pets.length > 0
-          ? jsonData.pets[jsonData.pets.length - 1].id + 1
-          : 1;
+    try {
+      const response = await fetch(
+        "https://adotesuapatinhaapi.azurewebsites.net/usuario",
+        { credentials: "include" }
+      );
+
+      if (!response.ok) {
+        throw new Error("Erro ao obter as informações do usuário");
+      }
+      const usuario = await response.json();
+
+      if (!usuario) {
+        throw new Error("Usuário não encontrado");
+      } else {
+        loader.style.display = "none";
+        hamster.classList.remove("active");
+      }
 
       const newPet = {
         id: newId,
@@ -90,17 +100,11 @@ app.post("/salvar", (req, res) => {
         description: descricao,
         raca: raca,
         raca2: raca,
-        regiao: "", 
+        regiao: usuario.regiao, // Atribuir a região do usuário logado ao novo pet
         esp: especie,
         image: imagem,
         userId: userId,
       };
-
-      const usersData = JSON.parse(userData);
-      const user = usersData.usuarios.find((user) => user.id === userId);
-      if (user) {
-        newPet.regiao = user.regiao; 
-      }
 
       jsonData.pets.push(newPet);
       console.log(JSON.stringify(newPet));
@@ -112,9 +116,13 @@ app.post("/salvar", (req, res) => {
           res.send("Dados salvos com sucesso");
         }
       });
-    });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Erro ao obter as informações do usuário");
+    }
   });
 });
+
 
 app.post("/salvarPessoa", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");

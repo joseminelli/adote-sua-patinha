@@ -44,7 +44,6 @@ async function exibirPets() {
     }
 
     const petElementsHTML = await response.text();
-    console.log(petElementsHTML);
     fotopetDiv.innerHTML = petElementsHTML;
 
     if (petElementsHTML == "") {
@@ -105,7 +104,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       loader.style.display = "none";
       hamster.classList.remove("active");
     }
-    console.log(usuario);
     nome.innerHTML = usuario.name;
     idade.innerHTML = `${usuario.age} Anos`;
     bairro1.innerHTML = usuario.regiao;
