@@ -51,12 +51,10 @@ async function exibirPets() {
       fotopetDiv.style.display = "none";
       comPet.style.display = "none";
       semPet.style.display = "run-in";
-      btnDel.style.display = "none";
     } else {
       fotopetDiv.style.display = "flex";
       semPet.style.display = "none";
       comPet.style.display = "run-in";
-      btnDel.style.display = "run-in";
     }
   } catch (error) {
     console.error(error);

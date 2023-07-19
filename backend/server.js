@@ -33,6 +33,15 @@ app.post("/verificarCookie", (req, res) => {
     return;
   }
 });
+app.post("/verificarCookieTF", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  const userId = req.cookies["userId"];
+  if (userId) {
+    res.send("true");
+  } else { 
+    res.send("false");
+  }
+});
 app.post("/salvar", (req, res) => {
   const logId = verificarAutenticacao(req, res);
   if (!logId) {

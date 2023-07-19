@@ -1,6 +1,7 @@
+const e = require("express");
+
 const bar = document.getElementById("bar");
 const close = document.getElementById("close");
-var login = localStorage.getItem("login");
 const nav = document.getElementById("navbar");
 const body2 = document.querySelector("body");
 const hamster = document.getElementById("hamster");
@@ -11,7 +12,6 @@ const iconm = document.getElementById("iconm");
 const modalbtn = document.getElementById("modalbtn");
 const webhookClient =
   "https://discord.com/api/webhooks/1129080775149629441/JxBSeJnGKU-ICbbhkfxKFSjxfHTYo1YvMrkmHO3kBRqqU9eSEhYp7-VHO0525JWehTBk";
-var logado = false;
 
 const section = document.getElementById("modalNovo"),
   overlay = document.querySelector(".overlay"),
@@ -31,6 +31,40 @@ if (bar) {
   });
 }
 
+async function verificarCookieTF() {
+  try {
+    const response = await fetch("https://adotesuapatinhaapi.azurewebsites.net/verificarCookieTF", {
+      method: "POST",
+      credentials: "include", 
+    });
+
+    if (response.ok) {
+      const temcookie = await response.text();
+      if (temcookie == true) {
+        return true;
+      }else{ 
+        return false;
+      }
+    } else {
+      console.error("Erro ao verificar o cookie:", response.status);
+    }
+  } catch (error) {
+    console.error("Erro na requisição:", error);
+  }
+}
+
+async function redirecionarUsuario() {
+  try {
+    const temCookie = await verificarCookieTF();
+    if (temCookie) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.error("Erro ao verificar o cookie:", error);
+  }
+}
 function validarEmail(email) {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regex.test(email);
@@ -46,9 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.location.pathname.endsWith("/index.html") ||
     document.location.pathname.endsWith("/")
   ) {
-    if (login == "true") {
-      window.location.href = "main.html";
-    }
+    redirecionarUsuario();
   }
   if (overlay) {
     overlay.addEventListener("click", () => section.classList.remove("active"));
@@ -69,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (enviarButton) {
-    if (login != "true") {
+    if (redirecionarUsuario() == "false") {
       window.location.href = "index.html";
     }
     enviarButton.addEventListener("click", async function (event) {
@@ -300,8 +332,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error(error);
         alert("Erro ao cadastrar o pet.");
       }
-      logado = true;
-      localStorage.setItem("login", logado);
     });
   }
   if (enviarButton2) {
@@ -309,7 +339,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var selectIdade = document.getElementById("idade2");
     const emailDiv = document.getElementById("emailDiv");
     const senhaDiv = document.getElementById("senhaDiv");
-    if (login == "true") {
+    if (redirecionarUsuario() == "true") {
       emailDiv.style.display = "none";
       senhaDiv.style.display = "none";
     } else {
@@ -354,7 +384,7 @@ document.addEventListener("DOMContentLoaded", function () {
       bairro2.addEventListener("click", function (event) {
         bairro2.style.borderColor = "#165ea8";
       });
-      if (login === "true") {
+      if (redirecionarUsuario() === "true") {
         if (nome2 === "" || telefone === "" || bairro === "0") {
           if (inputImagem2.files && !inputImagem2.files[0]) {
             pictureInput.style.borderColor = "#ff2727";
@@ -560,8 +590,6 @@ document.addEventListener("DOMContentLoaded", function () {
         section.classList.add("active");
         return;
       }
-      logado = true;
-      localStorage.setItem("login", logado);
     });
   }
   if (loginButton) {
@@ -598,8 +626,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => response.json())
         .then((data) => {
           if (data.redirect) {
-            logado = true;
-            localStorage.setItem("login", logado);
             window.location.href = data.redirect;
           } else {
             loader.style.display = "none";
