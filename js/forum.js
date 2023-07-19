@@ -176,8 +176,17 @@ if (login != "true") {
   window.location.href = "index.html";
 }
 
-function loadPosts() {
-  fetch("https://adotesuapatinhaapi.azurewebsites.net/posts")
+  function loadPosts() {
+    const searchInput = document.getElementById("searchInput");
+    const searchTerm = searchInput.value.toLowerCase().trim();
+    searchInput.style.color = "#282828";
+  
+    let url = "https://adotesuapatinhaapi.azurewebsites.net/posts";
+    if (searchTerm) {
+      url += `?search=${searchTerm}`;
+    }
+  
+    fetch(url)
     .then((response) => response.json())
     .then((posts) => {
       var content = document.querySelector(".content");

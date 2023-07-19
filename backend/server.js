@@ -405,6 +405,7 @@ app.get("/posts", (req, res) => {
 
 app.delete("/post/:id", (req, res) => {
   const postId = parseInt(req.params.id);
+  console.log("Requisição DELETE recebida para o post com ID:", req.params.id);
 
   let posts = [];
   if (fs.existsSync("../../posts.json")) {
