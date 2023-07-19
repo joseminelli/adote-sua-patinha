@@ -29,26 +29,6 @@ if (bar) {
   });
 }
 
-async function verificarCookie() {
-  try {
-    const response = await fetch("https://adotesuapatinhaapi.azurewebsites.net/verificarSemCookie", {
-      method: "POST",
-      credentials: "include", 
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      if (data.redirect) {
-        window.location.href = data.redirect;
-      }
-    } else {
-      console.error("Erro ao verificar o cookie:", response.status);
-    }
-  } catch (error) {
-    console.error("Erro na requisição:", error);
-  }
-}
-
 async function verificarCookieTF() {
   try {
     const response = await fetch(
@@ -616,7 +596,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   if (loginButton) {
-    verificarCookie();
     const eye = document.querySelector(".feather-eye");
     const eyeoff = document.querySelector(".feather-eye-off");
     const passwordField = document.querySelector("input[type=password]");

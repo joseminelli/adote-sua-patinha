@@ -22,10 +22,13 @@ modal.style.width = "500px";
 
 async function verificarCookie() {
   try {
-    const response = await fetch("https://adotesuapatinhaapi.azurewebsites.net/verificarSemCookie", {
-      method: "POST",
-      credentials: "include", 
-    });
+    const response = await fetch(
+      "https://adotesuapatinhaapi.azurewebsites.net/verificarSemCookie",
+      {
+        method: "POST",
+        credentials: "include",
+      }
+    );
 
     if (response.ok) {
       const data = await response.json();
@@ -251,6 +254,7 @@ function loadPosts() {
           button.addEventListener("click", function () {
             var id = button.getAttribute("data-id");
             deletePost(id);
+            console.log(id)
           });
         });
 
@@ -261,18 +265,23 @@ function loadPosts() {
             var replyInput = postElement.querySelector(".reply-input");
             var replyText = replyInput.value.trim();
             if (replyText !== "") {
-              var postId = postElement.querySelector(".deleteBtn").getAttribute("data-id");
+              var postId = postElement
+                .querySelector(".deleteBtn")
+                .getAttribute("data-id");
               var replyPost = {
                 descricao: replyText,
               };
-          
-              fetch(`https://adotesuapatinhaapi.azurewebsites.net/posts/${postId}/respostas`, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(replyPost),
-              })
+
+              fetch(
+                `https://adotesuapatinhaapi.azurewebsites.net/posts/${postId}/respostas`,
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(replyPost),
+                }
+              )
                 .then((response) => {
                   if (response.ok) {
                     console.log("Resposta enviada com sucesso");
@@ -298,7 +307,7 @@ function loadPosts() {
 var nomeresp = localStorage.getItem("nome2");
 
 function deletePost(id) {
-  fetch(`https://adotesuapatinhaapi.azurewebsites.net/posts/${id}`, {
+  fetch(`https://adotesuapatinhaapi.azurewebsites.net/posts/:${id}`, {
     method: "DELETE",
   })
     .then((response) => {
@@ -380,7 +389,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchTerm = searchInput.value.toLowerCase().trim();
     searchInput.style.color = "#282828";
 
-    fetch(`https://adotesuapatinhaapi.azurewebsites.net/posts?search=${searchTerm}`)
+    fetch(
+      `https://adotesuapatinhaapi.azurewebsites.net/posts?search=${searchTerm}`
+    )
       .then((response) => response.json())
       .then((posts) => {
         var content = document.querySelector(".content");
@@ -389,12 +400,8 @@ document.addEventListener("DOMContentLoaded", function () {
         content.innerHTML = "";
 
         if (posts.length === 0) {
-          const noPostsMessage = document.getElementById("noPostsMessage");
-          if (posts.length === 0) {
-            noPostsMessage.innerHTML = "Não há publicações";
-          } else {
-            noPostsMessage.innerHTML = "Não há publicações correspondentes à busca";
-          }
+          noPostsMessage.innerHTML =
+            "Não há publicações correspondentes à busca";
           content.style.display = "none";
         } else {
           noPostsMessage.innerHTML = "";
@@ -429,11 +436,11 @@ document.addEventListener("DOMContentLoaded", function () {
             content.appendChild(postElement);
 
             if (post.respostas && post.respostas.length <= 1) {
-              var repliesContainer = document.createElement("div")
+              var repliesContainer = document.createElement("div");
               repliesContainer.className = "replies-container";
               post.respostas.forEach(function (resposta) {
                 var replyElement = document.createElement("div");
-                replyElement.className = "reply minimizado"; 
+                replyElement.className = "reply minimizado";
                 replyElement.innerHTML =
                   "<p id='nomerply'>" +
                   resposta.autor +
@@ -460,6 +467,7 @@ document.addEventListener("DOMContentLoaded", function () {
             button.addEventListener("click", function () {
               var id = button.getAttribute("data-id");
               deletePost(id);
+              console.log(id)
             });
           });
 
@@ -470,18 +478,23 @@ document.addEventListener("DOMContentLoaded", function () {
               var replyInput = postElement.querySelector(".reply-input");
               var replyText = replyInput.value.trim();
               if (replyText !== "") {
-                var postId = postElement.querySelector(".deleteBtn").getAttribute("data-id");
+                var postId = postElement
+                  .querySelector(".deleteBtn")
+                  .getAttribute("data-id");
                 var replyPost = {
                   descricao: replyText,
                 };
 
-                fetch(`https://adotesuapatinhaapi.azurewebsites.net/posts/${postId}/respostas`, {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify(replyPost),
-                })
+                fetch(
+                  `https://adotesuapatinhaapi.azurewebsites.net/posts/${postId}/respostas`,
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(replyPost),
+                  }
+                )
                   .then((response) => {
                     if (response.ok) {
                       console.log("Resposta enviada com sucesso");

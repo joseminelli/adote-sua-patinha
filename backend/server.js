@@ -444,6 +444,14 @@ app.post("/posts/:id/respostas", (req, res) => {
         : 1;
     resposta.id = respostaId;
 
+    
+    const usuariosData = fs.readFileSync("../../usuarios.json", "utf8");
+    const usuarios = JSON.parse(usuariosData);
+    const user = usuarios.find((usuario) => usuario.userId === userId);
+    const nomeUsuario = user ? user.name : "";
+
+    resposta.autor = nomeUsuario;
+
     posts[postIndex].respostas.push(resposta);
 
     fs.writeFileSync("../../posts.json", JSON.stringify(posts));
@@ -453,10 +461,3 @@ app.post("/posts/:id/respostas", (req, res) => {
     res.sendStatus(404);
   }
 });
-
-
-
-
-
-
-
