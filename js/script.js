@@ -362,6 +362,8 @@ document.addEventListener("DOMContentLoaded", function () {
     enviarButton2.addEventListener("click", function (event) {
       event.preventDefault();
   
+      loader.style.display = "flex";
+      hamster.classList.add("active");
       const pictureImage = document.querySelector(".picture__image");
       var nome2 = document.getElementById("input2").value;
       var idade2 = document.getElementById("idade2").value;
@@ -392,6 +394,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       if (redirecionarUsuario() === "true") {
         if (nome2 === "" || telefone === "" || bairro === "0") {
+          loader.style.display = "none";
+          hamster.classList.remove("active");
           if (pictureImage.childElementCount != 1) {
             pictureInput.style.borderColor = "#ff2727";
           } else {
@@ -418,6 +422,9 @@ document.addEventListener("DOMContentLoaded", function () {
           senha === "" ||
           !validarEmail(email)
         ) {
+          
+          loader.style.display = "none";
+          hamster.classList.remove("active");
           if (pictureImage.childElementCount != 1) {
             pictureInput.style.borderColor = "#ff2727";
           } else {
@@ -442,23 +449,12 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
       }
-      var imagemdapessoa = localStorage.getItem("imagempessoa");
-      if (imagemdapessoa != null) {
-        console.log("entrou");
-        localStorage.removeItem("imagempessoa");
-        localStorage.removeItem("nome2");
-        localStorage.removeItem("idade2");
-        localStorage.removeItem("bairro");
-        localStorage.removeItem("telefone");
-      }
   
       if (pictureImage.childElementCount === 1) {
         const imgElement = pictureImage.querySelector("#picture__img");
         if (imgElement) {
           const imagem2 = imgElement.src;
-          console.log(imagem2);
       
-          // Função para converter a imagem em base64 para um Blob
           function dataURItoBlob(dataURI) {
             const byteString = atob(dataURI.split(",")[1]);
             const mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
@@ -490,7 +486,7 @@ document.addEventListener("DOMContentLoaded", function () {
               return response.json();
             })
             .then(function (discordResponse) {
-              var imageUrl = discordResponse.attachments[0].url; // Obtém a URL da imagem enviada para o Discord
+              var imageUrl = discordResponse.attachments[0].url; 
       
               var data = {
                 nome: nome2,
