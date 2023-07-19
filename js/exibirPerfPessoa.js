@@ -8,20 +8,29 @@ const fotopetDiv = document.getElementById("fotoPet2");
 const hamster = document.getElementById("hamster");
 const loader = document.getElementById("loader");
 const btnDel = document.getElementById("btnDel");
+const comPet = document.getElementById("spet");
+const semPet = document.getElementById("npet");
 var imgElement2 = document.getElementById("fotopet");
 
-function checkCookieExists(cookieName) {
-  const cookies = document.cookie.split("; ");
-  for (const cookie of cookies) {
-    const [name, value] = cookie.split("=");
-    if (name === cookieName) {
-      return true;
+async function verificarCookie() {
+  try {
+    const response = await fetch("https://seu-servidor.com/verificarCookie", {
+      method: "POST",
+      credentials: "include", 
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      if (data.redirect) {
+        window.location.href = data.redirect;
+      }
+    } else {
+      console.error("Erro ao verificar o cookie:", response.status);
     }
+  } catch (error) {
+    console.error("Erro na requisição:", error);
   }
-  return false;
 }
-const cookieName = "userId";
-const cookieExists = checkCookieExists(cookieName);
 
 async function exibirPets() {
   try {
@@ -75,14 +84,12 @@ function excluirPet(petId) {
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
-  
+
   exibirPets();
   loader.style.display = "flex";
   hamster.classList.add("active");
 
   // const editar = document.getElementById("editar");
-  const comPet = document.getElementById("spet");
-  const semPet = document.getElementById("npet");
 
   try {
     const response = await fetch(
@@ -112,9 +119,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     console.error(error);
   }
 
-  if (login != "true") {
-    window.location.href = "index.html";
-  }
+  verificarCookie();
 
   /*editar.addEventListener("click", function () {
     window.location.href = "cadastro1.html";

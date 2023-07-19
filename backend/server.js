@@ -25,7 +25,14 @@ app.use(
     origin: ['https://adotesuapatinha.com', 'http://127.0.0.1:5500/']
   })
 );
-
+app.post("/verificarCookie", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  const userId = req.cookies["userId"];
+  if (!userId) {
+    res.json({ redirect: "/index.html" });
+    return;
+  }
+});
 app.post("/salvar", (req, res) => {
   const logId = verificarAutenticacao(req, res);
   if (!logId) {
