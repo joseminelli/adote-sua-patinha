@@ -77,7 +77,7 @@ app.post("/salvar", (req, res) => {
         return;
       }
       const usersData = JSON.parse(userData);
-      const user = usersData.usuarios.find((user) => user.id === userId);
+      const user = usersData.usuarios.find((user) => user.id === parseInt(userId));
 
       if (!user) {
         res.status(404).send("Usuário não encontrado");
