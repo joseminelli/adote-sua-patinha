@@ -13,21 +13,29 @@ closeBtn2.addEventListener("click", () => {
 });
 
 function getUserIdFromCookie() {
-  const cookies = document.cookie.split(";"); // Separa os cookies em um array
+  const cookies = document.cookie.split(";"); 
 
   for (let i = 0; i < cookies.length; i++) {
     const cookie = cookies[i].trim();
 
-    // Verifica se o cookie começa com o nome "userId"
     if (cookie.startsWith("userId=")) {
-      // Extrai o valor do cookie após o sinal de igual
       const userId = cookie.substring("userId=".length);
       return userId;
     }
   }
 
-  return null; // Retorna null se o cookie "userId" não for encontrado
+  return null; 
 }
+
+const response = await fetch(
+  "https://adotesuapatinhaapi.azurewebsites.net/usuario",
+  { credentials: "include" }
+);
+if (!response.ok) {
+  throw new Error("Erro ao obter as informações do usuário");
+}
+const usuario = await response.json();
+
 const userId = getUserIdFromCookie();
 function mandarEmail() {
   var params = {

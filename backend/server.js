@@ -347,3 +347,107 @@ app.delete("/excluirPet/:petId", (req, res) => {
   });
 });
 
+app.post("/salvarPost", (req, res) => {
+  const post = req.body;
+
+  let posts = [];
+  if (fs.existsSync("../../posts.json")) {
+    const data = fs.readFileSync("../../posts.json", "utf8");
+    posts = JSON.parse(data);
+  }
+
+  const userId = req.cookies.userId;
+  post.userId = userId;
+
+  const postId = posts.length > 0 ? posts[posts.length - 1].id + 1 : 1;
+  post.id = postId;
+
+  posts.push(post);
+
+  fs.writeFileSync("../../posts.json", JSON.stringify(posts));
+
+  res.sendStatus(200);
+});
+
+app.get("/posts", (req, res) => {
+  let posts = [];
+  if (fs.existsSync("../../posts.json")) {
+    const data = fs.readFileSync("../../posts.json", "utf8");
+    posts = JSON.parse(data);
+  }
+
+  res.json(posts);
+});
+
+app.delete("/post/:id", (req, res) => {
+  const postId = parseInt(req.params.id);
+
+  let posts = [];
+  if (fs.existsSync("../../posts.json")) {
+    const data = fs.readFileSync("../../posts.json", "utf8");
+    posts = JSON.parse(data);
+  }
+
+  const postIndex = posts.findIndex((post) => post.id === postId);
+
+  if (postIndex !== -1) {
+    
+    const userId = req.cookies.userId;
+    if (posts[postIndex].userId === userId) {
+      
+      posts.splice(postIndex, 1);
+
+      
+      fs.writeFileSync("../../posts.json", JSON.stringify(posts));
+
+      res.sendStatus(200);
+    } else {
+      res.sendStatus(403); 
+    }
+  } else {
+    res.sendStatus(404); 
+  }
+});
+
+app.post("/posts/:id/respostas", (req, res) => {
+  const postId = parseInt(req.params.id);
+  const resposta = req.body;
+
+  let posts = [];
+  if (fs.existsSync("../../posts.json")) {
+    const data = fs.readFileSync("../../posts.json", "utf8");
+    posts = JSON.parse(data);
+  }
+
+  const postIndex = posts.findIndex((post) => post.id === postId);
+
+  if (postIndex !== -1) {
+    const userId = req.cookies.userId;
+    resposta.userId = userId;
+
+    if (!posts[postIndex].respostas) {
+      posts[postIndex].respostas = [];
+    }
+
+    const respostaId =
+      posts[postIndex].respostas.length > 0
+        ? posts[postIndex].respostas[posts[postIndex].respostas.length - 1].id + 1
+        : 1;
+    resposta.id = respostaId;
+
+    posts[postIndex].respostas.push(resposta);
+
+    fs.writeFileSync("../../posts.json", JSON.stringify(posts));
+
+    res.sendStatus(200);
+  } else {
+    res.sendStatus(404);
+  }
+});
+
+
+
+
+
+
+

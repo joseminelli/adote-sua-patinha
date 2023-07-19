@@ -72,7 +72,7 @@ if (overlay) {
     cancelbtn.style.display = "inline-block";
     modalbtn.style.display = "inline-block";
     iconmodal.style.display = "none";
-    modalh2.innerHTML = "Detahes do post";
+    modalh2.innerHTML = "Detalhes do post";
     modalp.style.display = "block";
   }
 
@@ -90,12 +90,26 @@ if (overlay) {
         categoria: categoriaInput,
         descricao: descInput,
       };
-      var posts = JSON.parse(localStorage.getItem("posts")) || [];
-      posts.push(post);
-      localStorage.setItem("posts", JSON.stringify(posts));
 
-      loadPosts();
-      showModalSuccess();
+      fetch("https://adotesuapatinhaapi.azurewebsites.net/salvarPost", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(post),
+      })
+        .then((response) => {
+          if (response.ok) {
+            console.log("Post enviado com sucesso");
+            loadPosts();
+            showModalSuccess();
+          } else {
+            console.log("Erro ao enviar o post");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     } else {
       iconmodal.style.display = "none";
       section.classList.add("active");
@@ -140,119 +154,150 @@ if (login != "true") {
 }
 
 function loadPosts() {
-  var posts = JSON.parse(localStorage.getItem("posts")) || [];
+  fetch("https://adotesuapatinhaapi.azurewebsites.net/posts")
+    .then((response) => response.json())
+    .then((posts) => {
+      var content = document.querySelector(".content");
+      var noPostsMessage = document.getElementById("noPostsMessage");
 
-  var content = document.querySelector(".content");
-  var noPostsMessage = document.getElementById("noPostsMessage");
+      content.innerHTML = "";
 
-  content.innerHTML = "";
+      if (posts.length === 0) {
+        noPostsMessage.innerHTML = "Não há publicações";
+        content.style.display = "none";
+      } else {
+        noPostsMessage.innerText = "";
+        content.style.display = "block";
 
-  if (posts.length === 0) {
-    noPostsMessage.innerHTML = "Não há publicações";
-    content.style.display = "none";
-  } else {
-    noPostsMessage.innerText = "";
-    content.style.display = "block";
-
-    posts.forEach(function (post, index) {
-      var postElement = document.createElement("div");
-      postElement.className = "post";
-      postElement.innerHTML =
-        '<button class="deleteBtn" data-index="' +
-        index +
-        '"><b>X</b></button>' +
-        "<h3 id='forumh3'>" +
-        post.titulo +
-        "</h3>" +
-        "<p>Categoria: " +
-        post.categoria +
-        "</p>" +
-        "<p>" +
-        post.descricao +
-        "</p>";
-
-      var replyContainer = document.createElement("div");
-      replyContainer.className = "reply-container";
-      replyContainer.className = "reply-input-container";
-      replyContainer.innerHTML =
-        '<p class="modalp2">Responder:</p>' +
-        '<input type="text" class="inputmodal2 reply-input" placeholder="Digite sua resposta">' +
-        '<button id="responder" class="pure-material-button-contained active reply-btn">Responder</button>';
-
-      postElement.appendChild(replyContainer);
-
-      content.appendChild(postElement);
-
-      if (post.respostas && post.respostas.length > 0) {
-        var repliesContainer = document.createElement("div");
-        repliesContainer.className = "replies-container";
-
-        post.respostas.forEach(function (resposta) {
-          var replyElement = document.createElement("div");
-          replyElement.className = "reply"; 
-          replyElement.innerHTML =
-            "<p id='nomerply'>" +
-            nomeresp +
-            " respondeu:" +
+        posts.forEach(function (post, index) {
+          var postElement = document.createElement("div");
+          postElement.className = "post";
+          postElement.innerHTML =
+            '<button class="deleteBtn" data-id="' +
+            post.id +
+            '"><b>X</b></button>' +
+            "<h3 id='forumh3'>" +
+            post.titulo +
+            "</h3>" +
+            "<p>Categoria: " +
+            post.categoria +
             "</p>" +
-            "<p id='descrply'>" +
-            resposta.descricao +
+            "<p>" +
+            post.descricao +
             "</p>";
 
-          repliesContainer.appendChild(replyElement);
+          var replyContainer = document.createElement("div");
+          replyContainer.className = "reply-container";
+          replyContainer.className = "reply-input-container";
+          replyContainer.innerHTML =
+            '<p class="modalp2">Responder:</p>' +
+            '<input type="text" class="inputmodal2 reply-input" placeholder="Digite sua resposta">' +
+            '<button id="responder" class="pure-material-button-contained active reply-btn">Responder</button>';
+
+          postElement.appendChild(replyContainer);
+
+          content.appendChild(postElement);
+
+          if (post.respostas && post.respostas.length > 0) {
+            var repliesContainer = document.createElement("div");
+            repliesContainer.className = "replies-container";
+
+            post.respostas.forEach(function (resposta) {
+              var replyElement = document.createElement("div");
+              replyElement.className = "reply";
+              replyElement.innerHTML =
+                "<p id='nomerply'>" +
+                resposta.autor +
+                " respondeu:" +
+                "</p>" +
+                "<p id='descrply'>" +
+                resposta.descricao +
+                "</p>";
+
+              repliesContainer.appendChild(replyElement);
+            });
+
+            postElement.appendChild(repliesContainer);
+
+            if (post.respostas.length > 1) {
+              var replyButton = createReplyButton(repliesContainer);
+              replyContainer.appendChild(replyButton);
+            }
+          }
         });
 
-        postElement.appendChild(repliesContainer);
+        var deleteButtons = document.querySelectorAll(".deleteBtn");
+        deleteButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            var id = button.getAttribute("data-id");
+            deletePost(id);
+          });
+        });
 
-        if (post.respostas.length > 1) {
-          var replyButton = createReplyButton(repliesContainer);
-          replyContainer.appendChild(replyButton);
-        }
+        var replyButtons = document.querySelectorAll(".reply-btn");
+        replyButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            var postElement = button.parentNode.parentNode;
+            var replyInput = postElement.querySelector(".reply-input");
+            var replyText = replyInput.value.trim();
+            if (replyText !== "") {
+              var postId = postElement.querySelector(".deleteBtn").getAttribute("data-id");
+              var replyPost = {
+                descricao: replyText,
+              };
+          
+              fetch(`https://adotesuapatinhaapi.azurewebsites.net/posts/${postId}/respostas`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(replyPost),
+              })
+                .then((response) => {
+                  if (response.ok) {
+                    console.log("Resposta enviada com sucesso");
+                    loadPosts();
+                    replyInput.value = "";
+                  } else {
+                    console.log("Erro ao enviar a resposta");
+                  }
+                })
+                .catch((error) => {
+                  console.error(error);
+                });
+            }
+          });
+        });
       }
+    })
+    .catch((error) => {
+      console.error(error);
     });
-
-    var deleteButtons = document.querySelectorAll(".deleteBtn");
-    deleteButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        var index = parseInt(button.getAttribute("data-index"));
-        deletePost(index);
-      });
-    });
-
-    var replyButtons = document.querySelectorAll(".reply-btn");
-    replyButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        var postElement = button.parentNode.parentNode;
-        var replyInput = postElement.querySelector(".reply-input");
-        var replyText = replyInput.value.trim();
-        if (replyText !== "") {
-          var postIndex = Array.from(content.children).indexOf(postElement);
-          var posts = JSON.parse(localStorage.getItem("posts")) || [];
-          var post = posts[postIndex];
-          if (!post.respostas) {
-            post.respostas = [];
-          }
-          var replyPost = {
-            descricao: replyText,
-          };
-          post.respostas.push(replyPost);
-          localStorage.setItem("posts", JSON.stringify(posts));
-          replyInput.value = "";
-          loadPosts();
-        }
-      });
-    });
-  }
 }
 
 var nomeresp = localStorage.getItem("nome2");
 
-function deletePost(index) {
-  var posts = JSON.parse(localStorage.getItem("posts")) || [];
-  posts.splice(index, 1);
-  localStorage.setItem("posts", JSON.stringify(posts));
-  loadPosts();
+function deletePost(id) {
+  fetch(`https://adotesuapatinhaapi.azurewebsites.net/posts/${id}`, {
+    method: "DELETE",
+  })
+    .then((response) => {
+      if (response.ok) {
+        console.log("Post excluído com sucesso");
+        loadPosts();
+      } else if (response.status === 403) {
+        console.log("Acesso negado para excluir o post");
+      } else if (response.status === 404) {
+        console.log("Post não encontrado");
+      } else {
+        console.log("Erro ao excluir o post");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
+
 function createReplyButton(repliesContainer) {
   var replyButton = document.createElement("button");
   replyButton.className = "reply-toggle-btn";
@@ -313,118 +358,128 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("searchInput");
     const searchTerm = searchInput.value.toLowerCase().trim();
     searchInput.style.color = "#282828";
-    const posts = JSON.parse(localStorage.getItem("posts")) || [];
-    const filteredPosts = posts.filter(function (post) {
-      const titulo = post.titulo.toLowerCase();
-      const categoria = post.categoria.toLowerCase();
-      const descricao = post.descricao.toLowerCase();
-      return (
-        titulo.includes(searchTerm) ||
-        categoria.includes(searchTerm) ||
-        descricao.includes(searchTerm)
-      );
-    });
 
-    var content = document.querySelector(".content");
-    content.innerHTML = "";
+    fetch(`https://adotesuapatinhaapi.azurewebsites.net/posts?search=${searchTerm}`)
+      .then((response) => response.json())
+      .then((posts) => {
+        var content = document.querySelector(".content");
+        var noPostsMessage = document.getElementById("noPostsMessage");
 
-    if (filteredPosts.length === 0) {
-      const noPostsMessage = document.getElementById("noPostsMessage");
-      if (posts.length === 0) {
-        noPostsMessage.innerHTML = "Não há publicações";
-      } else {
-        noPostsMessage.innerHTML = "Não há publicações correspondentes à busca";
-      }
-      content.style.display = "none";
-    } else {
-      noPostsMessage.innerHTML = "";
-      content.style.display = "block";
-      filteredPosts.forEach(function (post, index) {
-        var postElement = document.createElement("div");
-        postElement.className = "post";
-        postElement.innerHTML =
-          '<button class="deleteBtn" data-index="' +
-          index +
-          '"><b>X</b></button>' +
-          "<h3 id='forumh3'>" +
-          post.titulo +
-          "</h3>" +
-          "<p>Categoria: " +
-          post.categoria +
-          "</p>" +
-          "<p>" +
-          post.descricao +
-          "</p>";
+        content.innerHTML = "";
 
-        var replyContainer = document.createElement("div");
-        replyContainer.className = "reply-container";
-        replyContainer.innerHTML =
-          '<p class="modalp2">Responder:</p>' +
-          '<input type="text" class="inputmodal2 reply-input" placeholder="Digite sua resposta">' +
-          '<button id="responder" class="pure-material-button-contained active reply-btn">Responder</button>';
+        if (posts.length === 0) {
+          const noPostsMessage = document.getElementById("noPostsMessage");
+          if (posts.length === 0) {
+            noPostsMessage.innerHTML = "Não há publicações";
+          } else {
+            noPostsMessage.innerHTML = "Não há publicações correspondentes à busca";
+          }
+          content.style.display = "none";
+        } else {
+          noPostsMessage.innerHTML = "";
+          content.style.display = "block";
 
-        postElement.appendChild(replyContainer);
-
-        content.appendChild(postElement);
-
-        if (post.respostas && post.respostas.length <= 1) {
-          var repliesContainer = document.createElement("div")
-          repliesContainer.className = "replies-container";
-          post.respostas.forEach(function (resposta) {
-            var replyElement = document.createElement("div");
-            replyElement.className = "reply minimizado"; 
-            replyElement.innerHTML =
-              "<p id='nomerply'>" +
-              nomeresp +
-              " respondeu:" +
+          posts.forEach(function (post) {
+            var postElement = document.createElement("div");
+            postElement.className = "post";
+            postElement.innerHTML =
+              '<button class="deleteBtn" data-id="' +
+              post.id +
+              '"><b>X</b></button>' +
+              "<h3 id='forumh3'>" +
+              post.titulo +
+              "</h3>" +
+              "<p>Categoria: " +
+              post.categoria +
               "</p>" +
-              "<p id='descrply'>" +
-              resposta.descricao +
+              "<p>" +
+              post.descricao +
               "</p>";
 
-            repliesContainer.appendChild(replyElement);
+            var replyContainer = document.createElement("div");
+            replyContainer.className = "reply-container";
+            replyContainer.innerHTML =
+              '<p class="modalp2">Responder:</p>' +
+              '<input type="text" class="inputmodal2 reply-input" placeholder="Digite sua resposta">' +
+              '<button id="responder" class="pure-material-button-contained active reply-btn">Responder</button>';
+
+            postElement.appendChild(replyContainer);
+
+            content.appendChild(postElement);
+
+            if (post.respostas && post.respostas.length <= 1) {
+              var repliesContainer = document.createElement("div")
+              repliesContainer.className = "replies-container";
+              post.respostas.forEach(function (resposta) {
+                var replyElement = document.createElement("div");
+                replyElement.className = "reply minimizado"; 
+                replyElement.innerHTML =
+                  "<p id='nomerply'>" +
+                  resposta.autor +
+                  " respondeu:" +
+                  "</p>" +
+                  "<p id='descrply'>" +
+                  resposta.descricao +
+                  "</p>";
+
+                repliesContainer.appendChild(replyElement);
+              });
+
+              postElement.appendChild(repliesContainer);
+
+              if (post.respostas.length > 1) {
+                var replyButton = createReplyButton(repliesContainer);
+                repliesContainer.appendChild(replyButton);
+              }
+            }
           });
 
-          postElement.appendChild(repliesContainer);
+          var deleteButtons = document.querySelectorAll(".deleteBtn");
+          deleteButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+              var id = button.getAttribute("data-id");
+              deletePost(id);
+            });
+          });
 
-          if (post.respostas.length > 1) {
-            var replyButton = createReplyButton(repliesContainer);
-            repliesContainer.appendChild(replyButton);
-          }
+          var replyButtons = document.querySelectorAll(".reply-btn");
+          replyButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+              var postElement = button.parentNode.parentNode;
+              var replyInput = postElement.querySelector(".reply-input");
+              var replyText = replyInput.value.trim();
+              if (replyText !== "") {
+                var postId = postElement.querySelector(".deleteBtn").getAttribute("data-id");
+                var replyPost = {
+                  descricao: replyText,
+                };
+
+                fetch(`https://adotesuapatinhaapi.azurewebsites.net/posts/${postId}/respostas`, {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(replyPost),
+                })
+                  .then((response) => {
+                    if (response.ok) {
+                      console.log("Resposta enviada com sucesso");
+                      loadPosts();
+                      replyInput.value = "";
+                    } else {
+                      console.log("Erro ao enviar a resposta");
+                    }
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
+              }
+            });
+          });
         }
+      })
+      .catch((error) => {
+        console.error(error);
       });
-
-      var deleteButtons = document.querySelectorAll(".deleteBtn");
-      deleteButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-          var index = parseInt(button.getAttribute("data-index"));
-          deletePost(index);
-        });
-      });
-
-      var replyButtons = document.querySelectorAll(".reply-btn");
-      replyButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-          var postElement = button.parentNode.parentNode;
-          var replyInput = postElement.querySelector(".reply-input");
-          var replyText = replyInput.value.trim();
-          if (replyText !== "") {
-            var postIndex = Array.from(content.children).indexOf(postElement);
-            var posts = JSON.parse(localStorage.getItem("posts")) || [];
-            var post = posts[postIndex];
-            if (!post.respostas) {
-              post.respostas = [];
-            }
-            var replyPost = {
-              descricao: replyText,
-            };
-            post.respostas.push(replyPost);
-            localStorage.setItem("posts", JSON.stringify(posts));
-            replyInput.value = "";
-            loadPosts();
-          }
-        });
-      });
-    }
   });
 });
