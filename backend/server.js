@@ -96,7 +96,6 @@ app.post("/salvar", (req, res) => {
         age: idade,
         description: descricao,
         raca: raca,
-        raca2: raca,
         regiao: user.regiao, 
         esp: especie,
         image: imagem,

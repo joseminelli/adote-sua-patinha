@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="css/cadastro1.css" />
     <link rel="stylesheet" href="css/customalert.css" />
     <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/loader.css" />
+    <link rel="stylesheet" href="./node_modules/cropperjs/dist/cropper.min.css" />
 </head>
 
 <body>
@@ -39,14 +41,14 @@
     <section id="modalNovo">
         <span class="overlay"></span>
         <div class="modal-box">
-          <i id="iconm" class="fa-regular fa-circle-xmark"></i>
-          <h2 id="titulom">Formulário não enviado</h2>
-          <h3 id="descm">Você precisa preencher todos os campos e colocar uma imagem</h3>
-          <div  class="buttons">
-            <button id="modalbtn"class="close-btn">Ok, vou verificar</button>
-          </div>
+            <i id="iconm" class="fa-regular fa-circle-xmark"></i>
+            <h2 id="titulom">Formulário não enviado</h2>
+            <h3 id="descm">Você precisa preencher todos os campos e colocar uma imagem</h3>
+            <div class="buttons">
+                <button id="modalbtn" class="close-btn">Ok, vou verificar</button>
+            </div>
         </div>
-      </section>
+    </section>
     <section id="header">
         <a href="index.html"><img src="img/logo.png" class="logo" alt="" /></a>
         <div>
@@ -64,11 +66,17 @@
         <div id="mobile"></div>
     </section>
     <div id="imagem">
-        <label class="cropped1 picture" id="picture" for="picture__input" tabindex="0">
-            <span class="picture__image"></span>
-            <input type="file" name="picture__input" id="picture__input" />
+        <label class="picture" id="picture" tabindex="0">
+          <span id="picture__image" class="picture__image"></span>
         </label>
-    </div>
+        <input type="file" name="picture__input" id="picture__input" />
+      </div>
+      
+      <div class="button-container">
+        <button id="select-image-btn" type="submit2">Selecionar Imagem</button>
+        <button id="crop-button" type="submit2">Recortar</button>
+      </div>
+      
     <section id="box">
         <div class="content">
             <form id="form">
@@ -111,6 +119,7 @@
         </div>
     </section>
     <button id="enviar2" type="submit" form="form">✓ㅤEnviar</button>
+    <script src="./node_modules/cropperjs/dist/cropper.min.js"></script>
     <script src="js/input.js"></script>
     <script type="module" src="js/script.js"></script>
     <script src="js/darkmode.js"></script>

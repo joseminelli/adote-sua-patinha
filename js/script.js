@@ -335,6 +335,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   if (enviarButton2) {
+    enviarButton2.disabled = true;
     if (redirecionarUsuario() == "true") {
       window.location.href = "main.html";
     }
@@ -355,11 +356,9 @@ document.addEventListener("DOMContentLoaded", function () {
       option.textContent = i;
       selectIdade.appendChild(option);
     }
-
     enviarButton2.addEventListener("click", function (event) {
       event.preventDefault();
 
-      var inputImagem2 = document.getElementById("picture__input");
       var nome2 = document.getElementById("input2").value;
       var idade2 = document.getElementById("idade2").value;
       var bairro = document.getElementById("bairro2").value;
@@ -453,10 +452,9 @@ document.addEventListener("DOMContentLoaded", function () {
         var imagem2 = inputImagem2.files[0];
 
         var reader = new FileReader();
-
+      
         reader.onload = function (e) {
-          var imagemBase642 = e.target.result;
-          //localStorage.setItem("imagempessoa", imagemBase642);
+          
 
           var formData = new FormData();
           formData.append("file", imagem2);

@@ -144,6 +144,7 @@ h1 {
 .inputsn:focus {
   border-color: #165ea8;
 }
+
 button[type="submit"] {
   padding: 1rem;
   font-size: 1rem;
@@ -153,6 +154,26 @@ button[type="submit"] {
   margin-top: -20%;
   color: #e3e6f3;
   max-width: 115px;
+  border-radius: 5px;
+  background-color: #165ea8;
+  cursor: pointer;
+}
+.button-container {
+  margin-top: 1%;
+  display: flex;
+  justify-content: center;
+}
+#crop-button {
+  margin-left: 5%;
+}
+button[type="submit2"] {
+  padding: 0.9rem;
+  font-size: 0.9rem;
+  outline: none;
+  border: none;
+  color: #e3e6f3;
+  max-width: 105px;
+  max-height: auto;
   border-radius: 5px;
   background-color: #165ea8;
   cursor: pointer;
@@ -217,6 +238,39 @@ button[type="submit"]:hover {
 }
 
 @media screen and (max-width: 1800px) {
+  .button-container {
+    margin-top: 1%;
+    display: flex;
+    justify-content: center;
+  }
+  .picture {
+    width: 160px;
+    height: 160px;
+  }
+  #imagem img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    justify-content: center;
+    object-fit: cover;
+    align-items: center;
+    display: flex;
+  }
+  #crop-button {
+    margin-left: 5%;
+  }
+  button[type="submit2"] {
+    padding: 0.8rem;
+    font-size: 0.8rem;
+    outline: none;
+    border: none;
+    color: #e3e6f3;
+    max-width: 105px;
+    max-height: auto;
+    border-radius: 5px;
+    background-color: #165ea8;
+    cursor: pointer;
+  }
   .content {
     background-color: #ffe58b;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.06);
@@ -224,16 +278,16 @@ button[type="submit"]:hover {
     border-radius: 10px;
     width: 400px;
     margin-top: 0%;
-    max-height: 400px;
+    max-height: 370px;
     overflow-y: scroll;
   }
   button[type="submit"] {
     display: flex;
-    margin-top: -3%;
+    margin-top: -5%;
   }
   #box {
     margin-top: 1%;
-    height: 400px;
+    height: 390px;
   }
 }
 @media screen and (max-width: 1079px) {
@@ -260,6 +314,12 @@ button[type="submit"]:hover {
   #box {
     margin-top: 1%;
     height: 500px;
+  }
+
+  .button-container {
+    margin-top: 3%;
+    display: flex;
+    justify-content: center;
   }
   .content {
     background-color: #ffe58b;
