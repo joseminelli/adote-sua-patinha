@@ -78,7 +78,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.location.pathname.endsWith("/index.html") ||
     document.location.pathname.endsWith("/")
   ) {
-    redirecionarUsuario();
+    if (redirecionarUsuario() == "true") {
+      window.location.href = "main.html";
+    }
   }
   if (overlay) {
     overlay.addEventListener("click", () => section.classList.remove("active"));
@@ -333,6 +335,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   if (enviarButton2) {
+    if (redirecionarUsuario() == "true") {
+      window.location.href = "main.html";
+    }
     const pictureInput = document.getElementById("picture");
     var selectIdade = document.getElementById("idade2");
     const emailDiv = document.getElementById("emailDiv");
