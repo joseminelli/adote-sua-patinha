@@ -341,7 +341,7 @@ button[type="submit"]:hover {
 input, textarea {
   border-radius: 5px;
   border: 2px solid #165ea8;
-  background: #ffe58b;
+  background: #fafafa;
   outline:0;
   padding: 1em;
   @include border-radius(8px);

@@ -41,6 +41,15 @@ app.post("/verificarCookie", (req, res) => {
   }
 });
 
+app.post("/verificarSemCookie", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  const userId = req.cookies["userId"];
+  if (!userId) {
+    res.json({ redirect: "/index.html" });
+    return;
+  }
+});
+
 app.post("/verificarCookieTF", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const userId = req.cookies["userId"];

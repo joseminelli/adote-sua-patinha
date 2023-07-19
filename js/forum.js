@@ -20,6 +20,26 @@ var mobile = false;
 modal.style.height = "500px";
 modal.style.width = "500px";
 
+async function verificarCookie() {
+  try {
+    const response = await fetch("https://adotesuapatinhaapi.azurewebsites.net/verificarSemCookie", {
+      method: "POST",
+      credentials: "include", 
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      if (data.redirect) {
+        window.location.href = data.redirect;
+      }
+    } else {
+      console.error("Erro ao verificar o cookie:", response.status);
+    }
+  } catch (error) {
+    console.error("Erro na requisição:", error);
+  }
+}
+
 function toggleClassOnDeviceWidth() {
   var container = document.querySelector(".search-wrapper");
   var screenWidth = window.innerWidth;
@@ -328,6 +348,7 @@ function createReplyButton(repliesContainer) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  verificarCookie();
   loadPosts();
   var container = document.getElementById("search-wrapper");
   const btncriar = document.getElementById("criarPubli");

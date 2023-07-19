@@ -26,15 +26,16 @@ function getUserIdFromCookie() {
 
   return null; 
 }
-
-const response = await fetch(
-  "https://adotesuapatinhaapi.azurewebsites.net/usuario",
-  { credentials: "include" }
-);
-if (!response.ok) {
-  throw new Error("Erro ao obter as informações do usuário");
-}
-const usuario = await response.json();
+document.addEventListener("DOMContentLoaded", async function () {
+  const response = await fetch(
+    "https://adotesuapatinhaapi.azurewebsites.net/usuario",
+    { credentials: "include" }
+  );
+  if (!response.ok) {
+    throw new Error("Erro ao obter as informações do usuário");
+  }
+  const usuario = await response.json();
+});
 
 const userId = getUserIdFromCookie();
 function mandarEmail() {

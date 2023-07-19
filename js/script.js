@@ -31,7 +31,7 @@ if (bar) {
 
 async function verificarCookie() {
   try {
-    const response = await fetch("https://adotesuapatinhaapi.azurewebsites.net/verificarCookie", {
+    const response = await fetch("https://adotesuapatinhaapi.azurewebsites.net/verificarSemCookie", {
       method: "POST",
       credentials: "include", 
     });
