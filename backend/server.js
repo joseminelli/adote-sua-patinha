@@ -357,21 +357,28 @@ app.delete("/excluirPet/:petId", (req, res) => {
 });
 
 app.post("/salvarPost", (req, res) => {
-  const post = req.body;
 
   let posts = [];
   if (fs.existsSync("../../posts.json")) {
     const data = fs.readFileSync("../../posts.json", "utf8");
     posts = JSON.parse(data);
   }
-
-  const userId = req.cookies.userId;
-  post.userId = userId;
-
+  
+  const titulo = req.body.titulo;
+  const descricao = req.body.descricao;
+  const categoria = req.body.categoria;
+  const userId = req.cookies["userId"]
   const postId = posts.length > 0 ? posts[posts.length - 1].id + 1 : 1;
-  post.id = postId;
 
-  posts.push(post);
+  const newPost = {
+    id: postId,
+    titulo: titulo,
+    descricao: descricao,
+    categoria: categoria,
+    userId: userId,
+  };
+
+  posts.push(newPost);
 
   fs.writeFileSync("../../posts.json", JSON.stringify(posts));
 
@@ -380,32 +387,16 @@ app.post("/salvarPost", (req, res) => {
 
 app.get("/posts", (req, res) => {
   let posts = [];
-  if (fs.existsSync("posts.json")) {
-    const data = fs.readFileSync("posts.json", "utf8");
+  if (fs.existsSync("../../posts.json")) {
+    const data = fs.readFileSync("../../posts.json", "utf8");
     posts = JSON.parse(data);
   }
 
-  const searchTerm = req.query.search; 
-
-  if (!searchTerm || searchTerm.trim() === "") {
-    
-    res.json(posts);
-  } else {
-    const filteredPosts = posts.filter((post) => {
-      return (
-        post.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        post.descricao.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        post.categoria.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    });
-    res.json(filteredPosts);
-  }
+  res.json(posts);
 });
-
 
 app.delete("/post/:id", (req, res) => {
   const postId = parseInt(req.params.id);
-  console.log("Requisição DELETE recebida para o post com ID:", req.params.id);
 
   let posts = [];
   if (fs.existsSync("../../posts.json")) {
@@ -417,7 +408,7 @@ app.delete("/post/:id", (req, res) => {
 
   if (postIndex !== -1) {
     
-    const userId = req.cookies.userId;
+    const userId = req.cookies["userId"]
     if (posts[postIndex].userId === userId) {
       
       posts.splice(postIndex, 1);
@@ -447,7 +438,7 @@ app.post("/posts/:id/respostas", (req, res) => {
   const postIndex = posts.findIndex((post) => post.id === postId);
 
   if (postIndex !== -1) {
-    const userId = req.cookies.userId;
+    const userId = req.cookies["userId"]
     resposta.userId = userId;
 
     if (!posts[postIndex].respostas) {
