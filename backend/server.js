@@ -63,35 +63,26 @@ app.post("/salvar", (req, res) => {
   const imagem = req.body.imagem;
   const userId = req.cookies["userId"];
 
-  fs.readFile("../../pets.json", "utf8", async (err, data) => {
+  fs.readFile("../../usuarios.json", "utf8", (err, userData) => {
     if (err) {
       console.error(err);
-      res.status(500).send("Erro ao ler o arquivo JSON");
+      res.status(500).send("Erro ao ler o arquivo JSON de usuários");
       return;
     }
 
-    let jsonData = JSON.parse(data);
-    const newId =
-      jsonData.pets.length > 0
-        ? jsonData.pets[jsonData.pets.length - 1].id + 1
-        : 1;
-
-    try {
-      const response = await fetch(
-        "https://adotesuapatinhaapi.azurewebsites.net/usuario",
-        { credentials: "include" }
-      );
-      console.log(response);
-      if (!response.ok) {
-        throw new Error("Erro ao obter as informações do usuário");
+    fs.readFile("../../pets.json", "utf8", (err, petData) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send("Erro ao ler o arquivo JSON de pets");
+        return;
       }
-      const usuario = await response.json();
-
-      if (!usuario) {
-        throw new Error("Usuário não encontrado");
-      } else {
-        console.log("Usuário encontrado:", usuario);
-      }
+      const usersData = JSON.parse(userData);
+      const user = usersData.usuarios.find((user) => user.id === userId);
+      let jsonData = JSON.parse(petData);
+      const newId =
+        jsonData.pets.length > 0
+          ? jsonData.pets[jsonData.pets.length - 1].id + 1
+          : 1;
 
       const newPet = {
         id: newId,
@@ -100,11 +91,12 @@ app.post("/salvar", (req, res) => {
         description: descricao,
         raca: raca,
         raca2: raca,
-        regiao: usuario.regiao,
+        regiao: user.regiao, 
         esp: especie,
         image: imagem,
         userId: userId,
       };
+
 
       jsonData.pets.push(newPet);
       console.log(JSON.stringify(newPet));
@@ -116,10 +108,7 @@ app.post("/salvar", (req, res) => {
           res.send("Dados salvos com sucesso");
         }
       });
-    } catch (error) {
-      console.error(error);
-      res.status(500).send("Erro ao obter as informações do usuário");
-    }
+    });
   });
 });
 
