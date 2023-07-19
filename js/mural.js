@@ -40,10 +40,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     loader.style.display = "flex";
     hamster.classList.add("active");
   }
-  
-  if (login != "true") {
-    window.location.href = "index.html";
-  }
 
   var qtdPets = data.pets.length;
   const petsPorPagina = 28;
