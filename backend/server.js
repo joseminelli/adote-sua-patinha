@@ -2,8 +2,11 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const multer = require("multer");
+const upload = multer();
 const app = express();
 const port = process.env.PORT || 3000;
+
 function verificarAutenticacao(req, res) {
   const userId = req.cookies["userId"];
   if (!userId) {
@@ -117,7 +120,7 @@ app.post("/salvar", (req, res) => {
 });
 
 
-app.post("/salvarPessoa", (req, res) => {
+app.post("/salvarPessoa", upload.single("file"), (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   if (fs.existsSync("../../usuarios.json") === false) {
     fs.writeFile("../../usuarios.json", '{"usuarios": []}', () => {});
@@ -129,7 +132,7 @@ app.post("/salvarPessoa", (req, res) => {
   const telefone = req.body.telefone;
   const email = req.body.email;
   const senha = req.body.senha;
-  const imagem = req.body.imagem;
+  const imagem = req.file.buffer;
 
   fs.readFile("../../usuarios.json", "utf8", (err, data) => {
     if (err) {
@@ -158,7 +161,6 @@ app.post("/salvarPessoa", (req, res) => {
     jsonData.usuarios.push(newUsuario);
     console.log(JSON.stringify(newUsuario));
     res.cookie("userId", newId, { maxAge: 9000000, httpOnly: true, secure: true, sameSite: 'none' });
-
 
     fs.writeFile("../../usuarios.json", JSON.stringify(jsonData), (err) => {
       if (err) {

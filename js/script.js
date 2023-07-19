@@ -456,14 +456,27 @@ document.addEventListener("DOMContentLoaded", function () {
         const imgElement = pictureImage.querySelector("#picture__img");
         if (imgElement) {
           const imagem2 = imgElement.src;
-  
+          console.log(imagem2);
+      
+          // Função para converter a imagem em base64 para um Blob
+          function dataURItoBlob(dataURI) {
+            const byteString = atob(dataURI.split(",")[1]);
+            const mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+            const ab = new ArrayBuffer(byteString.length);
+            const ia = new Uint8Array(ab);
+            for (let i = 0; i < byteString.length; i++) {
+              ia[i] = byteString.charCodeAt(i);
+            }
+            return new Blob([ab], { type: mimeString });
+          }
+      
           var formData = new FormData();
-          formData.append("file", imagem2);
+          formData.append("file", dataURItoBlob(imagem2), "imagem.png");
           formData.append("content", nome2);
-  
+      
           var discordWebhookURL =
             "https://discord.com/api/webhooks/1129099280775393451/L6wPnNBc_gMd0vn-hmUCLbKixkEYa0GZ--_hR6wII4mIBn_Qp4_4exkxgU0HpzI6T1UD"; // Substitua pelo URL do seu webhook do Discord
-  
+      
           fetch(discordWebhookURL, {
             method: "POST",
             body: formData,
@@ -478,7 +491,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(function (discordResponse) {
               var imageUrl = discordResponse.attachments[0].url; // Obtém a URL da imagem enviada para o Discord
-  
+      
               var data = {
                 nome: nome2,
                 idade: idade2,
@@ -488,18 +501,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 senha: senha,
                 imagem: imageUrl,
               };
-  
-              fetch(
-                `https://adotesuapatinhaapi.azurewebsites.net/salvarPessoa`,
-                {
-                  method: "POST",
-                  credentials: "include",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify(data),
-                }
-              )
+      
+              fetch(`https://adotesuapatinhaapi.azurewebsites.net/salvarPessoa`, {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+              })
                 .then(function (response) {
                   if (!response.ok) {
                     hamster.classList.remove("active");
@@ -585,6 +595,7 @@ document.addEventListener("DOMContentLoaded", function () {
         section.classList.add("active");
         return;
       }
+      
     });
   }
   
