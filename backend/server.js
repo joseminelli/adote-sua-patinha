@@ -357,7 +357,7 @@ app.delete("/excluirPet/:petId", (req, res) => {
 });
 
 app.post("/salvarPost", (req, res) => {
-
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   let posts = [];
   if (fs.existsSync("../../posts.json")) {
     const data = fs.readFileSync("../../posts.json", "utf8");
@@ -386,6 +386,7 @@ app.post("/salvarPost", (req, res) => {
 });
 
 app.get("/posts", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   let posts = [];
   if (fs.existsSync("../../posts.json")) {
     const data = fs.readFileSync("../../posts.json", "utf8");
@@ -396,6 +397,7 @@ app.get("/posts", (req, res) => {
 });
 
 app.delete("/post/:id", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   const postId = parseInt(req.params.id);
 
   let posts = [];
@@ -426,6 +428,7 @@ app.delete("/post/:id", (req, res) => {
 });
 
 app.post("/posts/:id/respostas", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   const postId = parseInt(req.params.id);
   const resposta = req.body;
 

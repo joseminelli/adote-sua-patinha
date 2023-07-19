@@ -116,6 +116,7 @@ if (overlay) {
 
       fetch("https://adotesuapatinhaapi.azurewebsites.net/salvarPost", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -177,7 +178,10 @@ if (login != "true") {
 }
 
 function loadPosts() {
-  fetch("https://adotesuapatinhaapi.azurewebsites.net/posts")
+  fetch("https://adotesuapatinhaapi.azurewebsites.net/posts",
+  {
+    credentials: "include",
+  })
     .then((response) => response.json())
     .then((posts) => {
       var content = document.querySelector(".content");
@@ -276,6 +280,7 @@ function loadPosts() {
                 `https://adotesuapatinhaapi.azurewebsites.net/posts/${postId}/respostas`,
                 {
                   method: "POST",
+                  credentials: "include",
                   headers: {
                     "Content-Type": "application/json",
                   },
@@ -308,6 +313,7 @@ var nomeresp = localStorage.getItem("nome2");
 
 function deletePost(id) {
   fetch(`https://adotesuapatinhaapi.azurewebsites.net/posts/${id}`, {
+    credentials: "include",
     method: "DELETE",
   })
     .then((response) => {
@@ -390,8 +396,9 @@ document.addEventListener("DOMContentLoaded", function () {
     searchInput.style.color = "#282828";
 
     fetch(
-      `https://adotesuapatinhaapi.azurewebsites.net/posts?search=${searchTerm}`
-    )
+      `https://adotesuapatinhaapi.azurewebsites.net/posts?search=${searchTerm}`,{
+        credentials: "include",
+      })
       .then((response) => response.json())
       .then((posts) => {
         var content = document.querySelector(".content");
@@ -489,6 +496,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   `https://adotesuapatinhaapi.azurewebsites.net/posts/${postId}/respostas`,
                   {
                     method: "POST",
+                    credentials: "include",
                     headers: {
                       "Content-Type": "application/json",
                     },
