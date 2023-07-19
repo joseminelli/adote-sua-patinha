@@ -80,7 +80,7 @@ app.post("/salvar", (req, res) => {
         "https://adotesuapatinhaapi.azurewebsites.net/usuario",
         { credentials: "include" }
       );
-
+      console.log(response);
       if (!response.ok) {
         throw new Error("Erro ao obter as informações do usuário");
       }
@@ -89,6 +89,7 @@ app.post("/salvar", (req, res) => {
       if (!usuario) {
         throw new Error("Usuário não encontrado");
       } else {
+        console.log("Usuário encontrado:", usuario);
         loader.style.display = "none";
         hamster.classList.remove("active");
       }
@@ -122,7 +123,6 @@ app.post("/salvar", (req, res) => {
     }
   });
 });
-
 
 app.post("/salvarPessoa", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
