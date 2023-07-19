@@ -25,6 +25,7 @@ app.use(
     origin: ['https://adotesuapatinha.com', 'http://127.0.0.1:5500/']
   })
 );
+
 app.post("/verificarCookie", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const userId = req.cookies["userId"];
@@ -33,6 +34,7 @@ app.post("/verificarCookie", (req, res) => {
     return;
   }
 });
+
 app.post("/verificarCookieTF", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const userId = req.cookies["userId"];
@@ -42,7 +44,9 @@ app.post("/verificarCookieTF", (req, res) => {
     res.send("false");
   }
 });
+
 app.post("/salvar", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   const logId = verificarAutenticacao(req, res);
   if (!logId) {
     return;
@@ -59,41 +63,55 @@ app.post("/salvar", (req, res) => {
   const imagem = req.body.imagem;
   const userId = req.cookies["userId"];
 
-  fs.readFile("../../pets.json", "utf8", (err, data) => {
+  fs.readFile("../../usuarios.json", "utf8", (err, userData) => {
     if (err) {
       console.error(err);
-      res.status(500).send("Erro ao ler o arquivo JSON");
+      res.status(500).send("Erro ao ler o arquivo JSON de usuários");
       return;
     }
 
-    let jsonData = JSON.parse(data);
-    const newId =
-      jsonData.pets.length > 0
-        ? jsonData.pets[jsonData.pets.length - 1].id + 1
-        : 1;
-
-    const newPet = {
-      id: newId,
-      name: nome,
-      age: idade,
-      description: descricao,
-      raca: raca,
-      raca2: raca,
-      regiao: "pampulha",
-      esp: especie,
-      image: imagem,
-      userId: userId,
-    };
-
-    jsonData.pets.push(newPet);
-    console.log(JSON.stringify(newPet));
-    fs.writeFile("../../pets.json", JSON.stringify(jsonData), (err) => {
+    fs.readFile("../../pets.json", "utf8", (err, petData) => {
       if (err) {
         console.error(err);
-        res.status(500).send("Erro ao salvar os dados");
-      } else {
-        res.send("Dados salvos com sucesso");
+        res.status(500).send("Erro ao ler o arquivo JSON de pets");
+        return;
       }
+
+      let jsonData = JSON.parse(petData);
+      const newId =
+        jsonData.pets.length > 0
+          ? jsonData.pets[jsonData.pets.length - 1].id + 1
+          : 1;
+
+      const newPet = {
+        id: newId,
+        name: nome,
+        age: idade,
+        description: descricao,
+        raca: raca,
+        raca2: raca,
+        regiao: "", 
+        esp: especie,
+        image: imagem,
+        userId: userId,
+      };
+
+      const usersData = JSON.parse(userData);
+      const user = usersData.usuarios.find((user) => user.id === userId);
+      if (user) {
+        newPet.regiao = user.regiao; 
+      }
+
+      jsonData.pets.push(newPet);
+      console.log(JSON.stringify(newPet));
+      fs.writeFile("../../pets.json", JSON.stringify(jsonData), (err) => {
+        if (err) {
+          console.error(err);
+          res.status(500).send("Erro ao salvar os dados");
+        } else {
+          res.send("Dados salvos com sucesso");
+        }
+      });
     });
   });
 });
