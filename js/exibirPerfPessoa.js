@@ -1,4 +1,3 @@
-
 var login = localStorage.getItem("login");
 const nome = document.getElementById("name");
 const fotoPet = document.getElementById("fotoPet");
@@ -24,8 +23,38 @@ function checkCookieExists(cookieName) {
 const cookieName = "userId";
 const cookieExists = checkCookieExists(cookieName);
 
+async function exibirPets() {
+  try {
+    const response = await fetch(
+      "https://adotesuapatinhaapi.azurewebsites.net/perfil",
+      { credentials: "include" }
+    );
+
+    if (!response.ok) {
+      throw new Error("Erro ao obter as fotos dos pets");
+    }
+
+    const petElementsHTML = await response.text();
+    console.log(petElementsHTML);
+    fotopetDiv.innerHTML = petElementsHTML;
+
+    if (petElementsHTML == "") {
+      fotopetDiv.style.display = "none";
+      comPet.style.display = "none";
+      semPet.style.display = "run-in";
+      btnDel.style.display = "none";
+    } else {
+      fotopetDiv.style.display = "flex";
+      semPet.style.display = "none";
+      comPet.style.display = "run-in";
+      btnDel.style.display = "run-in";
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 function excluirPet(petId) {
-    
   fetch(`https://adotesuapatinhaapi.azurewebsites.net/excluirPet/${petId}`, {
     method: "DELETE",
     credentials: "include",
@@ -44,44 +73,14 @@ function excluirPet(petId) {
       console.error(error);
     });
 }
+
 document.addEventListener("DOMContentLoaded", async function () {
-  const exibirPets = async () => {
-    try {
-      const response = await fetch(
-        "https://adotesuapatinhaapi.azurewebsites.net/perfil",
-        { credentials: "include" }
-      );
-
-      if (!response.ok) {
-        throw new Error("Erro ao obter as fotos dos pets");
-      }
-
-      const petElementsHTML = await response.text();
-      console.log(petElementsHTML);
-      fotopetDiv.innerHTML = petElementsHTML;
-
-      if (petElementsHTML == "") {
-        fotopetDiv.style.display = "none";
-        comPet.style.display = "none";
-        semPet.style.display = "run-in";
-        btnDel.style.display = "none";
-      } else {
-        fotopetDiv.style.display = "flex";
-        semPet.style.display = "none";
-        comPet.style.display = "run-in";
-        btnDel.style.display = "run-in";
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
+  
   exibirPets();
   loader.style.display = "flex";
   hamster.classList.add("active");
-  
 
-  const editar = document.getElementById("editar");
+  // const editar = document.getElementById("editar");
   const comPet = document.getElementById("spet");
   const semPet = document.getElementById("npet");
 
@@ -117,9 +116,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     window.location.href = "index.html";
   }
 
-  editar.addEventListener("click", function () {
+  /*editar.addEventListener("click", function () {
     window.location.href = "cadastro1.html";
-  });
-
-  
+  });*/
 });
