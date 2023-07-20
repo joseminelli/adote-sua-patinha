@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: ['https://adotesuapatinha.com', 'http://127.0.0.1:5500/']
+    origin: ["https://adotesuapatinha.com", "http://127.0.0.1:5500/"],
   })
 );
 
@@ -55,7 +55,7 @@ app.post("/verificarCookieTF", (req, res) => {
   const userId = req.cookies["userId"];
   if (userId) {
     res.send("true");
-  } else { 
+  } else {
     res.send("false");
   }
 });
@@ -92,7 +92,9 @@ app.post("/salvar", (req, res) => {
         return;
       }
       const usersData = JSON.parse(userData);
-      const user = usersData.usuarios.find((user) => user.id === parseInt(userId));
+      const user = usersData.usuarios.find(
+        (user) => user.id === parseInt(userId)
+      );
 
       if (!user) {
         res.status(404).send("Usuário não encontrado");
@@ -111,7 +113,7 @@ app.post("/salvar", (req, res) => {
         age: idade,
         description: descricao,
         raca: raca,
-        regiao: user.regiao, 
+        regiao: user.regiao,
         esp: especie,
         image: imagem,
         userId: userId,
@@ -130,7 +132,6 @@ app.post("/salvar", (req, res) => {
     });
   });
 });
-
 
 app.post("/salvarPessoa", upload.single("file"), (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -172,7 +173,12 @@ app.post("/salvarPessoa", upload.single("file"), (req, res) => {
 
     jsonData.usuarios.push(newUsuario);
     console.log(JSON.stringify(newUsuario));
-    res.cookie("userId", newId, { maxAge: 9000000, httpOnly: true, secure: true, sameSite: 'none' });
+    res.cookie("userId", newId, {
+      maxAge: 9000000,
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    });
 
     fs.writeFile("../../usuarios.json", JSON.stringify(jsonData), (err) => {
       if (err) {
@@ -200,10 +206,16 @@ app.post("/login", (req, res) => {
     const usuarios = jsonData.usuarios;
 
     const usuario = usuarios.find(
-      (user) => user.email.trim().toLowerCase() === email && user.senha === senha
+      (user) =>
+        user.email.trim().toLowerCase() === email && user.senha === senha
     );
     if (usuario) {
-      res.cookie("userId", usuario.id, { maxAge: 9000000, httpOnly: true, secure: true, sameSite: 'none' });
+      res.cookie("userId", usuario.id, {
+        maxAge: 9000000,
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+      });
 
       res.json({ redirect: "/main.html" });
     } else {
@@ -215,7 +227,6 @@ app.post("/login", (req, res) => {
 app.listen(port, () => {
   console.log(`Servidor ouvindo na porta ${port}`);
 });
-
 
 app.get("/mural", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -243,7 +254,7 @@ app.get("/usuario", (req, res) => {
   if (!logId) {
     return;
   }
-  
+
   const userId = req.cookies["userId"];
 
   fs.readFile("../../usuarios.json", "utf8", (err, data) => {
@@ -254,7 +265,9 @@ app.get("/usuario", (req, res) => {
     }
 
     const jsonData = JSON.parse(data);
-    const usuario = jsonData.usuarios.find((user) => user.id === parseInt(userId));
+    const usuario = jsonData.usuarios.find(
+      (user) => user.id === parseInt(userId)
+    );
     res.json(usuario);
   });
 });
@@ -332,23 +345,33 @@ app.delete("/excluirPet/:petId", (req, res) => {
       const jsonData = JSON.parse(data);
       const pets = jsonData.pets;
 
-      const petIndex = pets.findIndex((pet) => pet.id === petId && pet.userId === userId);
+      const petIndex = pets.findIndex(
+        (pet) => pet.id === petId && pet.userId === userId
+      );
       if (petIndex === -1) {
-        res.status(404).json({ message: "Pet não encontrado ou não pertence ao usuário." });
+        res
+          .status(404)
+          .json({ message: "Pet não encontrado ou não pertence ao usuário." });
         return;
       }
 
       pets.splice(petIndex, 1);
 
-      fs.writeFile("../../pets.json", JSON.stringify(jsonData, null, 2), (err) => {
-        if (err) {
-          console.error(err);
-          res.status(500).send("Erro ao salvar o arquivo JSON de pets após a exclusão");
-          return;
-        }
+      fs.writeFile(
+        "../../pets.json",
+        JSON.stringify(jsonData, null, 2),
+        (err) => {
+          if (err) {
+            console.error(err);
+            res
+              .status(500)
+              .send("Erro ao salvar o arquivo JSON de pets após a exclusão");
+            return;
+          }
 
-        res.json({ message: "Pet excluído com sucesso!" });
-      });
+          res.json({ message: "Pet excluído com sucesso!" });
+        }
+      );
     } catch (error) {
       console.error(error);
       res.status(500).send("Erro ao processar a exclusão do pet");
@@ -363,16 +386,23 @@ app.post("/salvarPost", (req, res) => {
     const data = fs.readFileSync("../../posts.json", "utf8");
     posts = JSON.parse(data);
   }
-  
+
   const titulo = req.body.titulo;
   const descricao = req.body.descricao;
   const categoria = req.body.categoria;
-  const userId = req.cookies["userId"]
+  const userId = req.cookies["userId"];
   const postId = posts.length > 0 ? posts[posts.length - 1].id + 1 : 1;
+
+  const usuariosData = fs.readFileSync("../../usuarios.json", "utf8");
+  const usuarios = JSON.parse(usuariosData);
+  const user = usuarios.usuarios.find(
+    (usuario) => usuario.id === parseInt(userId)
+  );
+  const nomeUsuario = user ? user.name : "[Usuário não identificado]";
 
   const newPost = {
     id: postId,
-    titulo: titulo,
+    titulo: "Post de " + nomeUsuario +": " + titulo,
     descricao: descricao,
     categoria: categoria,
     userId: userId,
@@ -409,19 +439,18 @@ app.delete("/posts/:id", (req, res) => {
   const postIndex = posts.findIndex((post) => post.id === postId);
 
   if (postIndex !== -1) {
-    const userId = req.cookies["userId"]
-    if (posts[postIndex].userId === parseInt(userId)) {
-      
+    const userId = req.cookies["userId"];
+    if (posts[postIndex].userId === userId) {
       posts.splice(postIndex, 1);
 
       fs.writeFileSync("../../posts.json", JSON.stringify(posts));
 
       res.sendStatus(200);
     } else {
-      res.sendStatus(403); 
+      res.sendStatus(403);
     }
   } else {
-    res.sendStatus(404); 
+    res.sendStatus(404);
   }
 });
 
@@ -439,7 +468,7 @@ app.post("/posts/:id/respostas", (req, res) => {
   const postIndex = posts.findIndex((post) => post.id === postId);
 
   if (postIndex !== -1) {
-    const userId = req.cookies["userId"]
+    const userId = req.cookies["userId"];
     resposta.userId = userId;
 
     if (!posts[postIndex].respostas) {
@@ -448,14 +477,16 @@ app.post("/posts/:id/respostas", (req, res) => {
 
     const respostaId =
       posts[postIndex].respostas.length > 0
-        ? posts[postIndex].respostas[posts[postIndex].respostas.length - 1].id + 1
+        ? posts[postIndex].respostas[posts[postIndex].respostas.length - 1].id +
+          1
         : 1;
     resposta.id = respostaId;
 
-    
     const usuariosData = fs.readFileSync("../../usuarios.json", "utf8");
     const usuarios = JSON.parse(usuariosData);
-    const user = usuarios.usuarios.find((usuario) => usuario.id === parseInt(userId));
+    const user = usuarios.usuarios.find(
+      (usuario) => usuario.id === parseInt(userId)
+    );
     const nomeUsuario = user ? user.name : "[Usuário não identificado]";
 
     resposta.autor = nomeUsuario;
