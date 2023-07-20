@@ -542,6 +542,7 @@ button[type="submit"]:hover {
 }
 
 .search-wrapper {
+  display: none; /* ! ocultar enquanto não arrumo  VER AQUI!!! */
   position: absolute;
   transform: translate(-50%, -50%);
   top: 19%;

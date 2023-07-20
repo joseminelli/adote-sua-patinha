@@ -12,13 +12,13 @@ hamster.classList.add("active");
 
 
 document.addEventListener("DOMContentLoaded", async function () {
-  neverBtn.addEventListener("click", function () {
-    localStorage.setItem("consciente", "true");
+  /*neverBtn.addEventListener("click", function () {
+    localStorage.setItem("consciente", "true");*/
     section.classList.remove("active");
-  });
-  if (abrirModal != "true") {
+ // });
+ /* if (abrirModal != "true") {
     section.classList.add("active");
-  }
+  }*/
   let loginId;
   const chkFavoritos = document.getElementById("chkFavoritos");
   const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
