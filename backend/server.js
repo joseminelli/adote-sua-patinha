@@ -411,7 +411,7 @@ app.delete("/post/:id", (req, res) => {
   if (postIndex !== -1) {
     
     const userId = req.cookies["userId"]
-    if (posts[postIndex].userId === userId) {
+    if (posts[postIndex].userId === parseInt(userId)) {
       
       posts.splice(postIndex, 1);
 
@@ -457,7 +457,7 @@ app.post("/posts/:id/respostas", (req, res) => {
     
     const usuariosData = fs.readFileSync("../../usuarios.json", "utf8");
     const usuarios = JSON.parse(usuariosData);
-    const user = usuarios.usuarios.find((usuario) => usuario.userId === userId);
+    const user = usuarios.usuarios.find((usuario) => usuario.userId === parseInt(userId));
     const nomeUsuario = user ? user.name : "";
 
     resposta.autor = nomeUsuario;
