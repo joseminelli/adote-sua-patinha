@@ -32,7 +32,7 @@ if (bar) {
 async function verificarCookieTF() {
   try {
     const response = await fetch(
-      "https://adotesuapatinhaapi.azurewebsites.net/verificarCookieTF",
+      "https://api.adotesuapatinha.com/verificarCookieTF",
       {
         method: "POST",
         credentials: "include",
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
     enviarButton.addEventListener("click", async function (event) {
       try {
         const response = await fetch(
-          "https://adotesuapatinhaapi.azurewebsites.net/maxPets",
+          "https://api.adotesuapatinha.com/maxPets",
           { credentials: "include" }
         );
 
@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   imagem: imageUrl,
                 };
 
-                fetch(`https://adotesuapatinhaapi.azurewebsites.net/salvar`, {
+                fetch(`https://api.adotesuapatinha.com/salvar`, {
                   method: "POST",
 
                   credentials: "include",
@@ -499,7 +499,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 imagem: imageUrl,
               };
       
-              fetch(`https://adotesuapatinhaapi.azurewebsites.net/salvarPessoa`, {
+              fetch(`https://api.adotesuapatinha.com/salvarPessoa`, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -618,7 +618,7 @@ document.addEventListener("DOMContentLoaded", function () {
       hamster.classList.add("active");
       const email = document.getElementById("input1").value;
       const senha = document.getElementById("input2").value;
-      fetch(`https://adotesuapatinhaapi.azurewebsites.net/login`, {
+      fetch(`https://api.adotesuapatinha.com/login`, {
         method: "POST",
         credentials: "include",
         headers: {

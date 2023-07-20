@@ -14,7 +14,7 @@ var imgElement2 = document.getElementById("fotopet");
 
 async function verificarCookie() {
   try {
-    const response = await fetch("https://adotesuapatinhaapi.azurewebsites.net/verificarSemCookie", {
+    const response = await fetch("https://api.adotesuapatinha.com/verificarSemCookie", {
       method: "POST",
       credentials: "include", 
     });
@@ -35,7 +35,7 @@ async function verificarCookie() {
 async function exibirPets() {
   try {
     const response = await fetch(
-      "https://adotesuapatinhaapi.azurewebsites.net/perfil",
+      "https://api.adotesuapatinha.com/perfil",
       { credentials: "include" }
     );
 
@@ -61,7 +61,7 @@ async function exibirPets() {
 }
 
 function excluirPet(petId) {
-  fetch(`https://adotesuapatinhaapi.azurewebsites.net/excluirPet/${petId}`, {
+  fetch(`https://api.adotesuapatinha.com/excluirPet/${petId}`, {
     method: "DELETE",
     credentials: "include",
   })
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   try {
     const response = await fetch(
-      "https://adotesuapatinhaapi.azurewebsites.net/usuario",
+      "https://api.adotesuapatinha.com/usuario",
       { credentials: "include" }
     );
     if (!response.ok) {

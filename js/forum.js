@@ -23,7 +23,7 @@ modal.style.width = "500px";
 async function verificarCookie() {
   try {
     const response = await fetch(
-      "https://adotesuapatinhaapi.azurewebsites.net/verificarSemCookie",
+      "https://api.adotesuapatinha.com/verificarSemCookie",
       {
         method: "POST",
         credentials: "include",
@@ -114,7 +114,7 @@ if (overlay) {
         descricao: descInput,
       };
 
-      fetch("https://adotesuapatinhaapi.azurewebsites.net/salvarPost", {
+      fetch("https://api.adotesuapatinha.com/salvarPost", {
         method: "POST",
         credentials: "include",
         headers: {
@@ -178,7 +178,7 @@ if (login != "true") {
 }
 
 function loadPosts() {
-  fetch("https://adotesuapatinhaapi.azurewebsites.net/posts",
+  fetch("https://api.adotesuapatinha.com/posts",
   {
     credentials: "include",
   })
@@ -277,7 +277,7 @@ function loadPosts() {
               };
 
               fetch(
-                `https://adotesuapatinhaapi.azurewebsites.net/posts/${postId}/respostas`,
+                `https://api.adotesuapatinha.com/posts/${postId}/respostas`,
                 {
                   method: "POST",
                   credentials: "include",
@@ -312,7 +312,7 @@ function loadPosts() {
 var nomeresp = localStorage.getItem("nome2");
 
 function deletePost(id) {
-  fetch(`https://adotesuapatinhaapi.azurewebsites.net/posts/${id}`, {
+  fetch(`https://api.adotesuapatinha.com/posts/${id}`, {
     credentials: "include",
     method: "DELETE",
   })
@@ -396,7 +396,7 @@ document.addEventListener("DOMContentLoaded", function () {
     searchInput.style.color = "#282828";
 
     fetch(
-      `https://adotesuapatinhaapi.azurewebsites.net/posts?search=${searchTerm}`,{
+      `https://api.adotesuapatinha.com/posts?search=${searchTerm}`,{
         credentials: "include",
       })
       .then((response) => response.json())
@@ -493,7 +493,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 };
 
                 fetch(
-                  `https://adotesuapatinhaapi.azurewebsites.net/posts/${postId}/respostas`,
+                  `https://api.adotesuapatinha.com/posts/${postId}/respostas`,
                   {
                     method: "POST",
                     credentials: "include",

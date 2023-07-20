@@ -28,7 +28,7 @@ function getUserIdFromCookie() {
 }
 document.addEventListener("DOMContentLoaded", async function () {
   const response = await fetch(
-    "https://adotesuapatinhaapi.azurewebsites.net/usuario",
+    "https://api.adotesuapatinha.com/usuario",
     { credentials: "include" }
   );
   if (!response.ok) {

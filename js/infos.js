@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const hamster = document.getElementById("hamster");
   loader.style.display = "flex";
   hamster.classList.add("active");
-  var response = await fetch(`https://adotesuapatinhaapi.azurewebsites.net/mural`);
+  var response = await fetch(`https://api.adotesuapatinha.com/mural`);
   var data = await response.json();
   if(data){
     setTimeout(function () {

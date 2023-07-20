@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const chkFavoritos = document.getElementById("chkFavoritos");
   const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
   const textoMural = document.getElementById("textoMural");
-  var response = await fetch(`https://adotesuapatinhaapi.azurewebsites.net/mural`,
+  var response = await fetch(`https://api.adotesuapatinha.com/mural`,
   { credentials: "include" }
 );
 
