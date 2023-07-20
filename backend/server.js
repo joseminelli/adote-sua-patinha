@@ -396,7 +396,7 @@ app.get("/posts", (req, res) => {
   res.json(posts);
 });
 
-app.delete("/post/:id", (req, res) => {
+app.delete("/posts/:id", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const postId = parseInt(req.params.id);
 
@@ -409,13 +409,11 @@ app.delete("/post/:id", (req, res) => {
   const postIndex = posts.findIndex((post) => post.id === postId);
 
   if (postIndex !== -1) {
-    
     const userId = req.cookies["userId"]
     if (posts[postIndex].userId === parseInt(userId)) {
       
       posts.splice(postIndex, 1);
 
-      
       fs.writeFileSync("../../posts.json", JSON.stringify(posts));
 
       res.sendStatus(200);
@@ -457,8 +455,8 @@ app.post("/posts/:id/respostas", (req, res) => {
     
     const usuariosData = fs.readFileSync("../../usuarios.json", "utf8");
     const usuarios = JSON.parse(usuariosData);
-    const user = usuarios.usuarios.find((usuario) => usuario.userId === parseInt(userId));
-    const nomeUsuario = user ? user.name : "";
+    const user = usuarios.usuarios.find((usuario) => usuario.id === parseInt(userId));
+    const nomeUsuario = user ? user.name : "[Usuário não identificado]";
 
     resposta.autor = nomeUsuario;
 
