@@ -40,7 +40,9 @@ h2 {
   line-height: 54px;
   color: #222;
 }
-
+a{
+  text-decoration: none;
+}
 h4 {
   font-size: 20px;
   color: #222;
@@ -164,6 +166,24 @@ h1 {
   font-weight: bold;
   gap: 1rem;
 }
+#contato {
+  padding: 1rem;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  color: #e3e6f3;
+  max-width: 155px;
+  width: auto;
+  border-radius: 5px;
+  margin-top: 1rem;
+  background-color: #165ea8;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+#contato:hover {
+  background-color: #0d4379;
+}
+
 
 button[type="submit"] {
   padding: 1rem;
@@ -294,6 +314,28 @@ button[type="submit"]:hover {
     width: 150px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   }
+  .content {
+    background-color: #ffe58b;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 30%;
+    min-width: 45%;
+    overflow: auto;
+  }
+  #contato {
+    padding: 0.9rem;
+    width: auto;
+    font-size: 0.9rem;
+    outline: none;
+    border: none;
+    color: #e3e6f3;
+    max-width: 142px;
+    border-radius: 5px;
+    margin-top: 1rem;
+    background-color: #165ea8;
+    cursor: pointer;
+  }
 }
 @media (max-width: 455px) {
   .content {
@@ -305,7 +347,6 @@ button[type="submit"]:hover {
     min-width: 45%;
     overflow: auto;
   }
-
   #box {
     height: 400px;
   }

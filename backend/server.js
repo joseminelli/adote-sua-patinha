@@ -25,7 +25,11 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: ["https://adotesuapatinha.com", "http://127.0.0.1:5500/", "http://localhost:5500"],
+    origin: [
+      "https://adotesuapatinha.com",
+      "http://127.0.0.1:5500/",
+      "http://localhost:5500",
+    ],
   })
 );
 
@@ -402,7 +406,7 @@ app.post("/salvarPost", (req, res) => {
 
   const newPost = {
     id: postId,
-    titulo: "Post de " + nomeUsuario +": " + titulo,
+    titulo: "Post de " + nomeUsuario + ": " + titulo,
     descricao: descricao,
     categoria: categoria,
     userId: userId,
@@ -499,4 +503,47 @@ app.post("/posts/:id/respostas", (req, res) => {
   } else {
     res.sendStatus(404);
   }
+});
+
+app.get("/email/:petId", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+
+  const petId = parseInt(req.params.petId);
+
+  fs.readFile("../../usuarios.json", "utf8", (err, userData) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo JSON de usuários");
+      return;
+    }
+
+    fs.readFile("../../pets.json", "utf8", (err, petData) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send("Erro ao ler o arquivo JSON de pets");
+        return;
+      }
+
+      const usersData = JSON.parse(userData);
+      const petsData = JSON.parse(petData);
+
+      const pet = petsData.pets.find((pet) => pet.id === parseInt(petId));
+      const userId = pet.userId;
+      const user = usersData.usuarios.find((user) => user.id === parseInt(userId));
+      console.log(pet.userId);
+
+      if (!user) {
+        res.status(404).send("Usuário não encontrado");
+        return;
+      }
+
+      if (!pet) {
+        res.status(404).send("Pet não encontrado");
+        return;
+      }
+
+      const userEmail = user.email;
+      res.send(userEmail);
+    });
+  });
 });
