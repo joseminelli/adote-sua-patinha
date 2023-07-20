@@ -200,10 +200,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             var formData = new FormData();
             formData.append("file", imagem);
-            formData.append("content", nome);
+            formData.append("content", "Nome: " + nome + "\nIdade: " + idade + "\nRaça: " + raca + "\nDescrição: " + descricao + "\nEspécie: " + especie);
 
             var discordWebhookURL =
-              "https://discord.com/api/webhooks/1129099280775393451/L6wPnNBc_gMd0vn-hmUCLbKixkEYa0GZ--_hR6wII4mIBn_Qp4_4exkxgU0HpzI6T1UD"; // Substitua pelo URL do seu webhook do Discord
+              "https://discord.com/api/webhooks/1131715085803475035/YgNnzk2MRlOOn6oZLm8db7cfItEgZu7wdofOjq8-Wkl3esCT3m8P_syYf2G0CnuusKtA";
 
             fetch(discordWebhookURL, {
               method: "POST",
@@ -338,6 +338,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   if (enviarButton2) {
+    const apiUrl = "https://servicodados.ibge.gov.br/api/v1/localidades/estados/31/municipios";
+      function fillMunicipiosSelect(municipios) {
+        const municipiosSelect = document.getElementById("bairro2");
+
+        municipios.forEach((municipio) => {
+          const option = document.createElement("option");
+          option.value = municipio.nome;
+          option.text = municipio.nome;
+          municipiosSelect.appendChild(option);
+        });
+      }
+      fetch(apiUrl)
+        .then((response) => response.json())
+        .then((municipios) => {
+          fillMunicipiosSelect(municipios);
+        })
+        .catch((error) => {
+          console.error("Erro ao obter os municípios:", error);
+        });
     //enviarButton2.disabled = true;
     if (redirecionarUsuario() == "true") {
       window.location.href = "main.html";
@@ -361,7 +380,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     enviarButton2.addEventListener("click", function (event) {
       event.preventDefault();
-  
+
       loader.style.display = "flex";
       hamster.classList.add("active");
       const pictureImage = document.querySelector(".picture__image");
@@ -371,7 +390,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var telefone = document.getElementById("telefone").value;
       var email = document.getElementById("email").value;
       var senha = document.getElementById("senha").value;
-  
+      
       var nome4 = document.getElementById("input2");
       var bairro2 = document.getElementById("bairro2");
       var telefone2 = document.getElementById("telefone");
@@ -409,7 +428,7 @@ document.addEventListener("DOMContentLoaded", function () {
             bairro2.style.borderColor = "#ff2727";
           }
           section.classList.add("active");
-          
+
           loader.style.display = "none";
           hamster.classList.remove("active");
           return;
@@ -450,15 +469,18 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
       }
-  
+
       if (pictureImage.childElementCount === 1) {
         const imgElement = pictureImage.querySelector("#picture__img");
         if (imgElement) {
           const imagem2 = imgElement.src;
-      
+
           function dataURItoBlob(dataURI) {
             const byteString = atob(dataURI.split(",")[1]);
-            const mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+            const mimeString = dataURI
+              .split(",")[0]
+              .split(":")[1]
+              .split(";")[0];
             const ab = new ArrayBuffer(byteString.length);
             const ia = new Uint8Array(ab);
             for (let i = 0; i < byteString.length; i++) {
@@ -466,14 +488,14 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             return new Blob([ab], { type: mimeString });
           }
-      
+
           var formData = new FormData();
           formData.append("file", dataURItoBlob(imagem2), "imagem.png");
-          formData.append("content", nome2);
-      
+          formData.append("content", "Nome: " + nome2 + "\nIdade: " + idade2 + "\nRegião: " + bairro);
+
           var discordWebhookURL =
-            "https://discord.com/api/webhooks/1129099280775393451/L6wPnNBc_gMd0vn-hmUCLbKixkEYa0GZ--_hR6wII4mIBn_Qp4_4exkxgU0HpzI6T1UD"; // Substitua pelo URL do seu webhook do Discord
-      
+            "https://discord.com/api/webhooks/1131716314889728031/_lFhU4lLLgenA8_7tkfn1LfeJDECfUfs9JPTEyFpK3dIPdG8W24TnNi30Mx8cRPrQzmA";
+
           fetch(discordWebhookURL, {
             method: "POST",
             body: formData,
@@ -487,8 +509,8 @@ document.addEventListener("DOMContentLoaded", function () {
               return response.json();
             })
             .then(function (discordResponse) {
-              var imageUrl = discordResponse.attachments[0].url; 
-      
+              var imageUrl = discordResponse.attachments[0].url;
+
               var data = {
                 nome: nome2,
                 idade: idade2,
@@ -498,7 +520,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 senha: senha,
                 imagem: imageUrl,
               };
-      
+
               fetch(`https://api.adotesuapatinha.com/salvarPessoa`, {
                 method: "POST",
                 credentials: "include",
@@ -592,7 +614,6 @@ document.addEventListener("DOMContentLoaded", function () {
         section.classList.add("active");
         return;
       }
-      
     });
   }
   if (loginButton) {

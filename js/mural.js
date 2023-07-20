@@ -12,6 +12,25 @@ hamster.classList.add("active");
 
 
 document.addEventListener("DOMContentLoaded", async function () {
+  const apiUrl = "https://servicodados.ibge.gov.br/api/v1/localidades/estados/31/municipios";
+      function fillMunicipiosSelect(municipios) {
+        const municipiosSelect = document.getElementById("bairro2");
+
+        municipios.forEach((municipio) => {
+          const option = document.createElement("option");
+          option.value = municipio.nome;
+          option.text = municipio.nome;
+          municipiosSelect.appendChild(option);
+        });
+      }
+      fetch(apiUrl)
+        .then((response) => response.json())
+        .then((municipios) => {
+          fillMunicipiosSelect(municipios);
+        })
+        .catch((error) => {
+          console.error("Erro ao obter os municípios:", error);
+        });
   /*neverBtn.addEventListener("click", function () {
     localStorage.setItem("consciente", "true");*/
     section.classList.remove("active");

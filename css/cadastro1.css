@@ -144,7 +144,9 @@ h1 {
 .inputsn:focus {
   border-color: #165ea8;
 }
-
+#bairro2{
+  width: 200px;
+}
 button[type="submit"] {
   padding: 1rem;
   font-size: 1rem;
