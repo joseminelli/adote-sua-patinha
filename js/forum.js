@@ -224,7 +224,6 @@ function loadPosts() {
           if (post.respostas && post.respostas.length > 0) {
             var repliesContainer = document.createElement("div");
             repliesContainer.className = "replies-container";
-
             post.respostas.forEach(function (resposta) {
               var replyElement = document.createElement("div");
               replyElement.className = "reply";
@@ -244,7 +243,7 @@ function loadPosts() {
 
             if (post.respostas.length > 1) {
               var replyButton = createReplyButton(repliesContainer);
-              replyContainer.appendChild(replyButton);
+              repliesContainer.appendChild(replyButton);;
             }
           }
         });
@@ -273,7 +272,7 @@ function loadPosts() {
               };
 
               fetch(
-                `https://api.adotesuapatinha.com/posts/${postId}/respostas`,
+                `http://api.adotesuapatinha.com/posts/${postId}/respostas`,
                 {
                   method: "POST",
                   credentials: "include",
@@ -401,7 +400,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((posts) => {
         var content = document.querySelector(".content");
         var noPostsMessage = document.getElementById("noPostsMessage");
-  
+        console.log(posts);
         content.innerHTML = "";
   
         if (posts.length === 0) {
@@ -431,6 +430,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
             var replyContainer = document.createElement("div");
             replyContainer.className = "reply-container";
+            replyContainer.className = "reply-input-container";
             replyContainer.innerHTML =
               '<p class="modalp2">Responder:</p>' +
               '<input type="text" class="inputmodal2 reply-input" placeholder="Digite sua resposta">' +
@@ -440,7 +440,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
             content.appendChild(postElement);
   
-            if (post.respostas && post.respostas.length <= 1) {
+            if (post.respostas && post.respostas.length >= 1) {
               var repliesContainer = document.createElement("div");
               repliesContainer.className = "replies-container";
               post.respostas.forEach(function (resposta) {

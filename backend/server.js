@@ -438,8 +438,24 @@ app.get("/posts", (req, res) => {
     );
   }
 
+  // Aqui vamos incluir as respostas completas em cada post
+  posts.forEach((post) => {
+    if (post.respostas) {
+      post.respostas = post.respostas.map((resposta) => {
+        return {
+          descricao: resposta.descricao,
+          userId: resposta.userId,
+          id: resposta.id,
+          autor: resposta.autor,
+        };
+      });
+    }
+  });
+
   res.json(posts);
 });
+
+
 
 app.delete("/posts/:id", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
