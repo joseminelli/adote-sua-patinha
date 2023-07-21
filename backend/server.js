@@ -421,10 +421,21 @@ app.post("/salvarPost", (req, res) => {
 
 app.get("/posts", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
+
   let posts = [];
   if (fs.existsSync("../../posts.json")) {
     const data = fs.readFileSync("../../posts.json", "utf8");
     posts = JSON.parse(data);
+  }
+
+  const searchTerm = req.query.search;
+  
+  if (searchTerm) {
+    posts = posts.filter(
+      (post) =>
+        post.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.descricao.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   }
 
   res.json(posts);
@@ -529,7 +540,9 @@ app.get("/email/:petId", (req, res) => {
 
       const pet = petsData.pets.find((pet) => pet.id === parseInt(petId));
       const userId = pet.userId;
-      const user = usersData.usuarios.find((user) => user.id === parseInt(userId));
+      const user = usersData.usuarios.find(
+        (user) => user.id === parseInt(userId)
+      );
       console.log(pet.userId);
 
       if (!user) {

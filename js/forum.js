@@ -173,10 +173,6 @@ if (overlay) {
 
 var login = localStorage.getItem("login");
 
-if (login != "true") {
-  window.location.href = "index.html";
-}
-
 function loadPosts() {
   fetch("https://api.adotesuapatinha.com/posts",
   {
