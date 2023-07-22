@@ -243,7 +243,7 @@ function loadPosts() {
 
             if (post.respostas.length > 1) {
               var replyButton = createReplyButton(repliesContainer);
-              repliesContainer.appendChild(replyButton);;
+              replyContainer.appendChild(replyButton);
             }
           }
         });
@@ -462,7 +462,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
               if (post.respostas.length > 1) {
                 var replyButton = createReplyButton(repliesContainer);
-                repliesContainer.appendChild(replyButton);
+                replyContainer.appendChild(replyButton);
               }
             }
           });
