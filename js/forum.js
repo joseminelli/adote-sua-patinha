@@ -360,24 +360,34 @@ function createReplyButton(repliesContainer) {
 document.addEventListener("DOMContentLoaded", function () {
   verificarCookie();
   loadPosts();
+  document.addEventListener("click", handleClickOutside);
   var container = document.getElementById("search-wrapper");
   const btncriar = document.getElementById("criarPubli");
   btncriar.addEventListener("click", function () {
     iconmodal.style.display = "none";
     section.classList.add("active");
   });
+  if (mobile == true) {
+    container.classList.remove("active");
+  }
   fecharbutton.addEventListener("click", function () {
-    if (mobile == true) {
       container.querySelector(".search-input").value = "";
-      container.classList.remove("active");
-    } else {
-      container.querySelector(".search-input").value = "";
-    }
   });
+  
+  function handleClickOutside(event) {
+    if (mobile== true && !container.contains(event.target) && event.target !== fecharbutton && event.target !== searchButton) {
+      container.classList.remove("active");
+    }
+    if(mobile == false){
+      container.classList.add("active");
+    }
+  }
   const searchButton = document.getElementById("searchButton");
   searchButton.addEventListener("click", function () {
     if (!container.classList.contains("active")) {
+      setTimeout(function () {
       container.classList.add("active");
+      }, 100);
     } else if (
       container.classList.contains("active") &&
       !document.getElementById("input-holder")
@@ -385,11 +395,12 @@ document.addEventListener("DOMContentLoaded", function () {
       container.classList.remove("active");
       container.querySelector(".search-input").value = "";
     }
-  
+    const searchWrapper = document.getElementById("search-wrapper");
+   
     const searchInput = document.getElementById("searchInput");
     const searchTerm = searchInput.value.toLowerCase().trim();
     searchInput.style.color = "#282828";
-  
+  if(searchWrapper.classList.contains("active")){
     fetch(
       `https://api.adotesuapatinha.com/posts?search=${searchTerm}`,
       {
@@ -518,6 +529,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => {
         console.error(error);
       });
+    }
   });
   
 });
