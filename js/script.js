@@ -14,7 +14,8 @@ const webhookClient =
 const section = document.getElementById("modalNovo"),
   overlay = document.querySelector(".overlay"),
   showBtn = document.querySelector(".show-modal"),
-  closeBtn = document.querySelector(".close-btn");
+  closeBtn = document.querySelector(".close-btn"),
+  picture__image2 = document.getElementById("picture__image2");
 if (bar) {
   document.addEventListener("click", function (e) {
     const navbar = document.getElementById("navbar");
@@ -28,7 +29,6 @@ if (bar) {
     }
   });
 }
-
 async function verificarCookieTF() {
   try {
     const response = await fetch(

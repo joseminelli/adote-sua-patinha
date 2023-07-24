@@ -1,10 +1,20 @@
 const inputFile = document.querySelector("#picture__input");
 const pictureImage = document.querySelector(".picture__image");
 const inputFile2 = document.querySelector("#picture__input2");
+const picture__image2 = document.getElementById("picture__image2");
 const pictureImage2 = document.querySelector(".picture__image2");
+pictureImage2.innerHTML = "Opcional";
 var enviarButton2 = document.getElementById("enviar2");
 let cropper;
 let croppedCanvas;
+var screenWidth = window.innerWidth;
+
+var mobile;
+if (screenWidth < 800) {
+  mobile = true;
+} else {
+  mobile = false;
+}
 
 inputFile.addEventListener("change", function (e) {
   const inputTarget = e.target;
@@ -55,6 +65,9 @@ if(document.location.pathname.endsWith("/cadastro2.html")){
   
         pictureImage2.innerHTML = "";
         pictureImage2.appendChild(img);
+        if(!mobile){
+          picture__image2.style.marginLeft = "-26.3%"
+        }
       });
   
       reader.readAsDataURL(file);
