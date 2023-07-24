@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const contato = document.getElementById("contato");
   loader.style.display = "flex";
   hamster.classList.add("active");
-  var response = await fetch(`https://api.adotesuapatinha.com/mural`);
+  var response = await fetch(`http://localhost:3000/mural`);
   var data = await response.json();
   if (data) {
     setTimeout(function () {
@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   if (petInfo) {
     box.style.justifyContent = "left";
     const picElement = document.getElementById("imagem");
+    const picElement2 = document.getElementById("imagem2");
     const celElement = document.getElementById("desc");
     const bairroElement = document.getElementById("raca");
     const idadeElement = document.getElementById("idade");
@@ -52,6 +53,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     bairroElement.innerHTML = petInfo.raca2;
     celElement.innerHTML = petInfo.description;
     picElement.src = petInfo.image;
+    if (petInfo.image2){
+      picElement2.src = petInfo.image2;
+    } else {
+      picElement2.style.display = "none";
+    }
+    
   } else {
     box.style.justifyContent = "center";
     box.innerHTML =

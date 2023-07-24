@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@200;300;400;500;600;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Kumbh Sans', sans-serif;
+  font-family: "Kumbh Sans", sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -59,7 +59,7 @@ p {
 
 #box {
   background-color: #ffe58b;
-  font-family: 'Kumbh Sans', sans-serif;
+  font-family: "Kumbh Sans", sans-serif;
   background-color: var(--color-dark1);
   color: var(--color-white);
   display: flex;
@@ -111,7 +111,13 @@ h1 {
   flex-direction: column;
   gap: 1rem;
 }
-
+#inputf {
+  display: flex;
+  flex-direction: row;
+}
+#inputf :nth-child(2) {
+  margin-left: 5%;
+}
 .inputs {
   padding: 8px 5px;
   outline: none;
@@ -183,6 +189,7 @@ button[type="submit"]:hover {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
+.picture__image2,
 .picture__image {
   justify-items: center;
   align-items: center;
@@ -192,11 +199,6 @@ button[type="submit"]:hover {
   aspect-ratio: 9/16;
   margin-left: -26.3%;
 }
-
-#picture__input {
-  display: none;
-}
-
 .picture {
   display: flex;
   border-radius: 10px;
@@ -206,7 +208,11 @@ button[type="submit"]:hover {
   color: #757474;
   border: 2px dashed #9e9e9e;
   cursor: pointer;
-  font-family: 'Kumbh Sans', sans-serif;
+  font-family: "Kumbh Sans", sans-serif;
+}
+#picture__input2,
+#picture__input {
+  display: none;
 }
 
 .picture:hover {
@@ -329,7 +335,7 @@ section.active .modal-box {
 
   #box {
     background-color: #ffe58b;
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: "Kumbh Sans", sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
     display: flex;
@@ -340,6 +346,50 @@ section.active .modal-box {
 
   button[type="submit"] {
     margin-top: 25%;
+  }
+}
+
+@media (max-width: 1200px) {
+  
+
+  .picture {
+    border-radius: 10px;
+    width: 150px;
+    aspect-ratio: 9/16;
+    background: #ddd;
+    color: #757474;
+    border: 2px dashed #9e9e9e;
+    cursor: pointer;
+    font-family: "Kumbh Sans", sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+  }
+  .mural img {
+    width: 150px;
+    margin-top: 0%;
+    margin-left: 0px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (max-width: 940px) {
+  .picture {
+    border-radius: 10px;
+    width: 115px;
+    aspect-ratio: 9/16;
+    background: #ddd;
+    color: #757474;
+    border: 2px dashed #9e9e9e;
+    cursor: pointer;
+    font-family: "Kumbh Sans", sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+  }
+  .mural img {
+    width: 115px;
+    margin-top: 0%;
+    margin-left: 0px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -357,10 +407,10 @@ section.active .modal-box {
     min-width: 105%;
     overflow: auto;
   }
-  .mural{
+  .mural {
     margin-left: 20%;
   }
-  #box{
+  #box {
     display: flex;
     justify-content: center;
     margin-left: 20%;
@@ -383,7 +433,7 @@ section.active .modal-box {
 
   #box {
     background-color: #ffe58b;
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: "Kumbh Sans", sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
     display: flex;
@@ -395,13 +445,13 @@ section.active .modal-box {
 
   .picture {
     border-radius: 10px;
-    width: 130px;
+    width: 110px;
     aspect-ratio: 9/16;
     background: #ddd;
     color: #757474;
     border: 2px dashed #9e9e9e;
     cursor: pointer;
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: "Kumbh Sans", sans-serif;
     transition: color 300ms ease-in-out, background 300ms ease-in-out;
   }
 
@@ -419,7 +469,104 @@ section.active .modal-box {
   }
 
   .mural img {
-    width: 130px;
+    width: 110px;
+    margin-top: 0%;
+    margin-left: 0px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (max-width: 660px) {
+  #inputf {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #inputf :nth-child(2) {
+    margin-top: 5%;
+    margin-left: -1%;
+  }
+  .content {
+    background-color: #ffe58b;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
+    margin-top: 30%;
+    border-radius: 10px;
+    min-width: 45%;
+    overflow: auto;
+  }
+
+  .picture__image2,
+  .picture__image {
+    justify-items: center;
+    align-items: center;
+    display: flex;
+    border-radius: 10px;
+    width: 300px;
+    aspect-ratio: 9/16;
+    margin-left: 0%;
+  }
+
+  .picture {
+    border-radius: 10px;
+    width: 100px;
+    aspect-ratio: 9/16;
+    background: #ddd;
+    color: #757474;
+    border: 2px dashed #9e9e9e;
+    cursor: pointer;
+    font-family: "Kumbh Sans", sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+  }
+  #box {
+    display: flex;
+    justify-content: center;
+    margin-left: 20%;
+  }
+
+  .mural {
+    margin-left: 20%;
+  }
+  .content {
+    margin-top: 30.5%;
+    max-height: 450px;
+    flex-direction: column;
+  }
+
+  #picturetxt {
+    margin-left: 0%;
+    font-size: 80%;
+  }
+
+  #box {
+    background-color: #ffe58b;
+    font-family: "Kumbh Sans", sans-serif;
+    background-color: var(--color-dark1);
+    color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 550px;
+    margin-left: -0%;
+  }
+
+  button[type="submit"] {
+    min-width: 130px;
+    max-width: 155px;
+    margin-left: -42%;
+    margin-top: 150%;
+  }
+
+  .mural {
+    margin-right: 5%;
+    margin-top: 18%;
+    max-width: 70%;
+  }
+
+  .mural img {
+    width: 100px;
     margin-top: 0%;
     margin-left: 0px;
     border-radius: 10px;
@@ -427,6 +574,15 @@ section.active .modal-box {
   }
 }
 @media (max-width: 455px) {
+  #inputf {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #inputf :nth-child(2) {
+    margin-top: 5%;
+    margin-left: -1%;
+  }
   .content {
     background-color: #ffe58b;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -437,16 +593,35 @@ section.active .modal-box {
     overflow: auto;
   }
 
-  #box{
+  .picture__image2,
+  .picture__image {
+    justify-items: center;
+    align-items: center;
+    display: flex;
+    border-radius: 10px;
+    width: 300px;
+    aspect-ratio: 9/16;
+    margin-left: 0%;
+  }
+
+  .picture {
+    border-radius: 10px;
+    width: 100px;
+    aspect-ratio: 9/16;
+    background: #ddd;
+    color: #757474;
+    border: 2px dashed #9e9e9e;
+    cursor: pointer;
+    font-family: "Kumbh Sans", sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+  }
+  #box {
     display: flex;
     justify-content: center;
     margin-left: 00%;
   }
-  .picture__image {
-    margin-left: 0%;
-  }
 
-  .mural{
+  .mural {
     margin-left: 8%;
   }
   .content {
@@ -462,7 +637,7 @@ section.active .modal-box {
 
   #box {
     background-color: #ffe58b;
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: "Kumbh Sans", sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
     display: flex;
@@ -470,18 +645,6 @@ section.active .modal-box {
     align-items: center;
     height: 400px;
     width: 350px;
-  }
-
-  .picture {
-    border-radius: 10px;
-    width: 130px;
-    aspect-ratio: 9/16;
-    background: #ddd;
-    color: #757474;
-    border: 2px dashed #9e9e9e;
-    cursor: pointer;
-    font-family: 'Kumbh Sans', sans-serif;
-    transition: color 300ms ease-in-out, background 300ms ease-in-out;
   }
 
   button[type="submit"] {
@@ -493,12 +656,12 @@ section.active .modal-box {
 
   .mural {
     margin-right: 5%;
-    margin-top: -20%;
+    margin-top: 5%;
     max-width: 70%;
   }
 
   .mural img {
-    width: 130px;
+    width: 100px;
     margin-top: 0%;
     margin-left: 0px;
     border-radius: 10px;
@@ -517,7 +680,7 @@ section.active .modal-box {
     overflow: auto;
   }
 
-  #box{
+  #box {
     display: flex;
     justify-content: center;
     margin-left: 00%;
@@ -526,7 +689,7 @@ section.active .modal-box {
     margin-left: 0%;
   }
 
-  .mural{
+  .mural {
     margin-left: 5%;
   }
   .content {
@@ -542,7 +705,7 @@ section.active .modal-box {
 
   #box {
     background-color: #ffe58b;
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: "Kumbh Sans", sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
     display: flex;
@@ -554,13 +717,13 @@ section.active .modal-box {
 
   .picture {
     border-radius: 10px;
-    width: 130px;
+    width: 100px;
     aspect-ratio: 9/16;
     background: #ddd;
     color: #757474;
     border: 2px dashed #9e9e9e;
     cursor: pointer;
-    font-family: 'Kumbh Sans', sans-serif;
+    font-family: "Kumbh Sans", sans-serif;
     transition: color 300ms ease-in-out, background 300ms ease-in-out;
   }
 
@@ -578,7 +741,7 @@ section.active .modal-box {
   }
 
   .mural img {
-    width: 130px;
+    width: 100px;
     margin-top: 0%;
     margin-left: 0px;
     border-radius: 10px;

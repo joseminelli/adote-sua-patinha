@@ -80,8 +80,8 @@ app.post("/salvar", (req, res) => {
   const descricao = req.body.descricao;
   const especie = req.body.especie;
   const imagem = req.body.imagem;
+  const imagem2 = req.body.imagem2;
   const userId = req.cookies["userId"];
-
   fs.readFile("../../usuarios.json", "utf8", (err, userData) => {
     if (err) {
       console.error(err);
@@ -120,6 +120,7 @@ app.post("/salvar", (req, res) => {
         regiao: user.regiao,
         esp: especie,
         image: imagem,
+        image2: imagem2,
         userId: userId,
       };
 
