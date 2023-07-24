@@ -1,17 +1,17 @@
 var sun = document.getElementById("sun"),
-transitionTime = 0.6;
+  transitionTime = 0.6,
+  pictureElements = document.querySelectorAll(".picture");
 const body = document.querySelector("body");
- p = document.querySelector("div.mural > p"),
- h1Sobre = document.querySelector("section#formm > h1"),
- h2Sobre = document.querySelector("section#faq  > h2"),
- h2Contato = document.querySelector("div.cf  > h2"),
- logintxt = document.getElementById("logintxt"),
- noPostsMessage = document.getElementById("noPostsMessage"),
- npet = document.getElementById("npet"),
- iconProcura = document.getElementById("searchButton"),
- inputProcura = document.getElementById("searchInput"),
- currentPage = document.getElementById("currentPage"),
- pictureInput = document.getElementById("picture");
+(p = document.querySelector("div.mural > p")),
+  (h1Sobre = document.querySelector("section#formm > h1")),
+  (h2Sobre = document.querySelector("section#faq  > h2")),
+  (h2Contato = document.querySelector("div.cf  > h2")),
+  (logintxt = document.getElementById("logintxt")),
+  (noPostsMessage = document.getElementById("noPostsMessage")),
+  (npet = document.getElementById("npet")),
+  (iconProcura = document.getElementById("searchButton")),
+  (inputProcura = document.getElementById("searchInput")),
+  (currentPage = document.getElementById("currentPage"));
 
 document.addEventListener("DOMContentLoaded", function () {
   var darkModeEnabled = localStorage.getItem("darkModeEnabled");
@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
     transitionTime = 0;
     enableDarkMode();
     sun.classList.toggle("night");
-    
   }
 });
 
@@ -45,25 +44,27 @@ function enableDarkMode() {
   if (p) {
     p.style.color = "#ffffff";
   }
-  if(iconProcura){
+  if (iconProcura) {
     iconProcura.style.color = "#ffffff";
   }
-  if(inputProcura){
+  if (inputProcura) {
     inputProcura.style.color = "#ffffff";
   }
-  if(h1Sobre){
+  if (h1Sobre) {
     h1Sobre.style.color = "#ffffff";
   }
-  if(h2Sobre){
+  if (h2Sobre) {
     h2Sobre.style.color = "#ffffff";
   }
-  if(h2Contato){
+  if (h2Contato) {
     h2Contato.style.color = "#ffffff";
   }
-  if(pictureInput){
-    pictureInput.style.transition = transitionTime + "s";
-    pictureInput.style.backgroundColor = "#353535";
-    pictureInput.style.borderColor = "#fff";
+  if (pictureElements) {
+    pictureElements.forEach(function (element) {
+      element.style.transition = transitionTime + "s";
+      element.style.backgroundColor = "#353535";
+      element.style.borderColor = "#fff";
+    });
   }
   if (logintxt) {
     logintxt.style.color = "#ffffff";
@@ -96,27 +97,29 @@ function disableDarkMode() {
   if (p) {
     p.style.color = "#282828";
   }
-  if(pictureInput){
-    pictureInput.style.transition = transitionTime + "s";
-    pictureInput.style.backgroundColor = "#ddd";
-    pictureInput.style.borderColor = "#9e9e9e";
+  if (pictureElements) {
+    pictureElements.forEach(function (element) {
+      element.style.transition = transitionTime + "s";
+      element.style.backgroundColor = "#ddd";
+      element.style.borderColor = "#9e9e9e";
+    });
   }
-  if(iconProcura){
+  if (iconProcura) {
     iconProcura.style.color = "#282828";
   }
-  if(inputProcura){
+  if (inputProcura) {
     inputProcura.style.color = "#282828";
   }
-  if(h1Sobre){
+  if (h1Sobre) {
     h1Sobre.style.color = "#282828";
   }
-  if(h2Sobre){
+  if (h2Sobre) {
     h2Sobre.style.color = "#282828";
   }
   if (npet) {
     npet.style.color = "#282828";
   }
-  if(h2Contato){
+  if (h2Contato) {
     h2Contato.style.color = "#282828";
   }
   if (h2Erro) {

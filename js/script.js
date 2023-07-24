@@ -256,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     imagem2: imageUrl2,
                   };
 
-                  fetch(`http://localhost:3000/salvar`, {
+                  fetch(`https://api.adotesuapatinha.com/salvar`, {
                     method: "POST",
 
                     credentials: "include",

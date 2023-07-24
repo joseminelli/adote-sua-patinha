@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const contato = document.getElementById("contato");
   loader.style.display = "flex";
   hamster.classList.add("active");
-  var response = await fetch(`http://localhost:3000/mural`);
+  var response = await fetch(`https://api.adotesuapatinha.com/mural`);
   var data = await response.json();
   if (data) {
     setTimeout(function () {

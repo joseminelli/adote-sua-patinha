@@ -37,7 +37,7 @@ async function verificarCookie() {
 
 async function exibirPets() {
   try {
-    const response = await fetch("http://localhost:3000/perfil", {
+    const response = await fetch("https://api.adotesuapatinha.com/perfil", {
       credentials: "include",
     });
 
@@ -64,7 +64,7 @@ async function exibirPets() {
 
 function excluirPet(petId) {
   setTimeout(function () {
-    fetch(`http://localhost:3000/excluirPet/${petId}`, {
+    fetch(`https://api.adotesuapatinha.com/excluirPet/${petId}`, {
       method: "DELETE",
       credentials: "include",
     })
