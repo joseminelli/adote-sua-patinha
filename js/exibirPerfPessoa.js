@@ -14,10 +14,13 @@ var imgElement2 = document.getElementById("fotopet");
 
 async function verificarCookie() {
   try {
-    const response = await fetch("https://api.adotesuapatinha.com/verificarSemCookie", {
-      method: "POST",
-      credentials: "include", 
-    });
+    const response = await fetch(
+      "https://api.adotesuapatinha.com/verificarSemCookie",
+      {
+        method: "POST",
+        credentials: "include",
+      }
+    );
 
     if (response.ok) {
       const data = await response.json();
@@ -34,10 +37,9 @@ async function verificarCookie() {
 
 async function exibirPets() {
   try {
-    const response = await fetch(
-      "https://api.adotesuapatinha.com/perfil",
-      { credentials: "include" }
-    );
+    const response = await fetch("https://api.adotesuapatinha.com/perfil", {
+      credentials: "include",
+    });
 
     if (!response.ok) {
       throw new Error("Erro ao obter as fotos dos pets");
@@ -49,11 +51,11 @@ async function exibirPets() {
     if (petElementsHTML == "") {
       fotopetDiv.style.display = "none";
       comPet.style.display = "none";
-      semPet.style.display = "run-in";
+      semPet.style.display = "flex";
     } else {
       fotopetDiv.style.display = "flex";
       semPet.style.display = "none";
-      comPet.style.display = "run-in";
+      comPet.style.display = "flex";
     }
   } catch (error) {
     console.error(error);
@@ -61,27 +63,29 @@ async function exibirPets() {
 }
 
 function excluirPet(petId) {
-  fetch(`https://api.adotesuapatinha.com/excluirPet/${petId}`, {
-    method: "DELETE",
-    credentials: "include",
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Erro ao excluir o pet.");
-      }
-      return response.json();
+  fotopetDiv.classList.add("encolher");
+  setTimeout(function () {
+    fetch(`https://api.adotesuapatinha.com/excluirPet/${petId}`, {
+      method: "DELETE",
+      credentials: "include",
     })
-    .then((data) => {
-      console.log("Pet excluído com sucesso!", data);
-      exibirPets();
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Erro ao excluir o pet.");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Pet excluído com sucesso!", data);
+        exibirPets();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, 300);
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
-
   exibirPets();
   loader.style.display = "flex";
   hamster.classList.add("active");
@@ -89,10 +93,9 @@ document.addEventListener("DOMContentLoaded", async function () {
   // const editar = document.getElementById("editar");
 
   try {
-    const response = await fetch(
-      "https://api.adotesuapatinha.com/usuario",
-      { credentials: "include" }
-    );
+    const response = await fetch("https://api.adotesuapatinha.com/usuario", {
+      credentials: "include",
+    });
     if (!response.ok) {
       throw new Error("Erro ao obter as informações do usuário");
     }
