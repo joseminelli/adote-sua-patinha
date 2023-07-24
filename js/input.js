@@ -4,6 +4,7 @@ const inputFile2 = document.querySelector("#picture__input2");
 const picture__image2 = document.getElementById("picture__image2");
 const pictureImage2 = document.querySelector(".picture__image2");
 pictureImage2.innerHTML = "Opcional";
+pictureImage.innerHTML = "Obrigatório";
 var enviarButton2 = document.getElementById("enviar2");
 let cropper;
 let croppedCanvas;
@@ -40,6 +41,9 @@ inputFile.addEventListener("change", function (e) {
           dragMode: "move",
           autoCropArea: 1,
         });
+      }
+      if(!mobile){
+        pictureImage.style.marginLeft = "-26.3%"
       }
     });
 

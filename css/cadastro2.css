@@ -191,13 +191,14 @@ button[type="submit"]:hover {
 
 .picture__image2,
 .picture__image {
+  color: #ccc;
   justify-items: center;
   align-items: center;
   display: flex;
   border-radius: 10px;
   width: 300px;
   aspect-ratio: 9/16;
-  margin-left: 00%;
+  margin-left: 0;
   justify-content: center;
 }
 .picture {

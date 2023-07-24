@@ -10,41 +10,107 @@ var abrirModal = localStorage.getItem("consciente");
 loader.style.display = "flex";
 hamster.classList.add("active");
 
+var racaDog = [
+  "Golden",
+  "Akita",
+  "Pastor",
+  "Labrador",
+  "Shih-tzu",
+  "Labrador",
+  "Corgi",
+  "Beagle",
+  "Yorkshire",
+  "Husky",
+  "Poodle",
+  "Buldogue",
+  "Pinscher",
+  "Lhasa Apso",
+  "Maltês",
+  "Pug",
+];
+
+var racaCat = ["Persa", "Siamês", "Sphynx"];
 
 document.addEventListener("DOMContentLoaded", async function () {
-  const apiUrl = "https://servicodados.ibge.gov.br/api/v1/localidades/estados/31/municipios";
-      function fillMunicipiosSelect(municipios) {
-        const municipiosSelect = document.getElementById("bairro2");
+  racaDog.sort();
+  racaDog.forEach(function (item) {
+    addOption(item);
+  });
+  racaCat.sort();
+  racaCat.forEach(function (item) {
+    addOption(item);
+  });
 
-        municipios.forEach((municipio) => {
-          const option = document.createElement("option");
-          option.value = municipio.nome;
-          option.text = municipio.nome;
-          municipiosSelect.appendChild(option);
-        });
-      }
-      fetch(apiUrl)
-        .then((response) => response.json())
-        .then((municipios) => {
-          fillMunicipiosSelect(municipios);
-        })
-        .catch((error) => {
-          console.error("Erro ao obter os municípios:", error);
-        });
+  const especieinput = document.getElementById("especie");
+
+  especieinput.addEventListener("change", function (event) {
+    var select = document.getElementById("raca");
+    select.innerHTML = "";
+    select.add(new Option("Selecione", "0"));
+    select.add(new Option("Sem Raça", "Sem Raça"));
+    if (especieinput.value == "Cachorros") {
+      racaDog.sort();
+      racaDog.forEach(function (item) {
+        addOption(item);
+      });
+    }
+    if (especieinput.value == "Gato") {
+      racaCat.sort();
+      racaCat.forEach(function (item) {
+        addOption(item);
+      });
+    }
+    if (especieinput.value === "0") {
+      racaDog.sort();
+      racaDog.forEach(function (item) {
+        addOption(item);
+      });
+      racaCat.sort();
+      racaCat.forEach(function (item) {
+        addOption(item);
+      });
+    }
+  });
+
+  function addOption(valor) {
+    var option = new Option(valor, valor);
+    var select = document.getElementById("raca");
+    select.add(option);
+  }
+  const apiUrl =
+    "https://servicodados.ibge.gov.br/api/v1/localidades/estados/31/municipios";
+  function fillMunicipiosSelect(municipios) {
+    const municipiosSelect = document.getElementById("bairro2");
+
+    municipios.forEach((municipio) => {
+      const option = document.createElement("option");
+      option.value = municipio.nome;
+      option.text = municipio.nome;
+      municipiosSelect.appendChild(option);
+    });
+  }
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((municipios) => {
+      fillMunicipiosSelect(municipios);
+    })
+    .catch((error) => {
+      console.error("Erro ao obter os municípios:", error);
+    });
   /*neverBtn.addEventListener("click", function () {
     localStorage.setItem("consciente", "true");*/
-    section.classList.remove("active");
- // });
- /* if (abrirModal != "true") {
+  section.classList.remove("active");
+  // });
+  /* if (abrirModal != "true") {
     section.classList.add("active");
   }*/
   let loginId;
   const chkFavoritos = document.getElementById("chkFavoritos");
   const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
   const textoMural = document.getElementById("textoMural");
-  var response = await fetch(`https://api.adotesuapatinha.com/mural`,
-  { credentials: "include" }
-);
+  var response = await fetch(`https://api.adotesuapatinha.com/mural`, {
+    credentials: "include",
+  });
 
   var data = await response.json();
 
