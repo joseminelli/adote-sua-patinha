@@ -48,12 +48,7 @@ var racaDog = [
   "Pug",
 ];
 
-var racaCat = [
-  "Sem Raça",
-  "Persa",
-  "Siamês",
-  "Sphynx"
-];
+var racaCat = ["Sem Raça", "Persa", "Siamês", "Sphynx"];
 
 async function verificarCookieTF() {
   try {
@@ -135,20 +130,24 @@ document.addEventListener("DOMContentLoaded", function () {
     if (redirecionarUsuario() == "false") {
       window.location.href = "index.html";
     }
-
+    const content = document.getElementById("contentb");
+    if (mobile == false) {
+      content.style.maxHeight = "500px";
+    }
     const especieinput = document.getElementById("especie");
     const racainput = document.getElementById("raca");
     especieinput.addEventListener("change", function (event) {
-      
       racainput.innerHTML = "";
-      
+
       racainput.add(new Option("Selecione", "0"));
       racainput.add(new Option("Sem Raça", "Sem Raça"));
-      
+
       if (especieinput.value != "0") {
         racadiv.style.display = "block";
+        content.style.maxHeight = "600px";
       } else {
         racadiv.style.display = "none";
+        content.style.maxHeight = "500px";
       }
       if (especieinput.value == "Cachorros") {
         racaDog.sort();
