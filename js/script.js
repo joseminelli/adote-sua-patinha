@@ -160,10 +160,10 @@ document.addEventListener("DOMContentLoaded", function () {
           nome === "" ||
           descricao === "" ||
           raca === "0" ||
-          especie === "0"
+          especie === "0" || !inputImagem.files[0]
         ) {
           if (inputImagem.files && !inputImagem.files[0]) {
-            pictureInput.style.borderColor = "#ff2727";
+            pictureInput.style.borderColor = "#fff";
           } else {
             pictureInput.style.borderColor = "#fff";
           }
@@ -181,7 +181,6 @@ document.addEventListener("DOMContentLoaded", function () {
           if (especie === "0") {
             especie3.style.borderColor = "#ff2727";
           }
-
           hamster.classList.remove("active");
           loader.style.display = "none";
           section.classList.add("active");
