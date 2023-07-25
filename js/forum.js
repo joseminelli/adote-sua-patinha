@@ -272,7 +272,7 @@ function loadPosts() {
               };
 
               fetch(
-                `http://api.adotesuapatinha.com/posts/${postId}/respostas`,
+                `https://api.adotesuapatinha.com/posts/${postId}/respostas`,
                 {
                   method: "POST",
                   credentials: "include",
