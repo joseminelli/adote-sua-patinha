@@ -49,8 +49,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     const nomeElement = document.getElementById("name");
 
     nomeElement.innerHTML = petInfo.name;
-    idadeElement.innerHTML = petInfo.age;
-    bairroElement.innerHTML = petInfo.raca2;
+    idadeElement.innerHTML = petInfo.age + " anos";
+    bairroElement.innerHTML = petInfo.raca;
     celElement.innerHTML = petInfo.description;
     picElement.src = petInfo.image;
     if (petInfo.image2){

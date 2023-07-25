@@ -439,7 +439,6 @@ app.get("/posts", (req, res) => {
     );
   }
 
-  // Aqui vamos incluir as respostas completas em cada post
   posts.forEach((post) => {
     if (post.respostas) {
       post.respostas = post.respostas.map((resposta) => {
