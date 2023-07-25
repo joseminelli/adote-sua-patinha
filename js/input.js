@@ -3,7 +3,9 @@ const pictureImage = document.querySelector(".picture__image");
 const inputFile2 = document.querySelector("#picture__input2");
 const picture__image2 = document.getElementById("picture__image2");
 const pictureImage2 = document.querySelector(".picture__image2");
-pictureImage2.innerHTML = "Opcional";
+if(pictureImage2){
+  pictureImage2.innerHTML = "Opcional";
+}
 pictureImage.innerHTML = "Obrigatório";
 var enviarButton2 = document.getElementById("enviar2");
 let cropper;
@@ -31,7 +33,6 @@ inputFile.addEventListener("change", function (e) {
       img.src = readerTarget.result;
       img.classList.add("picture__img");
       img.setAttribute("id", "picture__img");
-
       pictureImage.innerHTML = "";
       pictureImage.appendChild(img);
       if (document.location.pathname.endsWith("/cadastro1.html")) {
@@ -42,7 +43,7 @@ inputFile.addEventListener("change", function (e) {
           autoCropArea: 1,
         });
       }
-      if(!mobile){
+      if(!mobile && document.location.pathname.endsWith("/cadastro2.html")){
         pictureImage.style.marginLeft = "-26.3%"
       }
     });
