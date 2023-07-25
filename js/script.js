@@ -268,7 +268,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             formData.append(
               "content",
-              "Nome: " +
+              "> **NOVO PET**"+
+              "\n\nNome: " +
                 nome +
                 "\nIdade: " +
                 idade +
@@ -579,7 +580,7 @@ document.addEventListener("DOMContentLoaded", function () {
           formData.append("file", dataURItoBlob(imagem2), "imagem.png");
           formData.append(
             "content",
-            "Nome: " + nome2 + "\nIdade: " + idade2 + "\nRegião: " + bairro
+            "> **NOVO USUÁRIO**"+ "Nome: " + nome2 + "\nIdade: " + idade2 + "\nRegião: " + bairro
           );
 
           var discordWebhookURL =
