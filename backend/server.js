@@ -33,18 +33,6 @@ app.use(
   })
 );
 
-function lerArquivo(arquivo, callback) {
-  fs.readFile("../../" + arquivo + ".json", "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      callback(err);
-      return;
-    }
-
-    callback(null, data);
-  });
-}
-
 app.post("/verificarCookie", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const userId = req.cookies["userId"];
@@ -94,9 +82,19 @@ app.post("/salvar", (req, res) => {
   const imagem = req.body.imagem;
   const imagem2 = req.body.imagem2;
   const userId = req.cookies["userId"];
+  fs.readFile("../../usuarios.json", "utf8", (err, userData) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo JSON de usuários");
+      return;
+    }
 
-  lerArquivo("usuarios", (userData) => {
-    lerArquivo("pets", (petData) => {
+    fs.readFile("../../pets.json", "utf8", (err, petData) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send("Erro ao ler o arquivo JSON de pets");
+        return;
+      }
       const usersData = JSON.parse(userData);
       const user = usersData.usuarios.find(
         (user) => user.id === parseInt(userId)
@@ -154,7 +152,13 @@ app.post("/salvarPessoa", upload.single("file"), (req, res) => {
   const senha = req.body.senha;
   const imagem = req.body.imagem;
 
-  lerArquivo("usuarios", (data) => {
+  fs.readFile("../../usuarios.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo JSON");
+      return;
+    }
+
     let jsonData = JSON.parse(data);
     const newId =
       jsonData.usuarios.length > 0
@@ -196,7 +200,13 @@ app.post("/login", (req, res) => {
   const email = req.body.email.trim().toLowerCase();
   const senha = req.body.senha;
 
-  lerArquivo("usuarios", (data) => {
+  fs.readFile("../../usuarios.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo de usuários");
+      return;
+    }
+
     const jsonData = JSON.parse(data);
     const usuarios = jsonData.usuarios;
 
@@ -231,8 +241,13 @@ app.get("/mural", (req, res) => {
   if (fs.existsSync("../../usuarios.json") === false) {
     fs.writeFile("../../usuarios.json", '{"usuarios": []}', () => {});
   }
+  fs.readFile("../../pets.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo JSON");
+      return;
+    }
 
-  lerArquivo("pets", (data) => {
     const jsonData = JSON.parse(data);
     res.json(jsonData);
   });
@@ -266,7 +281,13 @@ app.get("/perfil", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const userId = req.cookies["userId"];
 
-  lerArquivo("pets", (data) => {
+  fs.readFile("../../pets.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo JSON de pets");
+      return;
+    }
+
     const jsonData = JSON.parse(data);
     const pets = jsonData.pets;
 
@@ -297,7 +318,13 @@ app.get("/maxPets", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const userId = req.cookies["userId"];
 
-  lerArquivo("pets", (data) => {
+  fs.readFile("../../pets.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo JSON de pets");
+      return;
+    }
+
     const jsonData = JSON.parse(data);
     const pets = jsonData.pets;
 
@@ -312,7 +339,13 @@ app.delete("/excluirPet/:petId", (req, res) => {
   const userId = req.cookies["userId"];
   const petId = parseInt(req.params.petId);
 
-  lerArquivo("pets", (data) => {
+  fs.readFile("../../pets.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo JSON de pets");
+      return;
+    }
+
     try {
       const jsonData = JSON.parse(data);
       const pets = jsonData.pets;
@@ -329,7 +362,9 @@ app.delete("/excluirPet/:petId", (req, res) => {
 
       pets.splice(petIndex, 1);
 
-      fs.writeFile("../../pets.json", JSON.stringify(jsonData, null, 2),
+      fs.writeFile(
+        "../../pets.json",
+        JSON.stringify(jsonData, null, 2),
         (err) => {
           if (err) {
             console.error(err);
@@ -395,7 +430,7 @@ app.get("/posts", (req, res) => {
   }
 
   const searchTerm = req.query.search;
-
+  
   if (searchTerm) {
     posts = posts.filter(
       (post) =>
@@ -419,6 +454,8 @@ app.get("/posts", (req, res) => {
 
   res.json(posts);
 });
+
+
 
 app.delete("/posts/:id", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -500,9 +537,20 @@ app.get("/email/:petId", (req, res) => {
 
   const petId = parseInt(req.params.petId);
 
-  lerArquivo("usuarios", (userData) => {
+  fs.readFile("../../usuarios.json", "utf8", (err, userData) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo JSON de usuários");
+      return;
+    }
 
-    lerArquivo("pets", (petData) => {
+    fs.readFile("../../pets.json", "utf8", (err, petData) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send("Erro ao ler o arquivo JSON de pets");
+        return;
+      }
+
       const usersData = JSON.parse(userData);
       const petsData = JSON.parse(petData);
 

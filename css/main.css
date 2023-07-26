@@ -31,6 +31,16 @@
   height: 50px;
 }
 
+.disabled-btn {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button[type="button"] {
+  border: none;
+  outline: none;
+}
+
 html {
   scroll-behavior: smooth;
 }
