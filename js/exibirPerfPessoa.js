@@ -5,8 +5,8 @@ const idade = document.getElementById("idade");
 const bairro1 = document.getElementById("bairro");
 const telefone1 = document.getElementById("telefone");
 const fotopetDiv = document.getElementById("fotoPet2");
-const skeleton = document.querySelectorAll(".skeleton");
-const infos = document.querySelectorAll(".infos");
+const hamster = document.getElementById("hamster");
+const loader = document.getElementById("loader");
 const btnDel = document.getElementById("btnDel");
 const comPet = document.getElementById("spet");
 const semPet = document.getElementById("npet");
@@ -85,16 +85,9 @@ function excluirPet(petId) {
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
-  console.log(skeleton);
-  semPet.style.display = "none";
-  comPet.style.display = "flex";
-  skeleton.forEach((elemento) => {
-    elemento.style.display = "block";
-  });
-  infos.forEach((elemento) => {
-    elemento.style.display = "none";
-  });
   exibirPets();
+  loader.style.display = "flex";
+  hamster.classList.add("active");
 
   // const editar = document.getElementById("editar");
 
@@ -110,12 +103,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (!usuario) {
       throw new Error("Usuário não encontrado");
     } else {
-      skeleton.forEach((elemento) => {
-        elemento.style.display = "none";
-      });
-      infos.forEach((elemento) => {
-        elemento.style.display = "block";
-      });
+      loader.style.display = "none";
+      hamster.classList.remove("active");
     }
     nome.innerHTML = usuario.name;
     idade.innerHTML = `${usuario.age} Anos`;

@@ -348,7 +348,7 @@ button[type="submit"]:hover {
     overflow: auto;
   }
   #box {
-    height: 400px;
+    height: 425px;
   }
   #imagemErro {
     margin-left: 10%;
@@ -370,7 +370,7 @@ button[type="submit"]:hover {
   }
 
   .mural {
-    margin-top: 17%;
+    margin-top: 20%;
     margin-left: 3%;
   }
 
