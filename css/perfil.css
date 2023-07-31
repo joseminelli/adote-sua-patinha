@@ -1,4 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@200;300;400;500;600;700&display=swap");
+
+.skeleton {
+  width: 100%;
+  height: 15px;
+  display: block;
+  background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 80%
+    ),
+    rgba(202, 202, 202, 0.575);
+  background-repeat: repeat-y;
+  background-size: 50px 200px;
+  background-position: -200% 0;
+  animation: shine 1s infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% 0, /* move highlight to right */ 0 0;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -40,12 +64,36 @@ h2 {
   line-height: 54px;
   color: #222;
 }
+
+#form span {
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+#fotopl {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+#petpl{
+  margin-left: 15%;
+  display: inline-block;
+  border-radius: 10px;
+  height: 225px;
+  width: 125px;
+}
+
 #fotoPet2 {
   display: inline-block;
 }
-#pet{
+
+#pet {
   margin-bottom: 0px;
 }
+
 h4 {
   font-size: 20px;
   color: #222;
@@ -270,9 +318,11 @@ button[type="submit"]:hover {
 .delBtnDiv:hover {
   background-color: #cf3636;
 }
+
 .delBtnDiv:hover .x1 {
   border-bottom: solid 4px#ececec;
 }
+
 .delBtnDiv:hover .x2 {
   border-bottom: solid 4px#ececec;
 }
@@ -347,6 +397,7 @@ button[type="submit"]:hover {
     height: 400px;
   }
 }
+
 @media (max-width: 1800px) {
   #editar {
     position: absolute;
@@ -369,6 +420,7 @@ button[type="submit"]:hover {
     margin-top: -26.5%;
     color: #165ea8;
   }
+
   #linha-vertical {
     height: 400px;
     margin-left: 10%;
@@ -385,76 +437,91 @@ button[type="submit"]:hover {
     height: 400px;
   }
 }
+
 @media (max-width: 1445px) {
   #editar {
     margin-left: 9.5%;
     margin-top: -28.5%;
   }
 }
+
 @media (max-width: 1325px) {
   #editar {
     margin-left: 10%;
     margin-top: -32%;
   }
 }
+
 @media (max-width: 1210px) {
   #editar {
     margin-left: 11%;
     margin-top: -36%;
   }
+
   button[type="submit"] {
     font-size: 90%;
     margin-left: 80%;
   }
 }
+
 @media (max-width: 1101px) {
   #editar {
     margin-left: 12%;
     margin-top: -39%;
   }
 }
+
 @media (max-width: 1010px) {
   #editar {
     margin-left: 14%;
     margin-top: -44%;
   }
+
   .mural img {
     width: 150px;
   }
 }
+
 @media (max-width: 911px) {
   #editar {
     margin-left: 15%;
     margin-top: -49%;
   }
 }
+
 @media (max-width: 830px) {
   #editar {
     margin-left: 16%;
     margin-top: -53%;
   }
+
   #fotoPet2 {
     display: inline-block !important;
   }
+
   .mural img {
     width: 116px;
   }
 }
+
 @media (max-width: 740px) {
   #editar {
     margin-left: 18%;
     margin-top: -60%;
   }
+
   button[type="submit"] {
     font-size: 90%;
     margin-left: 70%;
   }
 }
+
 @media (max-width: 650px) {
   #editar {
     margin-left: 20%;
     margin-top: -69%;
   }
+
   .delBtnDiv {
     position: relative;
     margin-bottom: -12%;
@@ -470,38 +537,46 @@ button[type="submit"]:hover {
     position: relative;
     right: -10%;
   }
+
   .mural {
     margin-top: 15%;
   }
+
   .mural p {
     margin-bottom: 20px;
     margin-left: 50px;
   }
 }
+
 @media (max-width: 500px) {
   #editar {
     margin-left: 27%;
     margin-top: -92%;
   }
+
   button[type="submit"] {
     font-size: 90%;
     margin-left: 70%;
   }
+
   .mural p {
     margin-bottom: 0px;
     margin-left: 50px;
   }
 }
+
 @media (max-width: 470px) {
   #editar {
     margin-left: 28%;
     margin-top: -97%;
   }
+
   button[type="submit"] {
     font-size: 90%;
     margin-left: 70%;
   }
 }
+
 @media (max-width: 440px) {
   #editar {
     position: absolute;
@@ -510,13 +585,16 @@ button[type="submit"]:hover {
     margin-top: -114%;
     color: #165ea8;
   }
-  #pet{
+
+  #pet {
     margin-bottom: 20px;
   }
+
   .mural p {
     margin-bottom: 20px;
     margin-left: 50px;
   }
+
   .content {
     background-color: #ffe58b;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -526,6 +604,7 @@ button[type="submit"]:hover {
     margin-top: 0%;
     overflow: auto;
   }
+
   .x1 {
     width: 20px;
     margin-left: -50%;
@@ -567,7 +646,7 @@ button[type="submit"]:hover {
   }
 
   #box {
-    height: 400px;
+    height: 425px;
   }
 
   .btnDel {
@@ -597,6 +676,7 @@ button[type="submit"]:hover {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   }
 }
+
 @media (max-width: 380px) {
   #editar {
     margin-left: 35%;
@@ -612,14 +692,17 @@ button[type="submit"]:hover {
     border-radius: 0px;
   }
 }
+
 .encolher {
   animation: encolherAnimacao 0.3s forwards;
 }
+
 @keyframes encolherAnimacao {
   0% {
     opacity: 1;
     transform: scale(1);
   }
+
   100% {
     opacity: 0;
     transform: scale(0);

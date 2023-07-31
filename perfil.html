@@ -14,27 +14,6 @@
 </head>
 
 <body>
-    <div id="loader">
-        <div role="img" class="wheel-and-hamster" id="hamster">
-          <div class="wheel"></div>
-          <div class="hamster">
-            <div class="hamster__body">
-              <div class="hamster__head">
-                <div class="hamster__ear"></div>
-                <div class="hamster__eye"></div>
-                <div class="hamster__nose"></div>
-              </div>
-              <div class="hamster__limb hamster__limb--fr"></div>
-              <div class="hamster__limb hamster__limb--fl"></div>
-              <div class="hamster__limb hamster__limb--br"></div>
-              <div class="hamster__limb hamster__limb--bl"></div>
-              <div class="hamster__tail"></div>
-            </div>
-          </div>
-          <span class="overlayr"></span>
-          <div class="spoke"></div>
-        </div>
-      </div>
     <section id="header">
         <a href="main.html"><img src="img/logo.png" class="logo" alt=""></a>
         <div>
@@ -64,23 +43,28 @@
     </a>
     <section id="box">
         <div class="content">
-            <img Id="pic" src="">
+            <span class="skeleton" id="fotopl"></span>
+            <img class="infos" Id="pic" src="">
             <form id="form">
                 <div>
                     <p>Nome:</p>
-                    <h6 id="name" >Nome</h6>
+                    <span class="skeleton" id="nomepl"></span>
+                    <h6 class="infos" id="name" >Nome</h6>
                 </div>
                 <div>
                     <p>Idade:</p>
-                    <h6 id="idade">Idade</h6>
+                    <span class="skeleton" id="idadepl"></span>
+                    <h6 class="infos" id="idade">Idade</h6>
                 </div>
                 <div>
                     <p>Região:</p>
-                    <h6 id="bairro">Região</h6>
+                    <span class="skeleton" id="regiaopl"></span>
+                    <h6 class="infos" id="bairro">Região</h6>
                 </div>
                 <div>
                     <p>Telefone:</p>
-                    <h6 id="telefone">0000-000</h6>
+                    <span class="skeleton" id="telpl"></span>
+                    <h6 class="infos" id="telefone">0000-000</h6>
                 </div>
             </form>
         </div>
@@ -90,6 +74,7 @@
             <p id="spet">Seus pets:</p>
             <p id="npet">Sem pets disponíveis</p>
             <div id="fotoPet">
+                <span class="skeleton" id="petpl"></span>
                 <div id="fotoPet2"></div>
             </div>
         </div>
