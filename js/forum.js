@@ -281,7 +281,6 @@ function loadPosts() {
 
         dropdownbtns.forEach(function (button, index) {
           button.addEventListener("click", function () {
-            console.log("click");
             dropdowncontents[index].classList.toggle("show");
             setTimeout(() => {
               dropdowncontents[index].classList.toggle("transform");
@@ -486,9 +485,7 @@ document.addEventListener("DOMContentLoaded", function () {
               var postElement = document.createElement("div");
               postElement.className = "post";
               postElement.innerHTML =
-                '<button class="deleteBtn" data-id="' +
-                post.id +
-                '"><b>X</b></button>' +
+              '<div class="dropdown"> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' + post.id + '" >Apagar post</p> </div>  </div>  </div>' +
                 "<h3 id='forumh3'>" +
                 post.titulo +
                 "</h3>" +
@@ -547,6 +544,17 @@ document.addEventListener("DOMContentLoaded", function () {
               });
             });
 
+            var dropdownbtns = document.querySelectorAll(".dropdown");
+            var dropdowncontents = document.querySelectorAll(".dropdown-content");
+    
+            dropdownbtns.forEach(function (button, index) {
+              button.addEventListener("click", function () {
+                dropdowncontents[index].classList.toggle("show");
+                setTimeout(() => {
+                  dropdowncontents[index].classList.toggle("transform");
+                }, 1);
+              });
+            });
             var replyButtons = document.querySelectorAll(".reply-btn");
             replyButtons.forEach(function (button) {
               button.addEventListener("click", function () {
