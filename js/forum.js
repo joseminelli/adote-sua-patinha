@@ -118,7 +118,19 @@ if (overlay) {
         "https://discord.com/api/webhooks/1133197179239022602/8wP1pw_p9irBMw6KepZYW3H7E3UPeHBu9z9n0bpYbHgpgoPFPe4LPScjK-XMh5zoJ-cd";
 
       var formData = new FormData();
-      formData.append("content", "> **NOVO POST:**" + "\n\nTítulo: " + tituloInput + "\n" + "Categoria: " + categoriaInput + "\n" + "Descrição: " + descInput + "\n");
+      formData.append(
+        "content",
+        "> **NOVO POST:**" +
+          "\n\nTítulo: " +
+          tituloInput +
+          "\n" +
+          "Categoria: " +
+          categoriaInput +
+          "\n" +
+          "Descrição: " +
+          descInput +
+          "\n"
+      );
       fetch(discordWebhookURL, {
         method: "POST",
         body: formData,
@@ -205,10 +217,8 @@ function loadPosts() {
           var postElement = document.createElement("div");
           postElement.className = "post";
           postElement.innerHTML =
-            '<button class="deleteBtn" data-id="' +
-            post.id +
-            '"><b>X</b></button>' +
-            "<h3 id='forumh3'>" +
+            '<div class="dropdown"> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' + post.id + '" >Apagar post</p> </div>  </div>  </div>' +
+          "<h3 id='forumh3'>" +
             post.titulo +
             "</h3>" +
             "<p>Categoria: " +
@@ -266,6 +276,19 @@ function loadPosts() {
           });
         });
 
+        var dropdownbtns = document.querySelectorAll(".dropdown");
+        var dropdowncontents = document.querySelectorAll(".dropdown-content");
+
+        dropdownbtns.forEach(function (button, index) {
+          button.addEventListener("click", function () {
+            console.log("click");
+            dropdowncontents[index].classList.toggle("show");
+            setTimeout(() => {
+              dropdowncontents[index].classList.toggle("transform");
+            }, 1);
+          });
+        });
+
         var replyButtons = document.querySelectorAll(".reply-btn");
         replyButtons.forEach(function (button) {
           button.addEventListener("click", function () {
@@ -281,14 +304,22 @@ function loadPosts() {
               };
 
               var discordWebhookURL =
-              "https://discord.com/api/webhooks/1133197179239022602/8wP1pw_p9irBMw6KepZYW3H7E3UPeHBu9z9n0bpYbHgpgoPFPe4LPScjK-XMh5zoJ-cd";
-      
-            var formData = new FormData();
-            formData.append("content", "> **NOVA RESPOSTA:**" + "\n\nDescrição: " + replyText + "\n" + "Post: " + postId);
-            fetch(discordWebhookURL, {
-              method: "POST",
-              body: formData,
-            });
+                "https://discord.com/api/webhooks/1133197179239022602/8wP1pw_p9irBMw6KepZYW3H7E3UPeHBu9z9n0bpYbHgpgoPFPe4LPScjK-XMh5zoJ-cd";
+
+              var formData = new FormData();
+              formData.append(
+                "content",
+                "> **NOVA RESPOSTA:**" +
+                  "\n\nDescrição: " +
+                  replyText +
+                  "\n" +
+                  "Post: " +
+                  postId
+              );
+              fetch(discordWebhookURL, {
+                method: "POST",
+                body: formData,
+              });
               fetch(
                 `https://api.adotesuapatinha.com/posts/${postId}/respostas`,
                 {
@@ -326,14 +357,14 @@ var nomeresp = localStorage.getItem("nome2");
 
 function deletePost(id) {
   var discordWebhookURL =
-  "https://discord.com/api/webhooks/1133197179239022602/8wP1pw_p9irBMw6KepZYW3H7E3UPeHBu9z9n0bpYbHgpgoPFPe4LPScjK-XMh5zoJ-cd";
+    "https://discord.com/api/webhooks/1133197179239022602/8wP1pw_p9irBMw6KepZYW3H7E3UPeHBu9z9n0bpYbHgpgoPFPe4LPScjK-XMh5zoJ-cd";
 
-var formData = new FormData();
-formData.append("content", "> **POST DELETADO**" + "\n\n Post ID: " + id);
-fetch(discordWebhookURL, {
-  method: "POST",
-  body: formData,
-});
+  var formData = new FormData();
+  formData.append("content", "> **POST DELETADO**" + "\n\n Post ID: " + id);
+  fetch(discordWebhookURL, {
+    method: "POST",
+    body: formData,
+  });
   fetch(`https://api.adotesuapatinha.com/posts/${id}`, {
     credentials: "include",
     method: "DELETE",
@@ -563,4 +594,18 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
   });
+
+  window.onclick = function (event) {
+    if (!event.target.matches(".dropbtn")) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains("show")) {
+          openDropdown.classList.remove("show");
+          openDropdown.classList.remove("transform");
+        }
+      }
+    }
+  };
 });
