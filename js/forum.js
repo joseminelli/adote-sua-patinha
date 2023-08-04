@@ -17,6 +17,7 @@ const cancelbtn = document.getElementById("cancelbtn");
 const modalbtn = document.getElementById("modalbtn");
 const fecharbutton = document.getElementById("limpar");
 var mobile = false;
+let userId;
 modal.style.height = "500px";
 modal.style.width = "500px";
 
@@ -31,12 +32,11 @@ async function verificarCookie() {
     );
 
     if (response.ok) {
-
       const data = await response.json();
       if (data.redirect) {
         window.location.href = data.redirect;
-      } else if(data.id) {
-        const userId = data.id;
+      } else if (data.id) {
+        userId = data.id;
         console.log("Usuário logado:", userId);
       }
     } else {
@@ -217,12 +217,11 @@ function loadPosts() {
         noPostsMessage.innerText = "";
         content.style.display = "block";
 
-        posts.forEach(function (post, index) {
+        posts.forEach(function (post) {
           var postElement = document.createElement("div");
           postElement.className = "post";
           postElement.innerHTML =
-            '<div class="dropdown"> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' + post.id + '" >Apagar post</p> </div>  </div>  </div>' +
-          "<h3 id='forumh3'>" +
+            "<h3 id='forumh3'>" +
             post.titulo +
             "</h3>" +
             "<p>Categoria: " +
@@ -231,7 +230,36 @@ function loadPosts() {
             "<p>" +
             post.descricao +
             "</p>";
-
+            console.log(post.userId);
+            console.log(userId);
+            if (post.userId == userId) {
+              console.log("iddd do post: " + post.userId);
+              postElement.innerHTML =
+                '<div class="dropdown"> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' +
+                post.id +
+                '" >Apagar post</p> </div>  </div>  </div>' +
+                "<h3 id='forumh3'>" +
+                post.titulo +
+                "</h3>" +
+                "<p>Categoria: " +
+                post.categoria +
+                "</p>" +
+                "<p>" +
+                post.descricao +
+                "</p>";
+            } else {
+              console.log("id do post: " + post.userId);
+              postElement.innerHTML =
+                "<h3 id='forumh3'>" +
+                post.titulo +
+                "</h3>" +
+                "<p>Categoria: " +
+                post.categoria +
+                "</p>" +
+                "<p>" +
+                post.descricao +
+                "</p>";
+            }
           var replyContainer = document.createElement("div");
           replyContainer.className = "reply-container";
           replyContainer.className = "reply-input-container";
@@ -420,6 +448,7 @@ function createReplyButton(repliesContainer) {
 
 document.addEventListener("DOMContentLoaded", function () {
   verificarCookie();
+
   loadPosts();
   document.addEventListener("click", handleClickOutside);
   var container = document.getElementById("search-wrapper");
@@ -484,12 +513,10 @@ document.addEventListener("DOMContentLoaded", function () {
           } else {
             noPostsMessage.innerHTML = "";
             content.style.display = "block";
-
             posts.forEach(function (post) {
               var postElement = document.createElement("div");
               postElement.className = "post";
               postElement.innerHTML =
-              '<div class="dropdown"> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' + post.id + '" >Apagar post</p> </div>  </div>  </div>' +
                 "<h3 id='forumh3'>" +
                 post.titulo +
                 "</h3>" +
@@ -499,7 +526,36 @@ document.addEventListener("DOMContentLoaded", function () {
                 "<p>" +
                 post.descricao +
                 "</p>";
-
+                console.log(post.userId);
+                console.log(userId);
+                if (post.userId == userId) {
+                  console.log("iddd do post: " + post.userId);
+                  postElement.innerHTML =
+                    '<div class="dropdown"> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' +
+                    post.id +
+                    '" >Apagar post</p> </div>  </div>  </div>' +
+                    "<h3 id='forumh3'>" +
+                    post.titulo +
+                    "</h3>" +
+                    "<p>Categoria: " +
+                    post.categoria +
+                    "</p>" +
+                    "<p>" +
+                    post.descricao +
+                    "</p>";
+                } else {
+                  console.log("id do post: " + post.userId);
+                  postElement.innerHTML =
+                    "<h3 id='forumh3'>" +
+                    post.titulo +
+                    "</h3>" +
+                    "<p>Categoria: " +
+                    post.categoria +
+                    "</p>" +
+                    "<p>" +
+                    post.descricao +
+                    "</p>";
+                }
               var replyContainer = document.createElement("div");
               replyContainer.className = "reply-container";
               replyContainer.className = "reply-input-container";
@@ -549,8 +605,9 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             var dropdownbtns = document.querySelectorAll(".dropdown");
-            var dropdowncontents = document.querySelectorAll(".dropdown-content");
-    
+            var dropdowncontents =
+              document.querySelectorAll(".dropdown-content");
+
             dropdownbtns.forEach(function (button, index) {
               button.addEventListener("click", function () {
                 dropdowncontents[index].classList.toggle("show");
