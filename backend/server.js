@@ -52,7 +52,7 @@ app.post("/verificarSemCookie", (req, res) => {
     res.json({ redirect: "/index.html" });
     return;
   } else if (userId) {
-    res.send(userId);
+    res.json({ id: userId });
     return;
   }
 });

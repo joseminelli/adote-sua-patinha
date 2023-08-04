@@ -31,9 +31,13 @@ async function verificarCookie() {
     );
 
     if (response.ok) {
+
       const data = await response.json();
       if (data.redirect) {
         window.location.href = data.redirect;
+      } else if(data.id) {
+        const userId = data.id;
+        console.log("Usuário logado:", userId);
       }
     } else {
       console.error("Erro ao verificar o cookie:", response.status);
