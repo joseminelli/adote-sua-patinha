@@ -16,6 +16,7 @@
     <link rel="shortcut icon" type="imagem/ico" href="favicon.ico" />
     <link rel="stylesheet" href="css/sobre.css" />
     <link rel="stylesheet" href="css/customalert.css" />
+    <link rel="stylesheet" href="css/select2.css" />
     <link rel="stylesheet" href="css/nav.css" />
   </head>
 
@@ -66,13 +67,22 @@
         <p id="userMsg"></p>
         <p id="userName"></p>
         <p id="userEx"></p>
-        <img id="userPic" src="" alt="">
+        <img id="userPic" src="" alt="" />
         <div id="menuPessoa">
           <div class="dropdown-nav">
             <div id="myDropdown" class="dropdown-content-nav">
-              
+              <div id="editarDiv">
+                <i
+                  class="iconeperfilbar fa-solid fa-pencil"
+                  style="color: #165ea8"
+                ></i>
+                <p id="EditarBtn" class="EditarBtn">Editar perfil</p>
+              </div>
               <div id="sairDiv">
-                <i class="iconeperfilbar fa-solid fa-right-from-bracket" style="color:#165ea8"></i>
+                <i
+                  class="iconeperfilbar fa-solid fa-right-from-bracket"
+                  style="color: #165ea8"
+                ></i>
                 <p id="SairContaBtn" class="SairContaBtn">Sair</p>
               </div>
             </div>
@@ -86,6 +96,70 @@
           style="color: #165ea8"
         ></i>
       </div>
+    </section>
+
+    <section id="editarpf">
+      <div id="contente" id="contente">
+        <div id="iconpenvio">
+          <i
+            id="iconmodalEdit"
+            class="fa-regular fa-circle-check"
+            style="font-size: 80px; color: #165ea8"
+          ></i>
+          <p id="pEdit">informações alteradas!</p>
+        </div>
+        <i
+          id="fecharEdit"
+          class="fa-solid fa-xmark"
+          style="font-size: 25px"
+        ></i>
+        <div id="contentform">
+          <h2 id="h2Edit">Editar perfil</h2>
+          <div id="formedit">
+            <div id="senhaDiv">
+              <p>Senha:</p>
+              <input
+                id="senha"
+                type="password"
+                placeholder="Digite a senha"
+                class="inputsn"
+              />
+            </div>
+            <div id="nomeDiv">
+              <p>Nome:</p>
+              <input
+                id="input2"
+                type="text"
+                placeholder="Digite seu nome"
+                class="inputsn"
+              />
+            </div>
+            <div id="idadeDiv">
+              <p>Idade:</p>
+              <select name="idade" id="idade2"></select>
+            </div>
+            <div id="regiaoDiv">
+              <p>Região:</p>
+              <select name="bairro" id="bairro3">
+                <option value="0" selected>Selecione</option>
+              </select>
+            </div>
+            <div id="telefoneDiv">
+              <p>Telefone:</p>
+              <input
+                id="telefone"
+                type="tel"
+                placeholder="31 12345 6789"
+                class="inputsn"
+              />
+            </div>
+          </div>
+          <button type="submittt" id="salvarEdit" class="salvarEdit">
+            Salvar
+          </button>
+        </div>
+      </div>
+      <span id="overlayrr"></span>
     </section>
     <section id="formm">
       <h1>Sobre a Plataforma</h1>
@@ -465,6 +539,15 @@
     <script src="
     https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js
     "></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+      $(function () {
+        $("#bairro3").select2();
+        $("#idade2").select2();
+      });
+    </script>
     <script type="module" src="js/script.js"></script>
     <script src="js/darkmode.js"></script>
     <script src="js/navbar.js"></script>

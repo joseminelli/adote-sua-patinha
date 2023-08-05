@@ -19,6 +19,7 @@ function verificarAutenticacao(req, res) {
 const fs = require("fs");
 
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.json());
@@ -198,6 +199,51 @@ app.post("/salvarPessoa", upload.single("file"), (req, res) => {
     });
   });
 });
+
+app.post("/editarPessoa", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  if (fs.existsSync("../../usuarios.json") === false) {
+    fs.writeFileSync("../../usuarios.json", '{"usuarios": []}');
+  }
+
+  const nome = req.body.nome;
+  const idade = req.body.idade;
+  const bairro = req.body.bairro;
+  const telefone = req.body.telefone;
+  const senha = req.body.telefone;
+
+  const userId = req.cookies["userId"];
+
+  fs.readFile("../../usuarios.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo JSON");
+      return;
+    }
+
+    let jsonData = JSON.parse(data);
+    const usuario = jsonData.usuarios.find((user) => user.id === parseInt(userId));
+    if (usuario) {
+      usuario.name = nome;
+      usuario.age = idade;
+      usuario.regiao = bairro;
+      usuario.telefone = telefone;
+      usuario.senha = senha;
+
+      fs.writeFile("../../usuarios.json", JSON.stringify(jsonData), (err) => {
+        if (err) {
+          console.error(err);
+          res.status(500).send("Erro ao salvar os dados");
+        } else {
+          res.send("Dados salvos com sucesso");
+        }
+      });
+    } else {
+      res.status(404).send("Usuário não encontrado");
+    }
+  });
+});
+
 
 app.post("/login", (req, res) => {
   const email = req.body.email.trim().toLowerCase();

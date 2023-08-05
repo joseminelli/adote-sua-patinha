@@ -531,13 +531,13 @@ h1 {
 }
 
 .inputmodal {
-  margin-top: -8%;
+  margin-top: -0%;
   margin-bottom: 2%;
   padding: 8px 5px;
   outline: none;
   border-radius: 5px;
   border: 2px solid var(--cor-secundaria);
-  background: transparent;
+  background: transparent !important;
   width: 100%;
   box-sizing: border-box;
   color: #e3e6f3;

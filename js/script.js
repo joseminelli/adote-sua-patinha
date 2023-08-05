@@ -729,7 +729,7 @@ document.addEventListener("DOMContentLoaded", function () {
       hamster.classList.add("active");
       const email = document.getElementById("input1").value;
       const senha = document.getElementById("input2").value;
-      fetch(`https://api.adotesuapatinha.com/login`, {
+      fetch(`http://localhost:3000/login`, {
         method: "POST",
         credentials: "include",
         headers: {

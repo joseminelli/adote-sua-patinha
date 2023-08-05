@@ -22,22 +22,54 @@
   position: relative;
   right: 0.4em;
 }
-#editarDiv{
-    align-items: center;
-    display: flex;
-    flex-direction: row;
+#editarDiv {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
 }
-#sairDiv{
-    align-items: center;
-    display: flex;
-    flex-direction: row;
+#sairDiv {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
 }
-.iconeperfilbar{
-    margin-right: 7px;
+.iconeperfilbar {
+  margin-right: 7px;
+}
+
+.inputs {
+  padding: 8px 5px;
+  outline: none;
+  border-radius: 5px;
+  border: 2px solid var(--cor-secundaria);
+  background: var(--cor-primaria);
+  width: 100%;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+.inputs:focus {
+  border-color: var(--cor-secundaria);
+}
+
+.inputsn {
+  margin-top: 0;
+  padding: 8px 5px;
+  outline: none;
+  max-width: 200px;
+  border-radius: 5px;
+  border: 2px solid var(--cor-secundaria);
+  background: var(--cor-primaria);
+  width: 100%;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+.inputsn:focus {
+  border-color: var(--cor-secundaria);
 }
 .dropdown-content-nav {
   display: none;
-  margin-left: 50px;
+  margin-left: 40px;
   position: absolute;
   border-radius: 10px;
   justify-content: center;
@@ -45,14 +77,14 @@
   width: 0px;
   opacity: 0;
   overflow: hidden;
-  padding: 5px 20px;
+  padding: 0px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  z-index: 8;
   transition: all 0.3s ease-in-out;
 }
-.dropdown-content-nav p{
-    color: #000000 !important;
-  }
+.dropdown-content-nav p {
+  color: #000000 !important;
+}
 
 .dropdown-content-nav a {
   text-rendering: auto;
@@ -69,13 +101,14 @@
 .dropdown-content-nav.transform {
   width: 150px;
   opacity: 1;
+  padding: 5px 20px;
   margin-top: 73px;
   margin-left: -73px;
   padding: 5px 20px;
 }
-#myDropdown{
-    display: flex;
-    flex-direction: column;
+#myDropdown {
+  display: flex;
+  flex-direction: column;
 }
 #header .logo {
   width: 100%;
@@ -92,6 +125,119 @@
   margin-left: 30px;
 }
 
+#editarpf {
+  position: absolute;
+  left: 150%;
+  top: 11%;
+  display: flex;
+  justify-content: right;
+  width: 0%;
+  height: 0%;
+  margin: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+#editarpf.show{
+  left: 0%;
+  top: 12%;
+  width: 100%;
+  height: 100%;
+}
+#iconpenvio {
+  width: 300px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#contente {
+  display: none;
+  position: fixed;
+  z-index: 6;
+  opacity: 0;
+  margin-top: 2%;
+  background-color: var(--cor-primaria);
+  border: none;
+  width: 400px;
+  height: 600px;
+  border-radius: 10px;
+  z-index: 7;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+#overlayrr {
+  left: 0;
+  top: 0;
+  z-index: 5;
+  position: fixed;
+  filter: blur(0px);
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 300ms;
+}
+#contente h2 {
+  font-size: 30px;
+  color: var(--cor-secundaria);
+}
+#contentform {
+  margin-top: -10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#overlayrr.show {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  opacity: 1;
+  pointer-events: auto;
+}
+button[type="submittt"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  color: #e3e6f3;
+  max-width: 115px;
+  border-radius: 5px;
+  margin-top: 1rem;
+  background-color: var(--cor-secundaria);
+  cursor: pointer;
+}
+
+#formedit #regiaoDiv {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+#formedit #telefoneDiv {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+#formedit p {
+  margin-top: 15px;
+}
+#fecharEdit {
+  right: 0;
+  top: 0;
+  margin: 10px;
+}
+
+#contente.show {
+  display: block;
+  width: 400px;
+  height: 600px;
+  opacity: 1;
+}
 #navbar {
   display: flex;
   align-items: center;
@@ -353,8 +499,12 @@
   #header {
     padding: 15px;
   }
+
   
-.dropdown-content-nav.transform {
+  #contente.show {
+    width: 300px;
+  }
+  .dropdown-content-nav.transform {
     margin-top: 55px;
     margin-left: -103px;
   }

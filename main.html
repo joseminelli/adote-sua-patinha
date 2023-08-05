@@ -80,7 +80,10 @@
       <div id="menuPessoa">
         <div class="dropdown-nav">
           <div id="myDropdown" class="dropdown-content-nav">
-            
+            <div id="editarDiv">
+              <i class="iconeperfilbar fa-solid fa-pencil" style="color:#165ea8"></i>
+              <p id="EditarBtn" class="EditarBtn">Editar perfil</p>
+            </div>
             <div id="sairDiv">
               <i class="iconeperfilbar fa-solid fa-right-from-bracket" style="color:#165ea8"></i>
               <p id="SairContaBtn" class="SairContaBtn">Sair</p>
@@ -93,6 +96,45 @@
     <div id="mobile">
       <i id="bar" class="fa-regular fa-square-caret-down" style="color: #165ea8"></i>
     </div>
+  </section>
+
+  <section id="editarpf">
+    <div id="contente" id="contente">
+      <div id="iconpenvio">
+        <i id="iconmodalEdit" class="fa-regular fa-circle-check" style="font-size: 80px; color: #165ea8"></i>
+        <p id="pEdit">informações alteradas!</p>
+      </div>
+      <i id="fecharEdit" class="fa-solid fa-xmark" style="font-size: 25px;"></i>
+      <div id="contentform">
+        <h2 id="h2Edit">Editar perfil</h2>
+        <div id="formedit">
+          <div id="senhaDiv">
+            <p>Senha:</p>
+            <input id="senha" type="password" placeholder="Digite a senha" class="inputsn" />
+          </div>
+          <div id="nomeDiv">
+            <p>Nome:</p>
+            <input id="input2" type="text" placeholder="Digite seu nome" class="inputsn" />
+          </div>
+          <div id="idadeDiv">
+            <p>Idade:</p>
+            <select name="idade" id="idade2"></select>
+          </div>
+          <div id="regiaoDiv">
+            <p>Região:</p>
+            <select name="bairro" id="bairro3">
+              <option value="0" selected>Selecione</option>
+            </select>
+          </div>
+          <div id="telefoneDiv">
+            <p>Telefone:</p>
+            <input id="telefone" type="tel" placeholder="31 12345 6789" class="inputsn" />
+          </div>
+        </div>
+        <button type="submittt" id="salvarEdit" class="salvarEdit">Salvar</button>
+      </div>
+    </div>
+    <span id="overlayrr"></span>
   </section>
 
   <section id="formm2">
@@ -176,9 +218,11 @@
   <script>
     $(function () {
       $("#bairro2").select2();
+      $("#bairro3").select2();
       $("#idade").select2();
       $("#raca").select2();
       $("#especie").select2();
+    $("#idade2").select2();
     }); 
   </script>
 

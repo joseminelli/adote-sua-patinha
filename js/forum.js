@@ -12,7 +12,7 @@ const titulop = document.getElementById("titulop");
 const input1 = document.getElementById("input1");
 const dropdownt = document.getElementById("dropdownt");
 const dropdown = document.getElementById("dropdown");
-const input2 = document.getElementById("input2");
+const input2 = document.getElementById("input3");
 const cancelbtn = document.getElementById("cancelbtn");
 const modalbtn = document.getElementById("modalbtn");
 const fecharbutton = document.getElementById("limpar");
@@ -67,7 +67,7 @@ window.addEventListener("load", toggleClassOnDeviceWidth);
 if (overlay) {
   var tituloInput2 = document.getElementById("input1");
   var categoriaInput2 = document.getElementById("dropdown");
-  var descInput2 = document.getElementById("input2");
+  var descInput2 = document.getElementById("input3");
   function showModalSuccess() {
     modal.style.height = "250px";
     modal.style.width = "250px";
@@ -108,7 +108,7 @@ if (overlay) {
   closeBtn.addEventListener("click", () => {
     var tituloInput = document.getElementById("input1").value;
     var categoriaInput = document.getElementById("dropdown").value;
-    var descInput = document.getElementById("input2").value;
+    var descInput = document.getElementById("input3").value;
     if (tituloInput != "" && categoriaInput != 0 && descInput != "") {
       tituloInput2.style.borderColor = "#165ea8";
       var post = {
