@@ -37,6 +37,7 @@
 }
 .dropdown-content-nav {
   display: none;
+  margin-left: 50px;
   position: absolute;
   border-radius: 10px;
   justify-content: center;
