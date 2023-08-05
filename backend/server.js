@@ -208,7 +208,6 @@ app.post("/editarPessoa", (req, res) => {
 
   const nome = req.body.nome;
   const idade = req.body.idade;
-  const bairro = req.body.bairro;
   const telefone = req.body.telefone;
   const senha = req.body.telefone;
 
@@ -226,7 +225,6 @@ app.post("/editarPessoa", (req, res) => {
     if (usuario) {
       usuario.name = nome;
       usuario.age = idade;
-      usuario.regiao = bairro;
       usuario.telefone = telefone;
       usuario.senha = senha;
 

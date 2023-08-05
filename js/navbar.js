@@ -57,16 +57,6 @@ async function verificarCookie() {
     console.error("Erro na requisição:", error);
   }
 }
-function fillMunicipiosSelect(municipios) {
-  const municipiosSelect = document.getElementById("bairro3");
-
-  municipios.forEach((municipio) => {
-    const option = document.createElement("option");
-    option.value = municipio.nome;
-    option.text = municipio.nome;
-    municipiosSelect.appendChild(option);
-  });
-}
 document.addEventListener("DOMContentLoaded", async function () {
   toggleClassOnDeviceWidth();
   verificarCookie();
@@ -76,19 +66,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     option.setAttribute("value", i);
     option.textContent = i;
     document.getElementById("idade2").appendChild(option);
-  }
-  fetch(
-    "https://servicodados.ibge.gov.br/api/v1/localidades/estados/31/municipios"
-  )
-    .then((response) => response.json())
-    .then((municipios) => {
-      fillMunicipiosSelect(municipios);
-    })
-    .catch((error) => {
-      console.error("Erro ao obter os municípios:", error);
-    });
-  function deleteCookie(name) {
-    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   }
 
   try {
@@ -162,16 +139,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     const senha = document.getElementById("senha");
     const input2 = document.getElementById("input2");
     const idade = document.getElementById("idade2");
-    const bairro3 = document.getElementById("bairro3");
     const telefone = document.getElementById("telefone");
-    const select2bairro3container = document.getElementById(
-      "select2-bairro3-container"
-    );
 
     if (
       senha.value == "" ||
       input2.value == "" ||
-      bairro3.value == "0" ||
       telefone.value == ""
     ) {
       if (senha.value == "") {
@@ -183,11 +155,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         input2.style.borderColor = "red";
       } else {
         input2.style.borderColor = "#165ea8";
-      }
-      if (bairro3.value == "0") {
-        select2bairro3container.style.borderColor = "red";
-      } else {
-        select2bairro3container.style.borderColor = "#165ea8";
       }
       if (telefone.value == "") {
         telefone.style.borderColor = "red";
@@ -238,7 +205,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     var data = {
       nome: input2.value,
       idade: idade.value,
-      bairro: bairro3.value,
       telefone: telefone.value,
       senha: senha.value,
     };

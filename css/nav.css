@@ -156,7 +156,7 @@
   position: fixed;
   z-index: 6;
   opacity: 0;
-  margin-top: 2%;
+  margin-top: 4%;
   background-color: var(--cor-primaria);
   border: none;
   width: 400px;
@@ -235,7 +235,7 @@ button[type="submittt"] {
 #contente.show {
   display: block;
   width: 400px;
-  height: 600px;
+  height: 533px;
   opacity: 1;
 }
 #navbar {

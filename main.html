@@ -120,12 +120,6 @@
             <p>Idade:</p>
             <select name="idade" id="idade2"></select>
           </div>
-          <div id="regiaoDiv">
-            <p>Região:</p>
-            <select name="bairro" id="bairro3">
-              <option value="0" selected>Selecione</option>
-            </select>
-          </div>
           <div id="telefoneDiv">
             <p>Telefone:</p>
             <input id="telefone" type="tel" placeholder="31 12345 6789" class="inputsn" />
@@ -145,7 +139,7 @@
       </div>
       <form id="form">
         <div>
-          <p>Região:</p>
+          <p>Cidade:</p>
           <select name="bairro" id="bairro2">
             <option value="0" selected>Todas</option>
           </select>
@@ -218,7 +212,6 @@
   <script>
     $(function () {
       $("#bairro2").select2();
-      $("#bairro3").select2();
       $("#idade").select2();
       $("#raca").select2();
       $("#especie").select2();
