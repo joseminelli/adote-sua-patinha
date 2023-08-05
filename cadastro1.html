@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/nav.css" />
     <link rel="stylesheet" href="css/loader.css" />
     <link rel="stylesheet" href="css/cropper.css" />
+    <link rel="stylesheet" href="css/select2.css" />
 </head>
 
 <body>
@@ -113,6 +114,15 @@
     <script src="js/cropper.js"></script>
     <script src="js/input.js"></script>
     <script type="module" src="js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+  <script>
+    $(function(){
+     $("#bairro2").select2();
+     $("#idade2").select2();
+    }); 
+   </script>
     <script src="js/darkmode.js"></script>
 </body>
 

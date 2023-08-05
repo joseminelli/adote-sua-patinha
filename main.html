@@ -1,151 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adote sua patinha</title>
-    <script src="https://kit.fontawesome.com/4c0165cb3d.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" type="imagem/ico" href="favicon.ico" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/customalert.css">
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/loader.css">
-  </head>
 
-  <body>
-    <div id="loader">
-      <div role="img" class="wheel-and-hamster" id="hamster">
-          <div class="wheel"></div>
-          <div class="hamster">
-              <div class="hamster__body">
-                  <div class="hamster__head">
-                      <div class="hamster__ear"></div>
-                      <div class="hamster__eye"></div>
-                      <div class="hamster__nose"></div>
-                  </div>
-                  <div class="hamster__limb hamster__limb--fr"></div>
-                  <div class="hamster__limb hamster__limb--fl"></div>
-                  <div class="hamster__limb hamster__limb--br"></div>
-                  <div class="hamster__limb hamster__limb--bl"></div>
-                  <div class="hamster__tail"></div>
-              </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adote sua patinha</title>
+  <script src="https://kit.fontawesome.com/4c0165cb3d.js" crossorigin="anonymous"></script>
+  <link rel="shortcut icon" type="imagem/ico" href="favicon.ico" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/customalert.css" />
+  <link rel="stylesheet" href="css/select2.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/loader.css" />
+</head>
+
+<body>
+  <div id="loader">
+    <div role="img" class="wheel-and-hamster" id="hamster">
+      <div class="wheel"></div>
+      <div class="hamster">
+        <div class="hamster__body">
+          <div class="hamster__head">
+            <div class="hamster__ear"></div>
+            <div class="hamster__eye"></div>
+            <div class="hamster__nose"></div>
           </div>
-          <span class="overlayr"></span>
-          <div class="spoke"></div>
-      </div>
-  </div>
-    <section id="modalNovo">
-      <span class="overlay"></span>
-      <div class="modal-box">
-          <i class="fa-regular fa-circle-xmark"></i>
-        <h2>Aviso!</h2>
-        <h3>Este site encontra em desenvolvimento, qualquer erro/problema ainda será resolvido</h3>
-        <div class="buttons">
-          <button id="modalbtn"class="close-btn">Fechar</button>
-          <button id="modalbtn2"class="never-btn">Não exibir isso</button>
+          <div class="hamster__limb hamster__limb--fr"></div>
+          <div class="hamster__limb hamster__limb--fl"></div>
+          <div class="hamster__limb hamster__limb--br"></div>
+          <div class="hamster__limb hamster__limb--bl"></div>
+          <div class="hamster__tail"></div>
         </div>
       </div>
-    </section>
-    <section id="header">
-      <a href="main.html"><img src="img/logo.png" class="logo" alt="" /></a>
-      <div>
-        <ul id="navbar">
-          <h3>Menu</h3>
-          <div id="linha-horizontal2"></div>
-          <li><a class="active" href="main.html">Home</a></li>
-          <li><a href="perfil.html">Perfil</a></li>
-          <li><a href="forum.html">Forum</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <div class="button" id="darkToggle">
-            <div class="sun" id="sun">
-              <div class="line1"></div>
-              <div class="line2"></div>
-              <div class="line3"></div>
-              <div class="line4"></div>
-            </div>
-          </div>
-        </ul>
-      </div>
-      <div id="mobile">
-        <i id="bar" class="fa-regular fa-square-caret-down" style="color:#165ea8"></i>
-      </div>
-    </section>
-
-    <section id="formm2">
-      <div class="content" id="content">
-        <div id="formHeader">
-          <h3 id="filtroH3">Filtro</h3>
-          <div id="linha-horizontal"></div>
-        </div>
-        <form id="form">
-          <div>
-            <p>Região:</p>
-            <select name="bairro" id="bairro2">
-              <option value="0" selected>Selecione</option>
-            </select>
-          </div>
-          <div>
-            <p>Idade:</p>
-            <select name="idade" id="idade">
-              <option value="" selected>Todas</option>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-            </select>
-          </div>
-          <div id="racaDiv">
-            <p>Raça:</p>
-            <select name="raca" id="raca">
-              <option value="0" selected>Selecione</option>
-              <option value="Sem Raça">Sem Raça</option>
-            </select>
-          </div>
-          <div>
-            <p>Especie:</p>
-            <select name="especie" id="especie">
-              <option value="0" selected>Selecione</option>
-              <option value="Gato">Gatos</option>
-              <option value="Cachorros">Cachorros</option>
-            </select>
-          </div>
-          <div id="favs">
-            <p>Favoritos:</p>
-            <label class="checkbox style-c">
-              <input type="checkbox" id="chkFavoritos" />
-              <div class="checkbox__checkmark"></div>
-            </label>
-          </div>
-        </form>
-      </div>
-    </section>
-    <section id="box">
-      <div id="mural" class="mural">
-        <p id="textoMural">Pets disponíveis:</p>
-        <div id="petsf"></div>
-      </div>
-    </section>
-    <div id="pagination">
-      <button type="button" class="disabled-btn" id="prevPage">⇠ Anterior</button>
-      <span id="currentPage">Página 1</span>
-      <button type="button" class="disabled-btn" id="nextPage">Próxima ⇢</button>
+      <span class="overlayr"></span>
+      <div class="spoke"></div>
     </div>
-    <script src="
+  </div>
+  <section id="modalNovo">
+    <span class="overlay"></span>
+    <div class="modal-box">
+      <i class="fa-regular fa-circle-xmark"></i>
+      <h2>Aviso!</h2>
+      <h3>
+        Este site encontra em desenvolvimento, qualquer erro/problema ainda
+        será resolvido
+      </h3>
+      <div class="buttons">
+        <button id="modalbtn" class="close-btn">Fechar</button>
+        <button id="modalbtn2" class="never-btn">Não exibir isso</button>
+      </div>
+    </div>
+  </section>
+  <section id="header">
+    <a href="main.html"><img src="img/logo.png" class="logo" alt="" /></a>
+    <div>
+      <ul id="navbar">
+        <h3>Menu</h3>
+        <div id="linha-horizontal2"></div>
+        <li><a class="active" href="main.html">Home</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+        <li><a href="forum.html">Forum</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <div class="button" id="darkToggle">
+          <div class="sun" id="sun">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+            <div class="line4"></div>
+          </div>
+        </div>
+      </ul>
+    </div>
+    <div id="mobile">
+      <i id="bar" class="fa-regular fa-square-caret-down" style="color: #165ea8"></i>
+    </div>
+  </section>
+
+  <section id="formm2">
+    <div class="content" id="content">
+      <div id="formHeader">
+        <h3 id="filtroH3">Filtro</h3>
+        <div id="linha-horizontal"></div>
+      </div>
+      <form id="form">
+        <div>
+          <p>Região:</p>
+          <select name="bairro" id="bairro2">
+            <option value="0" selected>Todas</option>
+          </select>
+        </div>
+        <div>
+          <p>Idade:</p>
+          <select name="idade" id="idade">
+            <option value="" selected>Todas</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+          </select>
+        </div>
+        <div id="racaDiv">
+          <p>Raça:</p>
+          <select name="raca" id="raca">
+            <option value="0" selected>Todas</option>
+            <option value="Sem Raça">Sem Raça</option>
+          </select>
+        </div>
+        <div>
+          <p>Especie:</p>
+          <select name="especie" id="especie">
+            <option value="0" selected>Todas</option>
+            <option value="Gato">Gatos</option>
+            <option value="Cachorros">Cachorros</option>
+          </select>
+        </div>
+        <div id="favs">
+          <p>Favoritos:</p>
+          <label class="checkbox style-c">
+            <input type="checkbox" id="chkFavoritos" />
+            <div class="checkbox__checkmark"></div>
+          </label>
+        </div>
+      </form>
+    </div>
+  </section>
+  <section id="box">
+    <div id="mural" class="mural">
+      <p id="textoMural">Pets disponíveis:</p>
+      <div id="petsf"></div>
+    </div>
+  </section>
+  <div id="pagination">
+    <button type="button" class="disabled-btn" id="prevPage">
+      ⇠ Anterior
+    </button>
+    <span id="currentPage">Página 1</span>
+    <button type="button" class="disabled-btn" id="nextPage">
+      Próxima ⇢
+    </button>
+  </div>
+  <script src="
     https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js
     "></script>
-    <script type="module" src="js/script.js"></script>
-    <script src="js/darkmode.js"></script>
-    <script type="module" src="js/mural.js"></script>
-  </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script>
+    $(function(){
+     $("#bairro2").select2();
+     $("#idade").select2();
+     $("#raca").select2();
+     $("#especie").select2();
+    }); 
+   </script>
+   
+  <script type="module" src="js/script.js"></script>
+  <script src="js/darkmode.js"></script>
+  <script type="module" src="js/mural.js"></script>
+</body>
+
 </html>

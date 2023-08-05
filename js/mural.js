@@ -136,10 +136,22 @@ document.addEventListener("DOMContentLoaded", async function () {
     const racaSelect = document.getElementById("raca");
     const especieSelect = document.getElementById("especie");
 
-    regiaoSelect.addEventListener("change", atualizarFiltro2);
-    idadeSelect.addEventListener("change", atualizarFiltro2);
-    racaSelect.addEventListener("change", atualizarFiltro2);
-    especieSelect.addEventListener("change", atualizarFiltro2);
+    $(document.body).on("change", "#bairro2", function () {
+      atualizarFiltro2();
+      atualizarFiltro();
+    });
+    $(document.body).on("change", "#idade", function () {
+      atualizarFiltro2();
+      atualizarFiltro();
+    });
+    $(document.body).on("change", "#raca", function () {
+      atualizarFiltro2();
+      atualizarFiltro();
+    });
+    $(document.body).on("change", "#especie", function () {
+      atualizarFiltro2();
+      atualizarFiltro();
+    });
     chkFavoritos.addEventListener("change", atualizarFiltro2);
 
     regiaoSelect.addEventListener("change", atualizarFiltro);

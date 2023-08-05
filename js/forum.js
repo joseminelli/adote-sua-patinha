@@ -529,7 +529,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log(post.userId);
                 console.log(userId);
                 if (post.userId == userId) {
-                  console.log("iddd do post: " + post.userId);
                   postElement.innerHTML =
                     '<div class="dropdown"> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' +
                     post.id +
@@ -544,7 +543,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     post.descricao +
                     "</p>";
                 } else {
-                  console.log("id do post: " + post.userId);
                   postElement.innerHTML =
                     "<h3 id='forumh3'>" +
                     post.titulo +
