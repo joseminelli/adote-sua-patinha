@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/editarPessoa", {
+      const response = await fetch("https://api.adotesuapatinha.com/editarPessoa", {
         method: "POST",
         credentials: "include",
         headers: {
