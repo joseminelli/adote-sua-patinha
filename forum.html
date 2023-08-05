@@ -1,85 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adote sua patinha</title>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
-    <link rel="shortcut icon" type="imagem/ico" href="favicon.ico" />
-    <link rel="stylesheet" href="css/forum.css" />
-    <link rel="stylesheet" href="css/customalert.css">
-    <link rel="stylesheet" href="css/nav.css">
-  </head>
 
-  <body>
-    <section id="modalNovo">
-      <span class="overlay"></span>
-      <div id="modal" class="modal-box">
-        <i id="iconmodal" class="fa-regular fa-circle-check"></i>
-        <h2 id="modalh2">Detalhes do post</h2>
-        <p class="modalp" id="titulop">Título:</p>
-        <input type="text" id="input1" class="inputmodal"  placeholder="O que você precisa?">
-        <p id="dropdownt" class="modalp">Categoria:</p>
-        <select id="dropdown">
-          <option selected value="0">Selecione</option>
-          <option value="Dúvida">Dúvida</option>
-          <option value="Dica">Dica</option>
-        </select>
-        <p id="modalp" class="modalp">Texto:</p>
-        <input type="text" id="input2" class="inputmodal" placeholder="Dê mais detalhes sobre seu post">
-        <div  class="buttons">
-          <button id="cancelbtn"class="close-btn2">Cancelar</button>
-          <button id="modalbtn"class="close-btn3">Enviar</button>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adote sua patinha</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+  <link rel="shortcut icon" type="imagem/ico" href="favicon.ico" />
+  <link rel="stylesheet" href="css/forum.css" />
+  <link rel="stylesheet" href="css/customalert.css">
+  <link rel="stylesheet" href="css/nav.css">
+</head>
+
+<body>
+  <section id="modalNovo">
+    <span class="overlay"></span>
+    <div id="modal" class="modal-box">
+      <i id="iconmodal" class="fa-regular fa-circle-check"></i>
+      <h2 id="modalh2">Detalhes do post</h2>
+      <p class="modalp" id="titulop">Título:</p>
+      <input type="text" id="input1" class="inputmodal" placeholder="O que você precisa?">
+      <p id="dropdownt" class="modalp">Categoria:</p>
+      <select id="dropdown">
+        <option selected value="0">Selecione</option>
+        <option value="Dúvida">Dúvida</option>
+        <option value="Dica">Dica</option>
+      </select>
+      <p id="modalp" class="modalp">Texto:</p>
+      <input type="text" id="input2" class="inputmodal" placeholder="Dê mais detalhes sobre seu post">
+      <div class="buttons">
+        <button id="cancelbtn" class="close-btn2">Cancelar</button>
+        <button id="modalbtn" class="close-btn3">Enviar</button>
       </div>
-    </section>
-    <section id="header">
-      <a href="main.html"><img src="img/logo.png" class="logo" alt="" /></a>
-      <div>
-        <ul id="navbar">
-          <h3>Menu</h3>
-          <div id="linha-horizontal2"></div>
-          <li><a href="main.html">Home</a></li>
-          <li><a href="perfil.html">Perfil</a></li>
-          <li><a class="active" href="forum.html">Forum</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <div class="button" id="darkToggle">
-            <div class="sun" id="sun">
-              <div class="line1"></div>
-              <div class="line2"></div>
-              <div class="line3"></div>
-              <div class="line4"></div>
+    </div>
+  </section>
+  <section id="header">
+    <a href="main.html"><img src="img/logo.png" class="logo" alt="" /></a>
+    <div>
+      <ul id="navbar">
+        <h3>Menu</h3>
+        <div id="linha-horizontal2"></div>
+        <li><a href="main.html">Home</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+        <li><a class="active" href="forum.html">Forum</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <div class="button" id="darkToggle">
+          <div class="sun" id="sun">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+            <div class="line4"></div>
+          </div>
+        </div>
+      </ul>
+    </div>
+    <div id="usuariol">
+      <p id="userMsg"></p>
+      <p id="userName"></p>
+      <p id="userEx"></p>
+      <img id="userPic" src="" alt="">
+      <div id="menuPessoa">
+        <div class="dropdown-nav">
+          <div id="myDropdown" class="dropdown-content-nav">
+            
+            <div id="sairDiv">
+              <i class="iconeperfilbar fa-solid fa-right-from-bracket" style="color:#165ea8"></i>
+              <p id="SairContaBtn" class="SairContaBtn">Sair</p>
             </div>
           </div>
-        </ul>
-      <div id="mobile">
-        <i id="bar" class="fa-regular fa-square-caret-down fa-2xl" style="color:#165ea8"></i>
-      </div>
-    </section>
-    <section>
-      <div class="search-wrapper" id="search-wrapper">
-        <div class="input-holder" id="input-holder">
-            <input type="text" class="search-input" id="searchInput" placeholder="Procurar..." style="color: rgb(40, 40, 40)" />
-            <button class="search-icon" id="searchButton" ><span></span></button>
         </div>
-        <span class="close" id="limpar"></span>
+      </div>
     </div>
-      <div id="criarp">
-        <button type="submit" id="criarPubli">Faça sua publicação</button>
+    <div id="mobile">
+      <i id="bar" class="fa-regular fa-square-caret-down fa-2xl" style="color:#165ea8"></i>
+    </div>
+  </section>
+  <section>
+    <div class="search-wrapper" id="search-wrapper">
+      <div class="input-holder" id="input-holder">
+        <input type="text" class="search-input" id="searchInput" placeholder="Procurar..."
+          style="color: rgb(40, 40, 40)" />
+        <button class="search-icon" id="searchButton"><span></span></button>
       </div>
-    </section>
-    <section id="formm">
-        <p id="noPostsMessage"></p>
-      <div class="content">
-      </div>
-    </section>
-    <script src="
+      <span class="close" id="limpar"></span>
+    </div>
+    <div id="criarp">
+      <button type="submit" id="criarPubli">Faça sua publicação</button>
+    </div>
+  </section>
+  <section id="formm">
+    <p id="noPostsMessage"></p>
+    <div class="content">
+    </div>
+  </section>
+  <script src="
     https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js
     "></script>
-    <script type="module" src="js/script.js"></script>
-    <script src="js/darkmode.js"></script>
-    <script type="module" src="js/forum.js"></script>
-  </body>
+  <script type="module" src="js/script.js"></script>
+  <script src="js/darkmode.js"></script>
+  <script src="js/navbar.js"></script>
+  <script type="module" src="js/forum.js"></script>
+</body>
+
 </html>

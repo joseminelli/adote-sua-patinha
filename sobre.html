@@ -1,274 +1,474 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adote sua patinha</title>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
     <link rel="shortcut icon" type="imagem/ico" href="favicon.ico" />
     <link rel="stylesheet" href="css/sobre.css" />
-    <link rel="stylesheet" href="css/customalert.css">
-    <link rel="stylesheet" href="css/nav.css">
-</head>
+    <link rel="stylesheet" href="css/customalert.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+  </head>
 
-<body>
+  <body>
     <section id="modalNovo">
-        <span class="overlay"></span>
-        <div class="modal-box">
-          <i class="fa-regular fa-circle-xmark"></i>
-          <h2>Devagar aí</h2>
-          <h3>Você precisa preencher todos os campos antes de enviar</h3>
-          <div  class="buttons">
-            <button id="modalbtn"class="close-btn">Ok, vou verificar</button>
-          </div>
+      <span class="overlay"></span>
+      <div class="modal-box">
+        <i class="fa-regular fa-circle-xmark"></i>
+        <h2>Devagar aí</h2>
+        <h3>Você precisa preencher todos os campos antes de enviar</h3>
+        <div class="buttons">
+          <button id="modalbtn" class="close-btn">Ok, vou verificar</button>
         </div>
-      </section>
-      <section id="modalNovo2">
-        <span class="overlay"></span>
-        <div class="modal-box">
-          <i class="fa-regular fa-circle-check"></i>
-          <h2>Email enviado!</h2>
-          <h3>Faremos o possível para te responder o mais rápido possível</h3>
-          <div  class="buttons">
-            <button id="modalbtn"class="close-btn2">Tudo bem</button>
-          </div>
+      </div>
+    </section>
+    <section id="modalNovo2">
+      <span class="overlay"></span>
+      <div class="modal-box">
+        <i class="fa-regular fa-circle-check"></i>
+        <h2>Email enviado!</h2>
+        <h3>Faremos o possível para te responder o mais rápido possível</h3>
+        <div class="buttons">
+          <button id="modalbtn" class="close-btn2">Tudo bem</button>
         </div>
-      </section>
+      </div>
+    </section>
     <section id="header">
-        <a href="main.html"><img src="img/logo.png" class="logo" alt="" /></a>
-        <div>
-            <ul id="navbar">
-                <h3>Menu</h3>
-                <div id="linha-horizontal2"></div>
-                <li><a href="main.html">Home</a></li>
-                <li><a href="perfil.html">Perfil</a></li>
-                <li><a href="forum.html">Forum</a></li>
-                <li><a class="active" href="sobre.html">Sobre</a></li>
-                <div class="button" id="darkToggle">
-                    <div class="sun" id="sun">
-                        <div class="line1"></div>
-                        <div class="line2"></div>
-                        <div class="line3"></div>
-                        <div class="line4"></div>
-                    </div>
-                </div>
-            </ul>
-            <div id="mobile">
-                <i id="bar" class="fa-regular fa-square-caret-down fa-2xl" style="color:#165ea8"></i>
+      <a href="main.html"><img src="img/logo.png" class="logo" alt="" /></a>
+      <div>
+        <ul id="navbar">
+          <h3>Menu</h3>
+          <div id="linha-horizontal2"></div>
+          <li><a href="main.html">Home</a></li>
+          <li><a href="perfil.html">Perfil</a></li>
+          <li><a href="forum.html">Forum</a></li>
+          <li><a class="active" href="sobre.html">Sobre</a></li>
+          <div class="button" id="darkToggle">
+            <div class="sun" id="sun">
+              <div class="line1"></div>
+              <div class="line2"></div>
+              <div class="line3"></div>
+              <div class="line4"></div>
             </div>
+          </div>
+        </ul>
+      </div>
+      <div id="usuariol">
+        <p id="userMsg"></p>
+        <p id="userName"></p>
+        <p id="userEx"></p>
+        <img id="userPic" src="" alt="">
+        <div id="menuPessoa">
+          <div class="dropdown-nav">
+            <div id="myDropdown" class="dropdown-content-nav">
+              
+              <div id="sairDiv">
+                <i class="iconeperfilbar fa-solid fa-right-from-bracket" style="color:#165ea8"></i>
+                <p id="SairContaBtn" class="SairContaBtn">Sair</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="mobile">
+        <i
+          id="bar"
+          class="fa-regular fa-square-caret-down fa-2xl"
+          style="color: #165ea8"
+        ></i>
+      </div>
     </section>
     <section id="formm">
-        <h1>Sobre a Plataforma</h1><br>
-        <div id="teste">
-            <div id="texto">
-                <p><b>Bem-vindo ao nosso site de adoção de pets!</b><br><br>
+      <h1>Sobre a Plataforma</h1>
+      <br />
+      <div id="teste">
+        <div id="texto">
+          <p>
+            <b>Bem-vindo ao nosso site de adoção de pets!</b><br /><br />
 
-                    Nós somos uma plataforma originada de um trabalho da PUC Minas que tem como objetivo facilitar a
-                    adoção de animais de estimação e conectar animais que
-                    estão em busca de um lar amoroso com pessoas incríveis como você. Acreditamos que todos os animais
-                    merecem uma segunda chance e uma família que os ame incondicionalmente.<br><br>
+            Nós somos uma plataforma originada de um trabalho da PUC Minas que
+            tem como objetivo facilitar a adoção de animais de estimação e
+            conectar animais que estão em busca de um lar amoroso com pessoas
+            incríveis como você. Acreditamos que todos os animais merecem uma
+            segunda chance e uma família que os ame incondicionalmente.<br /><br />
 
-                    Nosso objetivo é simplificar o processo de adoção, tornando-o acessível e conveniente para todos.
-                    Aqui,
-                    você pode cadastrar animais para adoção, fornecendo informações detalhadas sobre eles, como espécie,
-                    raça, idade, temperamento e necessidades especiais. Dessa forma, potenciais adotantes podem
-                    encontrar o
-                    pet que mais se encaixa em seu estilo de vida e oferecer um lar seguro e amoroso.<br><br>
+            Nosso objetivo é simplificar o processo de adoção, tornando-o
+            acessível e conveniente para todos. Aqui, você pode cadastrar
+            animais para adoção, fornecendo informações detalhadas sobre eles,
+            como espécie, raça, idade, temperamento e necessidades especiais.
+            Dessa forma, potenciais adotantes podem encontrar o pet que mais se
+            encaixa em seu estilo de vida e oferecer um lar seguro e amoroso.<br /><br />
 
-                    Se você está pronto para encontrar seu novo companheiro peludo ou deseja ajudar a encontrar um lar
-                    para
-                    um animal em necessidade, você veio ao lugar certo. Explore nosso site, conheça os animais
-                    disponíveis
-                    para adoção e junte-se a nós nessa incrível jornada de amor pelos animais.<br><br>
+            Se você está pronto para encontrar seu novo companheiro peludo ou
+            deseja ajudar a encontrar um lar para um animal em necessidade, você
+            veio ao lugar certo. Explore nosso site, conheça os animais
+            disponíveis para adoção e junte-se a nós nessa incrível jornada de
+            amor pelos animais.<br /><br />
 
-                    Agradecemos por fazer parte da nossa comunidade e por escolher a adoção. Juntos, podemos mudar vidas
-                    e
-                    dar a esses pets uma chance de ter um futuro brilhante e repleto de carinho.
-                </p>
-                <div id="social">
-                    <a href="https://www.facebook.com/people/Adote-Sua-Patinha/pfbid08iJ2mUa2XNpDgfNpQy1Gtn9unpyiJPKbFfy4ZWsSZRc8WHUFPB7pnGE7LTQXZsRFl/" class=" github2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-                    </a>
-                    <a href="https://www.instagram.com/adotesuapatinha/" class=" instagram2">
-                        <svg width="800px" height="800px" viewBox="0 0 20 20" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <g id="Page-1" stroke="none" stroke-width="1">
-                                <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -7439.000000)">
-                                    <g id="icons" transform="translate(56.000000, 160.000000)">
-                                        <path
-                                            d="M289.869652,7279.12273 C288.241769,7279.19618 286.830805,7279.5942 285.691486,7280.72871 C284.548187,7281.86918 284.155147,7283.28558 284.081514,7284.89653 C284.035742,7285.90201 283.768077,7293.49818 284.544207,7295.49028 C285.067597,7296.83422 286.098457,7297.86749 287.454694,7298.39256 C288.087538,7298.63872 288.809936,7298.80547 289.869652,7298.85411 C298.730467,7299.25511 302.015089,7299.03674 303.400182,7295.49028 C303.645956,7294.859 303.815113,7294.1374 303.86188,7293.08031 C304.26686,7284.19677 303.796207,7282.27117 302.251908,7280.72871 C301.027016,7279.50685 299.5862,7278.67508 289.869652,7279.12273 M289.951245,7297.06748 C288.981083,7297.0238 288.454707,7296.86201 288.103459,7296.72603 C287.219865,7296.3826 286.556174,7295.72155 286.214876,7294.84312 C285.623823,7293.32944 285.819846,7286.14023 285.872583,7284.97693 C285.924325,7283.83745 286.155174,7282.79624 286.959165,7281.99226 C287.954203,7280.99968 289.239792,7280.51332 297.993144,7280.90837 C299.135448,7280.95998 300.179243,7281.19026 300.985224,7281.99226 C301.980262,7282.98483 302.473801,7284.28014 302.071806,7292.99991 C302.028024,7293.96767 301.865833,7294.49274 301.729513,7294.84312 C300.829003,7297.15085 298.757333,7297.47145 289.951245,7297.06748 M298.089663,7283.68956 C298.089663,7284.34665 298.623998,7284.88065 299.283709,7284.88065 C299.943419,7284.88065 300.47875,7284.34665 300.47875,7283.68956 C300.47875,7283.03248 299.943419,7282.49847 299.283709,7282.49847 C298.623998,7282.49847 298.089663,7283.03248 298.089663,7283.68956 M288.862673,7288.98792 C288.862673,7291.80286 291.150266,7294.08479 293.972194,7294.08479 C296.794123,7294.08479 299.081716,7291.80286 299.081716,7288.98792 C299.081716,7286.17298 296.794123,7283.89205 293.972194,7283.89205 C291.150266,7283.89205 288.862673,7286.17298 288.862673,7288.98792 M290.655732,7288.98792 C290.655732,7287.16159 292.140329,7285.67967 293.972194,7285.67967 C295.80406,7285.67967 297.288657,7287.16159 297.288657,7288.98792 C297.288657,7290.81525 295.80406,7292.29716 293.972194,7292.29716 C292.140329,7292.29716 290.655732,7290.81525 290.655732,7288.98792"
-                                            id="instagram-[#167]">
-
-                                        </path>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div id="img">
-                <img src="https://cdn.discordapp.com/attachments/1109149984357613638/1126927751945912471/img1.png"
-                    alt="">
-            </div>
+            Agradecemos por fazer parte da nossa comunidade e por escolher a
+            adoção. Juntos, podemos mudar vidas e dar a esses pets uma chance de
+            ter um futuro brilhante e repleto de carinho.
+          </p>
+          <div id="social">
+            <a
+              href="https://www.facebook.com/people/Adote-Sua-Patinha/pfbid08iJ2mUa2XNpDgfNpQy1Gtn9unpyiJPKbFfy4ZWsSZRc8WHUFPB7pnGE7LTQXZsRFl/"
+              class="github2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com/adotesuapatinha/"
+              class="instagram2"
+            >
+              <svg
+                width="800px"
+                height="800px"
+                viewBox="0 0 20 20"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <g id="Page-1" stroke="none" stroke-width="1">
+                  <g
+                    id="Dribbble-Light-Preview"
+                    transform="translate(-340.000000, -7439.000000)"
+                  >
+                    <g id="icons" transform="translate(56.000000, 160.000000)">
+                      <path
+                        d="M289.869652,7279.12273 C288.241769,7279.19618 286.830805,7279.5942 285.691486,7280.72871 C284.548187,7281.86918 284.155147,7283.28558 284.081514,7284.89653 C284.035742,7285.90201 283.768077,7293.49818 284.544207,7295.49028 C285.067597,7296.83422 286.098457,7297.86749 287.454694,7298.39256 C288.087538,7298.63872 288.809936,7298.80547 289.869652,7298.85411 C298.730467,7299.25511 302.015089,7299.03674 303.400182,7295.49028 C303.645956,7294.859 303.815113,7294.1374 303.86188,7293.08031 C304.26686,7284.19677 303.796207,7282.27117 302.251908,7280.72871 C301.027016,7279.50685 299.5862,7278.67508 289.869652,7279.12273 M289.951245,7297.06748 C288.981083,7297.0238 288.454707,7296.86201 288.103459,7296.72603 C287.219865,7296.3826 286.556174,7295.72155 286.214876,7294.84312 C285.623823,7293.32944 285.819846,7286.14023 285.872583,7284.97693 C285.924325,7283.83745 286.155174,7282.79624 286.959165,7281.99226 C287.954203,7280.99968 289.239792,7280.51332 297.993144,7280.90837 C299.135448,7280.95998 300.179243,7281.19026 300.985224,7281.99226 C301.980262,7282.98483 302.473801,7284.28014 302.071806,7292.99991 C302.028024,7293.96767 301.865833,7294.49274 301.729513,7294.84312 C300.829003,7297.15085 298.757333,7297.47145 289.951245,7297.06748 M298.089663,7283.68956 C298.089663,7284.34665 298.623998,7284.88065 299.283709,7284.88065 C299.943419,7284.88065 300.47875,7284.34665 300.47875,7283.68956 C300.47875,7283.03248 299.943419,7282.49847 299.283709,7282.49847 C298.623998,7282.49847 298.089663,7283.03248 298.089663,7283.68956 M288.862673,7288.98792 C288.862673,7291.80286 291.150266,7294.08479 293.972194,7294.08479 C296.794123,7294.08479 299.081716,7291.80286 299.081716,7288.98792 C299.081716,7286.17298 296.794123,7283.89205 293.972194,7283.89205 C291.150266,7283.89205 288.862673,7286.17298 288.862673,7288.98792 M290.655732,7288.98792 C290.655732,7287.16159 292.140329,7285.67967 293.972194,7285.67967 C295.80406,7285.67967 297.288657,7287.16159 297.288657,7288.98792 C297.288657,7290.81525 295.80406,7292.29716 293.972194,7292.29716 C292.140329,7292.29716 290.655732,7290.81525 290.655732,7288.98792"
+                        id="instagram-[#167]"
+                      ></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </a>
+          </div>
         </div>
+        <div id="img">
+          <img
+            src="https://cdn.discordapp.com/attachments/1109149984357613638/1126927751945912471/img1.png"
+            alt=""
+          />
+        </div>
+      </div>
     </section>
 
     <section id="faq">
+      <section id="faq">
+        <h2>Perguntas frequentes</h2>
 
-        <section id="faq">
-
-            <h2>Perguntas frequentes</h2>
-
-            <div style="visibility: hidden; position: absolute; width: 0px; height: 0px;">
-                <svg xmlns="http://www.w3.org/2000/svg">
-                    <symbol viewBox="0 0 24 24" id="expand-more">
-                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
-                        <path d="M0 0h24v24H0z" fill="none" />
-                    </symbol>
-                    <symbol viewBox="0 0 24 24" id="close">
-                        <path
-                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-                        <path d="M0 0h24v24H0z" fill="none" />
-                    </symbol>
-                </svg>
-            </div>
-
-            <div class="details-container">
-                <details>
-                    <summary>
-                        O site já está pronto?
-                        <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" />
-                        </svg>
-                        <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" />
-                        </svg>
-                    </summary>
-                    <p>No momento, o site está em sua primeira versão funcional, mas ainda não 100% concluido. 
-                        Os usuários já podem criar conta, cadastrar pets, fazer publicações no forum e responder as mesmas.
-                        Todo e qualquer bug pode ser relatado mais abaixo na área de contato. 
-                        Agradecemos sua compreensão e paciência durante esse processo de aprimoramento.</p>
-                </details>
-
-                <details>
-                    <summary>
-                        Terá algum custo para usar?
-                        <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" />
-                        </svg>
-                        <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" />
-                        </svg>
-                    </summary>
-                    <p>O site é completamente gratuito tanto para aqueles que desejam doar um animal quanto para aqueles
-                        que estão interessados em adotar.</p>
-                </details>
-            </div>
-
-        </section>
-
-
-        <div class="details-container">
-            <details>
-                <summary>
-                    Como adotar um animal de estimação?
-                    <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" />
-                    </svg>
-                    <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" />
-                    </svg>
-                </summary>
-                <p>Para adotar um pet, basta entrar em contato com o dono temporário cujas informações de contato
-                    estarão disponíveis no perfil do animal escolhido.</p>
-            </details>
-
-            <details>
-                <summary>
-                    Como cadastrar um animal para adoção?
-                    <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" />
-                    </svg>
-                    <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" />
-                    </svg>
-                </summary>
-                <p>Para cadastrar um pet, basta ir no seu perfil, clicar em "cadastre seu pet" e preencher com as
-                    informações indicadas</p>
-            </details>
+        <div
+          style="
+            visibility: hidden;
+            position: absolute;
+            width: 0px;
+            height: 0px;
+          "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg">
+            <symbol viewBox="0 0 24 24" id="expand-more">
+              <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+              <path d="M0 0h24v24H0z" fill="none" />
+            </symbol>
+            <symbol viewBox="0 0 24 24" id="close">
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+              <path d="M0 0h24v24H0z" fill="none" />
+            </symbol>
+          </svg>
         </div>
 
         <div class="details-container">
-            <details>
-                <summary>
-                    Tem suporte pós-adoção ou orientações de cuidados?
-                    <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" />
-                    </svg>
-                    <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" />
-                    </svg>
-                </summary>
-                <p>Infelizmente, não podemos fornecer suporte específico para os processos de adoção, pois não temos
-                    controle direto sobre as conversas e procedimentos. No entanto, na seção "Fórum" do nosso site, você
-                    pode fazer perguntas e tirar dúvidas relacionadas à adoção de pets. Nossa comunidade está pronta
-                    para ajudar e compartilhar informações valiosas.</p>
-            </details>
-            <details>
-                <summary>
-                    O site abrange o Brasil todo?
-                    <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" />
-                    </svg>
-                    <svg class="control-icon control-icon-close" width="24" height="24" role="presentation">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" />
-                    </svg>
-                </summary>
-                <p>Atualmente, o site está disponível apenas para os municípios de Minas Gerais. No entanto, temos
-                    planos de expandir gradualmente para abranger todo o país no futuro.</p>
-            </details>
+          <details>
+            <summary>
+              O site já está pronto?
+              <svg
+                class="control-icon control-icon-expand"
+                width="24"
+                height="24"
+                role="presentation"
+              >
+                <use
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="#expand-more"
+                />
+              </svg>
+              <svg
+                class="control-icon control-icon-close"
+                width="24"
+                height="24"
+                role="presentation"
+              >
+                <use
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="#close"
+                />
+              </svg>
+            </summary>
+            <p>
+              No momento, o site está em sua primeira versão funcional, mas
+              ainda não 100% concluido. Os usuários já podem criar conta,
+              cadastrar pets, fazer publicações no forum e responder as mesmas.
+              Todo e qualquer bug pode ser relatado mais abaixo na área de
+              contato. Agradecemos sua compreensão e paciência durante esse
+              processo de aprimoramento.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              Terá algum custo para usar?
+              <svg
+                class="control-icon control-icon-expand"
+                width="24"
+                height="24"
+                role="presentation"
+              >
+                <use
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="#expand-more"
+                />
+              </svg>
+              <svg
+                class="control-icon control-icon-close"
+                width="24"
+                height="24"
+                role="presentation"
+              >
+                <use
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="#close"
+                />
+              </svg>
+            </summary>
+            <p>
+              O site é completamente gratuito tanto para aqueles que desejam
+              doar um animal quanto para aqueles que estão interessados em
+              adotar.
+            </p>
+          </details>
         </div>
+      </section>
+
+      <div class="details-container">
+        <details>
+          <summary>
+            Como adotar um animal de estimação?
+            <svg
+              class="control-icon control-icon-expand"
+              width="24"
+              height="24"
+              role="presentation"
+            >
+              <use
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xlink:href="#expand-more"
+              />
+            </svg>
+            <svg
+              class="control-icon control-icon-close"
+              width="24"
+              height="24"
+              role="presentation"
+            >
+              <use
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xlink:href="#close"
+              />
+            </svg>
+          </summary>
+          <p>
+            Para adotar um pet, basta entrar em contato com o dono temporário
+            cujas informações de contato estarão disponíveis no perfil do animal
+            escolhido.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            Como cadastrar um animal para adoção?
+            <svg
+              class="control-icon control-icon-expand"
+              width="24"
+              height="24"
+              role="presentation"
+            >
+              <use
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xlink:href="#expand-more"
+              />
+            </svg>
+            <svg
+              class="control-icon control-icon-close"
+              width="24"
+              height="24"
+              role="presentation"
+            >
+              <use
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xlink:href="#close"
+              />
+            </svg>
+          </summary>
+          <p>
+            Para cadastrar um pet, basta ir no seu perfil, clicar em "cadastre
+            seu pet" e preencher com as informações indicadas
+          </p>
+        </details>
+      </div>
+
+      <div class="details-container">
+        <details>
+          <summary>
+            Tem suporte pós-adoção ou orientações de cuidados?
+            <svg
+              class="control-icon control-icon-expand"
+              width="24"
+              height="24"
+              role="presentation"
+            >
+              <use
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xlink:href="#expand-more"
+              />
+            </svg>
+            <svg
+              class="control-icon control-icon-close"
+              width="24"
+              height="24"
+              role="presentation"
+            >
+              <use
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xlink:href="#close"
+              />
+            </svg>
+          </summary>
+          <p>
+            Infelizmente, não podemos fornecer suporte específico para os
+            processos de adoção, pois não temos controle direto sobre as
+            conversas e procedimentos. No entanto, na seção "Fórum" do nosso
+            site, você pode fazer perguntas e tirar dúvidas relacionadas à
+            adoção de pets. Nossa comunidade está pronta para ajudar e
+            compartilhar informações valiosas.
+          </p>
+        </details>
+        <details>
+          <summary>
+            O site abrange o Brasil todo?
+            <svg
+              class="control-icon control-icon-expand"
+              width="24"
+              height="24"
+              role="presentation"
+            >
+              <use
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xlink:href="#expand-more"
+              />
+            </svg>
+            <svg
+              class="control-icon control-icon-close"
+              width="24"
+              height="24"
+              role="presentation"
+            >
+              <use
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xlink:href="#close"
+              />
+            </svg>
+          </summary>
+          <p>
+            Atualmente, o site está disponível apenas para os municípios de
+            Minas Gerais. No entanto, temos planos de expandir gradualmente para
+            abranger todo o país no futuro.
+          </p>
+        </details>
+      </div>
     </section>
     <div class="cf">
-        <h2>Fale Conosco</h2>
-          <input type="text" id="input-name" placeholder="Nome">
-          <input type="email" id="input-email" placeholder="Email">
-          <textarea type="text" id="input-message" placeholder="Mensagem"></textarea>
-        <button id="input-submit" onclick="mandarEmail()">Enviar Email</button>
-      </div>
+      <h2>Fale Conosco</h2>
+      <input type="text" id="input-name" placeholder="Nome" />
+      <input type="email" id="input-email" placeholder="Email" />
+      <textarea
+        type="text"
+        id="input-message"
+        placeholder="Mensagem"
+      ></textarea>
+      <button id="input-submit" onclick="mandarEmail()">Enviar Email</button>
+    </div>
     <div class="social-buttons">
-        <a href="https://www.facebook.com/people/Adote-Sua-Patinha/pfbid08iJ2mUa2XNpDgfNpQy1Gtn9unpyiJPKbFfy4ZWsSZRc8WHUFPB7pnGE7LTQXZsRFl/"
-            class="social-button github">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/adotesuapatinha/" class="social-button instagram">
-            <svg width="800px" height="800px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g id="Page-1" stroke="none" stroke-width="1">
-                    <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -7439.000000)">
-                        <g id="icons" transform="translate(56.000000, 160.000000)">
-                            <path
-                                d="M289.869652,7279.12273 C288.241769,7279.19618 286.830805,7279.5942 285.691486,7280.72871 C284.548187,7281.86918 284.155147,7283.28558 284.081514,7284.89653 C284.035742,7285.90201 283.768077,7293.49818 284.544207,7295.49028 C285.067597,7296.83422 286.098457,7297.86749 287.454694,7298.39256 C288.087538,7298.63872 288.809936,7298.80547 289.869652,7298.85411 C298.730467,7299.25511 302.015089,7299.03674 303.400182,7295.49028 C303.645956,7294.859 303.815113,7294.1374 303.86188,7293.08031 C304.26686,7284.19677 303.796207,7282.27117 302.251908,7280.72871 C301.027016,7279.50685 299.5862,7278.67508 289.869652,7279.12273 M289.951245,7297.06748 C288.981083,7297.0238 288.454707,7296.86201 288.103459,7296.72603 C287.219865,7296.3826 286.556174,7295.72155 286.214876,7294.84312 C285.623823,7293.32944 285.819846,7286.14023 285.872583,7284.97693 C285.924325,7283.83745 286.155174,7282.79624 286.959165,7281.99226 C287.954203,7280.99968 289.239792,7280.51332 297.993144,7280.90837 C299.135448,7280.95998 300.179243,7281.19026 300.985224,7281.99226 C301.980262,7282.98483 302.473801,7284.28014 302.071806,7292.99991 C302.028024,7293.96767 301.865833,7294.49274 301.729513,7294.84312 C300.829003,7297.15085 298.757333,7297.47145 289.951245,7297.06748 M298.089663,7283.68956 C298.089663,7284.34665 298.623998,7284.88065 299.283709,7284.88065 C299.943419,7284.88065 300.47875,7284.34665 300.47875,7283.68956 C300.47875,7283.03248 299.943419,7282.49847 299.283709,7282.49847 C298.623998,7282.49847 298.089663,7283.03248 298.089663,7283.68956 M288.862673,7288.98792 C288.862673,7291.80286 291.150266,7294.08479 293.972194,7294.08479 C296.794123,7294.08479 299.081716,7291.80286 299.081716,7288.98792 C299.081716,7286.17298 296.794123,7283.89205 293.972194,7283.89205 C291.150266,7283.89205 288.862673,7286.17298 288.862673,7288.98792 M290.655732,7288.98792 C290.655732,7287.16159 292.140329,7285.67967 293.972194,7285.67967 C295.80406,7285.67967 297.288657,7287.16159 297.288657,7288.98792 C297.288657,7290.81525 295.80406,7292.29716 293.972194,7292.29716 C292.140329,7292.29716 290.655732,7290.81525 290.655732,7288.98792"
-                                id="instagram-[#167]">
-
-                            </path>
-                        </g>
-                    </g>
-                </g>
-            </svg>
-        </a>
+      <a
+        href="https://www.facebook.com/people/Adote-Sua-Patinha/pfbid08iJ2mUa2XNpDgfNpQy1Gtn9unpyiJPKbFfy4ZWsSZRc8WHUFPB7pnGE7LTQXZsRFl/"
+        class="social-button github"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
+          />
+        </svg>
+      </a>
+      <a
+        href="https://www.instagram.com/adotesuapatinha/"
+        class="social-button instagram"
+      >
+        <svg
+          width="800px"
+          height="800px"
+          viewBox="0 0 20 20"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <g id="Page-1" stroke="none" stroke-width="1">
+            <g
+              id="Dribbble-Light-Preview"
+              transform="translate(-340.000000, -7439.000000)"
+            >
+              <g id="icons" transform="translate(56.000000, 160.000000)">
+                <path
+                  d="M289.869652,7279.12273 C288.241769,7279.19618 286.830805,7279.5942 285.691486,7280.72871 C284.548187,7281.86918 284.155147,7283.28558 284.081514,7284.89653 C284.035742,7285.90201 283.768077,7293.49818 284.544207,7295.49028 C285.067597,7296.83422 286.098457,7297.86749 287.454694,7298.39256 C288.087538,7298.63872 288.809936,7298.80547 289.869652,7298.85411 C298.730467,7299.25511 302.015089,7299.03674 303.400182,7295.49028 C303.645956,7294.859 303.815113,7294.1374 303.86188,7293.08031 C304.26686,7284.19677 303.796207,7282.27117 302.251908,7280.72871 C301.027016,7279.50685 299.5862,7278.67508 289.869652,7279.12273 M289.951245,7297.06748 C288.981083,7297.0238 288.454707,7296.86201 288.103459,7296.72603 C287.219865,7296.3826 286.556174,7295.72155 286.214876,7294.84312 C285.623823,7293.32944 285.819846,7286.14023 285.872583,7284.97693 C285.924325,7283.83745 286.155174,7282.79624 286.959165,7281.99226 C287.954203,7280.99968 289.239792,7280.51332 297.993144,7280.90837 C299.135448,7280.95998 300.179243,7281.19026 300.985224,7281.99226 C301.980262,7282.98483 302.473801,7284.28014 302.071806,7292.99991 C302.028024,7293.96767 301.865833,7294.49274 301.729513,7294.84312 C300.829003,7297.15085 298.757333,7297.47145 289.951245,7297.06748 M298.089663,7283.68956 C298.089663,7284.34665 298.623998,7284.88065 299.283709,7284.88065 C299.943419,7284.88065 300.47875,7284.34665 300.47875,7283.68956 C300.47875,7283.03248 299.943419,7282.49847 299.283709,7282.49847 C298.623998,7282.49847 298.089663,7283.03248 298.089663,7283.68956 M288.862673,7288.98792 C288.862673,7291.80286 291.150266,7294.08479 293.972194,7294.08479 C296.794123,7294.08479 299.081716,7291.80286 299.081716,7288.98792 C299.081716,7286.17298 296.794123,7283.89205 293.972194,7283.89205 C291.150266,7283.89205 288.862673,7286.17298 288.862673,7288.98792 M290.655732,7288.98792 C290.655732,7287.16159 292.140329,7285.67967 293.972194,7285.67967 C295.80406,7285.67967 297.288657,7287.16159 297.288657,7288.98792 C297.288657,7290.81525 295.80406,7292.29716 293.972194,7292.29716 C292.140329,7292.29716 290.655732,7290.81525 290.655732,7288.98792"
+                  id="instagram-[#167]"
+                ></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </a>
     </div>
     <script src="
     https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js
     "></script>
     <script type="module" src="js/script.js"></script>
     <script src="js/darkmode.js"></script>
+    <script src="js/navbar.js"></script>
     <script src="js/mandarEmail.js"></script>
     <script type="module" src="js/mural.js"></script>
-</body>
-
+  </body>
 </html>

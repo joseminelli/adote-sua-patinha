@@ -106,7 +106,6 @@ if (overlay) {
   overlay.addEventListener("click", () => section.classList.remove("active"));
   closeBtn2.addEventListener("click", () => section.classList.remove("active"));
   closeBtn.addEventListener("click", () => {
-    console.log("clicou");
     var tituloInput = document.getElementById("input1").value;
     var categoriaInput = document.getElementById("dropdown").value;
     var descInput = document.getElementById("input2").value;
@@ -230,10 +229,7 @@ function loadPosts() {
             "<p>" +
             post.descricao +
             "</p>";
-            console.log(post.userId);
-            console.log(userId);
             if (post.userId == userId) {
-              console.log("iddd do post: " + post.userId);
               postElement.innerHTML =
                 '<div class="dropdown"> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' +
                 post.id +
@@ -248,7 +244,6 @@ function loadPosts() {
                 post.descricao +
                 "</p>";
             } else {
-              console.log("id do post: " + post.userId);
               postElement.innerHTML =
                 "<h3 id='forumh3'>" +
                 post.titulo +
@@ -304,7 +299,6 @@ function loadPosts() {
           button.addEventListener("click", function () {
             var id = button.getAttribute("data-id");
             deletePost(id);
-            console.log(id);
           });
         });
 
@@ -503,7 +497,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((posts) => {
           var content = document.querySelector(".content");
           var noPostsMessage = document.getElementById("noPostsMessage");
-          console.log(posts);
           content.innerHTML = "";
 
           if (posts.length === 0) {
@@ -526,8 +519,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 "<p>" +
                 post.descricao +
                 "</p>";
-                console.log(post.userId);
-                console.log(userId);
                 if (post.userId == userId) {
                   postElement.innerHTML =
                     '<div class="dropdown"> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' +
@@ -598,7 +589,6 @@ document.addEventListener("DOMContentLoaded", function () {
               button.addEventListener("click", function () {
                 var id = button.getAttribute("data-id");
                 deletePost(id);
-                console.log(id);
               });
             });
 
