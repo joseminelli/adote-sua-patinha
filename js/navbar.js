@@ -108,7 +108,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   SairContaBtn.addEventListener("click", function () {
     if (dropdowncontent.classList.contains("show")) {
-      deleteCookie("userId");
       window.location.href = "/index.html";
     }
   });
