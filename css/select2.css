@@ -128,7 +128,7 @@
 }
 
 .select2-dropdown {
-  background-color: #ffe58b;
+  background-color: var(--cor-primaria);
   border: 1.7px solid #c0c0c0;; 
   border-radius: 4px;
   box-sizing: border-box;
@@ -146,8 +146,8 @@
   -webkit-user-select: none;
 }
 .select2-container--default .select2-search--dropdown .select2-search__field {
-  border: solid 1.5px #165ea8;
-  background-color: #ffe58b;
+  border: solid 1.5px var(--cor-secundaria);
+  background-color: var(--cor-primaria);
   border-radius: 5px;
 }
 .select2-container--default
@@ -161,9 +161,9 @@
   padding: 5px 10px;
   padding-right: 20px;
   border-radius: 5px;
-  border: solid 2px #165ea8;
+  border: solid 2px var(--cor-secundaria);
   overflow: hidden;
-  background-color: #ffe58b;
+  background-color: var(--cor-primaria);
   font-size: medium;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -457,7 +457,7 @@
 }
 .select2-container--default
   .select2-results__option--highlighted.select2-results__option--selectable {
-  background-color: #165ea8;
+  background-color: var(--cor-secundaria);
   border-radius: 3px;
   color: white;
 }
@@ -551,7 +551,7 @@
   right: auto;
 }
 .select2-container--classic.select2-container--open .select2-selection--single {
-  border: 1px solid #165ea8;
+  border: 1px solid var(--cor-secundaria);
 }
 .select2-container--classic.select2-container--open
   .select2-selection--single
@@ -598,7 +598,7 @@
   padding-right: 5px;
 }
 .select2-container--classic .select2-selection--multiple:focus {
-  border: 1px solid #165ea8;
+  border: 1px solid var(--cor-secundaria);
 }
 .select2-container--classic
   .select2-selection--multiple
@@ -664,7 +664,7 @@
 }
 .select2-container--classic.select2-container--open
   .select2-selection--multiple {
-  border: 1px solid #165ea8;
+  border: 1px solid var(--cor-secundaria);
 }
 .select2-container--classic.select2-container--open.select2-container--above
   .select2-selection--multiple {
@@ -708,7 +708,7 @@
 }
 .select2-container--classic
   .select2-results__option--highlighted.select2-results__option--selectable {
-  background-color: #165ea8;
+  background-color: var(--cor-secundaria);
   color: #fff;
 }
 .select2-container--classic .select2-results__group {
@@ -717,5 +717,5 @@
   padding: 6px;
 }
 .select2-container--classic.select2-container--open .select2-dropdown {
-  border-color: #165ea8;
+  border-color: var(--cor-secundaria);
 }

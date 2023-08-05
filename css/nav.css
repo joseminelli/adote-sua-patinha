@@ -1,11 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@200;300;400;500;600;700&display=swap');
 
+:root {
+    --cor-secundaria: #165ea8;
+    --cor-primaria: #ffe58b;
+}
+
 #header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px 80px;
-    background: #ffe58b;
+    background: var(--cor-primaria);
     position: sticky;
     top: 0;
     left: 0;
@@ -40,7 +45,7 @@
 
 #navbar li a:hover,
 #navbar li a.active {
-    color: #165ea8;
+    color: var(--cor-secundaria);
 }
 #navbar h3 {
     display: none;
@@ -51,7 +56,7 @@
     content: "";
     width: 43%;
     height: 2px;
-    background: #165ea8;
+    background: var(--cor-secundaria);
     position: absolute;
     bottom: -4px;
     left: 25px;
@@ -80,7 +85,7 @@
     border-radius: 50%;
     cursor: pointer;
     position: relative;
-    border: 3px solid #ffe58b;
+    border: 3px solid var(--cor-primaria);
   }
   
   .sun div {
@@ -118,7 +123,7 @@
     content: "";
     width: 18px;
     height: 18px;
-    background: #ffe58b;
+    background: var(--cor-primaria);
     border-radius: 50%;
     position: absolute;
     top: -21px;
@@ -160,7 +165,7 @@
         right: 100px;
         width: 0;
         height: 45vh;
-        background: #ffe58b;
+        background: var(--cor-primaria);
         box-shadow: 0 80px 80px rgba(0, 0, 0, 0.25);
         transition: 0.3s;
         padding: 40px 0 0 10px;
@@ -178,7 +183,7 @@
         width: 100px;
         margin-bottom: 5%;
         height: 30px;
-        border-top: 2px solid #165ea8;
+        border-top: 2px solid var(--cor-secundaria);
     }
 
     #navbar h3 {
@@ -206,7 +211,7 @@
         border-radius: 50%;
         cursor: pointer;
         position: relative;
-        border: 3px solid #ffe58b;
+        border: 3px solid var(--cor-primaria);
     }
 
     .sun .line1 {
@@ -233,7 +238,7 @@
         content: "";
         width: 20px;
         height: 20px;
-        background: #ffe58b;
+        background: var(--cor-primaria);
         border-radius: 50%;
         position: absolute;
         top: -21px;

@@ -16,7 +16,7 @@
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background: #165ea8;
+  background: var(--cor-secundaria);
   transition: all 300ms;
 }
 
@@ -58,7 +58,7 @@ p {
 }
 
 #box {
-  background-color: #ffe58b;
+  background-color: var(--cor-primaria);
   font-family: "Kumbh Sans", sans-serif;
   background-color: var(--color-dark1);
   color: var(--color-white);
@@ -69,7 +69,7 @@ p {
 }
 
 .content {
-  background-color: #ffe58b;
+  background-color: var(--cor-primaria);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   padding: 2rem;
   border-radius: 10px;
@@ -79,8 +79,8 @@ p {
 }
 
 select {
-  border: 2px solid #165ea8;
-  background: #ffe58b;
+  border: 2px solid var(--cor-secundaria);
+  background: var(--cor-primaria);
   max-width: 100px;
   padding: 10px 20px;
   border-radius: 5px;
@@ -91,8 +91,8 @@ select:focus {
 }
 
 select {
-  border: 2px solid #165ea8;
-  background: #ffe58b;
+  border: 2px solid var(--cor-secundaria);
+  background: var(--cor-primaria);
   max-width: 150px;
   padding: 10px 20px;
   border-radius: 5px;
@@ -123,15 +123,15 @@ h1 {
   padding: 8px 5px;
   outline: none;
   border-radius: 5px;
-  border: 2px solid #165ea8;
-  background: #ffe58b;
+  border: 2px solid var(--cor-secundaria);
+  background: var(--cor-primaria);
   width: 100%;
   box-sizing: border-box;
   transition: 0.3s;
 }
 
 .inputs:focus {
-  border-color: #165ea8;
+  border-color: var(--cor-secundaria);
 }
 
 .inputsn {
@@ -139,15 +139,15 @@ h1 {
   outline: none;
   max-width: 200px;
   border-radius: 5px;
-  border: 2px solid #165ea8;
-  background: #ffe58b;
+  border: 2px solid var(--cor-secundaria);
+  background: var(--cor-primaria);
   width: 100%;
   box-sizing: border-box;
   transition: 0.3s;
 }
 
 .inputsn:focus {
-  border-color: #165ea8;
+  border-color: var(--cor-secundaria);
 }
 
 .box-select {
@@ -167,7 +167,7 @@ button[type="submit"] {
   max-width: 115px;
   border-radius: 5px;
   margin-top: 35%;
-  background-color: #165ea8;
+  background-color: var(--cor-secundaria);
   cursor: pointer;
 }
 
@@ -284,7 +284,7 @@ button[type="submit"]:hover {
   width: 100%;
   padding: 30px 20px;
   border-radius: 24px;
-  background-color: #ffe58b;
+  background-color: var(--cor-primaria);
   box-shadow: 0 40px 60px rgba(0, 0, 0, 0.2);
   opacity: 0;
   pointer-events: none;
@@ -337,7 +337,7 @@ section.active .modal-box {
   }
 
   #box {
-    background-color: #ffe58b;
+    background-color: var(--cor-primaria);
     font-family: "Kumbh Sans", sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
@@ -402,7 +402,7 @@ section.active .modal-box {
 
 @media (max-width: 800px) {
   .content {
-    background-color: #ffe58b;
+    background-color: var(--cor-primaria);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 1.5rem;
     margin-top: 30%;
@@ -435,7 +435,7 @@ section.active .modal-box {
   }
 
   #box {
-    background-color: #ffe58b;
+    background-color: var(--cor-primaria);
     font-family: "Kumbh Sans", sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
@@ -491,7 +491,7 @@ section.active .modal-box {
     margin-left: -1%;
   }
   .content {
-    background-color: #ffe58b;
+    background-color: var(--cor-primaria);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 1.5rem;
     margin-top: 30%;
@@ -544,7 +544,7 @@ section.active .modal-box {
   }
 
   #box {
-    background-color: #ffe58b;
+    background-color: var(--cor-primaria);
     font-family: "Kumbh Sans", sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
@@ -588,7 +588,7 @@ section.active .modal-box {
     margin-left: -1%;
   }
   .content {
-    background-color: #ffe58b;
+    background-color: var(--cor-primaria);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 1.5rem;
     margin-top: 30%;
@@ -640,7 +640,7 @@ section.active .modal-box {
   }
 
   #box {
-    background-color: #ffe58b;
+    background-color: var(--cor-primaria);
     font-family: "Kumbh Sans", sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
@@ -674,7 +674,7 @@ section.active .modal-box {
 }
 @media (max-width: 370px) {
   .content {
-    background-color: #ffe58b;
+    background-color: var(--cor-primaria);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 1.5rem;
     margin-top: 30%;
@@ -708,7 +708,7 @@ section.active .modal-box {
   }
 
   #box {
-    background-color: #ffe58b;
+    background-color: var(--cor-primaria);
     font-family: "Kumbh Sans", sans-serif;
     background-color: var(--color-dark1);
     color: var(--color-white);
