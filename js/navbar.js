@@ -166,7 +166,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     senhaDiv.style.display = "none";
     nomeDiv.style.display = "none";
     idadeDiv.style.display = "none";
-    regiaoDiv.style.display = "none";
     telefoneDiv.style.display = "none";
     salvarEdit.style.display = "none";
     h2Edit.style.display = "none";
@@ -184,7 +183,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         senhaDiv.style.display = "block";
         nomeDiv.style.display = "block";
         idadeDiv.style.display = "block";
-        regiaoDiv.style.display = "block";
         telefoneDiv.style.display = "block";
         salvarEdit.style.display = "block";
         h2Edit.style.display = "block";
@@ -210,7 +208,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     };
 
     try {
-      const response = await fetch("https://api.adotesuapatinha.com/editarPessoa", {
+      const response = await fetch("http://localhost:3000/editarPessoa", {
         method: "POST",
         credentials: "include",
         headers: {

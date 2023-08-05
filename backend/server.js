@@ -210,7 +210,6 @@ app.post("/editarPessoa", (req, res) => {
   const idade = req.body.idade;
   const telefone = req.body.telefone;
   const senha = req.body.telefone;
-
   const userId = req.cookies["userId"];
 
   fs.readFile("../../usuarios.json", "utf8", (err, data) => {
@@ -227,6 +226,8 @@ app.post("/editarPessoa", (req, res) => {
       usuario.age = idade;
       usuario.telefone = telefone;
       usuario.senha = senha;
+
+      console.log(usuario.telefone)
 
       fs.writeFile("../../usuarios.json", JSON.stringify(jsonData), (err) => {
         if (err) {
