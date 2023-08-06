@@ -444,6 +444,7 @@ h1 {
 }
 
 .dropdown {
+  display: block;
   position: relative;
   right: 0.4em;
 }
