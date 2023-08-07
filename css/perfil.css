@@ -4,12 +4,10 @@
   width: 100%;
   height: 15px;
   display: block;
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgba(255, 255, 255, 0),
       rgba(255, 255, 255, 0.5) 50%,
-      rgba(255, 255, 255, 0) 80%
-    ),
+      rgba(255, 255, 255, 0) 80%),
     rgba(202, 202, 202, 0.575);
   background-repeat: repeat-y;
   background-size: 50px 200px;
@@ -19,7 +17,9 @@
 
 @keyframes shine {
   to {
-    background-position: 200% 0, /* move highlight to right */ 0 0;
+    background-position: 200% 0,
+      /* move highlight to right */
+      0 0;
   }
 }
 
@@ -78,7 +78,7 @@ h2 {
   width: 100px;
 }
 
-#petpl{
+#petpl {
   margin-left: 15%;
   display: inline-block;
   border-radius: 10px;
@@ -87,8 +87,13 @@ h2 {
 }
 
 #fotoPet2 {
+  padding: 1rem;
+  border-radius: 10px;
   display: inline-block;
+  width: 900px;
+  overflow: auto;
 }
+
 
 #pet {
   margin-bottom: 0px;
@@ -377,6 +382,11 @@ button[type="submit"]:hover {
 }
 
 @media (max-width: 1800px) {
+
+  #fotoPet2 {
+    width: 600px;
+  }
+
   .content {
     margin-top: 8%;
   }
@@ -469,6 +479,10 @@ button[type="submit"]:hover {
     margin-left: 12%;
     margin-top: -39%;
   }
+
+  #fotoPet2 {
+    width: 450px;
+  }
 }
 
 @media (max-width: 1010px) {
@@ -487,6 +501,14 @@ button[type="submit"]:hover {
     margin-left: 15%;
     margin-top: -49%;
   }
+
+  #fotoPet2 {
+    display: inline-block !important;
+    width: auto;
+    height: 450px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
 }
 
 @media (max-width: 830px) {
@@ -496,7 +518,7 @@ button[type="submit"]:hover {
   }
 
   #fotoPet2 {
-    display: inline-block !important;
+    width: auto;
   }
 
   .mural img {

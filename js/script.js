@@ -169,23 +169,6 @@ document.addEventListener("DOMContentLoaded", function () {
       select.add(option);
     }
     enviarButton.addEventListener("click", async function (event) {
-      try {
-        const response = await fetch(
-          "https://api.adotesuapatinha.com/maxPets",
-          { credentials: "include" }
-        );
-
-        if (!response.ok) {
-          throw new Error("Erro ao obter os pets do usuário");
-        }
-
-        const userPets = await response.json();
-        console.log(userPets.length);
-        console.log(userPets);
-        if (userPets.length >= 2) {
-          alert("Você já cadastrou 2 pets. Não é possível cadastrar mais.");
-          return;
-        }
 
         loader.style.display = "flex";
         hamster.classList.add("active");
@@ -417,10 +400,6 @@ document.addEventListener("DOMContentLoaded", function () {
           section.classList.add("active");
           return;
         }
-      } catch (error) {
-        console.error(error);
-        alert("Erro ao cadastrar o pet.");
-      }
     });
   }
   if (enviarButton2) {
