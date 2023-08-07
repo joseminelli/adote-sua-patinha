@@ -47,9 +47,11 @@ function toggleClassOnDeviceWidth() {
 document.addEventListener("DOMContentLoaded", async function () {
   toggleClassOnDeviceWidth();
   if(!mobile == true){
-    formm2.style.marginTop = "-5%";
+    formm2.style.marginTop = "-3%";
+    formm2.style.marginBottom = "-4%";
     }else{
       formm2.style.marginTop = "-15%";
+      formm2.style.marginBottom = "-15%";
     }
   minFiltro.addEventListener("click", function () {
     if (!content.classList.contains("active")) {
@@ -59,6 +61,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       content.classList.add("active");
       formm2.style.marginTop = "1%";
       content.style.height = "95%";
+      formm2.style.marginBottom = "2%";
       minFiltro.style.rotate = "180deg";
     } else {
       formHeader.style.overflow = "hidden";
@@ -66,9 +69,11 @@ document.addEventListener("DOMContentLoaded", async function () {
       content.style.height = "45%";
       minFiltro.style.rotate = "0deg";
       if(!mobile == true){
-      formm2.style.marginTop = "-5%";
+      formm2.style.marginTop = "-3%";
+      formm2.style.marginBottom = "-4%";
       }else{
         formm2.style.marginTop = "-15%";
+        formm2.style.marginBottom = "-15%";
       }
       content.classList.remove("active");
     }
@@ -177,28 +182,23 @@ document.addEventListener("DOMContentLoaded", async function () {
     const racaSelect = document.getElementById("raca");
     const especieSelect = document.getElementById("especie");
 
-    $(document.body).on("change", "#bairro2", function () {
+    $("#bairro2").on("change", function () {
       atualizarFiltro2();
       atualizarFiltro();
     });
-    $(document.body).on("change", "#idade", function () {
+    $("#idade").on("change", function () {
       atualizarFiltro2();
       atualizarFiltro();
     });
-    $(document.body).on("change", "#raca", function () {
+    $("#raca").on("change", function () {
       atualizarFiltro2();
       atualizarFiltro();
     });
-    $(document.body).on("change", "#especie", function () {
+    $("#especie").on("change", function () {
       atualizarFiltro2();
       atualizarFiltro();
     });
     chkFavoritos.addEventListener("change", atualizarFiltro2);
-
-    regiaoSelect.addEventListener("change", atualizarFiltro);
-    idadeSelect.addEventListener("change", atualizarFiltro);
-    racaSelect.addEventListener("change", atualizarFiltro);
-    especieSelect.addEventListener("change", atualizarFiltro);
     chkFavoritos.addEventListener("change", atualizarFiltro);
 
     function atualizarFiltro2() {

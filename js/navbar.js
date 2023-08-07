@@ -60,6 +60,8 @@ async function verificarCookie() {
 document.addEventListener("DOMContentLoaded", async function () {
   toggleClassOnDeviceWidth();
   verificarCookie();
+  userPic.style.width = "35px";
+  userPic.style.height = "35px";
 
   for (var i = 18; i <= 100; i++) {
     var option = document.createElement("option");
