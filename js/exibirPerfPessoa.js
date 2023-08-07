@@ -9,6 +9,7 @@ const hamster = document.getElementById("hamster");
 const loader = document.getElementById("loader");
 const btnDel = document.getElementById("btnDel");
 const comPet = document.getElementById("spet");
+const verificado = document.getElementById("verificado");
 const semPet = document.getElementById("npet");
 var imgElement2 = document.getElementById("fotopet");
 
@@ -105,6 +106,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     } else {
       loader.style.display = "none";
       hamster.classList.remove("active");
+    }
+    console.log(usuario.ong);
+    if(usuario.ong === "sim"){
+      verificado.classList.add("fa-circle-check");
     }
     nome.innerHTML = usuario.name;
     idade.innerHTML = `${usuario.age} Anos`;

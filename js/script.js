@@ -169,7 +169,40 @@ document.addEventListener("DOMContentLoaded", function () {
       select.add(option);
     }
     enviarButton.addEventListener("click", async function (event) {
+      try {
+        const response = await fetch("https://api.adotesuapatinha.com/maxPets", {
+          credentials: "include",
+        });
 
+        if (!response.ok) {
+          throw new Error("Erro ao obter os pets do usuário");
+        }
+        const responseuser = await fetch("https://localhost:3000/usuario", {
+          credentials: "include",
+        });
+
+        if (!responseuser.ok) {
+          throw new Error("Erro ao obter usuário");
+        }
+
+        const user = await responseuser.json();
+        const userPets = await response.json();
+        var podeCadastrar;
+        console.log(user.ong);
+        console.log(userPets.length);
+        if (user.ong === "sim") {
+          podeCadastrar = true;
+        } else {
+          if (userPets.length >= 2) {
+            podeCadastrar = false;
+            alert("Você já cadastrou 2 pets. Não é possível cadastrar mais.");
+            return;
+          } else {
+            podeCadastrar = true;
+          }
+        }
+        console.log(userPets.length);
+        console.log(userPets);
         loader.style.display = "flex";
         hamster.classList.add("active");
         event.preventDefault();
@@ -251,8 +284,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             formData.append(
               "content",
-              "> **NOVO PET**"+
-              "\n\nNome: " +
+              "> **NOVO PET**" +
+                "\n\nNome: " +
                 nome +
                 "\nIdade: " +
                 idade +
@@ -400,6 +433,10 @@ document.addEventListener("DOMContentLoaded", function () {
           section.classList.add("active");
           return;
         }
+      } catch (error) {
+        console.error(error);
+        alert("Erro ao cadastrar o pet.");
+      }
     });
   }
   if (enviarButton2) {
@@ -559,7 +596,13 @@ document.addEventListener("DOMContentLoaded", function () {
           formData.append("file", dataURItoBlob(imagem2), "imagem.png");
           formData.append(
             "content",
-            "> **NOVO USUÁRIO**"+ "Nome: " + nome2 + "\nIdade: " + idade2 + "\nRegião: " + bairro
+            "> **NOVO USUÁRIO**" +
+              "Nome: " +
+              nome2 +
+              "\nIdade: " +
+              idade2 +
+              "\nRegião: " +
+              bairro
           );
 
           var discordWebhookURL =

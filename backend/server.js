@@ -178,6 +178,7 @@ app.post("/salvarPessoa", upload.single("file"), (req, res) => {
       email: email,
       senha: senha,
       image: imagem,
+      ong: "não"
     };
 
     jsonData.usuarios.push(newUsuario);
