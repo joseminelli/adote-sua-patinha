@@ -180,7 +180,6 @@ app.post("/salvarPessoa", upload.single("file"), (req, res) => {
     };
 
     jsonData.usuarios.push(newUsuario);
-    console.log(JSON.stringify(newUsuario));
     res.cookie("userId", newId, {
       maxAge: 604800000, // 1 semana
       httpOnly: true,

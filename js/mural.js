@@ -48,7 +48,7 @@ function toggleClassOnDeviceWidth() {
 async function FindUser(petId) {
   try {
     const response = await fetch(
-      `https://adotesuapatinha.com/findUsuarioByPet/${petId}`,
+      `https://api.adotesuapatinha.com/findUsuarioByPet/${petId}`,
       {
         credentials: "include",
       }
