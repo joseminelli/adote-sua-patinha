@@ -448,7 +448,19 @@ h1 {
   position: relative;
   right: 0.4em;
 }
-
+#imgreply{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+#replyHeader{
+  margin-bottom: -3%;
+  display: flex;
+  align-items: center;
+}
+#verificado{
+  margin-right: 1%;
+}
 .dropdown-content {
   display: none;
   position: absolute;
@@ -504,8 +516,7 @@ h1 {
 
 #nomerply {
   font-size: small;
-  margin-top: 4%;
-  margin-bottom: -2%;
+  margin-left: 1%;
 }
 
 #descrply {

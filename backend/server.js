@@ -300,6 +300,30 @@ app.get("/mural", (req, res) => {
   });
 });
 
+app.get("/findUsuario/:id", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  
+  const userId = parseInt(req.params.id);
+  const logId = verificarAutenticacao(req, res);
+  if (!logId) {
+    return;
+  }
+
+  fs.readFile("../../usuarios.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo de usuários");
+      return;
+    }
+
+    const jsonData = JSON.parse(data);
+    const usuario = jsonData.usuarios.find(
+      (user) => user.id === parseInt(userId)
+    );
+    res.json(usuario);
+  });
+});
+
 app.get("/usuario", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const logId = verificarAutenticacao(req, res);
@@ -559,16 +583,7 @@ app.post("/posts/:id/respostas", (req, res) => {
           1
         : 1;
     resposta.id = respostaId;
-
-    const usuariosData = fs.readFileSync("../../usuarios.json", "utf8");
-    const usuarios = JSON.parse(usuariosData);
-    const user = usuarios.usuarios.find(
-      (usuario) => usuario.id === parseInt(userId)
-    );
-    const nomeUsuario = user ? user.name : "[Usuário não identificado]";
-
-    resposta.autor = nomeUsuario;
-
+    
     posts[postIndex].respostas.push(resposta);
 
     fs.writeFileSync("../../posts.json", JSON.stringify(posts));
