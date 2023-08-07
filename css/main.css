@@ -230,9 +230,14 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: -5%;
   height: 250px;
+  transition: all 0.3s ease-in-out;
 }
-
+#minFiltro{
+  rotate: 0deg;
+  transition: all 0.3s ease-in-out;
+}
 .content {
   background-color: var(--cor-primaria);
   box-shadow: 5px 5px 5px rgba(3, 3, 3, 0.3);
@@ -240,7 +245,9 @@ p {
   border-radius: 10px;
   justify-content: center;
   align-items: center;
-  overflow: auto;
+  overflow: hidden;
+  height: 45%;
+  transition: all 0.3s ease-in-out;
 }
 
 .content form {
@@ -449,7 +456,7 @@ button[type="submit"]:hover {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     padding: 2rem;
     border-radius: 10px;
-    overflow: auto;
+    overflow: hidden;
   }
 
   .content form {
@@ -521,7 +528,6 @@ button[type="submit"]:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 250px;
   }
 
   .content {
@@ -533,7 +539,7 @@ button[type="submit"]:hover {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     padding: 2rem;
     border-radius: 10px;
-    overflow: auto;
+    overflow: hidden;
   }
 
   .content form {

@@ -2,6 +2,10 @@ var login = localStorage.getItem("login");
 const taNoMural = document.getElementById("formm2");
 const loader = document.getElementById("loader");
 const hamster = document.getElementById("hamster");
+const minFiltro = document.getElementById("minFiltro");
+const formm2 = document.getElementById("formm2");
+const formHeader = document.getElementById("formHeader");
+const content = document.getElementById("content");
 const section = document.getElementById("modalNovo"),
   overlay = document.querySelector(".overlay"),
   showBtn = document.querySelector(".show-modal"),
@@ -31,7 +35,44 @@ var racaDog = [
 
 var racaCat = ["Persa", "Siamês", "Sphynx"];
 
+function toggleClassOnDeviceWidth() {
+  var screenWidth = window.innerWidth;
+
+  if (screenWidth < 800) {
+    mobile = true;
+  } else {
+    mobile = false;
+  }
+}
 document.addEventListener("DOMContentLoaded", async function () {
+  toggleClassOnDeviceWidth();
+  if(!mobile == true){
+    formm2.style.marginTop = "-5%";
+    }else{
+      formm2.style.marginTop = "-15%";
+    }
+  minFiltro.addEventListener("click", function () {
+    if (!content.classList.contains("active")) {
+      formHeader.style.overflow = "auto";
+      content.style.overflow = "auto";
+      content.style.overflowY = "hidden";
+      content.classList.add("active");
+      formm2.style.marginTop = "1%";
+      content.style.height = "95%";
+      minFiltro.style.rotate = "180deg";
+    } else {
+      formHeader.style.overflow = "hidden";
+      content.style.overflow = "hidden";
+      content.style.height = "45%";
+      minFiltro.style.rotate = "0deg";
+      if(!mobile == true){
+      formm2.style.marginTop = "-5%";
+      }else{
+        formm2.style.marginTop = "-15%";
+      }
+      content.classList.remove("active");
+    }
+  });
   racaDog.sort();
   racaDog.forEach(function (item) {
     addOption(item);
