@@ -825,6 +825,7 @@ button[type="submit"]:hover {
   }
 }
 @media screen and (max-width: 900px) {
+ 
   .post {
     width: 600px;
     background-color: #fbf1cd;
@@ -846,8 +847,7 @@ button[type="submit"]:hover {
   }
   #nomerply {
     font-size: small;
-    margin-top: 4%;
-    margin-bottom: -2%;
+    margin-left: 3%;
   }
 
   #descrply {
