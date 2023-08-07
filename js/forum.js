@@ -245,6 +245,9 @@ function loadPosts() {
                 "</p>";
             } else {
               postElement.innerHTML =
+              '<div class="dropdown" style= display:none> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' +
+                    post.id +
+                    '" >Apagar post</p> </div>  </div>  </div>' +
                 "<h3 id='forumh3'>" +
                 post.titulo +
                 "</h3>" +
@@ -535,6 +538,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     "</p>";
                 } else {
                   postElement.innerHTML =
+                  '<div class="dropdown" style= display:none> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' +
+                    post.id +
+                    '" >Apagar post</p> </div>  </div>  </div>' +
                     "<h3 id='forumh3'>" +
                     post.titulo +
                     "</h3>" +
