@@ -127,6 +127,10 @@ section.active .modal-box {
   margin-top: 0%;
   color: #333;
 }
+#input3 {
+  margin-top: 0%;
+  color: #333 !important;
+}
 #input2 {
   margin-top: 0%;
   color: #333;
