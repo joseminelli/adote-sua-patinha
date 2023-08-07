@@ -48,7 +48,7 @@ var racaDog = [
   "Pug",
 ];
 
-var racaCat = ["Sem Raça", "Persa", "Siamês", "Sphynx"];
+var racaCat = ["Persa", "Siamês", "Sphynx"];
 
 async function verificarCookieTF() {
   try {
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     const especieinput = document.getElementById("especie");
     const racainput = document.getElementById("raca");
-    especieinput.addEventListener("change", function (event) {
+    $("#especie").on("change", function () {
       racainput.innerHTML = "";
 
       racainput.add(new Option("Selecione", "0"));
@@ -211,7 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var raca = document.getElementById("raca").value;
         var descricao = document.getElementById("descricao").value;
         var especie = document.getElementById("especie").value;
-
+        
         var nome3 = document.getElementById("input");
         var raca3 = document.getElementById("raca");
         var descricao3 = document.getElementById("descricao");
