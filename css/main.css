@@ -10,7 +10,17 @@
 ::-webkit-scrollbar {
   width: 8px;
 }
-
+.selo {
+  position: absolute;
+  top: -5%;
+  left: 60%;
+  border: none;
+  width: 70px !important;
+  height: 70px !important;
+  background: transparent;
+  z-index: 1;
+  box-shadow: none !important;
+}
 ::-webkit-scrollbar-track {
   background: transparent;
 }
@@ -479,6 +489,12 @@ button[type="submit"]:hover {
     gap: 5px;
   }
 
+  .selo {
+    top: -5%;
+    left: 55%;
+    width: 55px !important;
+    height: 55px !important;
+  }
   .btn-favorito {
     top: 40px;
     left: 50px;

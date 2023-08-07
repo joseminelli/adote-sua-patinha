@@ -76,7 +76,7 @@ function excluirPet(petId) {
         return response.json();
       })
       .then((data) => {
-        console.log("Pet excluído com sucesso!", data);
+        console.log("Pet excluído com sucesso!");
         exibirPets();
       })
       .catch((error) => {
@@ -107,7 +107,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       loader.style.display = "none";
       hamster.classList.remove("active");
     }
-    console.log(usuario.ong);
     if(usuario.ong === "sim"){
       verificado.classList.add("fa-circle-check");
     }

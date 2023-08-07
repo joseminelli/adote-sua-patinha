@@ -44,15 +44,31 @@ function toggleClassOnDeviceWidth() {
     mobile = false;
   }
 }
+
+async function FindUser(petId) {
+  try {
+    const response = await fetch(
+      `http://localhost:3000/findUsuarioByPet/${petId}`,
+      {
+        credentials: "include",
+      }
+    );
+    const usuario = await response.json();
+    return usuario;
+  } catch (error) {
+    console.error("Erro na requisição:", error);
+    throw error;
+  }
+}
 document.addEventListener("DOMContentLoaded", async function () {
   toggleClassOnDeviceWidth();
-  if(!mobile == true){
+  if (!mobile == true) {
     formm2.style.marginTop = "-3%";
     formm2.style.marginBottom = "-4%";
-    }else{
-      formm2.style.marginTop = "-15%";
-      formm2.style.marginBottom = "-15%";
-    }
+  } else {
+    formm2.style.marginTop = "-15%";
+    formm2.style.marginBottom = "-15%";
+  }
   minFiltro.addEventListener("click", function () {
     if (!content.classList.contains("active")) {
       formHeader.style.overflow = "auto";
@@ -68,10 +84,10 @@ document.addEventListener("DOMContentLoaded", async function () {
       content.style.overflow = "hidden";
       content.style.height = "45%";
       minFiltro.style.rotate = "0deg";
-      if(!mobile == true){
-      formm2.style.marginTop = "-3%";
-      formm2.style.marginBottom = "-4%";
-      }else{
+      if (!mobile == true) {
+        formm2.style.marginTop = "-3%";
+        formm2.style.marginBottom = "-4%";
+      } else {
         formm2.style.marginTop = "-15%";
         formm2.style.marginBottom = "-15%";
       }
@@ -250,72 +266,80 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         const pet = petsFiltrados[i];
         const petId = pet.id.toString();
+        FindUser(petId).then((user) => {
+          
+          const a2 = document.createElement("a");
+          a2.setAttribute("href", "perfilpf.html" + "?pet=" + petId);
 
-        const a2 = document.createElement("a");
-        a2.setAttribute("href", "perfilpf.html" + "?pet=" + petId);
+          const picfotopeti = document.createElement("img");
+          picfotopeti.setAttribute("id", petId);
+          picfotopeti.src = pet.image;
 
-        const picfotopeti = document.createElement("img");
-        picfotopeti.setAttribute("id", petId);
-        picfotopeti.src = pet.image;
-
-        const favoritoBtn = document.createElement("button");
-        favoritoBtn.classList.add("btn-favorito");
-        favoritoBtn.classList.add("botaofav" + petId);
-        favoritoBtn.dataset.petId = petId;
-        favoritoBtn.classList.add("posiciona-favorito");
-        favoritoBtn.classList.add("heart-btn");
-
-        if (favoritos.includes(petId)) {
-          favoritoBtn.classList.add("favoritado");
-
-          if (apenasFavoritos) {
-            if (a2.parentNode) {
-              a2.parentNode.classList.add("encolher");
-            }
-          }
-        }
-
-        favoritoBtn.addEventListener("click", function () {
-          const petId = this.dataset.petId;
-          const container = this.parentNode;
+          const favoritoBtn = document.createElement("button");
+          favoritoBtn.classList.add("btn-favorito");
+          favoritoBtn.classList.add("botaofav" + petId);
+          favoritoBtn.dataset.petId = petId;
+          favoritoBtn.classList.add("posiciona-favorito");
+          favoritoBtn.classList.add("heart-btn");
 
           if (favoritos.includes(petId)) {
-            favoritos.splice(favoritos.indexOf(petId), 1);
-            this.classList.remove("favoritado");
+            favoritoBtn.classList.add("favoritado");
 
-            if (container) {
-              if (apenasFavoritos) {
-                container.classList.add("encolher");
+            if (apenasFavoritos) {
+              if (a2.parentNode) {
+                a2.parentNode.classList.add("encolher");
               }
-
-              setTimeout(function () {
-                if (container.parentNode) {
-                  container.parentNode.removeChild(container);
-                }
-                atualizarFiltro();
-              }, 300);
-            } else {
-              atualizarFiltro();
             }
-          } else {
-            favoritos.push(petId);
-            this.classList.add("favoritado");
-            setTimeout(function () {
-              atualizarFiltro();
-            }, 200);
           }
 
-          localStorage.setItem("favoritos", JSON.stringify(favoritos));
+          favoritoBtn.addEventListener("click", function () {
+            const petId = this.dataset.petId;
+            const container = this.parentNode;
+
+            if (favoritos.includes(petId)) {
+              favoritos.splice(favoritos.indexOf(petId), 1);
+              this.classList.remove("favoritado");
+
+              if (container) {
+                if (apenasFavoritos) {
+                  container.classList.add("encolher");
+                }
+
+                setTimeout(function () {
+                  if (container.parentNode) {
+                    container.parentNode.removeChild(container);
+                  }
+                  atualizarFiltro();
+                }, 300);
+              } else {
+                atualizarFiltro();
+              }
+            } else {
+              favoritos.push(petId);
+              this.classList.add("favoritado");
+              setTimeout(function () {
+                atualizarFiltro();
+              }, 200);
+            }
+
+            localStorage.setItem("favoritos", JSON.stringify(favoritos));
+          });
+
+          const container = document.createElement("div");
+          container.classList.add("imagem-container");
+          container.appendChild(favoritoBtn);
+          container.appendChild(a2);
+          a2.appendChild(picfotopeti);
+          petsContainer.appendChild(container);
+          if (user.ong == "sim") {
+            const seloImg = document.createElement("img");
+            seloImg.classList.add("selo");
+            seloImg.src = "https://cdn.discordapp.com/attachments/933499827638124575/1138222343349600321/selo.png";
+            container.appendChild(seloImg);
+          }
+
+          petsDisponiveis++;
         });
-
-        const container = document.createElement("div");
-        container.classList.add("imagem-container");
-        container.appendChild(favoritoBtn);
-        container.appendChild(a2);
-        a2.appendChild(picfotopeti);
-        petsContainer.appendChild(container);
-
-        petsDisponiveis++;
       }
 
       if (apenasFavoritos) {

@@ -178,7 +178,7 @@ app.post("/salvarPessoa", upload.single("file"), (req, res) => {
       email: email,
       senha: senha,
       image: imagem,
-      ong: "não"
+      ong: "não",
     };
 
     jsonData.usuarios.push(newUsuario);
@@ -221,7 +221,9 @@ app.post("/editarPessoa", (req, res) => {
     }
 
     let jsonData = JSON.parse(data);
-    const usuario = jsonData.usuarios.find((user) => user.id === parseInt(userId));
+    const usuario = jsonData.usuarios.find(
+      (user) => user.id === parseInt(userId)
+    );
     if (usuario) {
       usuario.name = nome;
       usuario.age = idade;
@@ -241,7 +243,6 @@ app.post("/editarPessoa", (req, res) => {
     }
   });
 });
-
 
 app.post("/login", (req, res) => {
   const email = req.body.email.trim().toLowerCase();
@@ -302,7 +303,7 @@ app.get("/mural", (req, res) => {
 
 app.get("/findUsuario/:id", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
-  
+
   const userId = parseInt(req.params.id);
   const logId = verificarAutenticacao(req, res);
   if (!logId) {
@@ -323,6 +324,49 @@ app.get("/findUsuario/:id", (req, res) => {
     res.json(usuario);
   });
 });
+
+app.get("/findUsuarioByPet/:id", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+
+  const petId = parseInt(req.params.id);
+  const logId = verificarAutenticacao(req, res);
+  if (!logId) {
+    return;
+  }
+
+  fs.readFile("../../pets.json", "utf8", (err, dataPet) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo de pets");
+      return;
+    }
+
+    const petData = JSON.parse(dataPet);
+    const pet = petData.pets.find((pet) => pet.id === petId);
+    if (!pet) {
+      res.status(404).send("Pet não encontrado");
+      return;
+    }
+
+    fs.readFile("../../usuarios.json", "utf8", (err, dataUser) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send("Erro ao ler o arquivo de usuários");
+        return;
+      }
+
+      const userData = JSON.parse(dataUser);
+      const usuario = userData.usuarios.find((user) => user.id === parseInt(pet.userId));
+      console.log(usuario);
+      if (!usuario) {
+        res.status(404).send("Usuário do pet não encontrado");
+        return;
+      }
+      res.json(usuario);
+    });
+  });
+});
+
 
 app.get("/usuario", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -501,7 +545,7 @@ app.get("/posts", (req, res) => {
   }
 
   const searchTerm = req.query.search;
-  
+
   if (searchTerm) {
     posts = posts.filter(
       (post) =>
@@ -525,8 +569,6 @@ app.get("/posts", (req, res) => {
 
   res.json(posts);
 });
-
-
 
 app.delete("/posts/:id", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -583,7 +625,7 @@ app.post("/posts/:id/respostas", (req, res) => {
           1
         : 1;
     resposta.id = respostaId;
-    
+
     posts[postIndex].respostas.push(resposta);
 
     fs.writeFileSync("../../posts.json", JSON.stringify(posts));

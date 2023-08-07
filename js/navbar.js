@@ -48,7 +48,6 @@ async function verificarCookie() {
         window.location.href = data.redirect;
       } else if (data.id) {
         userId = data.id;
-        console.log("Usuário logado:", userId);
       }
     } else {
       console.error("Erro ao verificar o cookie:", response.status);
