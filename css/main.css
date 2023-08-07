@@ -13,10 +13,10 @@
 .selo {
   position: absolute;
   top: -5%;
-  left: 60%;
+  left: 62%;
   border: none;
-  width: 70px !important;
-  height: 70px !important;
+  width: 65px !important;
+  height: 65px !important;
   background: transparent;
   z-index: 1;
   box-shadow: none !important;
@@ -491,9 +491,9 @@ button[type="submit"]:hover {
 
   .selo {
     top: -5%;
-    left: 55%;
-    width: 55px !important;
-    height: 55px !important;
+    left: 58%;
+    width: 45px !important;
+    height: 45px !important;
   }
   .btn-favorito {
     top: 40px;
