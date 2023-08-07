@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!response.ok) {
           throw new Error("Erro ao obter os pets do usuário");
         }
-        const responseuser = await fetch("https://localhost:3000/usuario", {
+        const responseuser = await fetch("https://api.adotesuapatinha.com/usuario", {
           credentials: "include",
         });
 
