@@ -170,16 +170,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     enviarButton.addEventListener("click", async function (event) {
       try {
-        const response = await fetch("https://api.adotesuapatinha.com/maxPets", {
-          credentials: "include",
-        });
+        const response = await fetch(
+          "https://api.adotesuapatinha.com/maxPets",
+          {
+            credentials: "include",
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Erro ao obter os pets do usuário");
         }
-        const responseuser = await fetch("https://api.adotesuapatinha.com/usuario", {
-          credentials: "include",
-        });
+        const responseuser = await fetch(
+          "https://api.adotesuapatinha.com/usuario",
+          {
+            credentials: "include",
+          }
+        );
 
         if (!responseuser.ok) {
           throw new Error("Erro ao obter usuário");
@@ -195,7 +201,18 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           if (userPets.length >= 2) {
             podeCadastrar = false;
-            alert("Você já cadastrou 2 pets. Não é possível cadastrar mais.");
+            section.classList.add("active");
+            titulom.innerHTML = "Limite atingido!";
+            descm.innerHTML = "Você já cadastrou 2 pets! <br> Caso seja uma ONG, entre em contato com a gente!";
+            iconm.classList.remove("fa-circle-check");
+            iconm.classList.add("fa-circle-xmark");
+            modalbtn.style.display = "none";
+            setTimeout(function () {
+              section.classList.remove("active");
+              setTimeout(() => {
+                modalbtn.style.display = "block";
+              }, 300);
+            }, 3000);
             return;
           } else {
             podeCadastrar = true;
@@ -211,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var raca = document.getElementById("raca").value;
         var descricao = document.getElementById("descricao").value;
         var especie = document.getElementById("especie").value;
-        
+
         var nome3 = document.getElementById("input");
         var raca3 = document.getElementById("raca");
         var descricao3 = document.getElementById("descricao");
