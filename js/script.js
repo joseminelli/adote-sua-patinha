@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           if (userPets.length >= 2) {
             podeCadastrar = false;
-            alert("Você já cadastrou 2 pets. Não é possível cadastrar mais.");
+            alert("Você atingiu o limite máximo de 2 pets. Caso seja uma ONG e queira ser parceira entre em contato conosco.");
             return;
           } else {
             podeCadastrar = true;
