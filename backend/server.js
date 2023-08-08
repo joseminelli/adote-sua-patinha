@@ -5,7 +5,6 @@ const cookieParser = require("cookie-parser");
 const multer = require("multer");
 const upload = multer();
 const app = express();
-const { v4: uuidv4 } = require('uuid');
 const port = process.env.PORT || 3000;
 
 function verificarAutenticacao(req, res) {
@@ -165,7 +164,10 @@ app.post("/salvarPessoa", upload.single("file"), (req, res) => {
     }
 
     let jsonData = JSON.parse(data);
-    const newId = uuidv4()
+    const newId =
+      jsonData.usuarios.length > 0
+        ? jsonData.usuarios[jsonData.usuarios.length - 1].id + 1
+        : 1;
 
     const newUsuario = {
       id: newId,
