@@ -170,22 +170,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     enviarButton.addEventListener("click", async function (event) {
       try {
-        const response = await fetch(
-          "https://api.adotesuapatinha.com/maxPets",
-          {
-            credentials: "include",
-          }
-        );
+        const response = await fetch("https://api.adotesuapatinha.com/maxPets", {
+          credentials: "include",
+        });
 
         if (!response.ok) {
           throw new Error("Erro ao obter os pets do usuário");
         }
-        const responseuser = await fetch(
-          "https://api.adotesuapatinha.com/usuario",
-          {
-            credentials: "include",
-          }
-        );
+        const responseuser = await fetch("https://api.adotesuapatinha.com/usuario", {
+          credentials: "include",
+        });
 
         if (!responseuser.ok) {
           throw new Error("Erro ao obter usuário");
@@ -228,7 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var raca = document.getElementById("raca").value;
         var descricao = document.getElementById("descricao").value;
         var especie = document.getElementById("especie").value;
-
+        
         var nome3 = document.getElementById("input");
         var raca3 = document.getElementById("raca");
         var descricao3 = document.getElementById("descricao");
