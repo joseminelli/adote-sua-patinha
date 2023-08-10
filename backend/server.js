@@ -241,6 +241,36 @@ app.post("/editarPessoa", (req, res) => {
   });
 });
 
+app.post("/logout", (req, res) => {
+  const userId = req.cookies["userId"];
+
+  fs.readFile("../../usuarios.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Erro ao ler o arquivo de usuários");
+      return;
+    }
+
+    const jsonData = JSON.parse(data);
+
+    const usuario = jsonData.usuarios.find(
+      (user) => user.id === userId
+    );
+    if (usuario) {
+      res.cookie("userId", usuario.id, {
+        expires: new Date(Date.now() - 604800000), // -1 semana
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+      });
+
+      res.json({ redirect: "/index.html" });
+    } else {
+      res.status(401).send("Usuário não encontrado");
+    }
+  });
+});
+
 app.post("/login", (req, res) => {
   const email = req.body.email.trim().toLowerCase();
   const senha = req.body.senha;
@@ -261,6 +291,7 @@ app.post("/login", (req, res) => {
     );
     if (usuario) {
       res.cookie("userId", usuario.id, {
+        expires: new Date(Date.now() - 604800000), // 1 semana
         maxAge: 604800000, // 1 semana
         httpOnly: true,
         secure: true,

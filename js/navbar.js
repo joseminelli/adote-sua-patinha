@@ -36,13 +36,10 @@ function toggleClassOnDeviceWidth() {
 
 async function verificarCookie() {
   try {
-    const response = await fetch(
-      `${settings.ApiUrl}/verificarSemCookie`,
-      {
-        method: "POST",
-        credentials: "include",
-      }
-    );
+    const response = await fetch(`${settings.ApiUrl}/verificarSemCookie`, {
+      method: "POST",
+      credentials: "include",
+    });
 
     if (response.ok) {
       const data = await response.json();
@@ -58,6 +55,7 @@ async function verificarCookie() {
     console.error("Erro na requisição:", error);
   }
 }
+
 document.addEventListener("DOMContentLoaded", async function () {
   toggleClassOnDeviceWidth();
   verificarCookie();
@@ -72,6 +70,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   try {
+    console.log(`${settings.ApiUrl}/usuario`);
     const response = await fetch(`${settings.ApiUrl}/usuario`, {
       credentials: "include",
     });
@@ -109,9 +108,25 @@ document.addEventListener("DOMContentLoaded", async function () {
     }, 1);
   });
 
-  SairContaBtn.addEventListener("click", function () {
+  SairContaBtn.addEventListener("click", async function () {
     if (dropdowncontent.classList.contains("show")) {
-      window.location.href = "/index.html";
+      try {
+        console.log(`${settings.ApiUrl}/logout`);
+        const response = await fetch(`${settings.ApiUrl}/logout`, {
+          credentials: "include",
+        });
+
+        const usuario = await response.json();
+
+        if (!usuario) {
+          throw new Error("Usuário não encontrado");
+        } else {
+          window.location.href = usuario.redirect;
+        }
+        
+      } catch (error) {
+        console.error(error);
+      }
     }
   });
 
@@ -119,13 +134,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     contente.classList.toggle("show");
     editarpf.classList.toggle("show");
     overlayrr.classList.toggle("show");
-    
+
     contente.style.zIndex = "6";
     if (dropdowncontent.classList.contains("show")) {
-        dropdowncontent.classList.remove("show");
-        setTimeout(() => {
-            dropdowncontent.classList.toggle("transform");
-          }, 1);
+      dropdowncontent.classList.remove("show");
+      setTimeout(() => {
+        dropdowncontent.classList.toggle("transform");
+      }, 1);
     }
   });
 
@@ -143,11 +158,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const idade = document.getElementById("idade2");
     const telefone = document.getElementById("telefone");
 
-    if (
-      senha.value == "" ||
-      input2.value == "" ||
-      telefone.value == ""
-    ) {
+    if (senha.value == "" || input2.value == "" || telefone.value == "") {
       if (senha.value == "") {
         senha.style.borderColor = "red";
       } else {
@@ -163,7 +174,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       } else {
         telefone.style.borderColor = "#165ea8";
       }
-      return
+      return;
     }
     senhaDiv.style.display = "none";
     nomeDiv.style.display = "none";
