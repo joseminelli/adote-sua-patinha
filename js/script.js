@@ -1,22 +1,16 @@
 import settings from "./settings.js";
 const bar = document.getElementById("bar");
-const close = document.getElementById("close");
 const nav = document.getElementById("navbar");
-const body2 = document.querySelector("body");
 const hamster = document.getElementById("hamster");
 const loader = document.getElementById("loader");
 const titulom = document.getElementById("titulom");
 const descm = document.getElementById("descm");
 const iconm = document.getElementById("iconm");
 const modalbtn = document.getElementById("modalbtn");
-const webhookClient =
-  "https://discord.com/api/webhooks/1129080775149629441/JxBSeJnGKU-ICbbhkfxKFSjxfHTYo1YvMrkmHO3kBRqqU9eSEhYp7-VHO0525JWehTBk";
 
 const section = document.getElementById("modalNovo"),
   overlay = document.querySelector(".overlay"),
-  showBtn = document.querySelector(".show-modal"),
-  closeBtn = document.querySelector(".close-btn"),
-  picture__image2 = document.getElementById("picture__image2");
+  closeBtn = document.querySelector(".close-btn");
 if (bar) {
   document.addEventListener("click", function (e) {
     const navbar = document.getElementById("navbar");
