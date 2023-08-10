@@ -440,8 +440,8 @@ button[type="submittt"] {
 
   #navbar.active {
     z-index: 2;
-    top: 130px;
-    right: 10px;
+    top: 107px;
+    right: -31px;
     width: 200px;
   }
 
