@@ -123,6 +123,7 @@
   height: 50px;
   border-radius: 50%;
   margin-left: 30px;
+  transition: all 0.3s ease-in-out;
 }
 
 #editarpf {

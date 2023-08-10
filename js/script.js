@@ -763,7 +763,7 @@ document.addEventListener("DOMContentLoaded", function () {
       hamster.classList.add("active");
       const email = document.getElementById("input1").value;
       const senha = document.getElementById("input2").value;
-      fetch(`${settings.ApiUrl}//login`, {
+      fetch(`${settings.ApiUrl}/login`, {
         method: "POST",
         credentials: "include",
         headers: {
