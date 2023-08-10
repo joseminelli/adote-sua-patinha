@@ -70,7 +70,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   try {
-    console.log(`${settings.ApiUrl}/usuario`);
     const response = await fetch(`${settings.ApiUrl}/usuario`, {
       credentials: "include",
     });
@@ -110,8 +109,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   SairContaBtn.addEventListener("click", async function () {
     if (dropdowncontent.classList.contains("show")) {
-      try {
-        console.log(`${settings.ApiUrl}/logout`);
+      window.location.href = "/index";
+      /*try {
         const response = await fetch(`${settings.ApiUrl}/logout`, {
           credentials: "include",
         });
@@ -123,10 +122,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         } else {
           window.location.href = usuario.redirect;
         }
-        
+
       } catch (error) {
         console.error(error);
-      }
+      }*/
     }
   });
 
