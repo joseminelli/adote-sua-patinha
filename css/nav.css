@@ -117,7 +117,7 @@
 }
 
 #userPic {
-  border: #165ea8 3px solid;
+  border: var(--cor-secundaria) 3px solid;
   z-index: 1;
   width: 50px;
   height: 50px;
