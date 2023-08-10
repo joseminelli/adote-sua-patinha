@@ -1,3 +1,4 @@
+import settings from "./settings.js";
 const section = document.getElementById("modalNovo"),
   section2 = document.getElementById("modalNovo2"),
   closeBtn2 = document.querySelector(".close-btn2"),
@@ -28,7 +29,7 @@ function getUserIdFromCookie() {
 }
 document.addEventListener("DOMContentLoaded", async function () {
   const response = await fetch(
-    "https://api.adotesuapatinha.com/usuario",
+    `${settings.ApiUrl}/usuario`,
     { credentials: "include" }
   );
   if (!response.ok) {

@@ -1,3 +1,4 @@
+import settings from "./settings.js";
 const bar = document.getElementById("bar");
 const close = document.getElementById("close");
 const nav = document.getElementById("navbar");
@@ -53,7 +54,7 @@ var racaCat = ["Persa", "Siamês", "Sphynx"];
 async function verificarCookieTF() {
   try {
     const response = await fetch(
-      "https://api.adotesuapatinha.com/verificarCookieTF",
+      `${settings.ApiUrl}/verificarCookieTF`,
       {
         method: "POST",
         credentials: "include",
@@ -170,14 +171,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     enviarButton.addEventListener("click", async function (event) {
       try {
-        const response = await fetch("https://api.adotesuapatinha.com/maxPets", {
+        const response = await fetch(`${settings.ApiUrl}/maxPets`, {
           credentials: "include",
         });
 
         if (!response.ok) {
           throw new Error("Erro ao obter os pets do usuário");
         }
-        const responseuser = await fetch("https://api.adotesuapatinha.com/usuario", {
+        const responseuser = await fetch(`${settings.ApiUrl}/usuario`, {
           credentials: "include",
         });
 
@@ -343,7 +344,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   imagem2: imageUrl2,
                 };
 
-                fetch(`https://api.adotesuapatinha.com/salvar`, {
+                fetch(`${settings.ApiUrl}/salvar`, {
                   method: "POST",
 
                   credentials: "include",
@@ -644,7 +645,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 imagem: imageUrl,
               };
 
-              fetch(`https://api.adotesuapatinha.com/salvarPessoa`, {
+              fetch(`${settings.ApiUrl}/salvarPessoa`, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -762,7 +763,7 @@ document.addEventListener("DOMContentLoaded", function () {
       hamster.classList.add("active");
       const email = document.getElementById("input1").value;
       const senha = document.getElementById("input2").value;
-      fetch(`https://api.adotesuapatinha.com/login`, {
+      fetch(`${settings.ApiUrl}//login`, {
         method: "POST",
         credentials: "include",
         headers: {

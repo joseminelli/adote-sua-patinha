@@ -1,6 +1,6 @@
+import settings from "./settings.js";
 const section = document.getElementById("modalNovo");
 const overlay = document.querySelector(".overlay");
-const showBtn = document.querySelector(".show-modal");
 const closeBtn = document.querySelector(".close-btn3");
 const closeBtn2 = document.querySelector(".close-btn2");
 const modal = document.getElementById("modal");
@@ -24,7 +24,7 @@ modal.style.width = "500px";
 async function verificarCookie() {
   try {
     const response = await fetch(
-      "https://api.adotesuapatinha.com/verificarSemCookie",
+      `${settings.ApiUrl}/verificarSemCookie`,
       {
         method: "POST",
         credentials: "include",
@@ -49,7 +49,7 @@ async function verificarCookie() {
 async function FindUser(userId) {
   try {
     const response = await fetch(
-      `https://api.adotesuapatinha.com/findUsuario/${userId}`,
+      `${settings.ApiUrl}/findUsuario/${userId}`,
       {
         credentials: "include",
       }
@@ -154,7 +154,7 @@ if (overlay) {
         body: formData,
       });
 
-      fetch("https://api.adotesuapatinha.com/salvarPost", {
+      fetch(`${settings.ApiUrl}/salvarPost`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -214,7 +214,7 @@ if (overlay) {
 var login = localStorage.getItem("login");
 
 async function loadPosts() {
-  fetch("https://api.adotesuapatinha.com/posts", {
+  fetch(`${settings.ApiUrl}/posts`, {
     credentials: "include",
   })
     .then((response) => response.json())
@@ -290,6 +290,7 @@ async function loadPosts() {
             repliesContainer.className = "replies-container";
             post.respostas.forEach(function (resposta) {
               FindUser(resposta.userId).then((user) => {
+                console.log(user);
                 var replyElement = document.createElement("div");
                 replyElement.className = "reply";
                 if (user.ong === "sim") {
@@ -379,7 +380,7 @@ async function loadPosts() {
                 body: formData,
               });
               fetch(
-                `https://api.adotesuapatinha.com/posts/${postId}/respostas`,
+                `${settings.ApiUrl}/posts/${postId}/respostas`,
                 {
                   method: "POST",
                   credentials: "include",
@@ -423,7 +424,7 @@ function deletePost(id) {
     method: "POST",
     body: formData,
   });
-  fetch(`https://api.adotesuapatinha.com/posts/${id}`, {
+  fetch(`${settings.ApiUrl}/posts/${id}`, {
     credentials: "include",
     method: "DELETE",
   })
@@ -523,7 +524,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchTerm = searchInput.value.toLowerCase().trim();
     searchInput.style.color = "#282828";
     if (searchWrapper.classList.contains("active")) {
-      fetch(`https://api.adotesuapatinha.com/posts?search=${searchTerm}`, {
+      fetch(`${settings.ApiUrl}/posts?search=${searchTerm}`, {
         credentials: "include",
       })
         .then((response) => response.json())
@@ -670,7 +671,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   };
 
                   fetch(
-                    `https://api.adotesuapatinha.com/posts/${postId}/respostas`,
+                    `${settings.ApiUrl}/posts/${postId}/respostas`,
                     {
                       method: "POST",
                       credentials: "include",

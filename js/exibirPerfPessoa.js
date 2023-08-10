@@ -1,22 +1,19 @@
-var login = localStorage.getItem("login");
+import settings from "./settings.js";
 const nome = document.getElementById("name");
-const fotoPet = document.getElementById("fotoPet");
 const idade = document.getElementById("idade");
 const bairro1 = document.getElementById("bairro");
 const telefone1 = document.getElementById("telefone2");
 const fotopetDiv = document.getElementById("fotoPet2");
 const hamster = document.getElementById("hamster");
 const loader = document.getElementById("loader");
-const btnDel = document.getElementById("btnDel");
 const comPet = document.getElementById("spet");
 const verificado = document.getElementById("verificado");
 const semPet = document.getElementById("npet");
-var imgElement2 = document.getElementById("fotopet");
 
 async function verificarCookie() {
   try {
     const response = await fetch(
-      "https://api.adotesuapatinha.com/verificarSemCookie",
+      `${settings.ApiUrl}/verificarSemCookie`,
       {
         method: "POST",
         credentials: "include",
@@ -38,7 +35,7 @@ async function verificarCookie() {
 
 async function exibirPets() {
   try {
-    const response = await fetch("https://api.adotesuapatinha.com/perfil", {
+    const response = await fetch(`${settings.ApiUrl}/perfil`, {
       credentials: "include",
     });
 
@@ -65,7 +62,7 @@ async function exibirPets() {
 
 function excluirPet(petId) {
   setTimeout(function () {
-    fetch(`https://api.adotesuapatinha.com/excluirPet/${petId}`, {
+    fetch(`${settings.ApiUrl}/excluirPet/${petId}`, {
       method: "DELETE",
       credentials: "include",
     })
@@ -85,6 +82,7 @@ function excluirPet(petId) {
   }, 300);
 }
 
+document.excluirPet = excluirPet;
 document.addEventListener("DOMContentLoaded", async function () {
   exibirPets();
   loader.style.display = "flex";
@@ -93,7 +91,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   // const editar = document.getElementById("editar");
 
   try {
-    const response = await fetch("https://api.adotesuapatinha.com/usuario", {
+    const response = await fetch(`${settings.ApiUrl}/usuario`, {
       credentials: "include",
     });
     if (!response.ok) {

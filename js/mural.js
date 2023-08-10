@@ -1,3 +1,4 @@
+import settings from "./settings.js";
 var login = localStorage.getItem("login");
 const taNoMural = document.getElementById("formm2");
 const loader = document.getElementById("loader");
@@ -6,11 +7,8 @@ const minFiltro = document.getElementById("minFiltro");
 const formm2 = document.getElementById("formm2");
 const formHeader = document.getElementById("formHeader");
 const content = document.getElementById("content");
-const section = document.getElementById("modalNovo"),
-  overlay = document.querySelector(".overlay"),
-  showBtn = document.querySelector(".show-modal"),
-  neverBtn = document.querySelector(".never-btn");
-var abrirModal = localStorage.getItem("consciente");
+const section = document.getElementById("modalNovo");
+var mobile = false;
 loader.style.display = "flex";
 hamster.classList.add("active");
 
@@ -48,7 +46,7 @@ function toggleClassOnDeviceWidth() {
 async function FindUser(petId) {
   try {
     const response = await fetch(
-      `https://api.adotesuapatinha.com/findUsuarioByPet/${petId}`,
+      `${settings.ApiUrl}/findUsuarioByPet/${petId}`,
       {
         credentials: "include",
       }
@@ -170,7 +168,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   const chkFavoritos = document.getElementById("chkFavoritos");
   const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
   const textoMural = document.getElementById("textoMural");
-  var response = await fetch(`https://api.adotesuapatinha.com/mural`, {
+
+  var response = await fetch(`${settings.ApiUrl}/mural`, {
     credentials: "include",
   });
 

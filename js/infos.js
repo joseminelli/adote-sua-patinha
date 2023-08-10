@@ -1,12 +1,12 @@
+import settings from "./settings.js";
 document.addEventListener("DOMContentLoaded", async function () {
   const malitoLink = document.getElementById("malitoLink");
   var darkModeEnabled = localStorage.getItem("darkModeEnabled");
   const loader = document.getElementById("loader");
   const hamster = document.getElementById("hamster");
-  const contato = document.getElementById("contato");
   loader.style.display = "flex";
   hamster.classList.add("active");
-  var response = await fetch(`https://api.adotesuapatinha.com/mural`);
+  var response = await fetch(`${settings.ApiUrl}/mural`);
   var data = await response.json();
   if (data) {
     setTimeout(function () {
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   const petInfo = data.pets.find(findByID);
   
-  const responseEmail = await fetch(`https://api.adotesuapatinha.com/email/` + numpet, {
+  const responseEmail = await fetch(`${settings.ApiUrl}/email/` + numpet, {
     credentials: "include",
   });
 

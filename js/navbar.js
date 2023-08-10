@@ -1,3 +1,4 @@
+import settings from "./settings.js";
 const userName = document.getElementById("userName");
 const userMsg = document.getElementById("userMsg");
 const userPic = document.getElementById("userPic");
@@ -12,6 +13,7 @@ const formedit = document.getElementById("formedit");
 const salvarEdit = document.getElementById("salvarEdit");
 const h2Edit = document.getElementById("h2Edit");
 
+var mobile = false;
 const senhaDiv = document.getElementById("senhaDiv");
 const nomeDiv = document.getElementById("nomeDiv");
 const idadeDiv = document.getElementById("idadeDiv");
@@ -35,7 +37,7 @@ function toggleClassOnDeviceWidth() {
 async function verificarCookie() {
   try {
     const response = await fetch(
-      "https://api.adotesuapatinha.com/verificarSemCookie",
+      `${settings.ApiUrl}/verificarSemCookie`,
       {
         method: "POST",
         credentials: "include",
@@ -47,7 +49,7 @@ async function verificarCookie() {
       if (data.redirect) {
         window.location.href = data.redirect;
       } else if (data.id) {
-        userId = data.id;
+        //userId = data.id;
       }
     } else {
       console.error("Erro ao verificar o cookie:", response.status);
@@ -70,7 +72,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   try {
-    const response = await fetch("https://api.adotesuapatinha.com/usuario", {
+    const response = await fetch(`${settings.ApiUrl}/usuario`, {
       credentials: "include",
     });
     if (!response.ok) {
@@ -208,7 +210,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     };
 
     try {
-      const response = await fetch("https://api.adotesuapatinha.com/editarPessoa", {
+      const response = await fetch(`${settings.ApiUrl}/editarPessoa`, {
         method: "POST",
         credentials: "include",
         headers: {
