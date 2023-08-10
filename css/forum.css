@@ -1184,7 +1184,7 @@ button[type="submit"]:hover {
   .search-wrapper {
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 23%;
+    top: 16%;
     left: 10%;
     transition: all 0.3s ease-in-out;
   }

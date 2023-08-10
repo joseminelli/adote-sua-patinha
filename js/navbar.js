@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       userPic.style.width = "35px";
       userPic.style.height = "35px";
       userPic.style.marginLeft = "0px";
-      userPic.style.marginRight = "10px";
+      //userPic.style.marginRight = "90px";
     }
   } catch (error) {
     console.error(error);
