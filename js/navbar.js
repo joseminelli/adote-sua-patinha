@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   SairContaBtn.addEventListener("click", async function () {
     if (dropdowncontent.classList.contains("show")) {
-      window.location.href = "/index";
+      window.location.href = "/index.html";
       /*try {
         const response = await fetch(`${settings.ApiUrl}/logout`, {
           credentials: "include",
