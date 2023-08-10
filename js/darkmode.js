@@ -19,25 +19,29 @@ document.addEventListener("DOMContentLoaded", function () {
   if (darkModeEnabled === "true") {
     transitionTime = 0;
     enableDarkMode();
-    sun.classList.toggle("night");
+    if (sun) {
+      sun.classList.toggle("night");
+    }
   }
 });
+if (sun) {
+  sun.onclick = function () {
+    sun.classList.toggle("night");
+    var darkModeEnabled = localStorage.getItem("darkModeEnabled");
 
-sun.onclick = function () {
-  sun.classList.toggle("night");
-  var darkModeEnabled = localStorage.getItem("darkModeEnabled");
-
-  if (darkModeEnabled === "true") {
-    disableDarkMode();
-  } else {
-    enableDarkMode();
-  }
-};
-
+    if (darkModeEnabled === "true") {
+      disableDarkMode();
+    } else {
+      enableDarkMode();
+    }
+  };
+}
 function enableDarkMode() {
   const h2Erro = document.getElementById("h2Erro");
   const pErro = document.getElementById("pErro");
-  sun.classList.add("darkToggle");
+  if (sun) {
+    sun.classList.add("darkToggle");
+  }
   body.style.background = "#282828";
   body.style.transition = transitionTime + "s";
   localStorage.setItem("darkModeEnabled", "true");
