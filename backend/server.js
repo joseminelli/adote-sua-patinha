@@ -3,7 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 const upload = multer();
 const app = express();
 const port = process.env.PORT || 3000;
@@ -101,9 +101,7 @@ app.post("/salvar", (req, res) => {
         return;
       }
       const usersData = JSON.parse(userData);
-      const user = usersData.usuarios.find(
-        (user) => user.id === userId
-      );
+      const user = usersData.usuarios.find((user) => user.id === userId);
 
       if (!user) {
         res.status(404).send("Usuário não encontrado");
@@ -116,6 +114,11 @@ app.post("/salvar", (req, res) => {
           ? jsonData.pets[jsonData.pets.length - 1].id + 1
           : 1;
 
+      let date2 = new Date();
+      date2 = date2.toISOString().slice(0, 10);
+      date2 = date2.split("-").reverse().join("/");
+      console.log(date2);
+
       const newPet = {
         id: newId,
         name: nome,
@@ -127,6 +130,7 @@ app.post("/salvar", (req, res) => {
         image: imagem,
         image2: imagem2,
         userId: userId,
+        data: date2,
       };
 
       jsonData.pets.push(newPet);
@@ -218,9 +222,7 @@ app.post("/editarPessoa", (req, res) => {
     }
 
     let jsonData = JSON.parse(data);
-    const usuario = jsonData.usuarios.find(
-      (user) => user.id === userId
-    );
+    const usuario = jsonData.usuarios.find((user) => user.id === userId);
     if (usuario) {
       usuario.name = nome;
       usuario.age = idade;
@@ -253,9 +255,7 @@ app.post("/logout", (req, res) => {
 
     const jsonData = JSON.parse(data);
 
-    const usuario = jsonData.usuarios.find(
-      (user) => user.id === userId
-    );
+    const usuario = jsonData.usuarios.find((user) => user.id === userId);
     if (usuario) {
       res.cookie("userId", usuario.id, {
         expires: new Date(Date.now() - 604800000), // -1 semana
@@ -346,9 +346,7 @@ app.get("/findUsuario/:id", (req, res) => {
     }
 
     const jsonData = JSON.parse(data);
-    const usuario = jsonData.usuarios.find(
-      (user) => user.id === userId
-    );
+    const usuario = jsonData.usuarios.find((user) => user.id === userId);
     res.json(usuario);
   });
 });
@@ -395,7 +393,6 @@ app.get("/findUsuarioByPet/:id", (req, res) => {
   });
 });
 
-
 app.get("/usuario", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const logId = verificarAutenticacao(req, res);
@@ -413,9 +410,7 @@ app.get("/usuario", (req, res) => {
     }
 
     const jsonData = JSON.parse(data);
-    const usuario = jsonData.usuarios.find(
-      (user) => user.id === userId
-    );
+    const usuario = jsonData.usuarios.find((user) => user.id === userId);
     res.json(usuario);
   });
 });
@@ -542,9 +537,7 @@ app.post("/salvarPost", (req, res) => {
 
   const usuariosData = fs.readFileSync("../../usuarios.json", "utf8");
   const usuarios = JSON.parse(usuariosData);
-  const user = usuarios.usuarios.find(
-    (usuario) => usuario.id === userId
-  );
+  const user = usuarios.usuarios.find((usuario) => usuario.id === userId);
   const nomeUsuario = user ? user.name : "[Usuário não identificado]";
 
   const newPost = {
@@ -687,9 +680,7 @@ app.get("/email/:petId", (req, res) => {
 
       const pet = petsData.pets.find((pet) => pet.id === parseInt(petId));
       const userId = pet.userId;
-      const user = usersData.usuarios.find(
-        (user) => user.id === userId
-      );
+      const user = usersData.usuarios.find((user) => user.id === userId);
       console.log(pet.userId);
 
       if (!user) {

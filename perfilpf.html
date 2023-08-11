@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="googlebot" content="notranslate">
-    <meta name="description" content="Precisando adotar ou colocar algum pet para adoção? Aqui é o lugar perfeito para isso">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="googlebot" content="notranslate" />
+    <meta
+      name="description"
+      content="Precisando adotar ou colocar algum pet para adoção? Aqui é o lugar perfeito para isso"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adote sua patinha</title>
-    <script src="https://kit.fontawesome.com/4c0165cb3d.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/4c0165cb3d.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="shortcut icon" type="imagem/ico" href="favicon.ico" />
-    <link rel="stylesheet" href="css/perfilp.css">
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/select2.css">
-    <link rel="stylesheet" href="css/loader.css">
-</head>
+    <link rel="stylesheet" href="css/perfilp.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/select2.css" />
+    <link rel="stylesheet" href="css/loader.css" />
+  </head>
 
-<body>
+  <body>
     <div id="loader">
-        <div role="img" class="wheel-and-hamster" id="hamster">
-            <div class="wheel"></div>
-            <div class="hamster">
-                <div class="hamster__body">
-                    <div class="hamster__head">
-                        <div class="hamster__ear"></div>
-                        <div class="hamster__eye"></div>
-                        <div class="hamster__nose"></div>
-                    </div>
-                    <div class="hamster__limb hamster__limb--fr"></div>
-                    <div class="hamster__limb hamster__limb--fl"></div>
-                    <div class="hamster__limb hamster__limb--br"></div>
-                    <div class="hamster__limb hamster__limb--bl"></div>
-                    <div class="hamster__tail"></div>
-                </div>
+      <div role="img" class="wheel-and-hamster" id="hamster">
+        <div class="wheel"></div>
+        <div class="hamster">
+          <div class="hamster__body">
+            <div class="hamster__head">
+              <div class="hamster__ear"></div>
+              <div class="hamster__eye"></div>
+              <div class="hamster__nose"></div>
             </div>
-            <span class="overlayr"></span>
-            <div class="spoke"></div>
+            <div class="hamster__limb hamster__limb--fr"></div>
+            <div class="hamster__limb hamster__limb--fl"></div>
+            <div class="hamster__limb hamster__limb--br"></div>
+            <div class="hamster__limb hamster__limb--bl"></div>
+            <div class="hamster__tail"></div>
+          </div>
         </div>
+        <span class="overlayr"></span>
+        <div class="spoke"></div>
+      </div>
     </div>
     <section id="header">
       <div id="logo">
@@ -64,90 +69,132 @@
         <p id="userMsg"></p>
         <p id="userName"></p>
         <p id="userEx"></p>
-        <img id="userPic" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="">
+        <img
+          id="userPic"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          alt=""
+        />
         <div id="menuPessoa">
           <div class="dropdown-nav">
             <div id="myDropdown" class="dropdown-content-nav">
               <div id="editarDiv">
-                <i class="iconeperfilbar fa-solid fa-pencil" style="color:#165ea8"></i>
+                <i
+                  class="iconeperfilbar fa-solid fa-pencil"
+                  style="color: #165ea8"
+                ></i>
                 <p id="EditarBtn" class="EditarBtn">Editar perfil</p>
               </div>
               <div id="sairDiv">
-                <i class="iconeperfilbar fa-solid fa-right-from-bracket" style="color:#165ea8"></i>
+                <i
+                  class="iconeperfilbar fa-solid fa-right-from-bracket"
+                  style="color: #165ea8"
+                ></i>
                 <p id="SairContaBtn" class="SairContaBtn">Sair</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      </div>
       <div id="mobile">
-        <i id="bar" class="fa-regular fa-square-caret-down" style="color: #165ea8"></i>
+        <i
+          id="bar"
+          class="fa-regular fa-square-caret-down"
+          style="color: #165ea8"
+        ></i>
       </div>
     </section>
     <section id="editarpf">
-        <div id="contente" id="contente">
-          <div id="iconpenvio">
-            <i id="iconmodalEdit" class="fa-regular fa-circle-check" style="font-size: 80px; color: #165ea8"></i>
-            <p id="pEdit">informações alteradas!</p>
-          </div>
-          <i id="fecharEdit" class="fa-solid fa-xmark" style="font-size: 25px;"></i>
-          <div id="contentform">
-            <h2 id="h2Edit">Editar perfil</h2>
-            <div id="formedit">
-              <div id="senhaDiv">
-                <p>Senha:</p>
-                <input id="senha" type="password" placeholder="Digite a senha" class="inputsn" />
-              </div>
-              <div id="nomeDiv">
-                <p>Nome:</p>
-                <input id="input2" type="text" placeholder="Digite seu nome" class="inputsn" />
-              </div>
-              <div id="idadeDiv">
-                <p>Idade:</p>
-                <select name="idade" id="idade2"></select>
-              </div>
-              <div id="telefoneDiv">
-                <p>Telefone:</p>
-                <input id="telefone" type="tel" placeholder="31 12345 6789" class="inputsn" />
-              </div>
+      <div id="contente" id="contente">
+        <div id="iconpenvio">
+          <i
+            id="iconmodalEdit"
+            class="fa-regular fa-circle-check"
+            style="font-size: 80px; color: #165ea8"
+          ></i>
+          <p id="pEdit">informações alteradas!</p>
+        </div>
+        <i
+          id="fecharEdit"
+          class="fa-solid fa-xmark"
+          style="font-size: 25px"
+        ></i>
+        <div id="contentform">
+          <h2 id="h2Edit">Editar perfil</h2>
+          <div id="formedit">
+            <div id="senhaDiv">
+              <p>Senha:</p>
+              <input
+                id="senha"
+                type="password"
+                placeholder="Digite a senha"
+                class="inputsn"
+              />
             </div>
-            <button type="submittt" id="salvarEdit" class="salvarEdit">Salvar</button>
+            <div id="nomeDiv">
+              <p>Nome:</p>
+              <input
+                id="input2"
+                type="text"
+                placeholder="Digite seu nome"
+                class="inputsn"
+              />
+            </div>
+            <div id="idadeDiv">
+              <p>Idade:</p>
+              <select name="idade" id="idade2"></select>
+            </div>
+            <div id="telefoneDiv">
+              <p>Telefone:</p>
+              <input
+                id="telefone"
+                type="tel"
+                placeholder="31 12345 6789"
+                class="inputsn"
+              />
+            </div>
           </div>
+          <button type="submittt" id="salvarEdit" class="salvarEdit">
+            Salvar
+          </button>
         </div>
-        <span id="overlayrr"></span>
-      </section>
-    <section id="box">
-        <div class="content pefilFake">
-            <form id="form">
-                <div>
-                    <p>Nome:</p>
-                    <h6 id="name" >Nome</h6>
-                </div>
-                <div>
-                    <p>Idade:</p>
-                    <h6 id="idade">Idade</h6>
-                </div>
-                <div>
-                    <p>Raça:</p>
-                    <h6 id="raca">Raça</h6>
-                </div>
-                <div>
-                    <p>Descrição:</p>
-                    <h6 id="desc">bla-bla</h6>
-                </div>
-                <a href="" id="malitoLink" target="top">
-                    <div id="contato">Fale com o dono</div>
-                </a>
-            </form>
-        </div>
-        <div id="linha-vertical"></div>
-        <div class="mural">
-            <p>Suas fotos:</p>
-            <img id="imagem" src="">
-            <img id="imagem2" src="">
-        </div>
+      </div>
+      <span id="overlayrr"></span>
     </section>
+    <section id="box">
+      <div class="content pefilFake">
+        <form id="form">
+          <div>
+            <p>Nome:</p>
+            <h6 id="name">Nome</h6>
+          </div>
+          <div>
+            <p>Idade:</p>
+            <h6 id="idade">Idade</h6>
+          </div>
+          <div>
+            <p>Raça:</p>
+            <h6 id="raca">Raça</h6>
+          </div>
+          <div>
+            <p>Descrição:</p>
+            <h6 id="desc">bla-bla</h6>
+          </div>
+          <a href="" id="malitoLink" target="top">
+            <div id="contato">Fale com o dono</div>
+          </a>
+        </form>
+      </div>
+      <div id="linha-vertical"></div>
+      <div class="mural">
+        <p>Suas fotos:</p>
+        <img id="imagem" src="" />
+        <img id="imagem2" src="" />
+      </div>
+    </section>
+    <div id="dataCadastro">
+      <p>Data de cadastro:</p>
+      <h6 id="data">bla-bla</h6>
+    </div>
     <script src="
     https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js
     "></script>
@@ -159,11 +206,10 @@
         $("#idade2").select2();
       });
     </script>
-  <script type="module" src="js/settings.js"></script>
+    <script type="module" src="js/settings.js"></script>
     <script type="module" src="js/script.js"></script>
     <script src="js/darkmode.js"></script>
-    <script type="module"  src="js/navbar.js"></script>
+    <script type="module" src="js/navbar.js"></script>
     <script type="module" src="js/infos.js"></script>
-</body>
-
+  </body>
 </html>

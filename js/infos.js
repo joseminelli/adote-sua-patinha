@@ -5,6 +5,8 @@ $(document).ready(async function () {
   const loader = $("#loader");
   const hamster = $("#hamster");
   const box = $("#box");
+  const dataCadastro = $("#dataCadastro");
+  const data = $("#data");
 
   loader.css("display", "flex");
   hamster.addClass("active");
@@ -40,6 +42,11 @@ $(document).ready(async function () {
     const petInfo = data.pets.find((pet) => pet.id == numpet);
 
     if (petInfo) {
+      const dataCadastro = $("#dataCadastro");
+      const data = $("#data");
+      if (!petInfo.data) {
+        dataCadastro.css("display", "none");
+      } 
       box.css("justify-content", "left");
       const picElement = $("#imagem");
       const picElement2 = $("#imagem2");
@@ -47,7 +54,8 @@ $(document).ready(async function () {
       const bairroElement = $("#raca");
       const idadeElement = $("#idade");
       const nomeElement = $("#name");
-
+      console.log(petInfo);
+      data.html(petInfo.data);
       nomeElement.html(petInfo.name);
       idadeElement.html(petInfo.age + " anos");
       bairroElement.html(petInfo.raca);

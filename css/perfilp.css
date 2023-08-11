@@ -15,6 +15,25 @@
   background: transparent;
 }
 
+#dataCadastro{
+  position: absolute;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#dataCadastro h6{
+  margin-left: 1%;
+  margin-bottom: 0.3%;
+  color: #fff;
+}
+
+#dataCadastro p{
+  color: #fff;
+}
+
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: var(--cor-secundaria);
@@ -277,6 +296,9 @@ button[type="submit"]:hover {
 
 
 @media (max-width: 1700px) {
+  #dataCadastro{
+    margin-top: 20%;
+  }
   .content {
     margin-top: 13%;
   }
@@ -388,7 +410,9 @@ button[type="submit"]:hover {
   .section-p1 {
     padding: 40px;
   }
-
+  #dataCadastro{
+    margin-top: 23%;
+  }
   #linha-vertical {
     height: 0px;
     margin-left: 0%;
