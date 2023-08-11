@@ -625,12 +625,8 @@ button[type="submit"]:hover {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
-::selection {
-  background: #212129;
-}
-
 .search-wrapper {
-  display: absolute; /* ! ocultar enquanto não arrumo  VER AQUI!!! */
+  display: absolute; 
   position: absolute;
   transform: translate(-50%, -50%);
   top: 19%;

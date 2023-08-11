@@ -4,7 +4,10 @@
   --cor-secundaria: #165ea8;
   --cor-primaria: #ffe58b;
 }
-
+::selection {
+  color: #fff;
+  background: var(--cor-secundaria);
+}
 #header {
   display: flex;
   align-items: center;
