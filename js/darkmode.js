@@ -1,145 +1,157 @@
-var sun = document.getElementById("sun"),
-  transitionTime = 0.6,
-  pictureElements = document.querySelectorAll(".picture");
-const body = document.querySelector("body");
-(p = document.querySelector("div.mural > p")),
-  (h1Sobre = document.querySelector("section#formm > h1")),
-  (h2Sobre = document.querySelector("section#faq  > h2")),
-  (h2Contato = document.querySelector("div.cf  > h2")),
-  (logintxt = document.getElementById("logintxt")),
-  (noPostsMessage = document.getElementById("noPostsMessage")),
-  (npet = document.getElementById("npet")),
-  (iconProcura = document.getElementById("searchButton")),
-  (inputProcura = document.getElementById("searchInput")),
-  (currentPage = document.getElementById("currentPage"));
+$(document).ready(function() {
+  var sun = $("#sun"),
+    transitionTime = 0.6,
+    pictureElements = $(".picture"),
+    body = $("body"),
+    p = $("div.mural > p"),
+    h1Sobre = $("section#formm > h1"),
+    h2Sobre = $("section#faq > h2"),
+    h2Contato = $("div.cf > h2"),
+    logintxt = $("#logintxt"),
+    noPostsMessage = $("#noPostsMessage"),
+    npet = $("#npet"),
+    iconProcura = $("#searchButton"),
+    inputProcura = $("#searchInput"),
+    currentPage = $("#currentPage"),
+    dataCadastro = $("#data");
 
-document.addEventListener("DOMContentLoaded", function () {
   var darkModeEnabled = localStorage.getItem("darkModeEnabled");
 
   if (darkModeEnabled === "true") {
     transitionTime = 0;
     enableDarkMode();
     if (sun) {
-      sun.classList.toggle("night");
+      sun.toggleClass("night");
     }
+  }
+
+  if (sun) {
+    sun.click(function() {
+      sun.toggleClass("night");
+      var darkModeEnabled = localStorage.getItem("darkModeEnabled");
+
+      if (darkModeEnabled === "true") {
+        disableDarkMode();
+      } else {
+        enableDarkMode();
+      }
+    });
+  }
+
+  function enableDarkMode() {
+    var h2Erro = $("#h2Erro");
+    var pErro = $("#pErro");
+
+    if (sun) {
+      sun.addClass("darkToggle");
+    }
+    body.css("background", "#282828");
+    body.css("transition", transitionTime + "s");
+    localStorage.setItem("darkModeEnabled", "true");
+    
+    if (p) {
+      p.css("color", "#ffffff");
+    }
+    if (dataCadastro) {
+      dataCadastro.css("color", "#fff")
+    }
+    if (iconProcura) {
+      iconProcura.css("color", "#ffffff");
+    }
+    if (inputProcura) {
+      inputProcura.css("color", "#ffffff");
+    }
+    if (h1Sobre) {
+      h1Sobre.css("color", "#ffffff");
+    }
+    if (h2Sobre) {
+      h2Sobre.css("color", "#ffffff");
+    }
+    if (h2Contato) {
+      h2Contato.css("color", "#ffffff");
+    }
+    if (pictureElements) {
+      pictureElements.each(function() {
+        $(this).css("transition", transitionTime + "s");
+        $(this).css("background-color", "#353535");
+        $(this).css("border-color", "#fff");
+      });
+    }
+    if (logintxt) {
+      logintxt.css("color", "#ffffff");
+    }
+    if (currentPage) {
+      currentPage.css("color", "#ffffff");
+    }
+    if (npet) {
+      npet.css("color", "#ffffff");
+    }
+    if (h2Erro) {
+      h2Erro.css("color", "#ffffff");
+    }
+    if (pErro) {
+      pErro.css("color", "#ffffff");
+    }
+    if (noPostsMessage) {
+      noPostsMessage.css("color", "#ffffff");
+    }
+    transitionTime = 0.6;
+  }
+
+  function disableDarkMode() {
+    var h2Erro = $("#h2Erro");
+    var pErro = $("#pErro");
+    sun.removeClass("darkToggle");
+    body.css("background", "#ffffff");
+    body.css("transition", transitionTime + "s");
+    localStorage.setItem("darkModeEnabled", "false");
+
+    if (p) { 
+      p.css("color", "#282828");
+    }
+    if (pictureElements) {
+      pictureElements.each(function() {
+        $(this).css("transition", transitionTime + "s");
+        $(this).css("background-color", "#ddd");
+        $(this).css("border-color", "#9e9e9e");
+      });
+    }
+    if (iconProcura) {
+      iconProcura.css("color", "#282828");
+    }
+    if (inputProcura) {
+      inputProcura.css("color", "#282828");
+    }
+    if (h1Sobre) {
+      h1Sobre.css("color", "#282828");
+    }
+    if (h2Sobre) {
+      h2Sobre.css("color", "#282828");
+    }
+    if (npet) {
+      npet.css("color", "#282828");
+    }
+    if (h2Contato) {
+      h2Contato.css("color", "#282828");
+    }
+    if (h2Erro) {
+      h2Erro.css("color", "#282828");
+    }
+    if (dataCadastro) {
+      dataCadastro.css("color", "#282828")
+    }
+    if (pErro) {
+      pErro.css("color", "#282828");
+    }
+    if (logintxt) {
+      logintxt.css("color", "#282828");
+    }
+    if (currentPage) {
+      currentPage.css("color", "#282828");
+    }
+    if (noPostsMessage) {
+      noPostsMessage.css("color", "#282828");
+    }
+    transitionTime = 0.6;
   }
 });
-if (sun) {
-  sun.onclick = function () {
-    sun.classList.toggle("night");
-    var darkModeEnabled = localStorage.getItem("darkModeEnabled");
-
-    if (darkModeEnabled === "true") {
-      disableDarkMode();
-    } else {
-      enableDarkMode();
-    }
-  };
-}
-function enableDarkMode() {
-  const h2Erro = document.getElementById("h2Erro");
-  const pErro = document.getElementById("pErro");
-  if (sun) {
-    sun.classList.add("darkToggle");
-  }
-  body.style.background = "#282828";
-  body.style.transition = transitionTime + "s";
-  localStorage.setItem("darkModeEnabled", "true");
-  if (p) {
-    p.style.color = "#ffffff";
-  }
-  if (iconProcura) {
-    iconProcura.style.color = "#ffffff";
-  }
-  if (inputProcura) {
-    inputProcura.style.color = "#ffffff";
-  }
-  if (h1Sobre) {
-    h1Sobre.style.color = "#ffffff";
-  }
-  if (h2Sobre) {
-    h2Sobre.style.color = "#ffffff";
-  }
-  if (h2Contato) {
-    h2Contato.style.color = "#ffffff";
-  }
-  if (pictureElements) {
-    pictureElements.forEach(function (element) {
-      element.style.transition = transitionTime + "s";
-      element.style.backgroundColor = "#353535";
-      element.style.borderColor = "#fff";
-    });
-  }
-  if (logintxt) {
-    logintxt.style.color = "#ffffff";
-  }
-  if (currentPage) {
-    currentPage.style.color = "#ffffff";
-  }
-  if (npet) {
-    npet.style.color = "#ffffff";
-  }
-  if (h2Erro) {
-    h2Erro.style.color = "#ffffff";
-  }
-  if (pErro) {
-    pErro.style.color = "#ffffff";
-  }
-  if (noPostsMessage) {
-    noPostsMessage.style.color = "#ffffff";
-  }
-  transitionTime = 0.6;
-}
-
-function disableDarkMode() {
-  const h2Erro = document.getElementById("h2Erro");
-  const pErro = document.getElementById("pErro");
-  sun.classList.remove("darkToggle");
-  body.style.background = "#ffffff";
-  body.style.transition = transitionTime + "s";
-  localStorage.setItem("darkModeEnabled", "false");
-  if (p) {
-    p.style.color = "#282828";
-  }
-  if (pictureElements) {
-    pictureElements.forEach(function (element) {
-      element.style.transition = transitionTime + "s";
-      element.style.backgroundColor = "#ddd";
-      element.style.borderColor = "#9e9e9e";
-    });
-  }
-  if (iconProcura) {
-    iconProcura.style.color = "#282828";
-  }
-  if (inputProcura) {
-    inputProcura.style.color = "#282828";
-  }
-  if (h1Sobre) {
-    h1Sobre.style.color = "#282828";
-  }
-  if (h2Sobre) {
-    h2Sobre.style.color = "#282828";
-  }
-  if (npet) {
-    npet.style.color = "#282828";
-  }
-  if (h2Contato) {
-    h2Contato.style.color = "#282828";
-  }
-  if (h2Erro) {
-    h2Erro.style.color = "#282828";
-  }
-  if (pErro) {
-    pErro.style.color = "#282828";
-  }
-  if (logintxt) {
-    logintxt.style.color = "#282828";
-  }
-  if (currentPage) {
-    currentPage.style.color = "#282828";
-  }
-  if (noPostsMessage) {
-    noPostsMessage.style.color = "#282828";
-  }
-  transitionTime = 0.6;
-}

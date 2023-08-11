@@ -27,11 +27,11 @@
 #dataCadastro h6{
   margin-left: 1%;
   margin-bottom: 0.3%;
-  color: #fff;
+  color: #282828;
 }
 
 #dataCadastro p{
-  color: #fff;
+  color: #282828;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -293,7 +293,6 @@ button[type="submit"]:hover {
 #erro404 p {
   margin-left: 12%;
 }
-
 
 @media (max-width: 1700px) {
   #dataCadastro{

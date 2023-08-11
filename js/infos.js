@@ -5,8 +5,6 @@ $(document).ready(async function () {
   const loader = $("#loader");
   const hamster = $("#hamster");
   const box = $("#box");
-  const dataCadastro = $("#dataCadastro");
-  const data = $("#data");
 
   loader.css("display", "flex");
   hamster.addClass("active");
