@@ -698,3 +698,5 @@ app.get("/email/:petId", (req, res) => {
     });
   });
 });
+
+module.exports = app;
