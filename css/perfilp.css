@@ -316,6 +316,11 @@ button[type="submit"]:hover {
     height: 400px;
   }
 }
+@media (max-width: 1600px) {
+  #dataCadastro{
+    margin-top: 8.2%;
+  }
+}
 @media (max-width: 650px) {
   .mural img {
     margin-top: 10%;
