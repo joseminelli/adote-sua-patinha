@@ -290,7 +290,6 @@ async function loadPosts() {
             repliesContainer.className = "replies-container";
             post.respostas.forEach(function (resposta) {
               FindUser(resposta.userId).then((user) => {
-                console.log(user);
                 var replyElement = document.createElement("div");
                 replyElement.className = "reply";
                 if (user.ong === "sim") {
