@@ -1,11 +1,16 @@
-const { Pool } = require("pg");
+const { Pool } = require('pg');
+const user = process.env.POSTGRES_USER || "postgres";
+const host = process.env.POSTGRES_HOST || "localhost";
+const database = process.env.POSTGRES_DATABASE || "AdoteSuaPatinha";
+const password = process.env.POSTGRES_PASSWORD || "Zequinha2005";
+const port = process.env.POSTGRES_PORT || 5432;
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "AdoteSuaPatinha",
-  password: "Zequinha2005",
-  port: 5432, // Porta padrão do PostgreSQL
-});
+    user: user,
+    host: host,
+    database: database,
+    password: password,
+    port: port, // Porta padrão do PostgreSQL
+  });
 
 class PetData {
   constructor() {
@@ -67,7 +72,21 @@ class PetData {
       throw error;
     }
   }
-
+  
+  async getUserEmailByPetId(petId) {
+    try {
+      const query = {
+        text: 'SELECT usuarios.email FROM usuarios JOIN pets ON usuarios.id = pets.userId WHERE pets.id = $1',
+        values: [petId],
+      };
+      const result = await pool.query(query);
+      return result.rows[0]?.email;
+    } catch (error) {
+      console.error('Erro ao buscar e-mail do usuário:', error);
+      throw error;
+    }
+  }
+  
   async getAllPets() {
     try {
       const query = "SELECT * FROM pets";

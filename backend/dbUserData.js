@@ -1,10 +1,15 @@
 const { Pool } = require('pg');
+const user = process.env.POSTGRES_USER || "postgres";
+const host = process.env.POSTGRES_HOST || "localhost";
+const database = process.env.POSTGRES_DATABASE || "AdoteSuaPatinha";
+const password = process.env.POSTGRES_PASSWORD || "Zequinha2005";
+const port = process.env.POSTGRES_PORT || 5432;
 const pool = new Pool({
-    user: "postgres",
-    host: "localhost",
-    database: "AdoteSuaPatinha",
-    password: "Zequinha2005",
-    port: 5432, // Porta padrão do PostgreSQL
+    user: user,
+    host: host,
+    database: database,
+    password: password,
+    port: port, // Porta padrão do PostgreSQL
   });
 
 class UserData {
@@ -24,7 +29,7 @@ class UserData {
       throw error;
     }
   }
-  
+
   async loginUser(email, senha) {
     try {
       const query = {
