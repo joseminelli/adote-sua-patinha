@@ -371,6 +371,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     return response.text();
                   })
                   .then(function () {
+                    console.log("Pet cadastrado com sucesso!");
                     document.getElementById("input").value = "";
                     document.getElementById("idade").value = "";
                     document.getElementById("raca").value = "0";

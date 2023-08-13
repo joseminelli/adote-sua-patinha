@@ -8,6 +8,12 @@ const upload = multer();
 const app = express();
 const port = process.env.PORT || 3000;
 
+const UserData = require("./userData");
+const PetData = require("./petData");
+
+const userDataReader = new UserData();
+const petDataReader = new PetData();
+
 function verificarAutenticacao(req, res) {
   const userId = req.cookies["userId"];
   if (!userId) {
@@ -75,10 +81,17 @@ app.post("/salvar", (req, res) => {
   if (!logId) {
     return;
   }
-  if (fs.existsSync("../../pets.json") === false) {
-    fs.writeFile("../../pets.json", '{"pets": []}', () => {});
+
+  const user = userDataReader.getUserById(logId);
+
+  if (!user) {
+    res.status(404).send("Usuário não encontrado");
+    return;
   }
-  console.log(req.body);
+
+  const petsData = petDataReader.readData();
+  const newId = petsData.pets.length > 0 ? petsData.pets[petsData.pets.length - 1].id + 1 : 1;
+
   const nome = req.body.nome;
   const idade = req.body.idade;
   const raca = req.body.raca;
@@ -86,66 +99,38 @@ app.post("/salvar", (req, res) => {
   const especie = req.body.especie;
   const imagem = req.body.imagem;
   const imagem2 = req.body.imagem2;
-  const userId = req.cookies["userId"];
-  fs.readFile("../../usuarios.json", "utf8", (err, userData) => {
+  const userId = logId;
+
+  let date2 = new Date();
+  date2 = date2.toISOString().slice(0, 10);
+  date2 = date2.split("-").reverse().join("/");
+  
+  const newPet = {
+    id: newId,
+    name: nome,
+    age: idade,
+    description: descricao,
+    raca: raca,
+    regiao: user.regiao,
+    esp: especie,
+    image: imagem,
+    image2: imagem2,
+    userId: userId,
+    data: date2,
+  };
+
+  petsData.pets.push(newPet);
+
+  petDataReader.writeData(petsData, (err) => {
     if (err) {
       console.error(err);
-      res.status(500).send("Erro ao ler o arquivo JSON de usuários");
-      return;
+      res.status(500).send("Erro ao salvar os dados");
+    } else {
+      res.send("Dados salvos com sucesso");
     }
-
-    fs.readFile("../../pets.json", "utf8", (err, petData) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send("Erro ao ler o arquivo JSON de pets");
-        return;
-      }
-      const usersData = JSON.parse(userData);
-      const user = usersData.usuarios.find((user) => user.id === userId);
-
-      if (!user) {
-        res.status(404).send("Usuário não encontrado");
-        return;
-      }
-
-      let jsonData = JSON.parse(petData);
-      const newId =
-        jsonData.pets.length > 0
-          ? jsonData.pets[jsonData.pets.length - 1].id + 1
-          : 1;
-
-      let date2 = new Date();
-      date2 = date2.toISOString().slice(0, 10);
-      date2 = date2.split("-").reverse().join("/");
-      console.log(date2);
-
-      const newPet = {
-        id: newId,
-        name: nome,
-        age: idade,
-        description: descricao,
-        raca: raca,
-        regiao: user.regiao,
-        esp: especie,
-        image: imagem,
-        image2: imagem2,
-        userId: userId,
-        data: date2,
-      };
-
-      jsonData.pets.push(newPet);
-      console.log(JSON.stringify(newPet));
-      fs.writeFile("../../pets.json", JSON.stringify(jsonData), (err) => {
-        if (err) {
-          console.error(err);
-          res.status(500).send("Erro ao salvar os dados");
-        } else {
-          res.send("Dados salvos com sucesso");
-        }
-      });
-    });
   });
 });
+
 
 app.post("/salvarPessoa", upload.single("file"), (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -201,6 +186,7 @@ app.post("/salvarPessoa", upload.single("file"), (req, res) => {
     });
   });
 });
+
 
 app.post("/editarPessoa", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -338,17 +324,8 @@ app.get("/findUsuario/:id", (req, res) => {
     return;
   }
 
-  fs.readFile("../../usuarios.json", "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send("Erro ao ler o arquivo de usuários");
-      return;
-    }
-
-    const jsonData = JSON.parse(data);
-    const usuario = jsonData.usuarios.find((user) => user.id === userId);
-    res.json(usuario);
-  });
+  const usuario = userDataReader.getUserById(userId);
+  res.json(usuario);
 });
 
 app.get("/findUsuarioByPet/:id", (req, res) => {
@@ -360,37 +337,14 @@ app.get("/findUsuarioByPet/:id", (req, res) => {
     return;
   }
 
-  fs.readFile("../../pets.json", "utf8", (err, dataPet) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send("Erro ao ler o arquivo de pets");
-      return;
-    }
+  const pet = petDataReader.getPetById(petId);
+  if (!pet) {
+    res.status(404).send("Pet não encontrado");
+    return;
+  }
 
-    const petData = JSON.parse(dataPet);
-    const pet = petData.pets.find((pet) => pet.id === petId);
-    if (!pet) {
-      res.status(404).send("Pet não encontrado");
-      return;
-    }
-
-    fs.readFile("../../usuarios.json", "utf8", (err, dataUser) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send("Erro ao ler o arquivo de usuários");
-        return;
-      }
-
-      const userData = JSON.parse(dataUser);
-      const usuario = userData.usuarios.find((user) => user.id === pet.userId);
-      console.log(usuario);
-      if (!usuario) {
-        res.status(404).send("Usuário do pet não encontrado");
-        return;
-      }
-      res.json(usuario);
-    });
-  });
+  const usuario = userDataReader.getUserById(pet.userId);
+  res.json(usuario);
 });
 
 app.get("/usuario", (req, res) => {
