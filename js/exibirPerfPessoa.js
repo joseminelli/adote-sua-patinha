@@ -32,7 +32,7 @@ async function verificarCookie() {
 
 async function exibirPets() {
   try {
-    const response = await fetch(`${settings.ApiUrl}/perfil`, {
+    const response = await fetch(`${settings.ApiUrl}/userPets`, {
       credentials: "include",
     });
 

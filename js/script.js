@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     enviarButton.addEventListener("click", async function (event) {
       try {
-        const response = await fetch(`${settings.ApiUrl}/maxPets`, {
+        const response = await fetch(`${settings.ApiUrl}/userPets`, {
           credentials: "include",
         });
 
@@ -183,8 +183,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const user = await responseuser.json();
         const userPets = await response.json();
         var podeCadastrar;
-        console.log(user.ong);
-        console.log(userPets.length);
         if (user.ong === "sim") {
           podeCadastrar = true;
         } else {
@@ -207,8 +205,6 @@ document.addEventListener("DOMContentLoaded", function () {
             podeCadastrar = true;
           }
         }
-        console.log(userPets.length);
-        console.log(userPets);
         loader.style.display = "flex";
         hamster.classList.add("active");
         event.preventDefault();
@@ -326,8 +322,6 @@ document.addEventListener("DOMContentLoaded", function () {
                   var imageUrl2 = "";
                 }
 
-                console.log(imageUrl);
-                console.log(imageUrl2);
                 var data = {
                   nome: nome,
                   idade: idade,

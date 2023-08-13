@@ -9,9 +9,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const UserData = require("./userData");
+const PostData = require("./postData");
 const PetData = require("./petData");
 
 const userDataReader = new UserData();
+const postDataReader = new PostData();
 const petDataReader = new PetData();
 
 function verificarAutenticacao(req, res) {
@@ -319,7 +321,7 @@ app.get("/usuario", (req, res) => {
   res.json(usuario);
 });
 
-app.get("/perfil", (req, res) => {
+app.get("/userPets", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const userId = req.cookies["userId"];
 
@@ -328,41 +330,15 @@ app.get("/perfil", (req, res) => {
   res.json(data);
 });
 
-app.get("/maxPets", (req, res) => {
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  const userId = req.cookies["userId"];
-
-  fs.readFile("../../pets.json", "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send("Erro ao ler o arquivo JSON de pets");
-      return;
-    }
-
-    const jsonData = JSON.parse(data);
-    const pets = jsonData.pets;
-
-    const userPets = pets.filter((pet) => pet.userId === userId);
-
-    res.json(userPets);
-  });
-});
-
 app.delete("/excluirPet/:petId", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const userId = req.cookies["userId"];
   const petId = parseInt(req.params.petId);
 
-  fs.readFile("../../pets.json", "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send("Erro ao ler o arquivo JSON de pets");
-      return;
-    }
-
+  const data = petDataReader.readData();
+    
     try {
-      const jsonData = JSON.parse(data);
-      const pets = jsonData.pets;
+      const pets = data.pets;
 
       const petIndex = pets.findIndex(
         (pet) => pet.id === petId && pet.userId === userId
@@ -376,34 +352,26 @@ app.delete("/excluirPet/:petId", (req, res) => {
 
       pets.splice(petIndex, 1);
 
-      fs.writeFile(
-        "../../pets.json",
-        JSON.stringify(jsonData, null, 2),
-        (err) => {
-          if (err) {
-            console.error(err);
-            res
-              .status(500)
-              .send("Erro ao salvar o arquivo JSON de pets após a exclusão");
-            return;
-          }
-
-          res.json({ message: "Pet excluído com sucesso!" });
-        }
-      );
+      try {
+        petDataReader.writeData(data);
+        res.json({ message: "Pet excluído com sucesso!" });
+      } catch (error) {
+        console.error(error);
+        res.status(500)
+          .send("Erro ao excluir pet");
+        return;
+      }
     } catch (error) {
       console.error(error);
       res.status(500).send("Erro ao processar a exclusão do pet");
     }
   });
-});
 
 app.post("/salvarPost", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   let posts = [];
   if (fs.existsSync("../../posts.json")) {
-    const data = fs.readFileSync("../../posts.json", "utf8");
-    posts = JSON.parse(data);
+    posts = postDataReader.readData();
   }
 
   const titulo = req.body.titulo;
@@ -412,9 +380,7 @@ app.post("/salvarPost", (req, res) => {
   const userId = req.cookies["userId"];
   const postId = posts.length > 0 ? posts[posts.length - 1].id + 1 : 1;
 
-  const usuariosData = fs.readFileSync("../../usuarios.json", "utf8");
-  const usuarios = JSON.parse(usuariosData);
-  const user = usuarios.usuarios.find((usuario) => usuario.id === userId);
+  const user = userDataReader.getUserById(userId);
   const nomeUsuario = user ? user.name : "[Usuário não identificado]";
 
   const newPost = {
@@ -427,9 +393,12 @@ app.post("/salvarPost", (req, res) => {
 
   posts.push(newPost);
 
-  fs.writeFileSync("../../posts.json", JSON.stringify(posts));
-
-  res.sendStatus(200);
+  try {
+    postDataReader.writeData(posts);
+    res.send("Dados salvos com sucesso");
+  } catch (error) {
+    res.status(500).send("Erro ao salvar os dados");
+  }
 });
 
 app.get("/posts", (req, res) => {
@@ -476,7 +445,7 @@ app.delete("/posts/:id", (req, res) => {
     const data = fs.readFileSync("../../posts.json", "utf8");
     posts = JSON.parse(data);
   }
-  console.log(posts);
+  
   const postIndex = posts.findIndex((post) => post.id === postId);
 
   if (postIndex !== -1) {
