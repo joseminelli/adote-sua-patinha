@@ -23,11 +23,6 @@ class PostData {
       throw error;
     }
   }
-
-  getUserById(userId) {
-    const usersData = this.readData();
-    return usersData.usuarios.find((user) => user.id === userId);
-  }
 }
 
 module.exports = PostData;
