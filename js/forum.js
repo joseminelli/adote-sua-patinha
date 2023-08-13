@@ -257,7 +257,7 @@ async function loadPosts() {
           postElement.innerHTML = `<h3 id="forumh3">${post.titulo}</h3>
             <p>Categoria: ${post.categoria}</p>
             <p>${post.descricao}</p>`;
-          if (post.userId == userId) {
+          if (post.userid == userId) {
             console.log("entrou");
             postElement.innerHTML = `
               <div class="dropdown">
@@ -563,7 +563,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "<p>" +
                 post.descricao +
                 "</p>";
-              if (post.userId == userId) {
+              if (post.userid == userId) {
                 console.log("entrou");
                 postElement.innerHTML = console.log("entrou");
                 '<div class="dropdown"> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' +
