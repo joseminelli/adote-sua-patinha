@@ -203,32 +203,22 @@ app.post("/editarPessoa", (req, res) => {
   }
 });
 
-app.post("/logout", (req, res) => {
+app.get("/logout", (req, res) => {
   const userId = req.cookies["userId"];
 
-  fs.readFile("../../usuarios.json", "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send("Erro ao ler o arquivo de usuários");
-      return;
-    }
+  const usuario = userDataReader.getUserById(userId);
+  if (usuario) {
+    res.cookie("userId", usuario.id, {
+      expires: new Date(Date.now() - 604800000), // -1 semana
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    });
 
-    const jsonData = JSON.parse(data);
-
-    const usuario = jsonData.usuarios.find((user) => user.id === userId);
-    if (usuario) {
-      res.cookie("userId", usuario.id, {
-        expires: new Date(Date.now() - 604800000), // -1 semana
-        httpOnly: true,
-        secure: true,
-        sameSite: "none",
-      });
-
-      res.json({ redirect: "/index.html" });
-    } else {
-      res.status(401).send("Usuário não encontrado");
-    }
-  });
+    res.send({ redirect: "/index.html" });
+  } else {
+    res.status(401).send("Usuário não encontrado");
+  }
 });
 
 app.post("/login", (req, res) => {
@@ -336,43 +326,40 @@ app.delete("/excluirPet/:petId", (req, res) => {
   const petId = parseInt(req.params.petId);
 
   const data = petDataReader.readData();
-    
+
+  try {
+    const pets = data.pets;
+
+    const petIndex = pets.findIndex(
+      (pet) => pet.id === petId && pet.userId === userId
+    );
+    if (petIndex === -1) {
+      res
+        .status(404)
+        .json({ message: "Pet não encontrado ou não pertence ao usuário." });
+      return;
+    }
+
+    pets.splice(petIndex, 1);
+
     try {
-      const pets = data.pets;
-
-      const petIndex = pets.findIndex(
-        (pet) => pet.id === petId && pet.userId === userId
-      );
-      if (petIndex === -1) {
-        res
-          .status(404)
-          .json({ message: "Pet não encontrado ou não pertence ao usuário." });
-        return;
-      }
-
-      pets.splice(petIndex, 1);
-
-      try {
-        petDataReader.writeData(data);
-        res.json({ message: "Pet excluído com sucesso!" });
-      } catch (error) {
-        console.error(error);
-        res.status(500)
-          .send("Erro ao excluir pet");
-        return;
-      }
+      petDataReader.writeData(data);
+      res.json({ message: "Pet excluído com sucesso!" });
     } catch (error) {
       console.error(error);
-      res.status(500).send("Erro ao processar a exclusão do pet");
+      res.status(500).send("Erro ao excluir pet");
+      return;
     }
-  });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erro ao processar a exclusão do pet");
+  }
+});
 
 app.post("/salvarPost", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   let posts = [];
-  if (fs.existsSync("../../posts.json")) {
-    posts = postDataReader.readData();
-  }
+  posts = postDataReader.readData();
 
   const titulo = req.body.titulo;
   const descricao = req.body.descricao;
@@ -405,10 +392,7 @@ app.get("/posts", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
 
   let posts = [];
-  if (fs.existsSync("../../posts.json")) {
-    const data = fs.readFileSync("../../posts.json", "utf8");
-    posts = JSON.parse(data);
-  }
+  posts = postDataReader.readData();
 
   const searchTerm = req.query.search;
 
@@ -441,11 +425,8 @@ app.delete("/posts/:id", (req, res) => {
   const postId = parseInt(req.params.id);
 
   let posts = [];
-  if (fs.existsSync("../../posts.json")) {
-    const data = fs.readFileSync("../../posts.json", "utf8");
-    posts = JSON.parse(data);
-  }
-  
+  posts = postDataReader.readData();
+
   const postIndex = posts.findIndex((post) => post.id === postId);
 
   if (postIndex !== -1) {
@@ -453,7 +434,7 @@ app.delete("/posts/:id", (req, res) => {
     if (posts[postIndex].userId === userId) {
       posts.splice(postIndex, 1);
 
-      fs.writeFileSync("../../posts.json", JSON.stringify(posts));
+      postDataReader.writeData(posts);
 
       res.sendStatus(200);
     } else {
@@ -470,10 +451,7 @@ app.post("/posts/:id/respostas", (req, res) => {
   const resposta = req.body;
 
   let posts = [];
-  if (fs.existsSync("../../posts.json")) {
-    const data = fs.readFileSync("../../posts.json", "utf8");
-    posts = JSON.parse(data);
-  }
+  posts = postDataReader.readData();
 
   const postIndex = posts.findIndex((post) => post.id === postId);
 
@@ -494,7 +472,7 @@ app.post("/posts/:id/respostas", (req, res) => {
 
     posts[postIndex].respostas.push(resposta);
 
-    fs.writeFileSync("../../posts.json", JSON.stringify(posts));
+    postDataReader.writeData(posts);
 
     res.sendStatus(200);
   } else {
@@ -507,42 +485,22 @@ app.get("/email/:petId", (req, res) => {
 
   const petId = parseInt(req.params.petId);
 
-  fs.readFile("../../usuarios.json", "utf8", (err, userData) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send("Erro ao ler o arquivo JSON de usuários");
-      return;
-    }
+  const pet = petDataReader.getPetById(petId);
+  const userId = pet.userId;
+  const user = userDataReader.getUserById(userId);
 
-    fs.readFile("../../pets.json", "utf8", (err, petData) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send("Erro ao ler o arquivo JSON de pets");
-        return;
-      }
+  if (!user) {
+    res.status(404).send("Usuário não encontrado");
+    return;
+  }
 
-      const usersData = JSON.parse(userData);
-      const petsData = JSON.parse(petData);
+  if (!pet) {
+    res.status(404).send("Pet não encontrado");
+    return;
+  }
 
-      const pet = petsData.pets.find((pet) => pet.id === parseInt(petId));
-      const userId = pet.userId;
-      const user = usersData.usuarios.find((user) => user.id === userId);
-      console.log(pet.userId);
-
-      if (!user) {
-        res.status(404).send("Usuário não encontrado");
-        return;
-      }
-
-      if (!pet) {
-        res.status(404).send("Pet não encontrado");
-        return;
-      }
-
-      const userEmail = user.email;
-      res.send(userEmail);
-    });
-  });
+  const userEmail = user.email;
+  res.send(userEmail);
 });
 
 module.exports = app;

@@ -108,13 +108,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   SairContaBtn.addEventListener("click", async function () {
     if (dropdowncontent.classList.contains("show")) {
-      window.location.href = "/index.html";
-      /*try {
+      //window.location.href = "/index.html";
+      try {
         const response = await fetch(`${settings.ApiUrl}/logout`, {
           credentials: "include",
         });
 
         const usuario = await response.json();
+        console.log(usuario);
 
         if (!usuario) {
           throw new Error("Usuário não encontrado");
@@ -124,7 +125,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       } catch (error) {
         console.error(error);
-      }*/
+      }
     }
   });
 
