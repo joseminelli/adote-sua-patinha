@@ -230,7 +230,13 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       if (response.ok) {
         const mensagem = await response.text();
-        console.log(mensagem);
+        if (document.location.pathname.endsWith("/perfil.html")) {
+          if (document.location.pathname.endsWith("/perfil.html")) {
+            setTimeout(() => {
+              window.location.href = "/perfil.html";
+            }, 1500);
+          }
+        }
       } else {
         console.error("Erro ao salvar os dados:", response.status);
       }

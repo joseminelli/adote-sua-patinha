@@ -12,13 +12,10 @@ const semPet = document.getElementById("npet");
 
 async function verificarCookie() {
   try {
-    const response = await fetch(
-      `${settings.ApiUrl}/verificarSemCookie`,
-      {
-        method: "POST",
-        credentials: "include",
-      }
-    );
+    const response = await fetch(`${settings.ApiUrl}/verificarSemCookie`, {
+      method: "POST",
+      credentials: "include",
+    });
 
     if (response.ok) {
       const data = await response.json();
@@ -39,21 +36,34 @@ async function exibirPets() {
       credentials: "include",
     });
 
+    const pets = await response.json();
     if (!response.ok) {
       throw new Error("Erro ao obter as fotos dos pets");
-    }
-
-    const petElementsHTML = await response.text();
-    fotopetDiv.innerHTML = petElementsHTML;
-
-    if (petElementsHTML == "") {
-      fotopetDiv.style.display = "none";
-      comPet.style.display = "none";
-      semPet.style.display = "flex";
     } else {
-      fotopetDiv.style.display = "flex";
-      semPet.style.display = "none";
-      comPet.style.display = "flex";
+      var petElementsHTML = "";
+      pets.forEach((pet) => {
+        petElementsHTML += `<div id="pet" class="pet"> 
+        <div id="delBtnDiv${pet.id}" class="delBtnDiv">
+          <div id="btnDel" class="btnDel" onclick="excluirPet(${pet.id})">
+            <div class="x1"></div>
+            <div class="x2"></div>
+          </div>
+        </div>
+        <a href="perfilpf.html?pet=${pet.id}">
+          <img id="fotopet" src="${pet.image}">
+        </a>
+      </div>`;
+        fotopetDiv.innerHTML = petElementsHTML;
+      });
+      if (petElementsHTML == "") {
+        fotopetDiv.style.display = "none";
+        comPet.style.display = "none";
+        semPet.style.display = "flex";
+      } else {
+        fotopetDiv.style.display = "flex";
+        semPet.style.display = "none";
+        comPet.style.display = "flex";
+      }
     }
   } catch (error) {
     console.error(error);
@@ -105,7 +115,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       loader.style.display = "none";
       hamster.classList.remove("active");
     }
-    if(usuario.ong === "sim"){
+    if (usuario.ong === "sim") {
       verificado.classList.add("fa-circle-check");
     }
     nome.innerHTML = usuario.name;

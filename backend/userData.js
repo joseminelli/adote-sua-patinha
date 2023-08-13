@@ -24,6 +24,25 @@ class UserData {
     }
   }
 
+  updateUser(userP) {
+    try {
+      const usersData = this.readData();
+      
+      const userF = usersData.usuarios.find((user) => user.id === userP.id);
+      userF.name = userP.name;
+      userF.age = userP.age;
+      userF.telefone = userP.telefone;
+      userF.senha = userP.senha;
+      
+      fs.writeFile(this.filePath, JSON.stringify(usersData), (err) => {
+        if (err) throw err;
+      });
+    } catch (error) {
+      console.error("Erro ao escrever arquivo JSON:", error);
+      throw error;
+    }
+  }
+
   getUserById(userId) {
     const usersData = this.readData();
     return usersData.usuarios.find((user) => user.id === userId);

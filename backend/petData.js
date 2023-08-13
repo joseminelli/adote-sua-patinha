@@ -24,6 +24,16 @@ class PetData {
     }
   }
 
+  getUserPets(userId) {
+    try {
+      const petsData = this.readData();
+      return petsData.pets.filter((pet) => pet.userId === userId);
+    } catch (error) {
+      console.error("Erro ao escrever arquivo JSON:", error);
+      throw error;
+    }
+  }
+
   getPetById(petId) {
     const petsData = this.readData();
     return petsData.pets.find((pet) => pet.id === petId);
