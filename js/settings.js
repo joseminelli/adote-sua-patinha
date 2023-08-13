@@ -1,3 +1,3 @@
 export default {    
-    ApiUrl: 'http://localhost:3000'
+    ApiUrl: 'https://api.adotesuapatinha.com'
 }
