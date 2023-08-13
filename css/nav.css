@@ -150,12 +150,19 @@
   height: 100%;
 }
 #iconpenvio {
-  width: 300px;
-  height: 200px;
+  width: 350px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#iconpenvio h2 {
+  margin-top: 0px;
+  font-size: 25px !important;
+  font-weight: 500;
+  color: #333 !important;
 }
 #contente {
   display: none;

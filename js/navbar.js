@@ -9,7 +9,6 @@ const EditarBtn = document.getElementById("editarDiv");
 const contente = document.getElementById("contente");
 const overlayrr = document.getElementById("overlayrr");
 const fecharEdit = document.getElementById("fecharEdit");
-const formedit = document.getElementById("formedit");
 const salvarEdit = document.getElementById("salvarEdit");
 const h2Edit = document.getElementById("h2Edit");
 
@@ -23,7 +22,6 @@ const editarpf = document.getElementById("editarpf");
 const iconpenvio = document.getElementById("iconpenvio");
 iconpenvio.style.display = "none";
 contente.style.zIndex = "0";
-const pEdit = document.getElementById("pEdit");
 
 function toggleClassOnDeviceWidth() {
   var screenWidth = window.innerWidth;
@@ -55,20 +53,7 @@ async function verificarCookie() {
     console.error("Erro na requisição:", error);
   }
 }
-
-document.addEventListener("DOMContentLoaded", async function () {
-  toggleClassOnDeviceWidth();
-  verificarCookie();
-  userPic.style.width = "35px";
-  userPic.style.height = "35px";
-
-  for (var i = 18; i <= 100; i++) {
-    var option = document.createElement("option");
-    option.setAttribute("value", i);
-    option.textContent = i;
-    document.getElementById("idade2").appendChild(option);
-  }
-
+async function getUser() {
   try {
     const response = await fetch(`${settings.ApiUrl}/usuario`, {
       credentials: "include",
@@ -98,6 +83,21 @@ document.addEventListener("DOMContentLoaded", async function () {
   } catch (error) {
     console.error(error);
   }
+}
+document.addEventListener("DOMContentLoaded", async function () {
+  toggleClassOnDeviceWidth();
+  verificarCookie();
+  userPic.style.width = "35px";
+  userPic.style.height = "35px";
+
+  for (var i = 18; i <= 100; i++) {
+    var option = document.createElement("option");
+    option.setAttribute("value", i);
+    option.textContent = i;
+    document.getElementById("idade2").appendChild(option);
+  }
+
+  getUser();
 
   userPic.addEventListener("click", function () {
     dropdowncontent.classList.toggle("show");
@@ -175,6 +175,9 @@ document.addEventListener("DOMContentLoaded", async function () {
       }
       return;
     }
+      setTimeout(() => {
+        getUser();
+      }, 200);
     senhaDiv.style.display = "none";
     nomeDiv.style.display = "none";
     idadeDiv.style.display = "none";
@@ -182,8 +185,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     salvarEdit.style.display = "none";
     h2Edit.style.display = "none";
     fecharEdit.style.display = "none";
-    contente.style.height = "200px";
-    contente.style.width = "300px";
+    contente.style.height = "350px";
+    contente.style.borderRadius = "24px";
+    contente.style.width = "350px";
     editarpf.style.justifyContent = "center";
     editarpf.style.alignItems = "center";
     iconpenvio.style.display = "flex";
@@ -201,6 +205,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         fecharEdit.style.display = "block";
         editarpf.style.justifyContent = "right";
         editarpf.style.alignItems = "flex-start";
+        contente.style.borderRadius = "10px";
         contente.style.height = "600px";
         if (mobile == true) {
           contente.style.width = "300px";
