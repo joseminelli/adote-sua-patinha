@@ -1,4 +1,5 @@
 import settings from "./settings.js";
+
 const section = document.getElementById("modalNovo");
 const overlay = document.querySelector(".overlay");
 const closeBtn = document.querySelector(".close-btn3");
@@ -6,7 +7,6 @@ const closeBtn2 = document.querySelector(".close-btn2");
 const modal = document.getElementById("modal");
 const iconmodal = document.getElementById("iconmodal");
 const modalh2 = document.getElementById("modalh2");
-var verificado = "";
 const modalp = document.getElementById("modalp");
 const titulop = document.getElementById("titulop");
 const input1 = document.getElementById("input1");
@@ -16,20 +16,42 @@ const input2 = document.getElementById("input3");
 const cancelbtn = document.getElementById("cancelbtn");
 const modalbtn = document.getElementById("modalbtn");
 const fecharbutton = document.getElementById("limpar");
-var mobile = false;
+
+let mobile = false;
 let userId;
+let verificado = "";
+
 modal.style.height = "500px";
 modal.style.width = "500px";
 
-async function verificarCookie() {
+async function loadPostReplies(postId) {
   try {
     const response = await fetch(
-      `${settings.ApiUrl}/verificarSemCookie`,
+      `${settings.ApiUrl}/posts/${postId}/respostas`,
       {
-        method: "POST",
         credentials: "include",
       }
     );
+
+    if (response.ok) {
+      const replies = await response.json();
+      return replies;
+    } else {
+      console.error("Erro ao carregar respostas do post:", response.status);
+      return [];
+    }
+  } catch (error) {
+    console.error("Erro na requisição:", error);
+    return [];
+  }
+}
+
+async function verificarCookie() {
+  try {
+    const response = await fetch(`${settings.ApiUrl}/verificarSemCookie`, {
+      method: "POST",
+      credentials: "include",
+    });
 
     if (response.ok) {
       const data = await response.json();
@@ -48,12 +70,9 @@ async function verificarCookie() {
 
 async function FindUser(userId) {
   try {
-    const response = await fetch(
-      `${settings.ApiUrl}/findUsuario/${userId}`,
-      {
-        credentials: "include",
-      }
-    );
+    const response = await fetch(`${settings.ApiUrl}/findUsuario/${userId}`, {
+      credentials: "include",
+    });
     const usuario = await response.json();
     return usuario;
   } catch (error) {
@@ -196,7 +215,6 @@ if (overlay) {
       } else {
         descInput2.style.borderColor = "#165ea8";
       }
-      return;
     }
   });
 
@@ -214,11 +232,13 @@ if (overlay) {
 var login = localStorage.getItem("login");
 
 async function loadPosts() {
-  fetch(`${settings.ApiUrl}/posts`, {
-    credentials: "include",
-  })
-    .then((response) => response.json())
-    .then((posts) => {
+  try {
+    const response = await fetch(`${settings.ApiUrl}/posts`, {
+      credentials: "include",
+    });
+
+    if (response.ok) {
+      const posts = await response.json();
       var content = document.querySelector(".content");
       var noPostsMessage = document.getElementById("noPostsMessage");
 
@@ -231,97 +251,70 @@ async function loadPosts() {
         noPostsMessage.innerText = "";
         content.style.display = "block";
 
-        posts.forEach(function (post) {
+        posts.forEach(async function (post) {
           var postElement = document.createElement("div");
           postElement.className = "post";
-          postElement.innerHTML =
-            "<h3 id='forumh3'>" +
-            post.titulo +
-            "</h3>" +
-            "<p>Categoria: " +
-            post.categoria +
-            "</p>" +
-            "<p>" +
-            post.descricao +
-            "</p>";
+          postElement.innerHTML = `<h3 id="forumh3">${post.titulo}</h3>
+            <p>Categoria: ${post.categoria}</p>
+            <p>${post.descricao}</p>`;
           if (post.userId == userId) {
-            postElement.innerHTML =
-              '<div class="dropdown"> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' +
-              post.id +
-              '" >Apagar post</p> </div>  </div>  </div>' +
-              "<h3 id='forumh3'>" +
-              post.titulo +
-              "</h3>" +
-              "<p>Categoria: " +
-              post.categoria +
-              "</p>" +
-              "<p>" +
-              post.descricao +
-              "</p>";
+            console.log("entrou");
+            postElement.innerHTML = `
+              <div class="dropdown">
+                <ul class="dropbtn icons btn-right showLeft">
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+                <div id="myDropdown" class="dropdown-content">
+                  <p class="deleteBtn" data-id="${post.id}">Apagar post</p>
+                </div>
+              </div>
+              <h3 id="forumh3">${post.titulo}</h3>
+              <p>Categoria: ${post.categoria}</p>
+              <p>${post.descricao}</p>`;
           } else {
-            postElement.innerHTML =
-              '<div class="dropdown" style= display:none> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' +
-              post.id +
-              '" >Apagar post</p> </div>  </div>  </div>' +
-              "<h3 id='forumh3'>" +
-              post.titulo +
-              "</h3>" +
-              "<p>Categoria: " +
-              post.categoria +
-              "</p>" +
-              "<p>" +
-              post.descricao +
-              "</p>";
+            postElement.innerHTML = `
+              <div class="dropdown" style="display: none;">
+                <ul class="dropbtn icons btn-right showLeft">
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+                <div id="myDropdown" class="dropdown-content">
+                  <p class="deleteBtn" data-id="${post.id}">Apagar post</p>
+                </div>
+              </div>
+              <h3 id="forumh3">${post.titulo}</h3>
+              <p>Categoria: ${post.categoria}</p>
+              <p>${post.descricao}</p>`;
           }
           var replyContainer = document.createElement("div");
           replyContainer.className = "reply-container";
           replyContainer.className = "reply-input-container";
-          replyContainer.innerHTML =
-            '<p class="modalp2">Responder:</p>' +
-            '<input type="text" class="inputmodal2 reply-input" placeholder="Digite sua resposta">' +
-            '<button id="responder" class="pure-material-button-contained active reply-btn">Responder</button>';
+          replyContainer.innerHTML = `
+            <p class="modalp2">Responder:</p>
+            <input type="text" class="inputmodal2 reply-input" placeholder="Digite sua resposta">
+            <button id="responder" class="pure-material-button-contained active reply-btn">Responder</button>`;
 
           postElement.appendChild(replyContainer);
-
           content.appendChild(postElement);
 
-          if (post.respostas && post.respostas.length > 0) {
+          const replies = await loadPostReplies(post.id);
+          if (replies.length > 0) {
             var repliesContainer = document.createElement("div");
             repliesContainer.className = "replies-container";
-            post.respostas.forEach(function (resposta) {
-              FindUser(resposta.userId).then((user) => {
-                var replyElement = document.createElement("div");
-                replyElement.className = "reply";
-                if (user.ong === "sim") {
-                  verificado = "'fa-solid fa-circle-check'";
-                } else {
-                  verificado = "'fa-solid'";
-                }
-                replyElement.innerHTML =
-                  "<div id='replyHeader'>" +
-                  "<i id='verificado' class=" +
-                  verificado +
-                  "style='color: #165ea8;'></i>" +
-                  "<img id='imgreply' src='" +
-                  user.image +
-                  "'/>" +
-                  "<p id='nomerply'>" +
-                  user.name +
-                  " respondeu:" +
-                  "</p>" +
-                  "</div>" +
-                  "<p id='descrply'>" +
-                  resposta.descricao +
-                  "</p>";
-                repliesContainer.appendChild(replyElement);
-              });
 
-              postElement.appendChild(repliesContainer);
+            for (const reply of replies) {
+              const user = await FindUser(reply.userid);
+              const replyElement = createReplyElement(user, reply);
+              repliesContainer.appendChild(replyElement);
+            }
 
-             
-            });
-            if (post.respostas.length > 1) {
-              var replyButton = createReplyButton(repliesContainer);
+            postElement.appendChild(repliesContainer);
+
+            if (replies.length > 1) {
+              var replyButton = createReplyButton(post.id, repliesContainer);
               replyContainer.appendChild(replyButton);
             }
           }
@@ -349,7 +342,7 @@ async function loadPosts() {
 
         var replyButtons = document.querySelectorAll(".reply-btn");
         replyButtons.forEach(function (button) {
-          button.addEventListener("click", function () {
+          button.addEventListener("click", async function () {
             var postElement = button.parentNode.parentNode;
             var replyInput = postElement.querySelector(".reply-input");
             var replyText = replyInput.value.trim();
@@ -378,37 +371,40 @@ async function loadPosts() {
                 method: "POST",
                 body: formData,
               });
-              fetch(
-                `${settings.ApiUrl}/posts/${postId}/respostas`,
-                {
-                  method: "POST",
-                  credentials: "include",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify(replyPost),
-                }
-              )
-                .then((response) => {
-                  if (response.ok) {
-                    console.log("Resposta enviada com sucesso");
-                    loadPosts();
-                    replyInput.value = "";
-                  } else {
-                    console.log("Erro ao enviar a resposta");
+
+              try {
+                const replyResponse = await fetch(
+                  `${settings.ApiUrl}/posts/${postId}/respostas`,
+                  {
+                    method: "POST",
+                    credentials: "include",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(replyPost),
                   }
-                })
-                .catch((error) => {
-                  console.error(error);
-                });
+                );
+
+                if (replyResponse.ok) {
+                  console.log("Resposta enviada com sucesso");
+                  loadPosts();
+                  replyInput.value = "";
+                } else {
+                  console.log("Erro ao enviar a resposta");
+                }
+              } catch (error) {
+                console.error(error);
+              }
             }
           });
         });
       }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+    } else {
+      console.error("Erro ao carregar posts:", response.status);
+    }
+  } catch (error) {
+    console.error("Erro na requisição:", error);
+  }
 }
 
 var nomeresp = localStorage.getItem("nome2");
@@ -444,19 +440,16 @@ function deletePost(id) {
     });
 }
 
-function createReplyButton(repliesContainer) {
+function createReplyButton(postId, repliesContainer) {
   var replyButton = document.createElement("button");
-  replyButton.className = "reply-toggle-btn";
-  replyButton.className = "minimize-btn";
+  replyButton.className = "reply-toggle-btn minimize-btn";
+  replyButton.textContent = "Mostrar respostas";
   repliesContainer.querySelectorAll(".reply").forEach(function (reply) {
     reply.classList.add("minimizado");
   });
-  replyButton.textContent = "Mostrar respostas";
   var isMinimized = true;
-
   replyButton.addEventListener("click", function () {
     isMinimized = !isMinimized;
-
     if (isMinimized) {
       replyButton.textContent = "Mostrar respostas";
       repliesContainer.querySelectorAll(".reply").forEach(function (reply) {
@@ -471,6 +464,24 @@ function createReplyButton(repliesContainer) {
   });
 
   return replyButton;
+}
+
+function createReplyElement(user, resposta) {
+  var verificadoIcon =
+    user.ong === "sim" ? "fa-solid fa-circle-check" : "fa-solid";
+  var replyElement = document.createElement("div");
+  replyElement.className = "reply";
+
+  replyElement.innerHTML = `
+    <div id="replyHeader">
+      <i id="verificado" class="${verificadoIcon}" style="color: #165ea8;"></i>
+      <img id="imgreply" src="${user.image}"/>
+      <p id="nomerply">${user.name} respondeu:</p>
+    </div>
+    <p id="descrply">${resposta.descricao}</p>
+  `;
+
+  return replyElement;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -539,7 +550,7 @@ document.addEventListener("DOMContentLoaded", function () {
           } else {
             noPostsMessage.innerHTML = "";
             content.style.display = "block";
-            posts.forEach(function (post) {
+            posts.forEach(async function (post) {
               var postElement = document.createElement("div");
               postElement.className = "post";
               postElement.innerHTML =
@@ -553,8 +564,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 post.descricao +
                 "</p>";
               if (post.userId == userId) {
-                postElement.innerHTML =
-                  '<div class="dropdown"> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' +
+                console.log("entrou");
+                postElement.innerHTML = console.log("entrou");
+                '<div class="dropdown"> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' +
                   post.id +
                   '" >Apagar post</p> </div>  </div>  </div>' +
                   "<h3 id='forumh3'>" +
@@ -592,44 +604,25 @@ document.addEventListener("DOMContentLoaded", function () {
               postElement.appendChild(replyContainer);
 
               content.appendChild(postElement);
-
-              if (post.respostas && post.respostas.length > 0) {
+              const replies = await loadPostReplies(post.id);
+              if (replies.length > 0) {
                 var repliesContainer = document.createElement("div");
                 repliesContainer.className = "replies-container";
-                post.respostas.forEach(function (resposta) {
-                  FindUser(resposta.userId).then((user) => {
-                    var replyElement = document.createElement("div");
-                    replyElement.className = "reply";
-                    if (user.ong === "sim") {
-                      verificado = "'fa-solid fa-circle-check'";
-                    } else {
-                      verificado = "'fa-solid'";
-                    }
-                    replyElement.innerHTML =
-                      "<div id='replyHeader'>" +
-                      "<i id='verificado' class=" +
-                      verificado +
-                      "style='color: #165ea8;'></i>" +
-                      "<img id='imgreply' src='" +
-                      user.image +
-                      "'/>" +
-                      "<p id='nomerply'>" +
-                      user.name +
-                      " respondeu:" +
-                      "</p>" +
-                      "</div>" +
-                      "<p id='descrply'>" +
-                      resposta.descricao +
-                      "</p>";
-                    repliesContainer.appendChild(replyElement);
-                  });
-    
-                  postElement.appendChild(repliesContainer);
-    
-                  
-                });
-                if (post.respostas.length > 1) {
-                  var replyButton = createReplyButton(repliesContainer);
+
+                for (const reply of replies) {
+                  const user = await FindUser(reply.userid);
+                  const replyElement = createReplyElement(user, reply);
+                  repliesContainer.appendChild(replyElement);
+                }
+
+                postElement.appendChild(repliesContainer);
+
+                if (replies.length > 1) {
+                  var replyButton = createReplyButton(
+                    post.id,
+                    repliesContainer
+                  );
+
                   replyContainer.appendChild(replyButton);
                 }
               }
@@ -669,17 +662,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     descricao: replyText,
                   };
 
-                  fetch(
-                    `${settings.ApiUrl}/posts/${postId}/respostas`,
-                    {
-                      method: "POST",
-                      credentials: "include",
-                      headers: {
-                        "Content-Type": "application/json",
-                      },
-                      body: JSON.stringify(replyPost),
-                    }
-                  )
+                  fetch(`${settings.ApiUrl}/posts/${postId}/respostas`, {
+                    method: "POST",
+                    credentials: "include",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(replyPost),
+                  })
                     .then((response) => {
                       if (response.ok) {
                         console.log("Resposta enviada com sucesso");

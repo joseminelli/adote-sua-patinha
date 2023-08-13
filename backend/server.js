@@ -8,9 +8,12 @@ const upload = multer();
 const app = express();
 const port = process.env.PORT || 3000;
 
-const UserData = require("./userData");
-const PostData = require("./postData");
-const PetData = require("./petData");
+//const UserData = require("./userData");
+const UserData = require("./dbUserData");
+//const PostData = require("./postData");
+const PostData = require("./dbPostData");
+//const PetData = require("./petData");
+const PetData = require("./dbPetData");
 
 const userDataReader = new UserData();
 const postDataReader = new PostData();
@@ -77,25 +80,19 @@ app.post("/verificarCookieTF", (req, res) => {
   }
 });
 
-app.post("/salvar", (req, res) => {
+app.post("/salvar", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const logId = verificarAutenticacao(req, res);
   if (!logId) {
     return;
   }
 
-  const user = userDataReader.getUserById(logId);
-
+  const user = await userDataReader.getUserById(logId);
+  
   if (!user) {
     res.status(404).send("Usuário não encontrado");
     return;
   }
-
-  const petsData = petDataReader.readData();
-  const newId =
-    petsData.pets.length > 0
-      ? petsData.pets[petsData.pets.length - 1].id + 1
-      : 1;
 
   const nome = req.body.nome;
   const idade = req.body.idade;
@@ -111,7 +108,6 @@ app.post("/salvar", (req, res) => {
   date2 = date2.split("-").reverse().join("/");
 
   const newPet = {
-    id: newId,
     name: nome,
     age: idade,
     description: descricao,
@@ -124,17 +120,16 @@ app.post("/salvar", (req, res) => {
     data: date2,
   };
 
-  petsData.pets.push(newPet);
-
   try {
-    petDataReader.writeData(petsData);
+    await petDataReader.createPet(newPet);
     res.send("Dados salvos com sucesso");
   } catch (error) {
     res.status(500).send("Erro ao salvar os dados");
   }
 });
 
-app.post("/salvarPessoa", upload.single("file"), (req, res) => {
+
+app.post("/salvarPessoa", upload.single("file"), async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
 
   const nome = req.body.nome;
@@ -145,10 +140,9 @@ app.post("/salvarPessoa", upload.single("file"), (req, res) => {
   const senha = req.body.senha;
   const imagem = req.body.imagem;
 
-  const userData = userDataReader.readData();
   const newId = uuidv4();
 
-  const newUsuario = {
+  const  newUsuario = {
     id: newId,
     name: nome,
     age: idade,
@@ -160,22 +154,22 @@ app.post("/salvarPessoa", upload.single("file"), (req, res) => {
     ong: "não",
   };
 
-  userData.usuarios.push(newUsuario);
   res.cookie("userId", newId, {
     maxAge: 604800000, // 1 semana
     httpOnly: true,
     secure: true,
     sameSite: "none",
   });
+
   try {
-    userDataReader.writeData(userData);
+   await userDataReader.createUser(newUsuario);
     res.send("Dados salvos com sucesso");
   } catch (error) {
     res.status(500).send("Erro ao salvar os dados");
   }
 });
 
-app.post("/editarPessoa", (req, res) => {
+app.post("/editarPessoa", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
 
   const nome = req.body.nome;
@@ -184,7 +178,7 @@ app.post("/editarPessoa", (req, res) => {
   const senha = req.body.senha;
   const userId = req.cookies["userId"];
 
-  const usuario = userDataReader.getUserById(userId);
+  const usuario = await userDataReader.getUserById(userId);
 
   if (usuario) {
     usuario.name = nome;
@@ -193,7 +187,7 @@ app.post("/editarPessoa", (req, res) => {
     usuario.senha = senha;
 
     try {
-      userDataReader.updateUser(usuario);
+      await userDataReader.updateUser(usuario);
       res.send("Dados salvos com sucesso");
     } catch (error) {
       res.status(500).send("Erro ao salvar os dados");
@@ -221,37 +215,38 @@ app.get("/logout", (req, res) => {
   }
 });
 
-app.post("/login", (req, res) => {
+app.post("/login", async (req, res) => {
   const email = req.body.email.trim().toLowerCase();
   const senha = req.body.senha;
 
-  const data = userDataReader.readData();
+  try {
+    const userId = await userDataReader.loginUser(email, senha);
 
-  const usuarios = data.usuarios;
+    if (userId) {
+      res.cookie("userId", userId, {
+        expires: new Date(Date.now() - 604800000), // 1 semana
+        maxAge: 604800000, // 1 semana
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+      });
 
-  const usuario = usuarios.find(
-    (user) => user.email.trim().toLowerCase() === email && user.senha === senha
-  );
-  if (usuario) {
-    res.cookie("userId", usuario.id, {
-      expires: new Date(Date.now() - 604800000), // 1 semana
-      maxAge: 604800000, // 1 semana
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-    });
-
-    res.json({ redirect: "/main.html" });
-  } else {
-    res.status(401).send("Email ou senha inválidos");
+      res.json({ redirect: "/main.html" });
+    } else {
+      res.status(401).send("Email ou senha inválidos");
+    }
+  } catch (error) {
+    console.error('Erro ao realizar login:', error);
+    res.status(500).send("Erro ao realizar login");
   }
 });
+
 
 app.listen(port, () => {
   console.log(`Servidor ouvindo na porta ${port}`);
 });
 
-app.get("/mural", (req, res) => {
+app.get("/mural", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   if (fs.existsSync("../../pets.json") === false) {
     fs.writeFile("../../pets.json", '{"pets": []}', () => {});
@@ -259,12 +254,12 @@ app.get("/mural", (req, res) => {
   if (fs.existsSync("../../usuarios.json") === false) {
     fs.writeFile("../../usuarios.json", '{"usuarios": []}', () => {});
   }
-  const data = petDataReader.readData();
-
-  res.json(data);
+  const data = await petDataReader.getAllPets();
+  const result = {pets: data};
+  res.json(result);
 });
 
-app.get("/findUsuario/:id", (req, res) => {
+app.get("/findUsuario/:id", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
 
   const userId = req.params.id;
@@ -273,11 +268,12 @@ app.get("/findUsuario/:id", (req, res) => {
     return;
   }
 
-  const usuario = userDataReader.getUserById(userId);
+  const usuario = await userDataReader.getUserById(userId);
+  console.log(usuario);
   res.json(usuario);
 });
 
-app.get("/findUsuarioByPet/:id", (req, res) => {
+app.get("/findUsuarioByPet/:id", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
 
   const petId = parseInt(req.params.id);
@@ -286,17 +282,18 @@ app.get("/findUsuarioByPet/:id", (req, res) => {
     return;
   }
 
-  const pet = petDataReader.getPetById(petId);
+  const pet = await petDataReader.getPetById(petId);
+  
   if (!pet) {
     res.status(404).send("Pet não encontrado");
     return;
   }
 
-  const usuario = userDataReader.getUserById(pet.userId);
+  const usuario = await userDataReader.getUserById(pet.userid);
   res.json(usuario);
 });
 
-app.get("/usuario", (req, res) => {
+app.get("/usuario", async(req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const logId = verificarAutenticacao(req, res);
   if (!logId) {
@@ -305,202 +302,176 @@ app.get("/usuario", (req, res) => {
 
   const userId = req.cookies["userId"];
 
-  const data = userDataReader.readData();
-
-  const usuario = data.usuarios.find((user) => user.id === userId);
-  res.json(usuario);
-});
-
-app.get("/userPets", (req, res) => {
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  const userId = req.cookies["userId"];
-
-  const data = petDataReader.getUserPets(userId);
+  const data = await userDataReader.getUserById(userId);
 
   res.json(data);
 });
 
-app.delete("/excluirPet/:petId", (req, res) => {
+app.get("/userPets", async (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  const userId = req.cookies["userId"];
+
+  const data = await petDataReader.getUserPets(userId);
+
+  res.json(data);
+});
+
+app.delete("/excluirPet/:petId", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const userId = req.cookies["userId"];
   const petId = parseInt(req.params.petId);
 
-  const data = petDataReader.readData();
-
   try {
-    const pets = data.pets;
-
-    const petIndex = pets.findIndex(
-      (pet) => pet.id === petId && pet.userId === userId
-    );
-    if (petIndex === -1) {
-      res
-        .status(404)
-        .json({ message: "Pet não encontrado ou não pertence ao usuário." });
-      return;
-    }
-
-    pets.splice(petIndex, 1);
-
-    try {
-      petDataReader.writeData(data);
-      res.json({ message: "Pet excluído com sucesso!" });
-    } catch (error) {
-      console.error(error);
-      res.status(500).send("Erro ao excluir pet");
-      return;
-    }
+    await petDataReader.deletePet(petId, userId);
+    res.json({ message: "Pet excluído com sucesso!" });
   } catch (error) {
-    console.error(error);
-    res.status(500).send("Erro ao processar a exclusão do pet");
+    console.error('Erro ao excluir pet:', error);
+    res.status(500).send("Erro ao excluir pet");
   }
 });
 
-app.post("/salvarPost", (req, res) => {
+app.post("/salvarPost", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
-  let posts = [];
-  posts = postDataReader.readData();
 
   const titulo = req.body.titulo;
   const descricao = req.body.descricao;
   const categoria = req.body.categoria;
   const userId = req.cookies["userId"];
-  const postId = posts.length > 0 ? posts[posts.length - 1].id + 1 : 1;
-
-  const user = userDataReader.getUserById(userId);
-  const nomeUsuario = user ? user.name : "[Usuário não identificado]";
-
-  const newPost = {
-    id: postId,
-    titulo: "Post de " + nomeUsuario + ": " + titulo,
-    descricao: descricao,
-    categoria: categoria,
-    userId: userId,
-  };
-
-  posts.push(newPost);
 
   try {
-    postDataReader.writeData(posts);
+    const postData = new PostData();
+
+    const newPost = {
+      titulo: titulo,
+      descricao: descricao,
+      categoria: categoria,
+      userId: userId,
+    };
+
+    const createdPost = await postData.createPost(newPost);
+
     res.send("Dados salvos com sucesso");
   } catch (error) {
+    console.error('Erro ao salvar post:', error);
     res.status(500).send("Erro ao salvar os dados");
   }
 });
 
-app.get("/posts", (req, res) => {
+
+app.get("/posts", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
 
-  let posts = [];
-  posts = postDataReader.readData();
+  try {
+    const searchTerm = req.query.search || "";
 
-  const searchTerm = req.query.search;
+    const posts = await postDataReader.getAllPosts(searchTerm);
 
-  if (searchTerm) {
-    posts = posts.filter(
-      (post) =>
-        post.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        post.descricao.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  }
-
-  posts.forEach((post) => {
-    if (post.respostas) {
-      post.respostas = post.respostas.map((resposta) => {
-        return {
-          descricao: resposta.descricao,
-          userId: resposta.userId,
-          id: resposta.id,
-          autor: resposta.autor,
-        };
-      });
+    for (const post of posts) {
+      if (post.respostas) {
+        post.respostas = post.respostas.map((resposta) => {
+          return {
+            descricao: resposta.descricao,
+            userId: resposta.userId,
+            id: resposta.id,
+            autor: resposta.autor,
+          };
+        });
+      }
     }
-  });
 
-  res.json(posts);
+    res.json(posts);
+  } catch (error) {
+    console.error('Erro ao obter posts:', error);
+    res.status(500).send("Erro ao obter posts");
+  }
 });
 
-app.delete("/posts/:id", (req, res) => {
+
+app.delete("/posts/:id", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const postId = parseInt(req.params.id);
 
-  let posts = [];
-  posts = postDataReader.readData();
+  try {
+    const post = await postDataReader.getPostById(postId);
 
-  const postIndex = posts.findIndex((post) => post.id === postId);
+    if (post) {
+      const userId = req.cookies["userId"];
+      if (post.userid === userId) {
+        await postDataReader.deletePost(postId);
 
-  if (postIndex !== -1) {
-    const userId = req.cookies["userId"];
-    if (posts[postIndex].userId === userId) {
-      posts.splice(postIndex, 1);
-
-      postDataReader.writeData(posts);
-
-      res.sendStatus(200);
+        res.sendStatus(200);
+      } else {
+        res.sendStatus(403);
+      }
     } else {
-      res.sendStatus(403);
+      res.sendStatus(404);
     }
-  } else {
-    res.sendStatus(404);
+  } catch (error) {
+    console.error('Erro ao excluir post:', error);
+    res.sendStatus(500);
   }
 });
 
-app.post("/posts/:id/respostas", (req, res) => {
+app.get('/posts/:postId/respostas', async (req, res) => {
+  try {
+    const postId = parseInt(req.params.postId);
+    
+    const postReplies = await postDataReader.getPostReplies(postId);
+
+    console.log(postReplies);
+    res.json(postReplies);
+  } catch (error) {
+    console.error('Erro ao obter respostas do post:', error);
+    res.status(500).send('Erro ao obter respostas do post');
+  }
+});
+
+app.post("/posts/:id/respostas", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const postId = parseInt(req.params.id);
   const resposta = req.body;
 
-  let posts = [];
-  posts = postDataReader.readData();
+  try {
+    const postData = new PostData();
+    const post = await postData.getPostById(postId);
 
-  const postIndex = posts.findIndex((post) => post.id === postId);
+    if (post) {
+      const userId = req.cookies["userId"];
+      resposta.userId = userId;
 
-  if (postIndex !== -1) {
-    const userId = req.cookies["userId"];
-    resposta.userId = userId;
+      const createdReply = await postData.createPostReply(postId, resposta);
 
-    if (!posts[postIndex].respostas) {
-      posts[postIndex].respostas = [];
+      res.sendStatus(200);
+    } else {
+      res.sendStatus(404);
     }
-
-    const respostaId =
-      posts[postIndex].respostas.length > 0
-        ? posts[postIndex].respostas[posts[postIndex].respostas.length - 1].id +
-          1
-        : 1;
-    resposta.id = respostaId;
-
-    posts[postIndex].respostas.push(resposta);
-
-    postDataReader.writeData(posts);
-
-    res.sendStatus(200);
-  } else {
-    res.sendStatus(404);
+  } catch (error) {
+    console.error('Erro ao adicionar resposta:', error);
+    res.sendStatus(500);
   }
 });
 
-app.get("/email/:petId", (req, res) => {
+
+app.get("/email/:petId", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
 
   const petId = parseInt(req.params.petId);
 
-  const pet = petDataReader.getPetById(petId);
-  const userId = pet.userId;
-  const user = userDataReader.getUserById(userId);
+  try {
+    const petData = new PetData();
+    const userEmail = await petData.getUserEmailByPetId(petId);
 
-  if (!user) {
-    res.status(404).send("Usuário não encontrado");
-    return;
+    if (!userEmail) {
+      res.status(404).send("Usuário não encontrado");
+      return;
+    }
+
+    res.send(userEmail);
+  } catch (error) {
+    console.error('Erro ao buscar e-mail do usuário:', error);
+    res.sendStatus(500);
   }
-
-  if (!pet) {
-    res.status(404).send("Pet não encontrado");
-    return;
-  }
-
-  const userEmail = user.email;
-  res.send(userEmail);
 });
+
 
 module.exports = app;
