@@ -225,8 +225,8 @@ app.post("/login", async (req, res) => {
   const senha = req.body.senha;
 
   try {
-    const userId = await userDataReader.loginUser(email, senha);
-    const idSessao = await userDataReader.sessionId(userId);
+    var userId = await userDataReader.loginUser(email, senha);
+    var idSessao = await userDataReader.sessionId(userId);
     console.log(idSessao);
     if (userId) {
       res.cookie("userId", idSessao.session_id, {
