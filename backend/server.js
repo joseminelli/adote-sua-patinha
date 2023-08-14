@@ -24,6 +24,7 @@ function verificarAutenticacao(req, res) {
 
   const data = userDataReader.getUserBySession(userId);
   const user = userDataReader.getUserById(data.user_id);
+  console.log(user);
   if (!userId) {
     res.status(401).send("Usuário não autenticado");
     return;
