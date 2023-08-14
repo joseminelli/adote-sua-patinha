@@ -68,7 +68,7 @@ class UserData {
       const date = new Date();
       date = format(date, 'yyyy-MM-dd HH:mm:ss');
       const id = await this.getNextSesionId();
-      const sessionId = uuidv4();
+      var sessionId = uuidv4();
 
       const query = {
         text: "INSERT INTO sessions (id, session_id, user_id, date) VALUES ($1, $2, $3, $4) RETURNING *",
