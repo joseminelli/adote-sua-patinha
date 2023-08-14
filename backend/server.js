@@ -58,14 +58,16 @@ app.post("/verificarCookie", (req, res) => {
   }
 });
 
-app.post("/verificarSemCookie", (req, res) => {
+app.post("/verificarSemCookie", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const userId = req.cookies["userId"];
+  const data = await userDataReader.getUserBySession(userId);
+  console.log(data.user_id);
   if (!userId) {
     res.json({ redirect: "/index.html" });
     return;
   } else if (userId) {
-    res.json({ id: userId });
+    res.json({ id: data.user_id });
     return;
   }
 });
@@ -153,8 +155,8 @@ app.post("/salvarPessoa", upload.single("file"), async (req, res) => {
     image: imagem,
     ong: "não",
   };
-
-  res.cookie("userId", newId, {
+  const idSessao = await userDataReader.sessionId(newId);
+  res.cookie("userId", idSessao.session_id, {
     maxAge: 604800000, // 1 semana
     httpOnly: true,
     secure: true,
@@ -178,7 +180,8 @@ app.post("/editarPessoa", async (req, res) => {
   const senha = req.body.senha;
   const userId = req.cookies["userId"];
 
-  const usuario = await userDataReader.getUserById(userId);
+  const data = await userDataReader.getUserBySession(userId);
+  const usuario = await userDataReader.getUserById(data.user_id);
 
   if (usuario) {
     usuario.name = nome;
@@ -197,10 +200,11 @@ app.post("/editarPessoa", async (req, res) => {
   }
 });
 
-app.get("/logout", (req, res) => {
+app.get("/logout", async(req, res) => {
   const userId = req.cookies["userId"];
 
-  const usuario = userDataReader.getUserById(userId);
+  const data = await userDataReader.getUserBySession(userId);
+  const usuario = await userDataReader.getUserById(data.user_id);
   if (usuario) {
     res.cookie("userId", usuario.id, {
       expires: new Date(Date.now() - 604800000), // -1 semana
@@ -209,6 +213,7 @@ app.get("/logout", (req, res) => {
       sameSite: "none",
     });
 
+    const deletedSessions = await userDataReader.deleteSessionByUserId(data.session_id);
     res.send({ redirect: "/index.html" });
   } else {
     res.status(401).send("Usuário não encontrado");
@@ -221,9 +226,9 @@ app.post("/login", async (req, res) => {
 
   try {
     const userId = await userDataReader.loginUser(email, senha);
-
+    const idSessao = await userDataReader.sessionId(userId);
     if (userId) {
-      res.cookie("userId", userId, {
+      res.cookie("userId", idSessao.session_id, {
         expires: new Date(Date.now() - 604800000), // 1 semana
         maxAge: 604800000, // 1 semana
         httpOnly: true,
@@ -302,16 +307,17 @@ app.get("/usuario", async(req, res) => {
 
   const userId = req.cookies["userId"];
 
-  const data = await userDataReader.getUserById(userId);
-
-  res.json(data);
+  const data = await userDataReader.getUserBySession(userId);
+  const user = await userDataReader.getUserById(data.user_id);
+  res.json(user);
 });
 
 app.get("/userPets", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const userId = req.cookies["userId"];
 
-  const data = await petDataReader.getUserPets(userId);
+  const user = await userDataReader.getUserBySession(userId);
+  const data = await petDataReader.getUserPets(user.user_id);
 
   res.json(data);
 });
@@ -319,10 +325,11 @@ app.get("/userPets", async (req, res) => {
 app.delete("/excluirPet/:petId", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const userId = req.cookies["userId"];
+  const data = await userDataReader.getUserBySession(userId);
   const petId = parseInt(req.params.petId);
 
   try {
-    await petDataReader.deletePet(petId, userId);
+    await petDataReader.deletePet(petId, data.user_id);
     res.json({ message: "Pet excluído com sucesso!" });
   } catch (error) {
     console.error('Erro ao excluir pet:', error);
@@ -338,6 +345,8 @@ app.post("/salvarPost", async (req, res) => {
   const categoria = req.body.categoria;
   const userId = req.cookies["userId"];
 
+  const data = await userDataReader.getUserBySession(userId);
+
   try {
     const postData = new PostData();
 
@@ -345,7 +354,7 @@ app.post("/salvarPost", async (req, res) => {
       titulo: titulo,
       descricao: descricao,
       categoria: categoria,
-      userId: userId,
+      userId: data.user_id,
     };
 
     const createdPost = await postData.createPost(newPost);
@@ -396,7 +405,8 @@ app.delete("/posts/:id", async (req, res) => {
 
     if (post) {
       const userId = req.cookies["userId"];
-      if (post.userid === userId) {
+      const data = await userDataReader.getUserBySession(userId);
+      if (post.userid === data.user_id) {
         await postDataReader.deletePost(postId);
 
         res.sendStatus(200);
@@ -437,7 +447,8 @@ app.post("/posts/:id/respostas", async (req, res) => {
 
     if (post) {
       const userId = req.cookies["userId"];
-      resposta.userId = userId;
+      const data = await userDataReader.getUserBySession(userId);
+      resposta.userId = data.user_id;
 
       const createdReply = await postData.createPostReply(postId, resposta);
 

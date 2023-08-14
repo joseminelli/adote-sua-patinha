@@ -58,6 +58,7 @@ async function FindUser(petId) {
     throw error;
   }
 }
+
 document.addEventListener("DOMContentLoaded", async function () {
   toggleClassOnDeviceWidth();
   if (!mobile == true) {
