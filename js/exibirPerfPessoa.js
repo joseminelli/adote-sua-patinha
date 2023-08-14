@@ -3,6 +3,7 @@ const nome = document.getElementById("name");
 const idade = document.getElementById("idade");
 const bairro1 = document.getElementById("bairro");
 const telefone1 = document.getElementById("telefone2");
+const divpets = document.getElementById("fotoPet");
 const fotopetDiv = document.getElementById("fotoPet2");
 const hamster = document.getElementById("hamster");
 const loader = document.getElementById("loader");
@@ -56,10 +57,12 @@ async function exibirPets() {
         fotopetDiv.innerHTML = petElementsHTML;
       });
       if (petElementsHTML == "") {
+        divpets.style.display = "none";
         fotopetDiv.style.display = "none";
         comPet.style.display = "none";
         semPet.style.display = "flex";
       } else {
+        divpets.style.display = "block";
         fotopetDiv.style.display = "flex";
         semPet.style.display = "none";
         comPet.style.display = "flex";
