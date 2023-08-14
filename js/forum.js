@@ -565,7 +565,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "</p>";
               if (post.userid == userId) {
                 console.log("entrou");
-                postElement.innerHTML = console.log("entrou");
+                postElement.innerHTML = 
                 '<div class="dropdown"> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' +
                   post.id +
                   '" >Apagar post</p> </div>  </div>  </div>' +
