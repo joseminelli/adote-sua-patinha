@@ -94,7 +94,10 @@ app.post("/salvar", async (req, res) => {
   if (!logId) {
     return;
   }
+  const userId = req.cookies["userId"];
 
+  const data = await userDataReader.getUserBySession(userId);
+  const usuario = await userDataReader.getUserById(data.user_id);
   const user = await userDataReader.getUserById(logId);
   
   if (!user) {
@@ -109,7 +112,6 @@ app.post("/salvar", async (req, res) => {
   const especie = req.body.especie;
   const imagem = req.body.imagem;
   const imagem2 = req.body.imagem2;
-  const userId = logId;
 
   let date2 = new Date();
   date2 = date2.toISOString().slice(0, 10);
@@ -124,7 +126,7 @@ app.post("/salvar", async (req, res) => {
     esp: especie,
     image: imagem,
     image2: imagem2,
-    userId: userId,
+    userId: usuario.user_id,
     data: date2,
   };
 
