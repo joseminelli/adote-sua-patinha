@@ -26,7 +26,7 @@ function getUserIdFromCookie() {
   }
 
   return null; 
-}
+}document.mandarEmail = mandarEmail;
 document.addEventListener("DOMContentLoaded", async function () {
   const response = await fetch(
     `${settings.ApiUrl}/usuario`,
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 const userId = getUserIdFromCookie();
-function mandarEmail() {
+async function mandarEmail() {
   var params = {
     nome: document.getElementById("input-name").value,
     email: document.getElementById("input-email").value,

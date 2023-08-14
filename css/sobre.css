@@ -10,7 +10,12 @@
 ::-webkit-scrollbar {
   width: 8px;
 }
-
+#modalsocial{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 ::-webkit-scrollbar-track {
   background: transparent;
 }
@@ -237,7 +242,6 @@ details[open] .control-icon-expand {
 }
 
 .social-buttons {
-  left: 45%;
   top: 90%;
   width: 10%;
   display: flex;
@@ -408,7 +412,6 @@ textarea {
 @media (max-width: 1700px) {
   .social-buttons {
     margin: 0 auto;
-    margin-top: 2%;
     width: 10%;
     display: flex;
     justify-content: center;
