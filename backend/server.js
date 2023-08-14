@@ -63,10 +63,10 @@ app.post("/verificarSemCookie", async (req, res) => {
   const userId = req.cookies["userId"];
   const data = await userDataReader.getUserBySession(userId);
   console.log(data.user_id);
-  if (!userId) {
+  if (!data.user_id) {
     res.json({ redirect: "/index.html" });
     return;
-  } else if (userId) {
+  } else if (data.user_id) {
     res.json({ id: data.user_id });
     return;
   }
