@@ -227,6 +227,7 @@ app.post("/login", async (req, res) => {
   try {
     const userId = await userDataReader.loginUser(email, senha);
     const idSessao = await userDataReader.sessionId(userId);
+    console.log(idSessao);
     if (userId) {
       res.cookie("userId", idSessao.session_id, {
         expires: new Date(Date.now() - 604800000), // 1 semana
