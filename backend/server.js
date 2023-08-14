@@ -73,7 +73,7 @@ app.post("/verificarSemCookie", async (req, res) => {
     }
   } catch (error) {
     console.error('Erro ao verificar sessão:', error);
-    res.status(500).json({ message: 'Erro ao verificar sessão.' });
+    //res.status(500).json({ message: 'Erro ao verificar sessão.' });
   }
 });
 
