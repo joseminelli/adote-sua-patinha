@@ -258,7 +258,6 @@ async function loadPosts() {
             <p>Categoria: ${post.categoria}</p>
             <p>${post.descricao}</p>`;
           if (post.userid == userId) {
-            console.log("entrou");
             postElement.innerHTML = `
               <div class="dropdown">
                 <ul class="dropbtn icons btn-right showLeft">
@@ -321,12 +320,14 @@ async function loadPosts() {
         });
 
         var deleteButtons = document.querySelectorAll(".deleteBtn");
-        deleteButtons.forEach(function (button) {
-          button.addEventListener("click", function () {
-            var id = button.getAttribute("data-id");
-            deletePost(id);
+        setTimeout(() => {
+          deleteButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+              var id = button.getAttribute("data-id");
+              deletePost(id);
+            });
           });
-        });
+        }, 2000);
 
         var dropdownbtns = document.querySelectorAll(".dropdown");
         var dropdowncontents = document.querySelectorAll(".dropdown-content");
@@ -564,9 +565,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 post.descricao +
                 "</p>";
               if (post.userid == userId) {
-                console.log("entrou");
-                postElement.innerHTML = 
-                '<div class="dropdown"> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' +
+                postElement.innerHTML =
+                  '<div class="dropdown"> <ul class="dropbtn icons btn-right showLeft"> <li></li> <li></li> <li></li>  </ul> <div id="myDropdown" class="dropdown-content"> <p class="deleteBtn" data-id="' +
                   post.id +
                   '" >Apagar post</p> </div>  </div>  </div>' +
                   "<h3 id='forumh3'>" +
@@ -629,12 +629,14 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             var deleteButtons = document.querySelectorAll(".deleteBtn");
-            deleteButtons.forEach(function (button) {
-              button.addEventListener("click", function () {
-                var id = button.getAttribute("data-id");
-                deletePost(id);
+            setTimeout(() => {
+              deleteButtons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                  var id = button.getAttribute("data-id");
+                  deletePost(id);
+                });
               });
-            });
+            }, 2000);
 
             var dropdownbtns = document.querySelectorAll(".dropdown");
             var dropdowncontents =
@@ -646,6 +648,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 setTimeout(() => {
                   dropdowncontents[index].classList.toggle("transform");
                 }, 1);
+                setTimeout(() => {
+                  dropdowncontents[index].classList.toggle("deletavel");
+                }, 100);
               });
             });
             var replyButtons = document.querySelectorAll(".reply-btn");

@@ -214,7 +214,8 @@ p {
 .content {
   background-color: var(--cor-primaria);
   box-shadow: 5px 5px 5px rgba(3, 3, 3, 0.3);
-  padding: 2rem;
+  padding-inline: 2rem;
+  padding-top: 2rem;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
@@ -471,9 +472,10 @@ h1 {
 .dropdown-content {
   display: none;
   position: absolute;
-  margin-left: 85%;
   border-radius: 10px;
   justify-content: center;
+  margin-left: 50%;
+  margin-top: 9%;
   background-color: #f9f9f9;
   width: 0px;
   opacity: 0;
@@ -498,7 +500,7 @@ h1 {
 .dropdown-content.transform {
   width: 150px;
   opacity: 1;
-  margin-left: 73%;
+  margin-left: 75%;
   padding: 5px 20px;
 }
 
@@ -801,7 +803,7 @@ button[type="submit"]:hover {
     margin-top: 0%;
     justify-content: center;
     align-items: center;
-    height: 700px;
+    height: 604px;
     justify-content: center;
     align-items: center;
     overflow: visible;
@@ -1013,7 +1015,25 @@ button[type="submit"]:hover {
 }
 @media screen and (max-width: 768px) {
   /* Estilos para telas menores que 768px */
-
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    margin-left: 85%;
+    margin-top: 10%;
+    border-radius: 10px;
+    justify-content: center;
+    background-color: #f9f9f9;
+    width: 0px;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+}
+.dropdown-content.transform {
+  margin-left: 60%;
+}
   h1 {
     font-size: 40px;
     line-height: 50px;
@@ -1067,7 +1087,8 @@ button[type="submit"]:hover {
   .dropdown-content.transform {
     width: 150px;
     opacity: 1;
-    margin-left: 48%;
+    margin-top: 20%;
+    margin-left: 40%;
     padding: 5px 20px;
   }
   .content {
@@ -1089,7 +1110,22 @@ button[type="submit"]:hover {
     border-radius: 10px;
     margin-bottom: 7%;
   }
-
+  .dropdown-content {
+      display: none;
+      position: absolute;
+      margin-left: 100%;
+      margin-top: 20%;
+      border-radius: 10px;
+      justify-content: center;
+      background-color: #f9f9f9;
+      width: 0px;
+      opacity: 0;
+      overflow: hidden;
+      padding: 0px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      transition: all 0.3s ease-in-out;
+  }
   .minimize-btn {
     display: inline-block;
     margin-top: -160px;
