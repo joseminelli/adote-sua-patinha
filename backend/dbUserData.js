@@ -65,7 +65,7 @@ class UserData {
 
   async sessionId(userId) {
     try {
-      const date = new Date();
+      var date = new Date();
       date = format(date, 'yyyy-MM-dd HH:mm:ss');
       const id = await this.getNextSesionId();
       var sessionId = uuidv4();
