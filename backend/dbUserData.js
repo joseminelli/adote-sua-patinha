@@ -1,3 +1,5 @@
+const { format } = require('date-fns');
+
 const { Pool } = require("pg");
 const user = process.env.POSTGRES_USER || "postgres";
 const host = process.env.POSTGRES_HOST || "localhost";
@@ -63,8 +65,8 @@ class UserData {
 
   async sessionId(userId) {
     try {
-      let now = new Date();
-      let date = now.toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
+      const date = new Date();
+      date = format(date, 'yyyy-MM-dd HH:mm:ss');
       const id = await this.getNextSesionId();
       const sessionId = uuidv4();
 
