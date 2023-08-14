@@ -62,13 +62,18 @@ app.post("/verificarSemCookie", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const userId = req.cookies["userId"];
   const data = await userDataReader.getUserBySession(userId);
-  console.log(data.user_id);
-  if (!userId) {
-    res.json({ redirect: "/index.html" });
-    return;
-  } else if (userId) {
-    res.json({ id: data.user_id });
-    return;
+  try {
+    const sessionExists = await userDataReader.checkSessionExists(userId);
+    if (sessionExists) {
+      res.status(200).json({ message: 'A sessão existe.' });res.json({ redirect: "/index.html" });
+      return;
+    } else {
+      res.json({ id: data.user_id });
+      return;
+    }
+  } catch (error) {
+    console.error('Erro ao verificar sessão:', error);
+    res.status(500).json({ message: 'Erro ao verificar sessão.' });
   }
 });
 

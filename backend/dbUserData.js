@@ -94,6 +94,20 @@ class UserData {
       throw error;
     }
   }
+  async checkSessionExists(sessionId) {
+  try {
+    const query = {
+      text: 'SELECT * FROM sessions WHERE session_id = $1',
+      values: [sessionId],
+    };
+    const result = await pool.query(query);
+    return result.rows.length > 0; // Retorna true se a sessão existe, caso contrário, retorna false
+  } catch (error) {
+    console.error('Erro ao verificar sessão:', error);
+    throw error;
+  }
+}
+
   async deleteSessionByUserId(sessionid) {
     try {
       const query = {
