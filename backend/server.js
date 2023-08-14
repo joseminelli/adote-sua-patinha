@@ -21,11 +21,14 @@ const petDataReader = new PetData();
 
 function verificarAutenticacao(req, res) {
   const userId = req.cookies["userId"];
+
+  const data = userDataReader.getUserBySession(userId);
+  const user = userDataReader.getUserById(data.user_id);
   if (!userId) {
     res.status(401).send("Usuário não autenticado");
     return;
   } else {
-    return userId;
+    return user.id;
   }
 }
 const fs = require("fs");
@@ -100,10 +103,6 @@ app.post("/salvar", async (req, res) => {
   const usuario = await userDataReader.getUserById(data.user_id);
   const user = await userDataReader.getUserById(logId);
   
-  if (!user) {
-    res.status(404).send("Usuário não encontrado");
-    return;
-  }
 
   const nome = req.body.nome;
   const idade = req.body.idade;
