@@ -24,7 +24,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
     <link rel="shortcut icon" type="imagem/ico" href="favicon.ico" />
-    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/recuperar.css" />
     <link rel="stylesheet" href="css/customalert.css" />
     <link rel="stylesheet" href="css/nav.css" />
     <link rel="stylesheet" href="css/loader.css" />
@@ -59,7 +59,7 @@
         <i id="iconm" class="fa-regular fa-circle-xmark"></i>
         <h2 id="titulom">Formulário não enviado</h2>
         <h3 id="descm">
-          Você precisa preencher todos os campos e colocar uma imagem
+          Você precisa preencher todos os campos 
         </h3>
         <div class="buttons">
           <button id="modalbtn" class="close-btn">Ok, vou verificar</button>
@@ -79,27 +79,13 @@
     <section id="box">
       <div class="content">
         <div>
-          <label for="input1">Email:</label>
+          <label for="input1">Digite seu email:</label>
           <input type="text" placeholder="Email" id="input1" />
 
-          <label for="input2">Senha:</label>
-          <div id="senhabox">
-            <input type="password" placeholder="Senha" id="input2" />
-            <div class="password-icon">
-              <i data-feather="eye"></i>
-              <i data-feather="eye-off"></i>
-            </div>
-          </div>
-          <a href="recuperar.html">
-            <p id="esqueceu">esqueceu a senha?</p>
-          </a>
           <div id="botao">
-            <button id="login" type="submit">Log In</button>
+            <button id="login" type="submit">Recuperar</button>
           </div>
 
-          <a href="cadastro1.html">
-            <p>Não possui conta?</p>
-          </a>
         </div>
       </div>
     </section>
@@ -109,7 +95,7 @@
     <script src="
     https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js
     "></script>
-    <script type="module" src="js/script.js"></script>
+    <script type="module" src="js/recuperar.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script>
       feather.replace();
