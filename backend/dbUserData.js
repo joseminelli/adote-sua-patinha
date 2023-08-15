@@ -1,4 +1,4 @@
-const { format } = require('date-fns');
+const { format } = require("date-fns");
 
 const { Pool } = require("pg");
 const user = process.env.POSTGRES_USER || "postgres";
@@ -9,7 +9,7 @@ const port = process.env.POSTGRES_PORT || 5432;
 
 const { v4: uuidv4 } = require("uuid");
 const pool = new Pool({
-  ssl: true,
+  //ssl: true,
   user: user,
   host: host,
   database: database,
@@ -66,7 +66,7 @@ class UserData {
   async sessionId(userId) {
     try {
       var date = new Date();
-      date = format(date, 'yyyy-MM-dd HH:mm:ss');
+      date = format(date, "yyyy-MM-dd HH:mm:ss");
       const id = await this.getNextSesionId();
       var sessionId = uuidv4();
 
@@ -95,33 +95,47 @@ class UserData {
     }
   }
   async checkSessionExists(sessionId) {
-  try {
-    const query = {
-      text: 'SELECT * FROM sessions WHERE session_id = $1',
-      values: [sessionId],
-    };
-    const result = await pool.query(query);
-    return result.rows.length > 0; // Retorna true se a sessão existe, caso contrário, retorna false
-  } catch (error) {
-    console.error('Erro ao verificar sessão:', error);
-    throw error;
+    try {
+      const query = {
+        text: "SELECT * FROM sessions WHERE session_id = $1",
+        values: [sessionId],
+      };
+      const result = await pool.query(query);
+      return result.rows.length > 0;
+    } catch (error) {
+      console.error("Erro ao verificar sessão:", error);
+      throw error;
+    }
   }
-}
+
+  async checkEmailExists(email) {
+    try {
+      const query = {
+        text: "SELECT * FROM usuarios WHERE email = $1",
+        values: [email],
+      };
+      const result = await pool.query(query);
+      return result.rows.length > 0; 
+    } catch (error) {
+      console.error("Erro ao verificar sessão:", error);
+      throw error;
+    }
+  }
 
   async deleteSessionByUserId(sessionid) {
     try {
       const query = {
-        text: 'DELETE FROM sessions WHERE session_id = $1',
+        text: "DELETE FROM sessions WHERE session_id = $1",
         values: [sessionid],
       };
       const result = await pool.query(query);
       return result.rowCount; // Número de linhas excluídas
     } catch (error) {
-      console.error('Erro ao excluir sessão por ID do usuário:', error);
+      console.error("Erro ao excluir sessão por ID do usuário:", error);
       throw error;
     }
   }
-  
+
   async getUserById(userId) {
     try {
       const query = {

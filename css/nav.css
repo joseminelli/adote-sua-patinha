@@ -4,10 +4,22 @@
   --cor-secundaria: #165ea8;
   --cor-primaria: #ffe58b;
 }
+
 ::selection {
   color: #fff;
   background: var(--cor-secundaria);
 }
+
+#back i {
+  color: var(--cor-secundaria);
+  font-size: 25px;
+}
+
+#back {
+  position: absolute;
+  left: 5%;
+}
+
 #header {
   display: flex;
   align-items: center;
@@ -20,23 +32,28 @@
   z-index: 999;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
 }
+
 #navbar {
   margin-right: 53px;
 }
+
 .dropdown-nav {
   position: relative;
   right: 0.4em;
 }
+
 #editarDiv {
   align-items: center;
   display: flex;
   flex-direction: row;
 }
+
 #sairDiv {
   align-items: center;
   display: flex;
   flex-direction: row;
 }
+
 .iconeperfilbar {
   margin-right: 7px;
 }
@@ -72,6 +89,7 @@
 .inputsn:focus {
   border-color: var(--cor-secundaria);
 }
+
 .dropdown-content-nav {
   display: none;
   margin-left: 40px;
@@ -87,6 +105,7 @@
   z-index: 8;
   transition: all 0.3s ease-in-out;
 }
+
 .dropdown-content-nav p {
   color: #000000 !important;
 }
@@ -103,6 +122,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .dropdown-content-nav.transform {
   width: 150px;
   opacity: 1;
@@ -111,10 +131,12 @@
   margin-left: -73px;
   padding: 5px 20px;
 }
+
 #myDropdown {
   display: flex;
   flex-direction: column;
 }
+
 #header .logo {
   width: auto;
   max-height: 80px;
@@ -143,12 +165,13 @@
   transition: all 0.3s ease-in-out;
 }
 
-#editarpf.show{
+#editarpf.show {
   left: 0%;
   top: 12%;
   width: 100%;
   height: 100%;
 }
+
 #iconpenvio {
   width: 350px;
   height: 350px;
@@ -164,6 +187,7 @@
   font-weight: 500;
   color: #333 !important;
 }
+
 #contente {
   display: none;
   position: fixed;
@@ -179,6 +203,7 @@
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
+
 #overlayrr {
   left: 0;
   top: 0;
@@ -192,10 +217,12 @@
   pointer-events: none;
   transition: all 300ms;
 }
+
 #contente h2 {
   font-size: 30px;
   color: var(--cor-secundaria);
 }
+
 #contentform {
   margin-top: -10%;
   display: flex;
@@ -203,12 +230,14 @@
   align-items: center;
   justify-content: center;
 }
+
 #overlayrr.show {
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   opacity: 1;
   pointer-events: auto;
 }
+
 button[type="submittt"] {
   display: flex;
   align-items: center;
@@ -236,9 +265,11 @@ button[type="submittt"] {
   flex-direction: column;
   margin-top: 10px;
 }
+
 #formedit p {
   margin-top: 15px;
 }
+
 #fecharEdit {
   right: 0;
   top: 0;
@@ -251,6 +282,7 @@ button[type="submittt"] {
   height: 533px;
   opacity: 1;
 }
+
 #navbar {
   display: flex;
   align-items: center;
@@ -271,6 +303,7 @@ button[type="submittt"] {
   position: relative;
   transition: 0.3s ease;
 }
+
 #navbar li a {
   text-decoration: none;
   font-size: 16px;
@@ -283,6 +316,7 @@ button[type="submittt"] {
 #navbar li a.active {
   color: var(--cor-secundaria);
 }
+
 #navbar h3 {
   display: none;
 }
@@ -375,10 +409,11 @@ button[type="submittt"] {
 }
 
 @media (max-width: 581px) {
-  #header{
+  #header {
     justify-content: space-around;
   }
 }
+
 @media (max-width: 1200px) {
   #header .logo {
     width: auto;
@@ -386,29 +421,41 @@ button[type="submittt"] {
     height: 60px;
   }
 }
+
 @media (max-width: 799px) {
+
+  #back i {
+    font-size: 20px;
+  }
+
   .section-p1 {
     padding: 40px;
   }
+
   #usuariol {
     order: 1;
   }
+
   #header {
-    align-items:center;
+    align-items: center;
   }
+
   #logo {
     margin-inline: 11%;
     margin-inline-end: 18%;
     order: 2;
   }
+
   #header .logo {
     width: auto;
     max-height: 80px;
     height: 50px;
   }
-  #mobile{
+
+  #mobile {
     order: 3;
   }
+
   #navbar {
     display: flex;
     flex-direction: column;
@@ -500,13 +547,16 @@ button[type="submittt"] {
     right: -21px;
     transition: 0.5s;
   }
+
   .fa-square-caret-down {
     transform: rotate(0deg);
     transition: transform 0.4s ease-in-out;
   }
+
   .fa-square-caret-down.ativo {
     transform: rotate(180deg);
   }
+
   #mobile {
     display: flex;
   }
@@ -534,13 +584,16 @@ button[type="submittt"] {
   #header {
     padding: 15px;
   }
+
   #contente.show {
     width: 300px;
   }
+
   .dropdown-content-nav {
     margin-left: -41px;
     margin-top: 55px;
   }
+
   .dropdown-content-nav.transform {
     margin-top: 55px;
     margin-left: -41px;
