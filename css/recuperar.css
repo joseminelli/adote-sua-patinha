@@ -20,14 +20,17 @@
   background: var(--cor-secundaria);
   transition: all 300ms;
 }
+
 #esqueceu {
   margin: 5px 0px -14px 0px !important;
   font-size: 13px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #0e4072;
   transition: all 300ms;
 }
+
 .password-icon {
   width: 1.2rem;
   margin-left: 5%;
@@ -35,11 +38,13 @@
   color: var(--cor-secundaria);
   transition: color 0.2s;
 }
+
 #senhabox {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .password-icon .feather-eye-off {
   display: none;
 }
@@ -48,6 +53,7 @@
   cursor: pointer;
   color: #0e4072;
 }
+
 form {
   height: 520px;
   width: 400px;
@@ -61,6 +67,7 @@ form {
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
   padding: 50px 35px;
 }
+
 form * {
   font-family: "Kumbh Sans", sans-serif;
   color: #282828;
@@ -68,6 +75,7 @@ form * {
   outline: none;
   border: none;
 }
+
 form h3 {
   font-size: 32px;
   font-weight: 500;
@@ -81,6 +89,7 @@ label {
   font-size: 16px;
   font-weight: 500;
 }
+
 .content a {
   display: flex;
   width: auto;
@@ -88,9 +97,11 @@ label {
   transition: all 300ms ease-in-out;
   justify-content: center;
 }
+
 .content a:hover {
   text-decoration: underline;
 }
+
 .content p {
   color: #3e4c5c;
   transition: all 300ms ease-in-out;
@@ -99,6 +110,7 @@ label {
 .content p:hover {
   color: var(--cor-secundaria);
 }
+
 input {
   display: block;
   height: 50px;
@@ -111,9 +123,11 @@ input {
   font-size: 14px;
   font-weight: 300;
 }
+
 ::placeholder {
   color: #727272;
 }
+
 button {
   margin-top: 50px;
   width: 100%;
@@ -182,6 +196,7 @@ p {
   width: 100%;
   height: 200px;
 }
+
 .content {
   background-color: var(--cor-primaria);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
@@ -190,6 +205,80 @@ p {
   border-radius: 10px;
   width: 20%;
   overflow: auto;
+}
+
+#inputv2,
+#inputv3,
+#inputv4,
+#inputv {
+  width: 32px;
+  height: 50px;
+  text-align: center;
+  border: none;
+  font-weight: 500;
+  display: inline-block;
+  border: 2px solid var(--cor-secundaria);
+  margin: 0 10px;
+}
+
+#modalVerificação {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#modalVerificação p {
+  justify-self: center;
+  text-align: center;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#verfIcon {
+  margin-top: 5%;
+  font-size: 50px;
+  font-weight: bold;
+  display: flex;
+  color: #646464;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#asteriscos {
+  margin-top: -10%;
+  display: flex;
+  color: #282828;
+  font-size: 30px;
+  margin-bottom: 5%;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+#inputvs {
+  display: flex;
+  justify-content: center;
+}
+
+#verificaçãoP {
+  font-size: 14px;
+  justify-self: center;
+  width: 200px;
+  margin-top: 4px;
+}
+
+#inputv2:focus,
+#inputv3:focus,
+#inputv4:focus,
+#inputv:focus {
+  border: 2px solid #053c74;
+  outline: none;
 }
 
 h1 {
@@ -201,6 +290,7 @@ h1 {
   justify-content: center;
   display: flex;
 }
+
 button[type="submit"] {
   display: flex;
   padding: 1rem;
@@ -215,6 +305,7 @@ button[type="submit"] {
   background-color: var(--cor-secundaria);
   cursor: pointer;
 }
+
 button[type="submit"]:hover {
   background-color: #053c74;
 }
@@ -224,6 +315,7 @@ button[type="submit"]:hover {
     justify-content: center;
     display: flex;
   }
+
   button[type="submit"] {
     padding: 1rem;
     font-size: 1rem;
@@ -246,9 +338,11 @@ button[type="submit"]:hover {
   #linha-vertical {
     margin-left: 10%;
   }
+
   #box {
     height: 60px;
   }
+
   .content {
     background-color: var(--cor-primaria);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -259,14 +353,17 @@ button[type="submit"]:hover {
     width: auto;
     max-width: 70%;
   }
+
   #linha-horizontal {
     margin-top: -5%;
     margin-bottom: 5%;
   }
+
   #botao {
     justify-content: center;
     display: flex;
   }
+
   button[type="submit"] {
     margin-top: 20%;
   }
@@ -277,6 +374,7 @@ button[type="submit"]:hover {
     margin-top: -5%;
     margin-bottom: 15%;
   }
+
   #box {
     height: 60px;
   }
@@ -288,6 +386,7 @@ button[type="submit"]:hover {
     color: var(--cor-secundaria);
     transition: color 0.2s;
   }
+
   .content {
     background-color: var(--cor-primaria);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -298,10 +397,12 @@ button[type="submit"]:hover {
     overflow: auto;
     max-width: 85%;
   }
+
   #botao {
     justify-content: center;
     display: flex;
   }
+
   button[type="submit"] {
     margin-top: 20%;
   }
@@ -313,6 +414,7 @@ button[type="submit"]:hover {
     height: 400px;
   }
 }
+
 @media (min-width: 798px) and (max-width: 1500px) {
   .content {
     background-color: var(--cor-primaria);
@@ -331,6 +433,7 @@ button[type="submit"]:hover {
     justify-content: center;
     display: flex;
   }
+
   button[type="submit"] {
     margin-top: 20%;
   }
@@ -341,6 +444,7 @@ button[type="submit"]:hover {
     margin-top: 2%;
     height: 400px;
   }
+
   .content {
     background-color: var(--cor-primaria);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
@@ -364,10 +468,12 @@ button[type="submit"]:hover {
     width: auto;
     height: auto;
   }
+
   #botao {
     justify-content: center;
     display: flex;
   }
+
   button[type="submit"] {
     margin-top: 20%;
   }
@@ -395,6 +501,7 @@ button[type="submit"]:hover {
     justify-content: center;
     display: flex;
   }
+
   button[type="submit"] {
     margin-top: 20%;
   }

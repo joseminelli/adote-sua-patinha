@@ -240,7 +240,7 @@ app.post("/enviarCodigo/:email", async (req, res) => {
   };
 
   try {
-    await sgMail.send(msg);
+    //await sgMail.send(msg);
     res.status(200).send("true");
   } catch (error) {
     console.error(error);

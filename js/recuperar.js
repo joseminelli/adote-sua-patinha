@@ -6,7 +6,10 @@ const section = document.getElementById("modalNovo"),
   titulom = document.getElementById("titulom"),
   descm = document.getElementById("descm"),
   modalbtn = document.getElementById("modalbtn"),
-  iconm = document.getElementById("iconm");
+  iconm = document.getElementById("iconm"),
+  logintxt = document.getElementById("logintxt"),
+  content = document.getElementById("content");
+
 iconm.innerHTML = '<i class="fas fa-circle-xmark"></i>';
 const email = document.getElementById("input1");
 const recuperar = document.getElementById("login");
@@ -19,6 +22,24 @@ document.addEventListener("DOMContentLoaded", async function () {
       );
     }
   }
+  function addListener(input) {
+    input.addEventListener("keyup", () => {
+      const code = parseInt(input.value);
+      if (code >= 0 && code <= 9) {
+        const n = input.nextElementSibling;
+        if (n) n.focus();
+      } else {
+        input.value = "";
+      }
+
+      const key = event.key; // const {key} = event; ES6+
+      if (key === "Backspace" || key === "Delete") {
+        const prev = input.previousElementSibling;
+        if (prev) prev.focus();
+      }
+    });
+  }
+
   recuperar.addEventListener("click", async function () {
     const email2 = email.value;
 
@@ -48,7 +69,49 @@ document.addEventListener("DOMContentLoaded", async function () {
         );
         const result = await response2.json();
         if (result == true) {
-          console.log(data + " sucesso");
+          logintxt.innerHTML = "Verificação";
+          content.innerHTML = `
+        <div id="modalVerificação">
+          <div id="verfIcon">
+            <i class="fa-solid fa-lock"></i>
+            <div id="asteriscos">
+              <i class="fa-solid fa-asterisk"></i>
+              <i class="fa-solid fa-asterisk"></i>
+              <i class="fa-solid fa-asterisk"></i>
+              <i class="fa-solid fa-asterisk"></i>
+            </div>
+          </div>
+          <p id="verificaçãoP">Mandamos um código no seu email, digite ele abaixo</p>
+          <div id='inputvs'>
+            <input id='inputv' type='text' maxLength="1" />
+            <input id='inputv2' type='text' maxLength="1" />
+            <input id='inputv3' type='text' maxLength="1" />
+            <input id='inputv4' type='text' maxLength="1" />
+          </div>
+          <button id="confirmar" type="submit">Confirmar</button>
+        </div>
+        `;
+          const inputs = ["inputv", "inputv2", "inputv3", "inputv4"];
+          const confirmar = document.getElementById("confirmar");
+          inputs.map((id) => {
+            const input = document.getElementById(id);
+            addListener(input);
+          });
+          confirmar.addEventListener("click", async function () {
+            const inputValues = inputs.map(
+              (id) => document.getElementById(id).value
+            );
+
+            if (inputValues.every((value) => value !== "")) {
+              const codigo = inputValues.join("");
+              console.log(codigo);
+            } else {
+              section.classList.add("active");
+              setTimeout(() => {
+                section.classList.remove("active");
+              }, 3000);
+            }
+          });
         } else {
           console.log(data + " falha");
         }
