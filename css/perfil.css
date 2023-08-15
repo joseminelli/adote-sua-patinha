@@ -588,6 +588,9 @@ button[type="submit"]:hover {
 }
 
 @media (max-width: 470px) {
+  #fotoPet2 {
+    margin-left: -10%;
+  }
   #editar {
     margin-left: 28%;
     margin-top: -97%;

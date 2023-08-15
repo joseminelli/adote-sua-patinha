@@ -386,7 +386,7 @@ button[type="submit"]:hover {
 
   .mural {
     margin-top: 20%;
-    margin-left: 3%;
+    margin-left: 0%;
   }
 
   .content img {
@@ -416,7 +416,7 @@ button[type="submit"]:hover {
     padding: 40px;
   }
   #dataCadastro{
-    margin-top: 23%;
+    margin-top: 26%;
   }
   #linha-vertical {
     height: 0px;
