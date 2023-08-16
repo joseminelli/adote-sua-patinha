@@ -67,6 +67,7 @@ async function getUser() {
       throw new Error("Usuário não encontrado");
     }
     userPic.src = usuario.image;
+    
     if (!mobile) {
       loading.forEach((element) => {
         element.style.display = "none";
@@ -74,7 +75,7 @@ async function getUser() {
       userMsg.style.display = "flex";
       userName.style.display = "flex";
       userEx.style.display = "flex";
-      userPic.style.border = "var(--cor-secundaria) 3px solid"
+      userPic.style.border = "var(--cor-secundaria) 3px solid";
       userMsg.innerHTML = "Bem vindo ‎" + "‎ ";
       userName.innerHTML = " " + usuario.name;
       userEx.innerHTML = "!";
@@ -84,7 +85,7 @@ async function getUser() {
       userPic.style.marginRight = "0px";
     } else {
       userPic.style.width = "39px";
-      userPic.style.border = "var(--cor-secundaria) 3px solid"
+      userPic.style.border = "var(--cor-secundaria) 3px solid";
       userPic.style.height = "39px";
       userPic.style.marginLeft = "0px";
     }
@@ -131,14 +132,15 @@ document.addEventListener("DOMContentLoaded", async function () {
           const response2 = await fetch(`${settings.ApiUrl}/userPets`, {
             credentials: "include",
           });
-  
+
           if (!response2.ok) {
             throw new Error("Erro ao obter os pets do usuário");
           }
           const userPets = await response2.json();
-          if(userPets.length > 0){
+          if (userPets.length > 0) {
             boxConfirmacao.style.height = "250px";
-            pConfir.innerHTML = "Você não pode excluir sua conta enquanto tiver pets cadastrados!";
+            pConfir.innerHTML =
+              "Você não pode excluir sua conta enquanto tiver pets cadastrados!";
             iconConfir.classList.add("fa-exclamation-triangle");
             iconConfir.classList.remove("fa-circle-check");
             confBtn.style.display = "none";

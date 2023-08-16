@@ -1,12 +1,11 @@
 import settings from "./settings.js";
 const nome = document.getElementById("name");
 const idade = document.getElementById("idade");
+const loading = document.querySelectorAll(".loading");
 const bairro1 = document.getElementById("bairro");
 const telefone1 = document.getElementById("telefone2");
 const divpets = document.getElementById("fotoPet");
 const fotopetDiv = document.getElementById("fotoPet2");
-const hamster = document.getElementById("hamster");
-const loader = document.getElementById("loader");
 const comPet = document.getElementById("spet");
 const verificado = document.getElementById("verificado");
 const semPet = document.getElementById("npet");
@@ -98,8 +97,6 @@ function excluirPet(petId) {
 document.excluirPet = excluirPet;
 document.addEventListener("DOMContentLoaded", async function () {
   exibirPets();
-  loader.style.display = "flex";
-  hamster.classList.add("active");
 
   // const editar = document.getElementById("editar");
 
@@ -115,19 +112,28 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (!usuario) {
       throw new Error("Usuário não encontrado");
     } else {
-      loader.style.display = "none";
-      hamster.classList.remove("active");
     }
     if (usuario.ong === "sim") {
       verificado.classList.add("fa-circle-check");
     }
-    nome.innerHTML = usuario.name;
-    idade.innerHTML = `${usuario.age} Anos`;
-    bairro1.innerHTML = usuario.regiao;
-    telefone1.innerHTML = usuario.telefone;
+      const name = document.getElementById("name");
+      const idade = document.getElementById("idade");
+      const bairro = document.getElementById("bairro");
+      const telefone2 = document.getElementById("telefone2");
+      loading.forEach((element) => {
+        element.style.display = "none";
+      });
+      name.style.display = "block";
+      idade.style.display = "block";
+      bairro.style.display = "block";
+      telefone2.style.display = "block";
+      nome.innerHTML = usuario.name;
+      idade.innerHTML = `${usuario.age} Anos`;
+      bairro1.innerHTML = usuario.regiao;
+      telefone1.innerHTML = usuario.telefone;
 
-    var imgElement = document.getElementById("pic");
-    imgElement.src = usuario.image;
+      var imgElement = document.getElementById("pic");
+      imgElement.src = usuario.image;
   } catch (error) {
     console.error(error);
   }
