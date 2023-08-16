@@ -16,7 +16,6 @@ var mobile = false;
 const senhaDiv = document.getElementById("senhaDiv");
 const nomeDiv = document.getElementById("nomeDiv");
 const idadeDiv = document.getElementById("idadeDiv");
-const regiaoDiv = document.getElementById("regiaoDiv");
 const telefoneDiv = document.getElementById("telefoneDiv");
 const editarpf = document.getElementById("editarpf");
 const iconpenvio = document.getElementById("iconpenvio");
@@ -96,7 +95,81 @@ document.addEventListener("DOMContentLoaded", async function () {
     option.textContent = i;
     document.getElementById("idade2").appendChild(option);
   }
+  if (window.location.pathname.endsWith("/perfil.html")) {
+    const excContaDiv = document.getElementById("excContaDiv");
+    const confirmarSenha = document.getElementById("confirmarSenha");
+    const senhaConf = document.getElementById("senhaConf");
+    const confBtn = document.getElementById("confBtn");
+    const pConfir = document.getElementById("pConfir");
+    const iconConfir = document.getElementById("iconConfir");
+    overlayrr.addEventListener("click", function () {
+      overlayrr.classList.toggle("show");
+      confirmarSenha.classList.toggle("show");
+    });
+    excContaDiv.addEventListener("click", async function () {
+      confirmarSenha.classList.toggle("show");
+      overlayrr.classList.toggle("show");
+      confBtn.addEventListener("click", async function () {
+        if (senhaConf.value == "") {
+          senhaConf.style.borderColor = "red";
+          return;
+        } else {
+          senhaConf.style.borderColor = "#165ea8";
+        }
+        try {
+          const response2 = await fetch(`${settings.ApiUrl}/userPets`, {
+            credentials: "include",
+          });
+  
+          if (!response2.ok) {
+            throw new Error("Erro ao obter os pets do usuário");
+          }
+          const userPets = await response2.json();
+          if(userPets.length > 0){
+            pConfir.innerHTML = "Você não pode excluir sua conta enquanto tiver pets cadastrados!";
+            iconConfir.classList.add("fa-exclamation-triangle");
+            iconConfir.classList.remove("fa-circle-check");
+            confBtn.style.display = "none";
+            senhaConf.style.display = "none";
+            setTimeout(() => {
+              confirmarSenha.classList.toggle("show");
+              overlayrr.classList.toggle("show");
+              pConfir.innerHTML = "Confirme sua senha para excluir a conta:";
+              confBtn.style.display = "block";
+              senhaConf.style.display = "block";
+            }, 4000);
+            return;
+          }
+          const response = await fetch(`${settings.ApiUrl}/deleteUser`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ senha: senhaConf.value }),
+          });
 
+          if (response.ok) {
+            iconConfir.classList.add("fa-circle-check");
+            iconConfir.classList.remove("fa-exclamation-triangle");
+            pConfir.innerHTML = "Conta excluida com sucesso!";
+            senhaConf.style.display = "none";
+            confBtn.style.display = "none";
+            const mensagem = await response.text();
+            if (document.location.pathname.endsWith("/perfil.html")) {
+              setTimeout(() => {
+                window.location.href = "/index.html";
+              }, 1500);
+            }
+          } else {
+            console.error("Erro ao salvar os dados:", response.status);
+          }
+        } catch (error) {
+          console.error("Erro na requisição:", error);
+        }
+      });
+    });
+  }
   getUser();
 
   userPic.addEventListener("click", function () {
@@ -122,7 +195,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         } else {
           window.location.href = usuario.redirect;
         }
-
       } catch (error) {
         console.error(error);
       }
@@ -175,9 +247,9 @@ document.addEventListener("DOMContentLoaded", async function () {
       }
       return;
     }
-      setTimeout(() => {
-        getUser();
-      }, 200);
+    setTimeout(() => {
+      getUser();
+    }, 200);
     senhaDiv.style.display = "none";
     nomeDiv.style.display = "none";
     idadeDiv.style.display = "none";

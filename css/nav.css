@@ -47,13 +47,67 @@
   display: flex;
   flex-direction: row;
 }
-
 #sairDiv {
   align-items: center;
   display: flex;
   flex-direction: row;
 }
-
+#confirmarSenha{
+  display: none;
+}
+#senhaDiv {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  transition: all 0.3s ease-in-out;
+}	
+#iconConf{
+  display: flex;
+  justify-content: center;
+  font-size: 70px;
+  margin-bottom: 10%;
+  color: var(--cor-secundaria);
+  transition: all 0.3s ease-in-out;
+}
+#confBody{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column !important;
+  transition: all 0.3s ease-in-out;
+}
+#confBtn{
+  margin-left: 0;
+}
+#boxConfirmacao{
+  flex-wrap: wrap;
+  display: flex;
+  padding-inline: 1rem;
+  flex-direction: column;
+  justify-content: center !important;
+  align-content: center;
+  background-color: var(--cor-primaria);
+  width: auto;
+  border-radius: 10px;
+  height: 300px;
+  transition: all 0.3s ease-in-out;
+}
+#confirmarSenha.show{
+  width: 100%;
+  position: absolute;
+  z-index: 1000;
+  margin-top: 10%;
+  justify-content: center;
+  display: flex !important;
+  transition: all 0.3s ease-in-out;
+}
+#excContaDiv {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  transition: all 0.3s ease-in-out;
+}
 .iconeperfilbar {
   margin-right: 7px;
 }
@@ -424,6 +478,9 @@ button[type="submittt"] {
 
 @media (max-width: 799px) {
 
+  #confirmarSenha.show{
+    margin-top: 25%;
+  }
   #back i {
     font-size: 20px;
   }

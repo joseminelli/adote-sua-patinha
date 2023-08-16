@@ -140,6 +140,20 @@ class UserData {
     }
   }
 
+  async deleteUser (userId) {
+    try {
+      const query = {
+        text: "DELETE FROM usuarios WHERE id = $1",
+        values: [userId],
+      };
+      const result = await pool.query(query);
+      return result.rowCount;
+    } catch (error) {
+      console.error("Erro ao excluir usuário:", error);
+      throw error;
+    }
+  }
+
   async checkEmailExists(email) {
     try {
       const query = {

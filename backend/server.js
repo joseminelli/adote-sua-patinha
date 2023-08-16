@@ -185,6 +185,28 @@ app.post("/salvarPessoa", upload.single("file"), async (req, res) => {
   }
 });
 
+app.post("/deleteUser/", async (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  const senha = req.body.senha;
+  const userId = req.cookies["userId"];
+  const data = await userDataReader.getUserBySession(userId);
+  const user = await userDataReader.getUserById(data.user_id);
+  if(senha === user.senha){
+    try {
+      await userDataReader.deleteUser(user.id);
+      await userDataReader.deleteSessionByUserId(
+        data.session_id
+      );
+      res.send("true");
+    } catch (error) {
+      res.status(500).send("Erro ao excluir o usuário");
+    }
+  }else{
+    res.status(500).send("Senha incorreta");
+  }
+});
+  
+
 app.post("/editarPessoa", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
 
