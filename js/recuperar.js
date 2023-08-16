@@ -104,12 +104,99 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             if (inputValues.every((value) => value !== "")) {
               const codigo = inputValues.join("");
-              console.log(codigo);
-            } else {
-              section.classList.add("active");
-              setTimeout(() => {
-                section.classList.remove("active");
-              }, 3000);
+              const response3 = await fetch(
+                `${settings.ApiUrl}/checkCode/${codigo}/${email2}`,
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                }
+              );
+              const result2 = await response3.json();
+              if (data == true) {
+                logintxt.innerHTML = "Nova senha";
+                content.innerHTML = `
+                <div id="modalVerificação">
+                  <div id="verfIcon">
+                    <i class="fa-solid fa-lock"></i>
+                    <div id="asteriscos">
+                      <i class="fa-solid fa-asterisk"></i>
+                      <i class="fa-solid fa-asterisk"></i>
+                      <i class="fa-solid fa-asterisk"></i>
+                      <i class="fa-solid fa-asterisk"></i>
+                    </div>
+                  </div>
+                  <p id="verificaçãoP">Digite a sua nova senha</p>
+                  <input id='input1' type='password' />
+                  <button id="confirmar" type="submit">Confirmar</button>
+                </div>
+                `;
+                const input = document.getElementById("input1");
+                const confirmar = document.getElementById("confirmar");
+                confirmar.addEventListener("click", async function () {
+                  const senha = input.value;
+                  if (senha !== "") {
+                    const response4 = await fetch(
+                      `${settings.ApiUrl}/updatePassword/${email2}/${senha}`,
+                      {
+                        method: "GET",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                      }
+                    );
+                    const result3 = await response4.json();
+                    if (result3 == true) {
+                      titulom.innerHTML = "Sucesso!";
+                      descm.innerHTML = "Sua senha foi alterada com sucesso";
+                      iconm.innerHTML = '<i class="fas fa-check"></i>';
+                      modalbtn.innerHTML = "Ok";
+                      section.classList.add("active");
+                      setTimeout(() => {
+                        section.classList.remove("active");
+                        window.location.href = "/index.html";
+                        setTimeout(() => {
+                          titulom.innerHTML = "Formulário não enviado";
+                          descm.innerHTML =
+                            "Você precisa preencher todos os campos";
+                          iconm.innerHTML =
+                            '<i class="fas fa-circle-xmark"></i>';
+                          modalbtn.innerHTML = "Ok, vou verificar";
+                        }, 100);
+                      }, 3000);
+                    } else {
+                      console.log(data + " falha");
+                    }
+                  } else {
+                    titulom.innerHTML = "Devagar aí!";
+                    descm.innerHTML = "O email informado não é cadastrado";
+                    iconm.innerHTML =
+                      '<i class="fas fa-exclamation-triangle"></i>';
+                    modalbtn.innerHTML = "Ok";
+                    section.classList.add("active");
+                    setTimeout(() => {
+                      section.classList.remove("active");
+                    }, 3000);
+                  }
+                });
+              } else {
+                titulom.innerHTML = "Devagar aí!";
+                descm.innerHTML = "O códifo informado não é válido";
+                iconm.innerHTML =
+                  '<i class="fas fa-exclamation-triangle"></i>';
+                modalbtn.innerHTML = "Ok";
+                section.classList.add("active");
+                setTimeout(() => {
+                  section.classList.remove("active");
+                  setTimeout(() => {
+                    titulom.innerHTML = "Formulário não enviado";
+                    descm.innerHTML = "Você precisa preencher todos os campos";
+                    iconm.innerHTML = '<i class="fas fa-circle-xmark"></i>';
+                    modalbtn.innerHTML = "Ok, vou verificar";
+                  }, 100);
+                }, 3000);
+              }
             }
           });
         } else {

@@ -222,10 +222,25 @@ app.get("/checkEmail/:email", async (req, res) => {
     console.log("false");
   }
 });
-app.post("/checkCode/:code:email", async (req, res) => {
+app.get("/updatePassword/:email/:senha", async (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  const email = req.params.email;
+  const senha = req.params.senha;
+  const user = await userDataReader.getUserByEmail(email);
+  const check = await userDataReader.updatePassword(user, senha);
+  console.log(check);
+  if (check) {
+    res.status(200).send("true");
+    console.log("true");
+    await userDataReader.deleteCode(email);
+  } else {
+    res.status(500).send("false");
+    console.log("false");
+  }
+});
+app.post("/checkCode/:code/:email", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const code = req.params.code;
-  const email = req.params.email;
   const check = await userDataReader.checkCodeExists(code);
   if (check) {
     res.status(200).send("true");
@@ -239,7 +254,7 @@ app.post("/enviarCodigo/:email", async (req, res) => {
   const email = req.params.email;
   const verificationCode = generateVerificationCode();
   userDataReader.createCode(verificationCode, email);
-  
+
   const msg = {
     to: email,
     from: "adotesuapatinha@gmail.com",

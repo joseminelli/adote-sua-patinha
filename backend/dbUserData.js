@@ -34,6 +34,38 @@ class UserData {
       throw error;
     }
   }
+  async deleteCode(email) {
+    try {
+      const query = {
+        text: "DELETE FROM reset_password WHERE email = $1",
+        values: [email],
+      };
+      const result = await pool.query(query);
+      return result.rowCount; // Número de linhas excluídas
+    } catch (error) {
+      console.error("Erro ao excluir código por email:", error);
+      throw error;
+    }
+  }
+  async updatePassword(userP, senha) {
+    try {
+      const query = {
+        text: "UPDATE usuarios SET senha = $1 WHERE id = $2",
+        values: [senha, userP.id],
+      };
+      const result = await pool.query(query);
+      
+      if (result.rowCount > 0) {
+        return true;
+      } else {
+        throw new Error("Nenhuma linha foi afetada. A senha não foi atualizada.");
+      }
+    } catch (error) {
+      console.error("Erro ao atualizar usuário:", error);
+      throw error;
+    }
+  }
+  
 
   async loginUser(email, senha) {
     try {
@@ -150,11 +182,24 @@ class UserData {
     }
   }
 
+  async getUserByEmail(email) {
+    try {
+      const query = {
+        text: "SELECT * FROM usuarios WHERE email = $1",
+        values: [email],
+      };
+      const result = await pool.query(query);
+      return result.rows[0];
+    } catch (error) {
+      console.error("Erro ao buscar usuário por email:", error);
+      throw error;
+    }
+  }
   
   async getNextPassCode() {
     try {
       const query = {
-        text: "SELECT MAX(id) + 1 AS reset_password FROM sessions",
+        text: "SELECT MAX(id) + 1 AS next_id FROM reset_password",
       };
       const result = await pool.query(query);
       return result.rows[0].next_id || 1;
@@ -164,6 +209,19 @@ class UserData {
     }
   }
 
+  async checkCodeExists(code) {
+    try {
+      const query = { 
+        text: "SELECT * FROM reset_password WHERE code = $1",
+        values: [code],
+      };
+      const result = await pool.query(query);
+      return result.rows.length > 0;
+    } catch (error) {
+      console.error("Erro ao verificar sessão:", error);
+      throw error;
+    }
+  }
 async createCode(code, email) {
   try {
     const id = await this.getNextPassCode();
