@@ -9,7 +9,7 @@ const port = process.env.POSTGRES_PORT || 5432;
 
 const { v4: uuidv4 } = require("uuid");
 const pool = new Pool({
-  //ssl: true,
+  ssl: true,
   user: user,
   host: host,
   database: database,

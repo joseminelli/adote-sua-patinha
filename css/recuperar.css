@@ -10,7 +10,26 @@
 ::-webkit-scrollbar {
   width: 8px;
 }
-
+#verificaçãoP {
+  font-size: 15px;
+  width: 300px;
+  display: inline;
+  margin-top: 4px;
+}
+#email{
+  font-size: 15px;
+  width: 300px;
+  color: var(--cor-secundaria) !important;
+  display: inline-flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  text-decoration: underline;
+}
+#textoVerificação{
+  text-align: center;
+  justify-content: center;
+  display: inline;
+}
 ::-webkit-scrollbar-track {
   background: transparent;
 }
@@ -266,12 +285,6 @@ p {
   justify-content: center;
 }
 
-#verificaçãoP {
-  font-size: 14px;
-  justify-self: center;
-  width: 200px;
-  margin-top: 4px;
-}
 
 #inputv2:focus,
 #inputv3:focus,

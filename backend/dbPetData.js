@@ -5,7 +5,7 @@ const database = process.env.POSTGRES_DATABASE || "AdoteSuaPatinha";
 const password = process.env.POSTGRES_PASSWORD || "Zequinha2005";
 const port = process.env.POSTGRES_PORT || 5432;
 const pool = new Pool({
-   // ssl: true,
+    ssl: true,
     user: user,
     host: host,
     database: database,

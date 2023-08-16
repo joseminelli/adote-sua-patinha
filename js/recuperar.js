@@ -81,7 +81,9 @@ document.addEventListener("DOMContentLoaded", async function () {
               <i class="fa-solid fa-asterisk"></i>
             </div>
           </div>
-          <p id="verificaçãoP">Mandamos um código no seu email, digite ele abaixo</p>
+          <div id="textoVerificação">
+            <p id="verificaçãoP">Digite o código enviado para o seu </p><span id="email">email</span>
+          </div>
           <div id='inputvs'>
             <input id='inputv' type='text' maxLength="1" />
             <input id='inputv2' type='text' maxLength="1" />
@@ -91,6 +93,14 @@ document.addEventListener("DOMContentLoaded", async function () {
           <button id="confirmar" type="submit">Confirmar</button>
         </div>
         `;
+        document.getElementById("email").addEventListener("click", function() {
+          const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+          if (isMobile) {
+            window.location.href = "mailto:";
+          } else {
+            window.open("https://mail.google.com/");
+          }
+        });
           const inputs = ["inputv", "inputv2", "inputv3", "inputv4"];
           const confirmar = document.getElementById("confirmar");
           inputs.map((id) => {
