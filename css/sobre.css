@@ -168,6 +168,7 @@ details {
   transition: max-height 0.7s ease-in-out;
 }
 
+
 details + details {
   margin-top: 20px;
 }
