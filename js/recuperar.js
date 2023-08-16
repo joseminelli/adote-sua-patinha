@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 });
               } else {
                 titulom.innerHTML = "Devagar aí!";
-                descm.innerHTML = "O códifo informado não é válido";
+                descm.innerHTML = "O código informado não é válido";
                 iconm.innerHTML =
                   '<i class="fas fa-exclamation-triangle"></i>';
                 modalbtn.innerHTML = "Ok";

@@ -152,7 +152,7 @@ app.post("/salvarPessoa", upload.single("file"), async (req, res) => {
   const senha = req.body.senha;
   const imagem = req.body.imagem;
   const checkEmailExists = await userDataReader.checkEmailExists(email);
-  if (checkEmailExists) {
+  if (!checkEmailExists) {
     const newId = uuidv4();
 
     const newUsuario = {
