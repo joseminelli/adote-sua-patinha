@@ -151,33 +151,37 @@ app.post("/salvarPessoa", upload.single("file"), async (req, res) => {
   const email = req.body.email.trim().toLowerCase();
   const senha = req.body.senha;
   const imagem = req.body.imagem;
+  const checkEmailExists = await userDataReader.checkEmailExists(email);
+  if (checkEmailExists) {
+    const newId = uuidv4();
 
-  const newId = uuidv4();
+    const newUsuario = {
+      id: newId,
+      name: nome,
+      age: idade,
+      regiao: regiao,
+      telefone: telefone,
+      email: email,
+      senha: senha,
+      image: imagem,
+      ong: "não",
+    };
+    const idSessao = await userDataReader.sessionId(newId);
+    res.cookie("userId", idSessao.session_id, {
+      maxAge: 604800000, // 1 semana
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    });
 
-  const newUsuario = {
-    id: newId,
-    name: nome,
-    age: idade,
-    regiao: regiao,
-    telefone: telefone,
-    email: email,
-    senha: senha,
-    image: imagem,
-    ong: "não",
-  };
-  const idSessao = await userDataReader.sessionId(newId);
-  res.cookie("userId", idSessao.session_id, {
-    maxAge: 604800000, // 1 semana
-    httpOnly: true,
-    secure: true,
-    sameSite: "none",
-  });
-
-  try {
-    await userDataReader.createUser(newUsuario);
-    res.send("Dados salvos com sucesso");
-  } catch (error) {
-    res.status(500).send("Erro ao salvar os dados");
+    try {
+      await userDataReader.createUser(newUsuario);
+      res.send("Dados salvos com sucesso");
+    } catch (error) {
+      res.status(500).send("Erro ao salvar os dados");
+    }
+  } else {
+    res.status(500).send("Email já cadastrado");
   }
 });
 
