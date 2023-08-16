@@ -643,6 +643,28 @@ document.addEventListener("DOMContentLoaded", function () {
                 body: JSON.stringify(data),
               })
                 .then(function (response) {
+                  
+                  if (response == "Email já cadastrado") {
+                    hamster.classList.remove("active");
+                    section.classList.add("active");
+                    loader.style.display = "none";
+                    titulom.innerHTML = "Email está em uso";
+                    descm.innerHTML = "";
+                    iconm.classList.add("fa-circle-xmark");
+                    iconm.classList.remove("fa-circle-check");
+                    modalbtn.style.display = "none";
+                    setTimeout(function () {
+                      section.classList.remove("active");
+                      titulom.innerHTML = "Formulário não enviado";
+                      descm.innerHTML =
+                        "Você precisa preencher todos os campos e colocar uma imagem";
+                      iconm.classList.remove("fa-circle-check");
+                      iconm.classList.add("fa-circle-xmark");
+                      modalbtn.style.display = "block";
+                    }, 1500);
+                    throw new Error("Erro ao salvar os dados.");
+                    return
+                  }
                   if (!response.ok) {
                     hamster.classList.remove("active");
                     section.classList.add("active");
