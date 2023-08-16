@@ -641,8 +641,6 @@ button[type="submit"]:hover {
   align-items: center;
   justify-content: center;
 }
-.search-wrapper.active {
-}
 
 .search-wrapper .input-holder {
   height: 70px;
@@ -853,8 +851,6 @@ button[type="submit"]:hover {
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-  }
-  .search-wrapper.active {
   }
 
   .search-wrapper .input-holder {

@@ -2,28 +2,12 @@ import settings from "./settings.js";
 
 $(document).ready(async function () {
   const malitoLink = $("#malitoLink");
-  const loader = $("#loader");
-  const hamster = $("#hamster");
+  const loader = $(".loader2");
   const box = $("#box");
-
-  loader.css("display", "flex");
-  hamster.addClass("active");
-
+  const loadingimage = $("#loading-image");
   try {
     const response = await fetch(`${settings.ApiUrl}/mural`);
     const data = await response.json();
-
-    if (data) {
-      setTimeout(function () {
-        hamster.removeClass("active");
-        setTimeout(function () {
-          loader.css("display", "none");
-        }, 300);
-      }, 300);
-    } else {
-      loader.css("display", "flex");
-      hamster.addClass("active");
-    }
 
     const url = new URL(window.location.href);
     const numpet = url.searchParams.get("pet");
@@ -48,13 +32,20 @@ $(document).ready(async function () {
       }
 
       box.css("justify-content", "left");
+
       const picElement = $("#imagem");
       const picElement2 = $("#imagem2");
       const celElement = $("#desc");
       const bairroElement = $("#raca");
       const idadeElement = $("#idade");
       const nomeElement = $("#name");
-      data.html("Data de cadastro: " +"  " + petInfo.data);
+      data.html("Data de cadastro: " + "  " + petInfo.data);
+      loadingimage.css("display", "none");
+      loader.css("display", "none");
+      nomeElement.css("display", "block");
+      idadeElement.css("display", "block");
+      bairroElement.css("display", "block");
+      celElement.css("display", "block");
       nomeElement.html(petInfo.name);
       idadeElement.html(petInfo.age + " anos");
       bairroElement.html(petInfo.raca);
