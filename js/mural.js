@@ -1,16 +1,12 @@
 import settings from "./settings.js";
 var login = localStorage.getItem("login");
 const taNoMural = document.getElementById("formm2");
-const loader = document.getElementById("loader");
-const hamster = document.getElementById("hamster");
 const minFiltro = document.getElementById("minFiltro");
 const formm2 = document.getElementById("formm2");
 const formHeader = document.getElementById("formHeader");
 const content = document.getElementById("content");
 const section = document.getElementById("modalNovo");
 var mobile = false;
-loader.style.display = "flex";
-hamster.classList.add("active");
 
 var racaDog = [
   "Golden",
@@ -158,14 +154,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     .catch((error) => {
       console.error("Erro ao obter os municípios:", error);
     });
-  /*neverBtn.addEventListener("click", function () {
-    localStorage.setItem("consciente", "true");*/
   section.classList.remove("active");
-  // });
-  /* if (abrirModal != "true") {
-    section.classList.add("active");
-  }*/
-  let loginId;
   const chkFavoritos = document.getElementById("chkFavoritos");
   const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
   const textoMural = document.getElementById("textoMural");
@@ -177,15 +166,28 @@ document.addEventListener("DOMContentLoaded", async function () {
   var data = await response.json();
 
   if (data) {
+    const petsf = document.getElementById("petsf");
     setTimeout(function () {
-      hamster.classList.remove("active");
-      setTimeout(function () {
-        loader.style.display = "none";
-      }, 300);
-    }, 300);
+      petsf.innerHTML = "";
+    }, 1000);
   } else {
-    loader.style.display = "flex";
-    hamster.classList.add("active");
+    const petsf = document.getElementById("petsf");
+    petsf.innerHTML = `
+    <div class="loading-image"></div>
+    <div class="loading-image"></div>
+    <div class="loading-image"></div>
+    <div class="loading-image"></div>
+    <div class="loading-image"></div>
+    <div class="loading-image"></div>
+    <div class="loading-image"></div>
+    <div class="loading-image"></div>
+    <div class="loading-image"></div>
+    <div class="loading-image"></div>
+    <div class="loading-image"></div>
+    <div class="loading-image"></div>
+    <div class="loading-image"></div>
+    <div class="loading-image"></div>
+    `;
   }
 
   var qtdPets = data.pets.length;
@@ -249,123 +251,125 @@ document.addEventListener("DOMContentLoaded", async function () {
       } else {
         nextPageBtn.disabled = false;
       }
-
+      //AQUI
       const petsContainer = document.getElementById("petsf");
-      petsContainer.innerHTML = "";
 
       if (petsFiltrados.length === 0) {
         textoMural.textContent =
           "Nenhum pet disponível com os filtros selecionados.";
         return;
       }
-
-      for (let i = startIndex; i < endIndex; i++) {
-        if (i >= petsFiltrados.length) {
-          break;
-        }
-
-        const pet = petsFiltrados[i];
-        const petId = pet.id.toString();
-        FindUser(petId).then((user) => {
-          
-          const a2 = document.createElement("a");
-          a2.setAttribute("href", "perfilpf.html" + "?pet=" + petId);
-
-          const picfotopeti = document.createElement("img");
-          picfotopeti.setAttribute("id", petId);
-          picfotopeti.src = pet.image;
-
-          const favoritoBtn = document.createElement("button");
-          favoritoBtn.classList.add("btn-favorito");
-          favoritoBtn.classList.add("botaofav" + petId);
-          favoritoBtn.dataset.petId = petId;
-          favoritoBtn.classList.add("posiciona-favorito");
-          favoritoBtn.classList.add("heart-btn");
-
-          if (favoritos.includes(petId)) {
-            favoritoBtn.classList.add("favoritado");
-
-            if (apenasFavoritos) {
-              if (a2.parentNode) {
-                a2.parentNode.classList.add("encolher");
-              }
-            }
+      setTimeout(function () {
+        petsContainer.innerHTML = ``;
+        for (let i = startIndex; i < endIndex; i++) {
+          if (i >= petsFiltrados.length) {
+            break;
           }
 
-          favoritoBtn.addEventListener("click", function () {
-            const petId = this.dataset.petId;
-            const container = this.parentNode;
+          const pet = petsFiltrados[i];
+          const petId = pet.id.toString();
+          FindUser(petId).then((user) => {
+            const a2 = document.createElement("a");
+            a2.setAttribute("href", "perfilpf.html" + "?pet=" + petId);
+
+            const picfotopeti = document.createElement("img");
+            picfotopeti.setAttribute("id", petId);
+            picfotopeti.src = pet.image;
+
+            const favoritoBtn = document.createElement("button");
+            favoritoBtn.classList.add("btn-favorito");
+            favoritoBtn.classList.add("botaofav" + petId);
+            favoritoBtn.dataset.petId = petId;
+            favoritoBtn.classList.add("posiciona-favorito");
+            favoritoBtn.classList.add("heart-btn");
 
             if (favoritos.includes(petId)) {
-              favoritos.splice(favoritos.indexOf(petId), 1);
-              this.classList.remove("favoritado");
+              favoritoBtn.classList.add("favoritado");
 
-              if (container) {
-                if (apenasFavoritos) {
-                  container.classList.add("encolher");
+              if (apenasFavoritos) {
+                if (a2.parentNode) {
+                  a2.parentNode.classList.add("encolher");
                 }
-
-                setTimeout(function () {
-                  if (container.parentNode) {
-                    container.parentNode.removeChild(container);
-                  }
-                  atualizarFiltro();
-                }, 300);
-              } else {
-                atualizarFiltro();
               }
-            } else {
-              favoritos.push(petId);
-              this.classList.add("favoritado");
-              setTimeout(function () {
-                atualizarFiltro();
-              }, 200);
             }
 
-            localStorage.setItem("favoritos", JSON.stringify(favoritos));
+            favoritoBtn.addEventListener("click", function () {
+              const petId = this.dataset.petId;
+              const container = this.parentNode;
+
+              if (favoritos.includes(petId)) {
+                favoritos.splice(favoritos.indexOf(petId), 1);
+                this.classList.remove("favoritado");
+
+                if (container) {
+                  if (apenasFavoritos) {
+                    container.classList.add("encolher");
+                  }
+
+                  setTimeout(function () {
+                    if (container.parentNode) {
+                      container.parentNode.removeChild(container);
+                    }
+                    atualizarFiltro();
+                  }, 300);
+                } else {
+                  atualizarFiltro();
+                }
+              } else {
+                favoritos.push(petId);
+                this.classList.add("favoritado");
+                setTimeout(function () {
+                  atualizarFiltro();
+                }, 200);
+              }
+
+              localStorage.setItem("favoritos", JSON.stringify(favoritos));
+            });
+
+            const container = document.createElement("div");
+            container.classList.add("imagem-container");
+            container.appendChild(favoritoBtn);
+            container.appendChild(a2);
+            a2.appendChild(picfotopeti);
+            //AQUI
+            petsContainer.appendChild(container);
+            if (user.ong == "sim") {
+              const seloImg = document.createElement("img");
+              seloImg.classList.add("selo");
+              seloImg.src =
+                "https://cdn.discordapp.com/attachments/933499827638124575/1138222343349600321/selo.png";
+              container.appendChild(seloImg);
+            }
+
+            petsDisponiveis++;
           });
-
-          const container = document.createElement("div");
-          container.classList.add("imagem-container");
-          container.appendChild(favoritoBtn);
-          container.appendChild(a2);
-          a2.appendChild(picfotopeti);
-          petsContainer.appendChild(container);
-          if (user.ong == "sim") {
-            const seloImg = document.createElement("img");
-            seloImg.classList.add("selo");
-            seloImg.src = "https://cdn.discordapp.com/attachments/933499827638124575/1138222343349600321/selo.png";
-            container.appendChild(seloImg);
+        }
+        if (apenasFavoritos) {
+          if (favoritos.length > 0) {
+            textoMural.textContent = "Seus pets favoritos:";
+          } else {
+            textoMural.textContent = "Você não tem pets favoritos.";
           }
-
-          petsDisponiveis++;
-        });
-      }
-
-      if (apenasFavoritos) {
-        if (favoritos.length > 0) {
-          textoMural.textContent = "Seus pets favoritos:";
         } else {
-          textoMural.textContent = "Você não tem pets favoritos.";
+          if (
+            regiaoSelecionada === "0" &&
+            idadeSelecionada === "" &&
+            especieSelecionada === "0" &&
+            racaSelecionada === "0"
+          ) {
+            textoMural.textContent = "Pets disponíveis:";
+          } else if (petsDisponiveis > 0) {
+            textoMural.textContent =
+              "Foram encontrados " +
+              petsDisponiveis +
+              " pets nessas condições:";
+          } else {
+            textoMural.textContent =
+              "Nenhum pet disponível com os filtros selecionados.";
+          }
         }
-      } else {
-        if (
-          regiaoSelecionada === "0" &&
-          idadeSelecionada === "" &&
-          especieSelecionada === "0" &&
-          racaSelecionada === "0"
-        ) {
-          textoMural.textContent = "Pets disponíveis:";
-        } else if (petsDisponiveis > 0) {
-          textoMural.textContent =
-            "Foram encontrados " + petsDisponiveis + " pets nessas condições:";
-        } else {
-          textoMural.textContent =
-            "Nenhum pet disponível com os filtros selecionados.";
-        }
-      }
+      }, 1000);
     }
-
     const prevPageBtn = document.getElementById("prevPage");
     const nextPageBtn = document.getElementById("nextPage");
     const currentPageSpan = document.getElementById("currentPage");

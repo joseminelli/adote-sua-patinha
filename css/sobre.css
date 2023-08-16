@@ -168,7 +168,6 @@ details {
   transition: max-height 0.7s ease-in-out;
 }
 
-
 details + details {
   margin-top: 20px;
 }
@@ -180,6 +179,7 @@ details[open] {
   background-color: var(--cor-primaria);
   border: 3.5px solid var(--cor-secundaria);
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+  transition: max-height 0.7s ease-in-out;
 }
 
 details p {

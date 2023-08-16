@@ -1,5 +1,6 @@
 import settings from "./settings.js";
 const userName = document.getElementById("userName");
+const loading = document.querySelectorAll(".loading");
 const userMsg = document.getElementById("userMsg");
 const userPic = document.getElementById("userPic");
 const userEx = document.getElementById("userEx");
@@ -67,6 +68,13 @@ async function getUser() {
     }
     userPic.src = usuario.image;
     if (!mobile) {
+      loading.forEach((element) => {
+        element.style.display = "none";
+      });
+      userMsg.style.display = "flex";
+      userName.style.display = "flex";
+      userEx.style.display = "flex";
+      userPic.style.border = "var(--cor-secundaria) 3px solid"
       userMsg.innerHTML = "Bem vindo ‎" + "‎ ";
       userName.innerHTML = " " + usuario.name;
       userEx.innerHTML = "!";
@@ -76,6 +84,7 @@ async function getUser() {
       userPic.style.marginRight = "0px";
     } else {
       userPic.style.width = "39px";
+      userPic.style.border = "var(--cor-secundaria) 3px solid"
       userPic.style.height = "39px";
       userPic.style.marginLeft = "0px";
     }
@@ -86,6 +95,7 @@ async function getUser() {
 document.addEventListener("DOMContentLoaded", async function () {
   toggleClassOnDeviceWidth();
   verificarCookie();
+
   userPic.style.width = "35px";
   userPic.style.height = "35px";
 

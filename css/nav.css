@@ -19,7 +19,15 @@
   position: absolute;
   left: 5%;
 }
-
+#userMsg {
+  display: none;
+}
+#userNome {
+  display: none;
+}
+#userMsg {
+  display: none;
+}
 #header {
   display: flex;
   align-items: center;
@@ -56,38 +64,38 @@
   flex-direction: row;
   transition: all 0.3s ease-in-out;
 }
-.iconeperfilbar{
+.iconeperfilbar {
   position: absolute;
   top: 13%;
   left: 8%;
   margin: 0;
 }
-.iconeperfilbar2{
+.iconeperfilbar2 {
   position: absolute;
   top: 45%;
   left: 8%;
   margin: 0;
 }
-.iconeperfilbar3{
+.iconeperfilbar3 {
   position: absolute;
   top: 75%;
   left: 8%;
   margin: 0;
 }
-.iconeperfilbar4{
+.iconeperfilbar4 {
   position: absolute;
   top: 20%;
   left: 8%;
   margin: 0;
 }
-.iconeperfilbar5{
+.iconeperfilbar5 {
   position: absolute;
   top: 67%;
   left: 8%;
   margin: 0;
 }
-.textomenupessoa{
-margin-left: 8%;
+.textomenupessoa {
+  margin-left: 8%;
 }
 #excContaDiv {
   align-items: center;
@@ -97,10 +105,10 @@ margin-left: 8%;
   flex-direction: row;
   transition: all 0.3s ease-in-out;
 }
-#confirmarSenha{
+#confirmarSenha {
   display: none;
 }
-#pConfir{
+#pConfir {
   text-align: center;
 }
 #senhaDiv {
@@ -109,8 +117,8 @@ margin-left: 8%;
   justify-content: center;
   flex-direction: column;
   transition: all 0.3s ease-in-out;
-}	
-#iconConf{
+}
+#iconConf {
   display: flex;
   justify-content: center;
   font-size: 70px;
@@ -118,17 +126,17 @@ margin-left: 8%;
   color: var(--cor-secundaria);
   transition: all 0.3s ease-in-out;
 }
-#confBody{
+#confBody {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column !important;
   transition: all 0.3s ease-in-out;
 }
-#confBtn{
+#confBtn {
   margin-left: 0;
 }
-#boxConfirmacao{
+#boxConfirmacao {
   flex-wrap: wrap;
   display: flex;
   padding-inline: 1rem;
@@ -141,7 +149,7 @@ margin-left: 8%;
   height: 300px;
   transition: all 0.3s ease-in-out;
 }
-#confirmarSenha.show{
+#confirmarSenha.show {
   width: 100%;
   position: absolute;
   z-index: 1000;
@@ -180,6 +188,41 @@ margin-left: 8%;
   width: 100%;
   box-sizing: border-box;
   transition: 0.3s;
+}
+#mensagemNome {
+  display: flex;
+  flex-direction: row;
+}
+.loading {
+  display: block;
+}
+.loading-main-text {
+  height: 15px;
+  width: 200px;
+  margin-bottom: 10px;
+  background: #ececec;
+  background-image: -webkit-linear-gradient(
+    left,
+    #ececec 0px,
+    #ddd 40px,
+    #ececec 80px
+  );
+  background-image: -o-linear-gradient(
+    left,
+    #ececec 0px,
+    #ddd 40px,
+    #ececec 80px
+  );
+  background-image: linear-gradient(
+    90deg,
+    #ececec 0px,
+    #ddd 40px,
+    #ececec 80px
+  );
+  background-size: 250px;
+  border-radius: 10px;
+  -webkit-animation: shine-loading-container-items 2s infinite ease-out;
+  animation: shine-loading-container-items 2s infinite ease-out;
 }
 
 .inputsn:focus {
@@ -240,9 +283,32 @@ margin-left: 8%;
 }
 
 #userPic {
-  border: var(--cor-secundaria) 3px solid;
+  border: #00000000 3px solid;
   z-index: 1;
   width: 50px;
+  background: #ececec;
+  background-image: -webkit-linear-gradient(
+    left,
+    #ececec 0px,
+    #ddd 40px,
+    #ececec 80px
+  );
+  background-image: -o-linear-gradient(
+    left,
+    #ececec 0px,
+    #ddd 40px,
+    #ececec 80px
+  );
+  background-image: linear-gradient(
+    90deg,
+    #ececec 0px,
+    #ddd 40px,
+    #ececec 80px
+  );
+  background-size: 250px;
+  border-radius: 10px;
+  -webkit-animation: shine-loading-container-items 2s infinite ease-out;
+  animation: shine-loading-container-items 2s infinite ease-out;
   height: 50px;
   border-radius: 50%;
   margin-left: 30px;
@@ -516,11 +582,14 @@ button[type="submittt"] {
     max-height: 80px;
     height: 60px;
   }
+
+  .loading {
+    display: none !important;
+  }
 }
 
 @media (max-width: 799px) {
-
-  #confirmarSenha.show{
+  #confirmarSenha.show {
     margin-top: 25%;
   }
   #back i {

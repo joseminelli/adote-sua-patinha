@@ -24,7 +24,24 @@
 ::-webkit-scrollbar-track {
   background: transparent;
 }
-
+.loading-image {
+  margin-left: 50px;
+  margin-top: 30px;
+  justify-content: center;
+  grid-row: auto;
+  display: inline-block;
+  grid-column: auto;
+  border-radius: 10px;
+  width: 200px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  height: 300px;
+  background-image: -webkit-linear-gradient(left, #e0e0e0da 0px, #f4f4f4e5 40px, #e0e0e0da 80px);
+  background-image: -o-linear-gradient(left, #e0e0e0da 0px, #f4f4f4e5 40px, #e0e0e0da 80px);
+  background-image: linear-gradient(90deg, #e0e0e0da 0px, #f4f4f4e5 40px, #e0e0e0da 80px);
+  background-size: 250px;
+  -webkit-animation: shine-loading-image 2s infinite ease-out;
+          animation: shine-loading-image 2s infinite ease-out;
+}
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: var(--cor-secundaria);
@@ -524,7 +541,10 @@ button[type="submit"]:hover {
     height: 20px;
     border-top: 2px solid var(--cor-secundaria);
   }
-
+  .loading-image {
+    width: 150px;
+    height: 250px;
+  }
   .mural img {
     margin-left: 35px;
     margin-top: 30px;
@@ -567,6 +587,11 @@ button[type="submit"]:hover {
 }
 
 @media (max-width: 427px) {
+  
+  .loading-image {
+    width: 120px;
+    height: 200px;
+  }
   .mural img {
     margin-left: 35px;
     margin-top: 30px;
@@ -576,5 +601,23 @@ button[type="submit"]:hover {
     border-radius: 10px;
     width: 120px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  }
+}
+@-webkit-keyframes shine-loading-image {
+  0% {
+    background-position: -32px;
+  }
+  40%, 100% {
+    background-position: 208px;
+  }
+}
+
+
+@keyframes shine-loading-image {
+  0% {
+    background-position: -32px;
+  }
+  40%, 100% {
+    background-position: 208px;
   }
 }
