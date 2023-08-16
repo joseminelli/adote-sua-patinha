@@ -269,7 +269,7 @@ p {
   background-color: var(--cor-primaria);
   box-shadow: 5px 5px 5px rgba(3, 3, 3, 0.3);
   padding: 2rem;
-  border-radius: 10px;
+  border-radius: 20px;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -482,7 +482,6 @@ button[type="submit"]:hover {
     background-color: var(--cor-primaria);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     padding: 2rem;
-    border-radius: 10px;
     overflow: hidden;
   }
 
@@ -574,7 +573,6 @@ button[type="submit"]:hover {
     background-color: var(--cor-primaria);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     padding: 2rem;
-    border-radius: 10px;
     overflow: hidden;
   }
 

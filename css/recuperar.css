@@ -7,9 +7,6 @@
   font-family: "Kumbh Sans", sans-serif;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
 #verificaçãoP {
   font-size: 15px;
   width: 300px;
@@ -30,25 +27,11 @@
   justify-content: center;
   display: inline;
 }
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: var(--cor-secundaria);
-  transition: all 300ms;
-}
-
 #esqueceu {
   margin: 5px 0px -14px 0px !important;
   font-size: 13px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #0e4072;
-  transition: all 300ms;
-}
 
 .password-icon {
   width: 1.2rem;
@@ -222,7 +205,7 @@ p {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   padding: 3rem;
   margin-top: 0%;
-  border-radius: 10px;
+  border-radius: 20px;
   width: 20%;
   overflow: auto;
 }
@@ -359,9 +342,7 @@ button[type="submit"]:hover {
 
   .content {
     background-color: var(--cor-primaria);
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 2.5rem;
-    border-radius: 10px;
     margin-top: 100%;
     overflow: auto;
     width: auto;
@@ -403,9 +384,7 @@ button[type="submit"]:hover {
 
   .content {
     background-color: var(--cor-primaria);
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 2rem;
-    border-radius: 10px;
     width: auto;
     margin-top: 100%;
     overflow: auto;
@@ -432,10 +411,8 @@ button[type="submit"]:hover {
 @media (min-width: 798px) and (max-width: 1500px) {
   .content {
     background-color: var(--cor-primaria);
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 2rem;
     padding-top: 2.5em;
-    border-radius: 10px;
     width: auto;
     overflow: auto;
     width: auto;
@@ -461,10 +438,8 @@ button[type="submit"]:hover {
 
   .content {
     background-color: var(--cor-primaria);
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
     padding: 2rem;
     margin-top: 0%;
-    border-radius: 10px;
     width: 20%;
     overflow: auto;
   }
@@ -473,10 +448,8 @@ button[type="submit"]:hover {
 @media (max-width: 390px) {
   .content {
     background-color: var(--cor-primaria);
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 2rem;
     padding-top: 2.5em;
-    border-radius: 10px;
     width: auto;
     overflow: auto;
     width: auto;

@@ -7,14 +7,6 @@
   font-family: 'Kumbh Sans', sans-serif;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
 #dataCadastro{
   position: absolute;
   width: 100%;
@@ -111,9 +103,10 @@ p {
   background-color: var(--cor-primaria);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   padding: 2rem;
-  border-radius: 10px;
+  border-radius: 20px;
   min-width: 10%;
   overflow: auto;
+  transition: all 300ms ease-in-out;
 }
 
 .content img {
@@ -366,7 +359,6 @@ button[type="submit"]:hover {
     background-color: var(--cor-primaria);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 2rem;
-    border-radius: 10px;
     margin-top: 30%;
     min-width: 45%;
     overflow: auto;
@@ -390,7 +382,6 @@ button[type="submit"]:hover {
     background-color: var(--cor-primaria);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 2rem;
-    border-radius: 10px;
     margin-top: 30%;
     min-width: 45%;
     overflow: auto;
