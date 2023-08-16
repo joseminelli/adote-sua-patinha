@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 }
               );
               const result2 = await response3.json();
-              if (data == true) {
+              if (result2 == true) {
                 logintxt.innerHTML = "Nova senha";
                 content.innerHTML = `
                 <div id="modalVerificação">
