@@ -46,11 +46,56 @@
   align-items: center;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
 }
 #sairDiv {
   align-items: center;
   display: flex;
+  justify-content: center;
   flex-direction: row;
+  transition: all 0.3s ease-in-out;
+}
+.iconeperfilbar{
+  position: absolute;
+  top: 13%;
+  left: 8%;
+  margin: 0;
+}
+.iconeperfilbar2{
+  position: absolute;
+  top: 45%;
+  left: 8%;
+  margin: 0;
+}
+.iconeperfilbar3{
+  position: absolute;
+  top: 75%;
+  left: 8%;
+  margin: 0;
+}
+.iconeperfilbar4{
+  position: absolute;
+  top: 20%;
+  left: 8%;
+  margin: 0;
+}
+.iconeperfilbar5{
+  position: absolute;
+  top: 67%;
+  left: 8%;
+  margin: 0;
+}
+.textomenupessoa{
+margin-left: 8%;
+}
+#excContaDiv {
+  align-items: center;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: row;
+  transition: all 0.3s ease-in-out;
 }
 #confirmarSenha{
   display: none;
@@ -100,12 +145,6 @@
   margin-top: 10%;
   justify-content: center;
   display: flex !important;
-  transition: all 0.3s ease-in-out;
-}
-#excContaDiv {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
   transition: all 0.3s ease-in-out;
 }
 .iconeperfilbar {
@@ -178,7 +217,7 @@
 }
 
 .dropdown-content-nav.transform {
-  width: 150px;
+  width: 180px;
   opacity: 1;
   padding: 5px 20px;
   margin-top: 73px;
