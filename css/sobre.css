@@ -152,10 +152,11 @@ details:first-child {
 }
 
 details {
-  height: 130px;
   width: 90%;
   min-height: 5px;
   max-width: 700px;
+  height: auto !important;
+  max-height: 200px;
   padding: 45px 70px 45px 45px;
   margin: 0 auto;
   position: relative;
@@ -164,7 +165,7 @@ details {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   box-sizing: border-box;
-  transition: all 0.3s;
+  transition: max-height 0.7s ease-in-out;
 }
 
 details + details {
@@ -174,6 +175,7 @@ details + details {
 details[open] {
   height: auto !important;
   min-height: 50px;
+  max-height: 800px;
   background-color: var(--cor-primaria);
   border: 3.5px solid var(--cor-secundaria);
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
