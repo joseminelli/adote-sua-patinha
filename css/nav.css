@@ -100,6 +100,9 @@ margin-left: 8%;
 #confirmarSenha{
   display: none;
 }
+#pConfir{
+  text-align: center;
+}
 #senhaDiv {
   align-items: center;
   display: flex;
@@ -133,8 +136,8 @@ margin-left: 8%;
   justify-content: center !important;
   align-content: center;
   background-color: var(--cor-primaria);
-  width: auto;
-  border-radius: 10px;
+  width: 335px;
+  border-radius: 24px;
   height: 300px;
   transition: all 0.3s ease-in-out;
 }
@@ -187,7 +190,7 @@ margin-left: 8%;
   display: none;
   margin-left: 40px;
   position: absolute;
-  border-radius: 10px;
+  border-radius: 20px;
   justify-content: center;
   background-color: var(--cor-primaria);
   width: 0px;
@@ -291,7 +294,7 @@ margin-left: 8%;
   border: none;
   width: 400px;
   height: 600px;
-  border-radius: 10px;
+  border-radius: 20px;
   z-index: 7;
   transition: all 0.3s ease-in-out;
   cursor: pointer;

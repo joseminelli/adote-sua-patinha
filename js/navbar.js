@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const confBtn = document.getElementById("confBtn");
     const pConfir = document.getElementById("pConfir");
     const iconConfir = document.getElementById("iconConfir");
+    const boxConfirmacao = document.getElementById("boxConfirmacao");
     overlayrr.addEventListener("click", function () {
       overlayrr.classList.toggle("show");
       confirmarSenha.classList.toggle("show");
@@ -126,12 +127,14 @@ document.addEventListener("DOMContentLoaded", async function () {
           }
           const userPets = await response2.json();
           if(userPets.length > 0){
+            boxConfirmacao.style.height = "250px";
             pConfir.innerHTML = "Você não pode excluir sua conta enquanto tiver pets cadastrados!";
             iconConfir.classList.add("fa-exclamation-triangle");
             iconConfir.classList.remove("fa-circle-check");
             confBtn.style.display = "none";
             senhaConf.style.display = "none";
             setTimeout(() => {
+              boxConfirmacao.style.height = "335px";
               confirmarSenha.classList.toggle("show");
               overlayrr.classList.toggle("show");
               pConfir.innerHTML = "Confirme sua senha para excluir a conta:";
@@ -154,6 +157,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             iconConfir.classList.remove("fa-exclamation-triangle");
             pConfir.innerHTML = "Conta excluida com sucesso!";
             senhaConf.style.display = "none";
+            boxConfirmacao.style.height = "250px";
+            boxConfirmacao.style.width = "250px";
             confBtn.style.display = "none";
             const mensagem = await response.text();
             if (document.location.pathname.endsWith("/perfil.html")) {
