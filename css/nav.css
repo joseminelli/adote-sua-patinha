@@ -198,6 +198,7 @@
 }
 .loading-main-text {
   height: 15px;
+  display: block;
   width: 200px;
   margin-bottom: 10px;
   background: #ececec;
@@ -227,6 +228,7 @@
 
 .loading-min-text {
   height: 15px;
+  display: block;
   width: 100px;
   margin-bottom: 10px;
   background: #ececec;
@@ -346,7 +348,8 @@
   0% {
     background-position: -100px;
   }
-  40%, 100% {
+  40%,
+  100% {
     background-position: 140px;
   }
 }
@@ -355,7 +358,8 @@
   0% {
     background-position: -100px;
   }
-  40%, 100% {
+  40%,
+  100% {
     background-position: 140px;
   }
 }

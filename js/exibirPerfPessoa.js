@@ -1,7 +1,7 @@
 import settings from "./settings.js";
 const nome = document.getElementById("name");
 const idade = document.getElementById("idade");
-const loading = document.querySelectorAll(".loading");
+const loading = document.querySelectorAll(".loading2");
 const bairro1 = document.getElementById("bairro");
 const telefone1 = document.getElementById("telefone2");
 const divpets = document.getElementById("fotoPet");
@@ -116,6 +116,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (usuario.ong === "sim") {
       verificado.classList.add("fa-circle-check");
     }
+    setTimeout(function () {
       const name = document.getElementById("name");
       const idade = document.getElementById("idade");
       const bairro = document.getElementById("bairro");
@@ -134,6 +135,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       var imgElement = document.getElementById("pic");
       imgElement.src = usuario.image;
+    }, 300);
   } catch (error) {
     console.error(error);
   }

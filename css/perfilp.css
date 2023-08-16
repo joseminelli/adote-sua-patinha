@@ -358,6 +358,10 @@ button[type="submit"]:hover {
     width: 150px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   }
+  .loading-image {
+    width: 150px;
+    height: 250px;
+  }
   .content {
     background-color: var(--cor-primaria);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -437,6 +441,10 @@ button[type="submit"]:hover {
     border-radius: 10px;
     width: 105px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  }
+  .loading-image {
+    width: 105px;
+    height: 200px;
   }
 }
 
