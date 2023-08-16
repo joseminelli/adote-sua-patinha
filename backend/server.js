@@ -148,7 +148,7 @@ app.post("/salvarPessoa", upload.single("file"), async (req, res) => {
   const idade = req.body.idade;
   const regiao = req.body.bairro;
   const telefone = req.body.telefone;
-  const email = req.body.email;
+  const email = req.body.email.trim().toLowerCase();
   const senha = req.body.senha;
   const imagem = req.body.imagem;
 
