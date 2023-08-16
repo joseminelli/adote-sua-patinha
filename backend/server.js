@@ -212,7 +212,7 @@ app.post("/editarPessoa", async (req, res) => {
 
 app.get("/checkEmail/:email", async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
-  const email = req.params.email;
+  const email = req.params.email.trim().toLowerCase();
   const check = await userDataReader.checkEmailExists(email);
   if (check) {
     res.status(200).send("true");
@@ -251,14 +251,14 @@ app.post("/checkCode/:code/:email", async (req, res) => {
   }
 });
 app.post("/enviarCodigo/:email", async (req, res) => {
-  const email = req.params.email;
+  var email = req.params.email;
   const verificationCode = generateVerificationCode();
   userDataReader.createCode(verificationCode, email);
 
   const msg = {
     to: email,
     from: "adotesuapatinha@gmail.com",
-    subject: "Código de Verificação",
+    subject: `Código de Verificação [ ${verificationCode} ]`,
     html: `
     <p>Olá,</p>
     <p>Seu código de verificação é: <strong>${verificationCode}</strong></p>

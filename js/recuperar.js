@@ -85,10 +85,10 @@ document.addEventListener("DOMContentLoaded", async function () {
             <p id="verificaçãoP">Digite o código enviado para o seu </p><span id="email">email</span>
           </div>
           <div id='inputvs'>
-            <input id='inputv' type='text' maxLength="1" />
-            <input id='inputv2' type='text' maxLength="1" />
-            <input id='inputv3' type='text' maxLength="1" />
-            <input id='inputv4' type='text' maxLength="1" />
+            <input id='inputv' type='number' maxLength="1" />
+            <input id='inputv2' type='number' maxLength="1" />
+            <input id='inputv3' type='number' maxLength="1" />
+            <input id='inputv4' type='number' maxLength="1" />
           </div>
           <button id="confirmar" type="submit">Confirmar</button>
         </div>
@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
       } else {
         titulom.innerHTML = "Devagar aí!";
-        descm.innerHTML = "O email informado não é cadastrado";
+        descm.innerHTML = "O email informado não é válido";
         iconm.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
         modalbtn.innerHTML = "Ok";
         section.classList.add("active");
