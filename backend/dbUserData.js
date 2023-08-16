@@ -150,6 +150,36 @@ class UserData {
     }
   }
 
+  
+  async getNextPassCode() {
+    try {
+      const query = {
+        text: "SELECT MAX(id) + 1 AS reset_password FROM sessions",
+      };
+      const result = await pool.query(query);
+      return result.rows[0].next_id || 1;
+    } catch (error) {
+      console.error("Erro ao obter próximo ID de pet:", error);
+      throw error;
+    }
+  }
+
+async createCode(code, email) {
+  try {
+    const id = await this.getNextPassCode();
+    const timestamp = new Date(); 
+    const query = {
+      text: 'INSERT INTO reset_password (id, code, email, created_at) VALUES ($1, $2, $3, $4)',
+      values: [id, code, email, timestamp],
+    };
+    const result = await pool.query(query);
+    return result.rowCount; // Retorna o número de linhas afetadas (deve ser 1 se o registro for inserido com sucesso)
+  } catch (error) {
+    console.error('Erro ao adicionar código de redefinição de senha:', error);
+    throw error;
+  }
+}
+
   async createUser(newUser) {
     try {
       const query = {

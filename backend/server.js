@@ -222,10 +222,24 @@ app.get("/checkEmail/:email", async (req, res) => {
     console.log("false");
   }
 });
+app.post("/checkCode/:code:email", async (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  const code = req.params.code;
+  const email = req.params.email;
+  const check = await userDataReader.checkCodeExists(code);
+  if (check) {
+    res.status(200).send("true");
+    console.log("true");
+  } else {
+    res.status(500).send("false");
+    console.log("false");
+  }
+});
 app.post("/enviarCodigo/:email", async (req, res) => {
   const email = req.params.email;
   const verificationCode = generateVerificationCode();
-
+  userDataReader.createCode(verificationCode, email);
+  
   const msg = {
     to: email,
     from: "adotesuapatinha@gmail.com",
@@ -240,7 +254,7 @@ app.post("/enviarCodigo/:email", async (req, res) => {
   };
 
   try {
-    //await sgMail.send(msg);
+    await sgMail.send(msg);
     res.status(200).send("true");
   } catch (error) {
     console.error(error);
