@@ -308,7 +308,7 @@ app.get("/logout", async (req, res) => {
   const userId = req.cookies["userId"];
   const data = await userDataReader.getUserBySession(userId);
   const sessao = await userDataReader.getSessionByUserId(data.user_id);
-  
+  console.log(sessao);
   if (sessao) {
     res.cookie("userId", sessao.session_id, {
       expires: new Date(Date.now() - 604800000), // -1 semana
