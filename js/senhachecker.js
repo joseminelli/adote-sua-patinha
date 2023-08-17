@@ -4,23 +4,32 @@ const strengthTxt = document.querySelector("#strength");
 function Strength(senha){
     let i = 0;
     var ehmaior = 0;
-    if(senha.length > 5 || ehmaior != 1){
+    var temMaiuscula = 0;
+    var temNumero = 0;
+    var temSimbolo = 0;
+    if(senha.length > 5 && ehmaior != 1){
         i++;
         ehmaior = 1;
     }else{
         ehmaior = 0;
     }
-    if((senha.match(/[a-z]/)) && (senha.match(/[A-Z]/))){
+    if((senha.match(/[a-z]/)) && (senha.match(/[A-Z]/))&& temMaiuscula != 1){
         i++;
+        temMaiuscula = 1;
+    } else {
+        temMaiuscula = 0;
     }
-    if(senha.match(/\d+/)){
+    if(senha.match(/\d+/)&& temNumero != 1){
         i++;
+        temNumero = 1;
+    } else {
+        temNumero = 0;
     }
-    if(senha.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/)){
+    if(senha.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/)&& temSimbolo != 1){
         i++;
-    }
-    if(senha.length > 10){
-        i++;
+        temSimbolo = 1;
+    } else {
+        temSimbolo = 0;
     }
     return i;
 }
