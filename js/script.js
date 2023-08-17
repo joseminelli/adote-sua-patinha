@@ -97,8 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.location.pathname.endsWith("/index.html") ||
     document.location.pathname.endsWith("/")
   ) {
-    if (redirecionarUsuario() == "true") {
-      console.log("redirecionando");
+    if (redirecionarUsuario()) {
       window.location.href = "main.html";
     }
   }
