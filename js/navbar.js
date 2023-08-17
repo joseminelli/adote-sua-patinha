@@ -41,10 +41,10 @@ async function verificarCookie() {
 
     if (response.ok) {
       const data = await response.json();
-      if (data.redirect) {
-        window.location.href = data.redirect;
-      } else if (data.id) {
-        //userId = data.id;
+      if (data.success === true) {
+        window.location.href = "/main.html";
+      } else {
+        window.location.href = "/index.html";
       }
     } else {
       console.error("Erro ao verificar o cookie:", response.status);
@@ -95,6 +95,7 @@ async function getUser() {
 }
 document.addEventListener("DOMContentLoaded", async function () {
   toggleClassOnDeviceWidth();
+  
   verificarCookie();
 
   userPic.style.width = "35px";

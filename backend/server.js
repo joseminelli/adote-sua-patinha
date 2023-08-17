@@ -73,10 +73,10 @@ app.post("/verificarSemCookie", async (req, res) => {
   try {
     const sessionExists = await userDataReader.checkSessionExists(userId);
     if (!sessionExists) {
-      res.json({ redirect: "/index.html" });
+      res.json({ success: true, id: data.user_id });
       return;
     } else {
-      res.json({ redirect: "/main.html" });
+      res.json({ success: false });
       return;
     }
   } catch (error) {

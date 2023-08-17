@@ -55,9 +55,12 @@ async function verificarCookie() {
 
     if (response.ok) {
       const data = await response.json();
-      if (data.redirect) {
-        window.location.href = data.redirect;
-      } else if (data.id) {
+      if (data.success === true) {
+        window.location.href = "/main.html";
+      } else {
+        window.location.href = "/index.html";
+      }
+      if (data.id) {
         userId = data.id;
       }
     } else {

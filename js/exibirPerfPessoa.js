@@ -19,8 +19,10 @@ async function verificarCookie() {
 
     if (response.ok) {
       const data = await response.json();
-      if (data.redirect) {
-        window.location.href = data.redirect;
+      if (data.success === true) {
+        window.location.href = "/main.html";
+      } else {
+        window.location.href = "/index.html";
       }
     } else {
       console.error("Erro ao verificar o cookie:", response.status);
