@@ -42,9 +42,13 @@ async function verificarCookie() {
     if (response.ok) {
       const data = await response.json();
       if (data.success === true) {
-        window.location.href = "/main.html";
+        if(window.location.pathname.endsWith("/index.html")){
+          window.location.href = "/main.html";
+        }
       } else {
-        window.location.href = "/index.html";
+        if(!window.location.pathname.endsWith("/index.html")){
+          window.location.href = "/index.html";
+        }
       }
     } else {
       console.error("Erro ao verificar o cookie:", response.status);
