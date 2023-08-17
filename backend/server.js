@@ -76,7 +76,7 @@ app.post("/verificarSemCookie", async (req, res) => {
       res.json({ redirect: "/index.html" });
       return;
     } else {
-      res.json({ id: data.user_id });
+      res.json({ redirect: "/main.html" });
       return;
     }
   } catch (error) {
