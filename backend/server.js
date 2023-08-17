@@ -306,12 +306,11 @@ app.post("/enviarCodigo/:email", async (req, res) => {
 app.get("/logout", async (req, res) => {
   const userId = req.cookies["userId"];
   const data = await userDataReader.getUserBySession(userId);
-  const usuario = await userDataReader.getUserById(data.user_id);
+  const sessao = await userDataReader.getSessionByUserId(data.user_id);
   
-  var idSessao = await userDataReader.sessionId(userId);
   console.log(idSessao);
   if (usuario) {
-    res.cookie("userId", idSessao.session_id, {
+    res.cookie("userId", sessao.session_id, {
       expires: new Date(Date.now() - 604800000), // -1 semana
       httpOnly: true,
       secure: true,

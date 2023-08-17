@@ -113,6 +113,19 @@ class UserData {
       throw error;
     }
   }
+  async getSessionByUserId(userId) {
+    try {
+      const query = {
+        text: "SELECT * FROM sessions WHERE user_id = $1 ORDER BY date DESC LIMIT 1",
+        values: [userId],
+      };
+      const result = await pool.query(query);
+      return result.rows[0];
+    } catch (error) {
+      console.error("Erro ao buscar sessão por ID do usuário:", error);
+      throw error;
+    }
+  }
   async getUserBySession(sessionId) {
     try {
       const query = {
