@@ -305,7 +305,7 @@ app.post("/enviarCodigo/:email", async (req, res) => {
 
 app.get("/logout", async (req, res) => {
   const userId = req.cookies["userId"];
-
+  console.log(userId);
   const data = await userDataReader.getUserBySession(userId);
   const usuario = await userDataReader.getUserById(data.user_id);
   if (usuario) {
