@@ -89,7 +89,8 @@ app.post("/verificarSemCookie", async (req, res) => {
 app.post("/verificarCookieTF", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   const userId = req.cookies["userId"];
-  if (userId) {
+  const session = userDataReader.checkSessionExists(userId);
+  if (session) {
     res.send("true");
   } else {
     res.send("false");
