@@ -355,25 +355,29 @@ button[type="submit"]:hover {
   }
 }
 
-@media (max-width: 650px) {
-
-  #compartiharDiv {
-    margin-top: -12%;
-  }
-
+@media (max-width: 1200px) {
   .mural img {
-    margin-top: 10%;
-    margin-left: 40px;
-    border-radius: 10px;
-    width: 150px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    width: 160px;
   }
+}
 
-  .loading-image {
+@media (max-width: 1100px) {
+  .mural img {
     width: 150px;
-    height: 250px;
   }
+}
 
+@media (max-width: 1000px) {
+  .mural img {
+    width: 110px;
+  }
+}
+
+@media (max-width: 800px) {
+  .mural img {
+    width: 110px;
+  }
+  
   .content {
     background-color: var(--cor-primaria);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
@@ -381,6 +385,27 @@ button[type="submit"]:hover {
     margin-top: 30%;
     min-width: 45%;
     overflow: auto;
+  }
+}
+@media (max-width: 800px) {
+  #dataCadastro {
+    margin-top: 20%;
+  }
+}
+@media (max-width: 700px) {
+  #dataCadastro {
+    margin-top: 26%;
+  }
+}
+@media (max-width: 650px) {
+
+  #compartiharDiv {
+    margin-top: -12%;
+  }
+
+  .loading-image {
+    width: 150px;
+    height: 250px;
   }
 
   #contato {
@@ -466,10 +491,6 @@ button[type="submit"]:hover {
 @media (max-width: 799px) {
   .section-p1 {
     padding: 40px;
-  }
-
-  #dataCadastro {
-    margin-top: 26%;
   }
 
   #linha-vertical {
