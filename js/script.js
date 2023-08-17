@@ -45,22 +45,24 @@ var racaDog = [
 
 var racaCat = ["Persa", "Siamês", "Sphynx"];
 
-async function verificarCookieTF() {
+async function verificarCookie() {
   try {
-    const response = await fetch(
-      `${settings.ApiUrl}/verificarCookieTF`,
-      {
-        method: "POST",
-        credentials: "include",
-      }
-    );
+    const response = await fetch(`${settings.ApiUrl}/verificarSemCookie`, {
+      method: "POST",
+      credentials: "include",
+    });
 
     if (response.ok) {
-      const temcookie = await response.text();
-      if (temcookie == true) {
-        return true;
+      const data = await response.json();
+      console.log(data);
+      if (data.success === true) {
+        if(window.location.pathname.endsWith("/index.html")){
+          window.location.href = "/main.html";
+        }
       } else {
-        return false;
+        if(!window.location.pathname.endsWith("/index.html")){
+          window.location.href = "/index.html";
+        }
       }
     } else {
       console.error("Erro ao verificar o cookie:", response.status);
@@ -70,38 +72,20 @@ async function verificarCookieTF() {
   }
 }
 
-async function redirecionarUsuario() {
-  try {
-    const temCookie = await verificarCookieTF();
-    if (temCookie) {
-      return true;
-    } else {
-      return false;
-    }
-  } catch (error) {
-    console.error("Erro ao verificar o cookie:", error);
-  }
-}
 function validarEmail(email) {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regex.test(email);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  if(localtion.pathname.endsWith("/index.html")){
+    verificarCookie();
+  }
   var enviarButton = document.getElementById("enviar"); // Botão de pet
   var enviarButton2 = document.getElementById("enviar2"); // Botão de pessoas
   var loginButton = document.getElementById("login"); // Botão do cadastro de pessoas
   const pictureInput = document.getElementById("picture");
 
-  if (
-    document.location.pathname.endsWith("/index.html") ||
-    document.location.pathname.endsWith("/")
-  ) {
-    if (redirecionarUsuario() == "true") {
-      console.log("redirecionando");
-      window.location.href = "main.html";
-    }
-  }
   if (overlay) {
     overlay.addEventListener("click", () => section.classList.remove("active"));
     if (closeBtn) {
@@ -123,9 +107,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (enviarButton) {
     const racadiv = document.getElementById("racaDiv");
     racadiv.style.display = "none";
-    if (redirecionarUsuario() == "false") {
-      window.location.href = "index.html";
-    }
     const content = document.getElementById("contentb");
     if (mobile == false) {
       content.style.maxHeight = "500px";
@@ -463,20 +444,10 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Erro ao obter os municípios:", error);
       });
     //enviarButton2.disabled = true;
-    if (redirecionarUsuario() == "true") {
-      window.location.href = "main.html";
-    }
     const pictureInput = document.getElementById("picture");
     var selectIdade = document.getElementById("idade2");
     const emailDiv = document.getElementById("emailDiv");
     const senhaDiv = document.getElementById("senhaDiv");
-    if (redirecionarUsuario() == "true") {
-      emailDiv.style.display = "none";
-      senhaDiv.style.display = "none";
-    } else {
-      emailDiv.style.display = "block";
-      senhaDiv.style.display = "block";
-    }
     for (var i = 18; i <= 100; i++) {
       var option = document.createElement("option");
       option.setAttribute("value", i);
@@ -516,29 +487,6 @@ document.addEventListener("DOMContentLoaded", function () {
       bairro2.addEventListener("click", function (event) {
         bairro2.style.borderColor = "#165ea8";
       });
-      if (redirecionarUsuario() === "true") {
-        if (nome2 === "" || telefone === "" || bairro === "0") {
-          if (pictureImage.childElementCount !== 1) {
-            pictureInput.style.borderColor = "#ff2727";
-          } else {
-            pictureInput.style.borderColor = "#fff";
-          }
-          if (nome2 === "") {
-            nome4.style.borderColor = "#ff2727";
-          }
-          if (telefone === "") {
-            telefone2.style.borderColor = "#ff2727";
-          }
-          if (bairro === "0") {
-            bairro2.style.borderColor = "#ff2727";
-          }
-          section.classList.add("active");
-
-          loader.style.display = "none";
-          hamster.classList.remove("active");
-          return;
-        }
-      } else {
         if (
           nome2 === "" ||
           telefone === "" ||
@@ -573,7 +521,6 @@ document.addEventListener("DOMContentLoaded", function () {
           section.classList.add("active");
           return;
         }
-      }
 
       if (pictureImage.childElementCount === 1) {
         const imgElement = pictureImage.querySelector("#picture__img");
