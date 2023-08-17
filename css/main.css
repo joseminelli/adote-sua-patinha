@@ -10,6 +10,7 @@
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 .selo {
   position: absolute;
   top: -5%;
@@ -21,9 +22,11 @@
   z-index: 1;
   box-shadow: none !important;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .loading-image {
   margin-left: 50px;
   margin-top: 30px;
@@ -40,8 +43,9 @@
   background-image: linear-gradient(90deg, #e0e0e0da 0px, #f4f4f4e5 40px, #e0e0e0da 80px);
   background-size: 250px;
   -webkit-animation: shine-loading-image 2s infinite ease-out;
-          animation: shine-loading-image 2s infinite ease-out;
+  animation: shine-loading-image 2s infinite ease-out;
 }
+
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: var(--cor-secundaria);
@@ -77,6 +81,7 @@ h1 {
   line-height: 64px;
   color: #222;
 }
+
 .encolher {
   animation: encolherAnimacao 0.3s forwards;
 }
@@ -86,15 +91,18 @@ h1 {
     opacity: 1;
     transform: scale(1);
   }
+
   100% {
     opacity: 0;
     transform: scale(0);
   }
 }
+
 .imagem-container {
   position: relative;
   display: inline-block;
 }
+
 #top {
   width: 0;
   height: 0;
@@ -172,19 +180,19 @@ h1 {
   width: 0;
 }
 
-.checkbox.style-c input:checked ~ .checkbox__checkmark {
+.checkbox.style-c input:checked~.checkbox__checkmark {
   background-color: var(--cor-secundaria);
 }
 
-.checkbox.style-c input:checked ~ .checkbox__checkmark:after {
+.checkbox.style-c input:checked~.checkbox__checkmark:after {
   opacity: 1;
 }
 
-.checkbox.style-c:hover input ~ .checkbox__checkmark {
+.checkbox.style-c:hover input~.checkbox__checkmark {
   background-color: #fcfcfc2c;
 }
 
-.checkbox.style-c:hover input:checked ~ .checkbox__checkmark {
+.checkbox.style-c:hover input:checked~.checkbox__checkmark {
   background-color: var(--cor-secundaria);
 }
 
@@ -261,10 +269,12 @@ p {
   height: 250px;
   transition: all 0.3s ease-in-out;
 }
-#minFiltro{
+
+#minFiltro {
   rotate: 0deg;
   transition: all 0.3s ease-in-out;
 }
+
 .content {
   background-color: var(--cor-primaria);
   box-shadow: 5px 5px 5px rgba(3, 3, 3, 0.3);
@@ -435,15 +445,57 @@ button[type="submit"]:hover {
   justify-content: center;
   grid-row: auto;
   grid-column: auto;
+  background-size: 0px 0px;
   border-radius: 10px;
+  transition: all 0.3s ease-in-out;
   width: 200px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.picfotopeti {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  border-radius: 10px;
+  z-index: 8;
+  width: 200px;
+  height: 0%;
+  background: linear-gradient(to bottom, transparent, #074f97);
+  transition: all 0.3s ease-in-out;
+}
+
+.imagem-container:hover .gradient-overlay {
+  height: 25%;
+  background: linear-gradient(to bottom, transparent, #074f97);
 }
 
 #formHeader {
   position: relative;
   top: 0;
   z-index: 0;
+}
+
+.nomepet {
+  color: #ffffff00;
+  font-size: 20px;
+  font-weight: 500;
+  z-index: 9;
+  position: absolute;
+  bottom: 0;
+  left: 40%;
+  transform: translateX(-50%);
+  /* Centraliza horizontalmente */
+  transition: all 0.3s ease-in-out;
+}
+
+.imagem-container:hover .nomepet {
+  color: #ffffff;
 }
 
 #filtroH3 {
@@ -469,10 +521,12 @@ button[type="submit"]:hover {
   .mural {
     margin-right: 35px;
   }
+
   #textoMural {
     font-size: 17px;
   }
 }
+
 @media (max-width: 800px) {
   .content {
     margin-top: 5%;
@@ -492,10 +546,20 @@ button[type="submit"]:hover {
     gap: 2rem;
   }
 }
+
 @media screen and (max-width: 576px) {
   .box-select {
     flex-direction: column;
     gap: 5px;
+  }
+
+  .imagem-container:hover .nomepet {
+    color: #ffffff00;
+  }
+
+  .imagem-container:hover .gradient-overlay {
+    height: 0%;
+    background: linear-gradient(to bottom, transparent, rgb(0, 0, 0));
   }
 }
 
@@ -511,6 +575,7 @@ button[type="submit"]:hover {
     width: 40px !important;
     height: 40px !important;
   }
+
   .btn-favorito {
     top: 40px;
     left: 50px;
@@ -540,10 +605,12 @@ button[type="submit"]:hover {
     height: 20px;
     border-top: 2px solid var(--cor-secundaria);
   }
+
   .loading-image {
     width: 150px;
     height: 250px;
   }
+
   .mural img {
     margin-left: 35px;
     margin-top: 30px;
@@ -585,11 +652,12 @@ button[type="submit"]:hover {
 }
 
 @media (max-width: 427px) {
-  
+
   .loading-image {
     width: 120px;
     height: 200px;
   }
+
   .mural img {
     margin-left: 35px;
     margin-top: 30px;
@@ -601,11 +669,14 @@ button[type="submit"]:hover {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   }
 }
+
 @-webkit-keyframes shine-loading-image {
   0% {
     background-position: -32px;
   }
-  40%, 100% {
+
+  40%,
+  100% {
     background-position: 208px;
   }
 }
@@ -615,7 +686,9 @@ button[type="submit"]:hover {
   0% {
     background-position: -32px;
   }
-  40%, 100% {
+
+  40%,
+  100% {
     background-position: 208px;
   }
 }

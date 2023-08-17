@@ -268,12 +268,15 @@ document.addEventListener("DOMContentLoaded", async function () {
 
           const pet = petsFiltrados[i];
           const petId = pet.id.toString();
+          const petname = pet.name.toString();
           FindUser(petId).then((user) => {
             const a2 = document.createElement("a");
+            a2.setAttribute("class", "a2");
             a2.setAttribute("href", "perfilpf.html" + "?pet=" + petId);
 
             const picfotopeti = document.createElement("img");
             picfotopeti.setAttribute("id", petId);
+            picfotopeti.setAttribute("class", "picfotopeti");
             picfotopeti.src = pet.image;
 
             const favoritoBtn = document.createElement("button");
@@ -283,6 +286,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             favoritoBtn.classList.add("posiciona-favorito");
             favoritoBtn.classList.add("heart-btn");
 
+            const nomePet = document.createElement("p");
+            nomePet.classList.add("nomepet");
+            nomePet.textContent = petname;
             if (favoritos.includes(petId)) {
               favoritoBtn.classList.add("favoritado");
 
@@ -327,9 +333,13 @@ document.addEventListener("DOMContentLoaded", async function () {
             });
 
             const container = document.createElement("div");
+            const gradientoverlay = document.createElement("div");
+            gradientoverlay.classList.add("gradient-overlay");
             container.classList.add("imagem-container");
             container.appendChild(favoritoBtn);
             container.appendChild(a2);
+            a2.appendChild(nomePet);
+            a2.appendChild(gradientoverlay); 
             a2.appendChild(picfotopeti);
             //AQUI
             petsContainer.appendChild(container);
