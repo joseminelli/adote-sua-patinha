@@ -10,6 +10,11 @@
   background: var(--cor-secundaria);
 }
 
+#strenght{
+  font-weight: 300;
+  transition: all 0.3s ease;
+}
+
 #back i {
   color: var(--cor-secundaria);
   font-size: 25px;
@@ -130,12 +135,12 @@
   text-align: center;
 }
 #senhaDiv {
-  align-items: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
   transition: all 0.3s ease-in-out;
 }
+
 #iconConf {
   display: flex;
   justify-content: center;
