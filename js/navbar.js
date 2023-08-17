@@ -41,6 +41,7 @@ async function verificarCookie() {
 
     if (response.ok) {
       const data = await response.json();
+      console.log(data);
       if (data.success === true) {
         if(window.location.pathname.endsWith("/index.html")){
           window.location.href = "/main.html";
