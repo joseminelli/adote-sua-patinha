@@ -78,7 +78,7 @@ function validarEmail(email) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  if(localtion.pathname.endsWith("/index.html")){
+  if(location.pathname.endsWith("/index.html")){
     verificarCookie();
   }
   var enviarButton = document.getElementById("enviar"); // Botão de pet
