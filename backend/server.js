@@ -335,7 +335,6 @@ app.post("/login", async (req, res) => {
     console.log(idSessao);
     if (userId) {
       res.cookie("userId", idSessao.session_id, {
-        expires: new Date(Date.now() - 604800000), // 1 semana
         maxAge: 604800000, // 1 semana
         httpOnly: true,
         secure: true,
