@@ -14,6 +14,7 @@ $(document).ready(function() {
     inputProcura = $("#searchInput"),
     currentPage = $("#currentPage"),
     dataCadastro = $("#data");
+    inputsobre = $(".inputsobre");
 
   var darkModeEnabled = localStorage.getItem("darkModeEnabled");
 
@@ -54,6 +55,10 @@ $(document).ready(function() {
     }
     if (dataCadastro) {
       dataCadastro.css("color", "#fff")
+    }
+    if (inputsobre) {
+      inputsobre.css("color", "#fff")
+      inputsobre.css("background", "#282828")
     }
     if (iconProcura) {
       iconProcura.css("color", "#ffffff");
@@ -121,6 +126,10 @@ $(document).ready(function() {
     }
     if (inputProcura) {
       inputProcura.css("color", "#282828");
+    }
+    if (inputsobre) {
+      inputsobre.css("color", "#282828")
+      inputsobre.css("background", "#fff")
     }
     if (h1Sobre) {
       h1Sobre.css("color", "#282828");
