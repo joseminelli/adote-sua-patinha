@@ -72,7 +72,7 @@ $(document).ready(async function () {
     const shareData = {
       title: `Adote ${petInfo.name}!`	,
       text: `Olá, estou compartilhando o perfil do(a) ${petInfo.name} para que você possa adotá-lo(a)!`,
-      url: `https://www.adotesuapatinha.com/perfilpf.html?pet=${numpet}`,
+      url: `adotesuapatinha.com/perfilpf.html?pet=${numpet}`,
     };
     $("#compartilhar").click(function () {
       if (navigator.share) {
