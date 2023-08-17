@@ -69,7 +69,27 @@ $(document).ready(async function () {
         $("#pErro").css("color", "#fff");
       }
     }
+    const shareData = {
+      title: `Adote ${petInfo.name}!`	,
+      text: `Olá, estou compartilhando o perfil do ${petInfo.name} para que você possa adotá-lo!`,
+      url: `https://www.adotesuapatinha.com.br/perfilpf.html?pet=${numpet}`,
+    };
+    $("#compartilhar").click(function () {
+      if (navigator.share) {
+        navigator
+          .share(shareData)
+          .then(() => {
+            $("#resultPara").text("MDN shared successfully");
+          })
+          .catch((error) => {
+            $("#resultPara").text(`Error: ${error}`);
+          });
+      } else {
+        $("#resultPara").text("Web Share API not supported in this browser.");
+      }
+    });
   } catch (error) {
     console.error("Erro na requisição:", error);
   }
+  
 });

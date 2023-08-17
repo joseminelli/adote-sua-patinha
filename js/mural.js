@@ -341,7 +341,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             a2.appendChild(nomePet);
             a2.appendChild(gradientoverlay); 
             a2.appendChild(picfotopeti);
-            //AQUI
             petsContainer.appendChild(container);
             if (user.ong == "sim") {
               const seloImg = document.createElement("img");
