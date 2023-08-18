@@ -20,8 +20,6 @@ const idadeDiv = document.getElementById("idadeDiv");
 const telefoneDiv = document.getElementById("telefoneDiv");
 const editarpf = document.getElementById("editarpf");
 const iconpenvio = document.getElementById("iconpenvio");
-iconpenvio.style.display = "none";
-contente.style.zIndex = "0";
 
 function toggleClassOnDeviceWidth() {
   var screenWidth = window.innerWidth;
@@ -42,11 +40,11 @@ async function verificarCookie() {
     if (response.ok) {
       const data = await response.json();
       if (data.success === true) {
-        if(window.location.pathname.endsWith("/index.html")){
+        if (window.location.pathname.endsWith("/index.html")) {
           window.location.href = "/main.html";
         }
       } else {
-        if(!window.location.pathname.endsWith("/index.html")){
+        if (!window.location.pathname.endsWith("/index.html")) {
           window.location.href = "/index.html";
         }
       }
@@ -71,7 +69,7 @@ async function getUser() {
       throw new Error("Usuário não encontrado");
     }
     userPic.src = usuario.image;
-    
+
     if (!mobile) {
       loading.forEach((element) => {
         element.style.display = "none";
@@ -99,19 +97,21 @@ async function getUser() {
 }
 document.addEventListener("DOMContentLoaded", async function () {
   toggleClassOnDeviceWidth();
-  
+
   verificarCookie();
 
   userPic.style.width = "35px";
   userPic.style.height = "35px";
 
-  for (var i = 18; i <= 100; i++) {
-    var option = document.createElement("option");
-    option.setAttribute("value", i);
-    option.textContent = i;
-    document.getElementById("idade2").appendChild(option);
-  }
   if (window.location.pathname.endsWith("/perfil.html")) {
+    for (var i = 18; i <= 100; i++) {
+      var option = document.createElement("option");
+      option.setAttribute("value", i);
+      option.textContent = i;
+      document.getElementById("idade2").appendChild(option);
+    }
+    iconpenvio.style.display = "none";
+    contente.style.zIndex = "0";
     const excContaDiv = document.getElementById("excContaDiv");
     const confirmarSenha = document.getElementById("confirmarSenha");
     const senhaConf = document.getElementById("senhaConf");
@@ -203,7 +203,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   SairContaBtn.addEventListener("click", async function () {
     if (dropdowncontent.classList.contains("show")) {
-      
       try {
         const response = await fetch(`${settings.ApiUrl}/logout`, {
           credentials: "include",
@@ -223,128 +222,129 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   });
 
-  EditarBtn.addEventListener("click", function () {
-    contente.classList.toggle("show");
-    editarpf.classList.toggle("show");
-    overlayrr.classList.toggle("show");
-
-    contente.style.zIndex = "6";
-    if (dropdowncontent.classList.contains("show")) {
-      dropdowncontent.classList.remove("show");
-      setTimeout(() => {
-        dropdowncontent.classList.toggle("transform");
-      }, 1);
-    }
-  });
-
-  fecharEdit.addEventListener("click", function () {
-    if (contente.classList.contains("show")) {
+  if (editarpf) {
+    EditarBtn.addEventListener("click", function () {
       contente.classList.toggle("show");
       editarpf.classList.toggle("show");
       overlayrr.classList.toggle("show");
-    }
-  });
 
-  salvarEdit.addEventListener("click", async function () {
-    const senha = document.getElementById("senha");
-    const input2 = document.getElementById("input2");
-    const idade = document.getElementById("idade2");
-    const telefone = document.getElementById("telefone");
+      contente.style.zIndex = "6";
+      if (dropdowncontent.classList.contains("show")) {
+        dropdowncontent.classList.remove("show");
+        setTimeout(() => {
+          dropdowncontent.classList.toggle("transform");
+        }, 1);
+      }
+    });
 
-    if (senha.value == "" || input2.value == "" || telefone.value == "") {
-      if (senha.value == "") {
-        senha.style.borderColor = "red";
-      } else {
-        senha.style.borderColor = "#165ea8";
+    fecharEdit.addEventListener("click", function () {
+      if (contente.classList.contains("show")) {
+        contente.classList.toggle("show");
+        editarpf.classList.toggle("show");
+        overlayrr.classList.toggle("show");
       }
-      if (input2.value == "") {
-        input2.style.borderColor = "red";
-      } else {
-        input2.style.borderColor = "#165ea8";
-      }
-      if (telefone.value == "") {
-        telefone.style.borderColor = "red";
-      } else {
-        telefone.style.borderColor = "#165ea8";
-      }
-      return;
-    }
-    setTimeout(() => {
-      getUser();
-    }, 200);
-    senhaDiv.style.display = "none";
-    nomeDiv.style.display = "none";
-    idadeDiv.style.display = "none";
-    telefoneDiv.style.display = "none";
-    salvarEdit.style.display = "none";
-    h2Edit.style.display = "none";
-    fecharEdit.style.display = "none";
-    contente.style.height = "350px";
-    contente.style.borderRadius = "24px";
-    contente.style.width = "350px";
-    editarpf.style.justifyContent = "center";
-    editarpf.style.alignItems = "center";
-    iconpenvio.style.display = "flex";
+    });
+    salvarEdit.addEventListener("click", async function () {
+      const senha = document.getElementById("senha");
+      const input2 = document.getElementById("input2");
+      const idade = document.getElementById("idade2");
+      const telefone = document.getElementById("telefone");
+      const senhaDiv2 = document.getElementById("senhaDiv2");
 
-    setTimeout(() => {
-      contente.classList.toggle("show");
-      overlayrr.classList.toggle("show");
-      setTimeout(() => {
-        senhaDiv.style.display = "block";
-        nomeDiv.style.display = "block";
-        idadeDiv.style.display = "block";
-        telefoneDiv.style.display = "block";
-        salvarEdit.style.display = "block";
-        h2Edit.style.display = "block";
-        fecharEdit.style.display = "block";
-        editarpf.style.justifyContent = "right";
-        editarpf.style.alignItems = "flex-start";
-        contente.style.borderRadius = "10px";
-        contente.style.height = "600px";
-        if (mobile == true) {
-          contente.style.width = "300px";
+      if (senha.value == "" || input2.value == "" || telefone.value == "") {
+        if (senha.value == "") {
+          senha.style.borderColor = "red";
         } else {
-          contente.style.width = "400px";
+          senha.style.borderColor = "#165ea8";
         }
-        editarpf.style.display = "flex";
-        iconpenvio.style.display = "none";
-      }, 300);
-    }, 3000);
-
-    var data = {
-      nome: input2.value,
-      idade: idade.value,
-      telefone: telefone.value,
-      senha: senha.value,
-    };
-
-    try {
-      const response = await fetch(`${settings.ApiUrl}/editarPessoa`, {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        const mensagem = await response.text();
-        if (document.location.pathname.endsWith("/perfil.html")) {
-          if (document.location.pathname.endsWith("/perfil.html")) {
-            setTimeout(() => {
-              window.location.href = "/perfil.html";
-            }, 1500);
-          }
+        if (input2.value == "") {
+          input2.style.borderColor = "red";
+        } else {
+          input2.style.borderColor = "#165ea8";
         }
-      } else {
-        console.error("Erro ao salvar os dados:", response.status);
+        if (telefone.value == "") {
+          telefone.style.borderColor = "red";
+        } else {
+          telefone.style.borderColor = "#165ea8";
+        }
+        return;
       }
-    } catch (error) {
-      console.error("Erro na requisição:", error);
-    }
-  });
+      setTimeout(() => {
+        getUser();
+      }, 200);
+      senhaDiv2.style.display = "none";
+      nomeDiv.style.display = "none";
+      idadeDiv.style.display = "none";
+      telefoneDiv.style.display = "none";
+      salvarEdit.style.display = "none";
+      h2Edit.style.display = "none";
+      fecharEdit.style.display = "none";
+      contente.style.height = "350px";
+      contente.style.borderRadius = "24px";
+      contente.style.width = "350px";
+      editarpf.style.justifyContent = "center";
+      editarpf.style.alignItems = "center";
+      iconpenvio.style.display = "flex";
 
+      setTimeout(() => {
+        contente.classList.toggle("show");
+        overlayrr.classList.toggle("show");
+        setTimeout(() => {
+          senhaDiv2.style.display = "block";
+          nomeDiv.style.display = "block";
+          idadeDiv.style.display = "block";
+          telefoneDiv.style.display = "block";
+          salvarEdit.style.display = "block";
+          h2Edit.style.display = "block";
+          fecharEdit.style.display = "block";
+          editarpf.style.justifyContent = "right";
+          editarpf.style.alignItems = "flex-start";
+          contente.style.borderRadius = "10px";
+          contente.style.height = "600px";
+          if (mobile == true) {
+            contente.style.width = "300px";
+          } else {
+            contente.style.width = "400px";
+          }
+          editarpf.style.display = "flex";
+          iconpenvio.style.display = "none";
+        }, 300);
+      }, 3000);
+
+      var data = {
+        nome: input2.value,
+        idade: idade.value,
+        telefone: telefone.value,
+        senha: senha.value,
+      };
+
+      try {
+        const response = await fetch(`${settings.ApiUrl}/editarPessoa`, {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          const mensagem = await response.text();
+          if (document.location.pathname.endsWith("/perfil.html")) {
+            if (document.location.pathname.endsWith("/perfil.html")) {
+              setTimeout(() => {
+                window.location.href = "/perfil.html";
+              }, 1500);
+            }
+          }
+        } else {
+          console.error("Erro ao salvar os dados:", response.status);
+        }
+      } catch (error) {
+        console.error("Erro na requisição:", error);
+      }
+    });
+  }
   window.onclick = function (event) {
     if (
       !event.target.matches("#editarDiv") &&

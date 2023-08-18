@@ -89,6 +89,12 @@
 }
 .iconeperfilbar {
   position: absolute;
+  top: 35%;
+  left: 8%;
+  margin: 0;
+}
+.iconeperfilbarp {
+  position: absolute;
   top: 13%;
   left: 8%;
   margin: 0;
@@ -135,6 +141,7 @@
   text-align: center;
 }
 #senhaDiv {
+  align-items: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
