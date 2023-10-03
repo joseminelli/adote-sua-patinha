@@ -56,7 +56,7 @@ async function mandarEmail() {
     section2.classList.add("active");
     var message;
     const discordWebhookURL =
-      "https://discord.com/api/webhooks/1131327581459845292/AiE7O5HDjrv84eRO4TOuS_kkO3f3RfcbSndJXS1RSr4idOCPmqyf7JTbZ8IwharG_lbI";
+      "SUA_URL";
         if(userId){
              message = `Nome: ${params.nome}\nEmail: ${params.email}\nMensagem: ${params.mensagem}\nUser ID: ${userId}`;
         } else {
