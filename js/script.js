@@ -281,7 +281,7 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             var discordWebhookURL =
-              "https://discord.com/api/webhooks/1131715085803475035/YgNnzk2MRlOOn6oZLm8db7cfItEgZu7wdofOjq8-Wkl3esCT3m8P_syYf2G0CnuusKtA";
+              "SUA_URL";
 
             fetch(discordWebhookURL, {
               method: "POST",
@@ -554,7 +554,7 @@ document.addEventListener("DOMContentLoaded", function () {
           );
 
           var discordWebhookURL =
-            "https://discord.com/api/webhooks/1131716314889728031/_lFhU4lLLgenA8_7tkfn1LfeJDECfUfs9JPTEyFpK3dIPdG8W24TnNi30Mx8cRPrQzmA";
+            "SUA_URL";
 
           fetch(discordWebhookURL, {
             method: "POST",
