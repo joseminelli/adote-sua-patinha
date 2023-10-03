@@ -32,7 +32,7 @@ function verificarAutenticacao(req, res) {
 const fs = require("fs");
 
 sgMail.setApiKey(
-  "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"
+  "SUA_KEY"
 );
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
@@ -43,7 +43,6 @@ app.use(
   cors({
     credentials: true,
     origin: [
-      "https://adotesuapatinha.com",
       "http://127.0.0.1:5500/",
       "http://localhost:5500",
     ],
