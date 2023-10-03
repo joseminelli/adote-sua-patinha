@@ -159,7 +159,7 @@ if (overlay) {
       };
 
       var discordWebhookURL =
-        "https://discord.com/api/webhooks/1133197179239022602/8wP1pw_p9irBMw6KepZYW3H7E3UPeHBu9z9n0bpYbHgpgoPFPe4LPScjK-XMh5zoJ-cd";
+        "SUA_URL";
 
       var formData = new FormData();
       formData.append(
@@ -363,7 +363,7 @@ async function loadPosts() {
               };
 
               var discordWebhookURL =
-                "https://discord.com/api/webhooks/1133197179239022602/8wP1pw_p9irBMw6KepZYW3H7E3UPeHBu9z9n0bpYbHgpgoPFPe4LPScjK-XMh5zoJ-cd";
+                "SUA_URL";
 
               var formData = new FormData();
               formData.append(
@@ -419,7 +419,7 @@ var nomeresp = localStorage.getItem("nome2");
 
 function deletePost(id) {
   var discordWebhookURL =
-    "https://discord.com/api/webhooks/1133197179239022602/8wP1pw_p9irBMw6KepZYW3H7E3UPeHBu9z9n0bpYbHgpgoPFPe4LPScjK-XMh5zoJ-cd";
+    "SUA_URL";
 
   var formData = new FormData();
   formData.append("content", "> **POST DELETADO**" + "\n\n Post ID: " + id);
