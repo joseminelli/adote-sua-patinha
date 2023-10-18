@@ -49,3 +49,44 @@ O Adote Sua Patinha é uma iniciativa dedicada a conectar animais em busca de um
 | Azul      | ![#165ea8](https://via.placeholder.com/10/165EA8?text=+) `#165ea8 `|
 | Branco   | ![#FFFFFF](https://via.placeholder.com/10/FFFFFF?text=+) `#FFFFFF` |
 | Preto      | ![#282828](https://via.placeholder.com/10/282828?text=+) `#282828` |
+
+
+
+<h2>🦄 Equipe</h2>
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/joseminelli">
+        <img src="https://avatars.githubusercontent.com/u/54222151" width="100px;" alt="Foto do José Minelli no GitHub"/><br>
+        <sub>
+          <b>José Minelli</b>
+          <br>
+          <span> Desenvolvedor </span>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/RaissaLauarNavarro" >
+        <div  style="border-radius: 10px">
+        <img src="https://avatars.githubusercontent.com/u/80221591" width="100px;" alt="Foto do Raissa Lauar no GitHub"/><br>
+        <sub>
+          <b>Raissa Lauar</b>
+          <br>
+          <span> Tester </span>
+        </sub>
+        </div>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/laura3141">
+        <img src="https://avatars.githubusercontent.com/u/114376938" width="100px;" alt="Foto do Laura no GitHub"/><br>
+        <sub>
+          <b>Laura Costa</b>
+          <br>
+          <span> Concepção inicial </span>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
