@@ -1,5 +1,8 @@
 # Adote sua Patinha
 
+## [**Relatório Técnico**](Relatorio%20Tecnico.md)
+Clicando acima você terá um rápido acesso ao relatório
+
 ## Sobre o Projeto
 
 O **Adote Sua Patinha** é uma plataforma web desenvolvida como parte de um projeto acadêmico com o objetivo de facilitar o processo de doação e adoção de animais de estimação. A plataforma visa conectar pessoas que desejam doar animais de estimação com aquelas que estão interessadas em adotar um novo membro para suas famílias. Além disso, oferece funcionalidades para usuários registrados, permitindo que eles criem perfis para seus pets disponíveis para adoção.
