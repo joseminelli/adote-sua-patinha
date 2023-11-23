@@ -1,6 +1,6 @@
 # Adote sua Patinha
 
-## [**Relatório Técnico**](Relatorio%20Tecnico.md)
+## [**Relatório Técnico**](Relatorio%20Técnico/Relatorio%20Tecnico.md)
 Clicando acima você terá um rápido acesso ao relatório
 
 ## Sobre o Projeto
