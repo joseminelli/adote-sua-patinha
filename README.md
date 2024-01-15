@@ -40,8 +40,6 @@ Para obter mais informações ou suporte, entre em contato com nossa equipe:
 
 > E-mail: Joseminelli04@gmail.com
 
-> Website: https://adotesuapatinha.com
-
 O Adote Sua Patinha é uma iniciativa dedicada a conectar animais em busca de um lar com pessoas amorosas que desejam proporcionar um ambiente seguro e carinhoso para eles. Acreditamos que cada adoção é uma história de amor e esperamos que nossa plataforma ajude a criar muitas histórias felizes no mundo dos pets.
 
 ## 🎨 Color Reference
