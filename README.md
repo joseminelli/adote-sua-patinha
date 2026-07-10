@@ -57,6 +57,7 @@ O Adote Sua Patinha é uma iniciativa dedicada a conectar animais em busca de um
 
 <div>
  <img src="https://github.com/joseminelli/joseminelli/raw/main/img/pets.png" width="500px;"/>
+ <img src="https://github.com/joseminelli/adote-sua-patinha/blob/master/img/preview2.png?raw=true" width="500px;"/>
 </div>
 
 <h2>🦄 Equipe</h2>
