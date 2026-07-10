@@ -46,10 +46,10 @@ O Adote Sua Patinha é uma iniciativa dedicada a conectar animais em busca de um
 
 | Color          | Hex                                                                |
 | -------------- | ------------------------------------------------------------------ |
-| Amarelo          | ![#ffe58b](https://via.placeholder.com/10/FFE58B?text=+) `#ffe58b `|
-| Azul      | ![#165ea8](https://via.placeholder.com/10/165EA8?text=+) `#165ea8 `|
-| Branco   | ![#FFFFFF](https://via.placeholder.com/10/FFFFFF?text=+) `#FFFFFF` |
-| Preto      | ![#282828](https://via.placeholder.com/10/282828?text=+) `#282828` |
+| Amarelo          | `#ffe58b `|
+| Azul      | `#165ea8 `|
+| Branco   | `#FFFFFF` |
+| Preto      | `#282828` |
 
 
 ## Imagens
